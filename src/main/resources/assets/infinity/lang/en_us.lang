@@ -1,0 +1,188 @@
+key.infinity.category=Infinity Item Editor
+key.infinity.desc=Edit Current Item
+
+warning.notcreative=You need to be in creative mode to save items
+
+itemGroup.unavailable=Unavailable
+
+gui.item.id.tooltip.1=Try one of these:
+gui.item.id.tooltip.2=armor_stand
+gui.item.id.tooltip.3=spawn_egg
+gui.item.id.tooltip.4=skull
+gui.item.id.tooltip.5=chest
+gui.item.id.tooltip.6=leather_helmet
+gui.item.colorremove.tooltip.1=Remove all colors
+gui.item.drop.tooltip.1=Hold shift to use /give command
+gui.item.drop.tooltip.2=If the command is too long, it will be copied to your clipboard
+
+gui.close=Close
+gui.save=Save
+gui.drop=Drop
+gui.reset=Reset
+gui.clear=Clear
+
+gui.item=Infinity Editor
+gui.spawnegg=Spawn Egg Editor
+gui.head=Head Editor
+gui.armorstand=Armor Stand Editor
+gui.color=Color Editor
+gui.nbt=NBT Editor
+gui.nbtadv=NBT Browser
+gui.enchanting=Enchanting
+
+gui.armorstand.pose=Armor Stand Pose Editor
+gui.armorstand.pose.reset.1=Only resets rotations!
+
+gui.spawnegg.entity=Entity Specific
+gui.spawnegg.mob=Mob Specific
+gui.spawnegg.mobspecific=%s Specific
+gui.spawnegg.animalspecific=Animal Specific
+
+gui.chestinventory=Chest Inventory
+
+gui.head.save.tooltip.1=Might lag, when loading player info.
+gui.head.save.tooltip.2=This is a vanilla problem.
+gui.head.list.tooltip.1=List current players on the server.
+gui.head.list.tooltip.2=--Not implemented yet--
+
+gui.nbt.update=Update NBT
+
+gui.nbt.comp.open=Click to expand Compound Tag
+gui.nbt.comp.close=Click to collapse Compound Tag
+
+tag.head.0=Skeleton Skull
+tag.head.1=Wither Skull
+tag.head.2=Zombie Head
+tag.head.3=Player Head
+tag.head.4=Creeper Head
+tag.head.5=Dragon Head
+
+gui.equipment.inventoryclone=This is a copy of your inventory. Changes will not be saved.
+
+gui.editstring=Edit String
+
+gui.entitytags=Entity Tags
+gui.mobspecific=Mob Specific
+
+
+tag.skullowner=SkullOwner
+
+tag.unbreakable.0=Breakable
+tag.unbreakable.1=Unbreakable
+
+tag.fire.on=On fire for %s ticks
+tag.fire.off=Not on fire
+
+tag.customname=Change Custom Name
+tag.nogravity.on=No Gravity
+tag.nogravity.off=Gravity
+tag.invulnerable.on=Invulnerable
+tag.invulnerable.off=Vulnerable
+tag.customnamevisible.on=Custom Name Visible
+tag.customnamevisible.off=Custom Name Hidden
+tag.silent.on=Silent
+tag.silent.off=Not Silent
+tag.glowing.on=Glowing
+tag.glowing.off=Not Glowing
+
+tag.health.on=%s Health
+tag.health.off=Dead
+tag.absorption.on=%s Absorption
+tag.absorption.off=No Absorption
+tag.fallflying.on=Elytra Gliding
+tag.fallflying.off=Normal Falling
+tag.noai.on=AI Disabled
+tag.noai.off=AI Enabled
+tag.persistencerequired.on=Doesn't Despawn Normally
+tag.persistencerequired.off=Despawns As Normal
+tag.canpickuploot.on=Picks Up Loot
+tag.canpickuploot.off=Ignores Loot
+
+tag.armorstand.arms.0=No Arms
+tag.armorstand.arms.1=Has Arms
+tag.armorstand.small.0=Normal
+tag.armorstand.small.1=Small
+tag.armorstand.invisible.0=Visible
+tag.armorstand.invisible.1=Invisible
+tag.armorstand.nobase.0=Has Base Plate
+tag.armorstand.nobase.1=No Base Plate
+tag.armorstand.marker.0=Not Marker
+tag.armorstand.marker.1=Marker
+tag.armorstand.inventory=Equipment
+tag.armorstand.pose=Pose
+
+tag.creeper.powered.on=Powered
+tag.creeper.powered.off=Unpowered
+tag.creeper.explosionradius.on=Explosion Radius: %s
+tag.creeper.explosionradius.off=No Explosion Radius
+tag.creeper.fuse.on=Time to explode: %s
+tag.creeper.fuse.off=Instant Explosion
+tag.creeper.ignited.on=Ignited
+tag.creeper.ignited.off=Unignited
+
+tag.endermite.lifetime.off=Undefined Lifetime
+tag.endermite.lifetime.on=Lifetime: %s
+tag.endermite.playerspawned.off=PlayerSpawned: 0
+tag.endermite.playerspawned.on=PlayerSpawned: 1
+
+tag.parrot.variant.-1=Random Variant
+tag.parrot.variant.0=Red Variant
+tag.parrot.variant.1=Blue Variant
+tag.parrot.variant.2=Green Variant
+tag.parrot.variant.3=Cyan Variant
+tag.parrot.variant.4=Silver Variant
+
+tag.pig.saddled.on=Saddled
+tag.pig.saddled.off=Unsaddled
+
+tag.sheep.color.0=White Wool
+tag.sheep.color.1=Orange Wool
+tag.sheep.color.2=Magenta Wool
+tag.sheep.color.3=Light Blue Wool
+tag.sheep.color.4=Yellow Wool
+tag.sheep.color.5=Light Green Wool
+tag.sheep.color.6=Pink Wool
+tag.sheep.color.7=Gray Wool
+tag.sheep.color.8=Light Gray Wool
+tag.sheep.color.9=Cyan Wool
+tag.sheep.color.10=Purple Wool
+tag.sheep.color.11=Blue Wool
+tag.sheep.color.12=Brown Wool
+tag.sheep.color.13=Dark Green Wool
+tag.sheep.color.14=Red Wool
+tag.sheep.color.15=Black Wool
+tag.sheep.sheared.on=Sheared
+tag.sheep.sheared.off=Has Wool
+
+tag.shulker.color.0=White
+tag.shulker.color.1=Orange
+tag.shulker.color.2=Magenta
+tag.shulker.color.3=Light Blue
+tag.shulker.color.4=Yellow
+tag.shulker.color.5=Light Green
+tag.shulker.color.6=Pink
+tag.shulker.color.7=Gray
+tag.shulker.color.8=Light Gray
+tag.shulker.color.9=Cyan
+tag.shulker.color.10=Purple
+tag.shulker.color.11=Blue
+tag.shulker.color.12=Brown
+tag.shulker.color.13=Dark Green
+tag.shulker.color.14=Red
+tag.shulker.color.15=Black
+
+tag.villager.profession.0=Farmer Skin
+tag.villager.profession.1=Librarian Skin
+tag.villager.profession.2=Priest Skin
+tag.villager.profession.3=Smith Skin
+tag.villager.profession.4=Butcher Skin
+tag.villager.profession.5=Nitwit Skin
+
+
+tag.vindicator.johnny.on=Johnny Behaviour
+tag.vindicator.johnny.off=Normal Behavior
+
+tag.zombie.isbaby.on=Baby
+tag.zombie.isbaby.off=Adult
+tag.zombie.canbreakdoors.on=Can Break Doors
+tag.zombie.canbreakdoors.off=Cannot Break Doors

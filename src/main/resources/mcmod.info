@@ -1,0 +1,16 @@
+[
+{
+  "modid": "infinity",
+  "name": "Infinity Item Editor",
+  "description": "Bringing back features of All-U-Want item editor and more in a simple interface!",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Ruukas"],
+  "credits": "Minecraft Gamepedia for details on item NBTTags",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
