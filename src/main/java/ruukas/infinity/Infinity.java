@@ -35,6 +35,8 @@ public class Infinity
     //Allow in-game disabling and reloading
     //Add Gui class that other guis extend
     //Implement code for displaying armor stands items as models (I've already done the code for this on laptop)
+    //Support forge update json
+    //remove "this." where it's unneeded for better readability
     
     //Item GUI:
     //Add picker for ID and Meta (list that shows items)
@@ -44,6 +46,7 @@ public class Infinity
     //Change display of pretty printing and wrap lines
     //Render itemoverlay
     //Remove lore button shouldn't appear, if that line hasn't been added yet
+    //id field doesn't work very well with numbers
     
     //Monster Egg gui:
     //Implement more NBT

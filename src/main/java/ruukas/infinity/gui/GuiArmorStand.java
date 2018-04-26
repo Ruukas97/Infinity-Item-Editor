@@ -1,16 +1,7 @@
 package ruukas.infinity.gui;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.UUID;
-
-import org.lwjgl.input.Keyboard;
-import org.lwjgl.opengl.GL11;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -29,7 +20,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import ruukas.infinity.gui.action.GuiInfinityButton;
 import ruukas.infinity.gui.monsteregg.GuiEntityTags;
 import ruukas.infinity.gui.monsteregg.MobTag;
-import ruukas.infinity.nbt.NBTHelper;
 import ruukas.infinity.nbt.NBTHelper.ArmorStandNBTHelper;
 
 @SideOnly(Side.CLIENT)
@@ -39,16 +29,14 @@ public class GuiArmorStand extends GuiInfinity {
 
 	private GuiInfinityButton entityButton, armsButton, smallButton, invisibleButton, baseButton, markerButton, inventoryButton, poseButton;
 
-	protected String title = I18n.format("gui.armorstand");
-
-	protected ArrayList<String> prettyNBTList = new ArrayList<>();
-
 	public GuiArmorStand(GuiScreen lastScreen, ItemStack stack) {
 		super(lastScreen, stack);
 	}
 
 	@Override
 	public void initGui() {
+		super.initGui();
+		
 		int buttons = 0;
 		this.entityButton = addButton(new GuiInfinityButton(100 + buttons, (this.width / 2) - 75, 50 + (30*buttons++), 150, 20, I18n.format("gui.spawnegg.entity")));
 		this.armsButton = addButton(new GuiInfinityButton(100 + buttons, (this.width / 2) - 75, 50 + (30*buttons++), 150, 20, I18n.format("tag.armorstand.arms." + ArmorStandNBTHelper.SHOW_ARMS.getByte(stack))));
@@ -59,29 +47,9 @@ public class GuiArmorStand extends GuiInfinity {
 		this.inventoryButton = addButton(new GuiInfinityButton(100 + buttons, (this.width / 2) - 75, 50 + (30*buttons++), 150, 20, I18n.format("tag.armorstand.inventory")));
 		this.poseButton = addButton(new GuiInfinityButton(100 + buttons, (this.width / 2) - 75, 50 + (30*buttons++), 150, 20, I18n.format("tag.armorstand.pose")));
 
-
-		backButton = addButton(new GuiInfinityButton(200, this.width / 2 - 90, this.height - 25, 60, 20, I18n.format("gui.back")));
-		resetButton = addButton(new GuiInfinityButton(201, this.width / 2 - 30, this.height - 25, 60, 20, I18n.format("gui.reset")));
-		dropButton = addButton(new GuiInfinityButton(202, this.width / 2 + 30, this.height - 25, 60, 20, I18n.format("gui.drop")));
-
 		updateArmorStand();
 	}
 
-	@Override
-	public void onGuiClosed() {
-
-	}
-
-	/**
-	 * Fired when a key is typed (except F11 which toggles full screen). This is
-	 * the equivalent of KeyListener.keyTyped(KeyEvent e). Args : character
-	 * (character on the key), keyCode (lwjgl Keyboard key code)
-	 */
-	protected void keyTyped(char typedChar, int keyCode) throws IOException {
-		if (keyCode == Keyboard.KEY_ESCAPE) {
-			actionPerformed(backButton);
-		}
-	}
 
 	@Override
 	protected void actionPerformed(GuiButton button) throws IOException {
@@ -126,73 +94,36 @@ public class GuiArmorStand extends GuiInfinity {
 		else if(button.id == poseButton.id){
 			mc.displayGuiScreen(new GuiPose(this, stack));
 		}
-		
-		else if (button.id == backButton.id) {
-			mc.displayGuiScreen(this.lastScreen);
-		} 
-		
-		else if (button.id == resetButton.id) {
-			if (stack.hasTagCompound() && stack.getTagCompound().hasKey("EntityTag", NBT.TAG_COMPOUND)) {
-				String id = null;
-				if (stack.getSubCompound("EntityTag").hasKey("id")) {
-					id = stack.getSubCompound("EntityTag").getString("id");
-				}
-				stack.getTagCompound().removeTag("EntityTag");
-
-				if (id != null) {
-					NBTTagCompound entityTag = new NBTTagCompound();
-					entityTag.setString("id", id);
-
-					stack.getTagCompound().setTag("EntityTag", entityTag);
-				}
+	}
+	
+	@Override
+	protected void reset() {
+		if (stack.hasTagCompound() && stack.getTagCompound().hasKey("EntityTag", NBT.TAG_COMPOUND)) {
+			String id = null;
+			if (stack.getSubCompound("EntityTag").hasKey("id")) {
+				id = stack.getSubCompound("EntityTag").getString("id");
 			}
-			updateArmorStand();
+			stack.getTagCompound().removeTag("EntityTag");
+
+			if (id != null) {
+				NBTTagCompound entityTag = new NBTTagCompound();
+				entityTag.setString("id", id);
+
+				stack.getTagCompound().setTag("EntityTag", entityTag);
+			}
 		}
-		
-		else if (button.id == dropButton.id) {
-			HelperGui.dropStack(stack);
-		} 
+		updateArmorStand();
 	}
 
 	/**
 	 * Draws the screen and all the components in it.
 	 */
 	public void drawScreen(int mouseX, int mouseY, float partialTicks){
-		this.drawDefaultBackground();
-		
-		GlStateManager.pushMatrix();
-		GL11.glScalef(0.8f, 0.8f, 0.8f);
-		this.renderToolTip(stack, 0, 25);
-
-		drawHoveringText(prettyNBTList, 0, this.height / 2);
-		GlStateManager.popMatrix();
+		super.drawScreen(mouseX, mouseY, partialTicks);
 		
 		if (armorStand != null) {
-			drawEntityOnScreen((int) (this.width / 3 * 2.5), this.height - 20, 70);
+			drawArmorStand((int) (this.width / 3 * 2.5), this.height - 20, 70);
 		}
-		
-		GlStateManager.pushMatrix();
-		RenderHelper.enableGUIStandardItemLighting();
-		GlStateManager.disableLighting();
-		GlStateManager.enableRescaleNormal();
-		GlStateManager.enableColorMaterial();
-		GlStateManager.enableLighting();
-		this.itemRender.renderItemAndEffectIntoGUI(stack, (this.width / 2) - 8, 30);
-		GlStateManager.popMatrix();
-
-		this.drawCenteredString(this.fontRenderer, this.title, this.width / 2, 15, HelperGui.TITLE_PURPLE);
-
-		
-		super.drawScreen(mouseX, mouseY, partialTicks);
-	}
-
-	@Override
-	public boolean doesGuiPauseGame() {
-		return false;
-	}
-
-	public ItemStack getItemStack() {
-		return stack;
 	}
 
 	public void updateArmorStand() {
@@ -201,29 +132,12 @@ public class GuiArmorStand extends GuiInfinity {
 			
 			if (entity != null && entity instanceof EntityArmorStand) {
 				armorStand = (EntityArmorStand) entity;
-				applyItemDataToMob();
+				applyItemDataToArmorStand();
 			}
-		}
-
-		String s;
-		if (NBTHelper.hasEntityTag(stack)) {
-			s = NBTHelper.getEntityTag(stack).toString();
-		} else {
-			s = "{}";
-		}
-
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-		JsonParser jp = new JsonParser();
-		JsonElement je = jp.parse(s);
-		s = gson.toJson(je);
-
-		prettyNBTList.clear();
-		for (String str : s.split("\\n")) {
-			prettyNBTList.add(str);
 		}
 	}
 
-	public void applyItemDataToMob() {
+	public void applyItemDataToArmorStand() {
 		NBTTagCompound tag = stack.getTagCompound();
 
 		if (tag != null && tag.hasKey("EntityTag", NBT.TAG_COMPOUND)) {
@@ -236,7 +150,7 @@ public class GuiArmorStand extends GuiInfinity {
 	/**
 	 * Draws an entity on the screen looking toward the cursor.
 	 */
-	public void drawEntityOnScreen(int posX, int posY, int scale) {
+	public void drawArmorStand(int posX, int posY, int scale) {
 		EntityArmorStand ent = armorStand;
 		ent.ticksExisted = (int) mc.world.getWorldTime();
 
@@ -275,5 +189,10 @@ public class GuiArmorStand extends GuiInfinity {
 		GlStateManager.setActiveTexture(OpenGlHelper.lightmapTexUnit);
 		GlStateManager.disableTexture2D();
 		GlStateManager.setActiveTexture(OpenGlHelper.defaultTexUnit);
+	}
+
+	@Override
+	protected String getNameUnlocalized() {
+		return "armorstand";
 	}
 }
