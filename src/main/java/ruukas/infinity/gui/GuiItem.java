@@ -375,7 +375,7 @@ public class GuiItem extends GuiInfinity
     {
         super.drawScreen( mouseX, mouseY, partialTicks );
         
-        if ( mc.playerController.isNotCreative() )
+        if ( mc.playerController.isNotCreative() && !mc.isSingleplayer())
         {
             drawCenteredString( fontRenderer, I18n.format( "warning.notcreative" ), width / 2, height - 60, HelperGui.MAIN_BLUE );
         }
