@@ -41,6 +41,8 @@ public class GuiItem extends GuiInfinity
     
     private ArrayList<GuiInfinityButton> specialButtons = new ArrayList<>();
     
+    private ArrayList<GuiInfinityButton> loreButtons = new ArrayList<>();
+    
     public GuiItem(GuiScreen lastScreen, ItemStack stack) {
         super( lastScreen, stack );
         hasSave = true;
@@ -200,7 +202,7 @@ public class GuiItem extends GuiInfinity
     
     public void addLoreStuff()
     {
-        for ( GuiButton b : buttonList )
+        for ( GuiButton b : loreButtons )
         {
             if ( b.id >= 181 && b.id <= 186 )
             {
@@ -208,6 +210,7 @@ public class GuiItem extends GuiInfinity
             }
         }
         
+        loreButtons.clear();
         loreFields.clear();
         int id = 251;
         
@@ -238,7 +241,13 @@ public class GuiItem extends GuiInfinity
         };
         loreFields.add( lore );
         
-        addButton( new GuiInfinityButton( 181 + line, width - 195, 100 + (30 * line), 14, 20, TextFormatting.DARK_RED + "X" ) );
+        if ( loreFields.size() > 1 ) 
+        {
+            GuiInfinityButton btn = new GuiInfinityButton( 181 + line, width - 195, 100 + (30 * (line-1)), 14, 20, TextFormatting.DARK_RED + "X" );
+            
+            this.loreButtons.add( btn );
+            this.addButton( btn );
+        }
     }
     
     /**
@@ -335,7 +344,7 @@ public class GuiItem extends GuiInfinity
         
         else if ( button.id > 180 && button.id < 187 )
         {
-            NBTHelper.removeLoreLine( stack, button.id - 181 );
+            NBTHelper.removeLoreLine( stack, button.id - 181 - 1 );
             addLoreStuff();
         }
         

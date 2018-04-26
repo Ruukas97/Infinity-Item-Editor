@@ -203,6 +203,8 @@ public abstract class GuiInfinity extends GuiScreen
     @Override
     public void drawScreen( int mouseX, int mouseY, float partialTicks )
     {
+        this.saveButton.enabled = this.dropButton.enabled = mc.playerController.isInCreativeMode();
+        
         drawDefaultBackground();
         
         if ( stack.getItem() != Items.AIR && stack != ItemStack.EMPTY )
