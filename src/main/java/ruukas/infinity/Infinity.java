@@ -78,6 +78,7 @@ public class Infinity
     // Enchanting
     // Book in background
     // Write high levels with roman numerals - https://stackoverflow.com/questions/12967896
+    // Support enchanted_book
     
     // CHANGELOG:
     // Fixed pig "saddled" showing as "unsaddled" in Spawnegg gui

@@ -235,7 +235,7 @@ public class GuiHead extends GuiScreen
         this.itemRender.renderItemAndEffectIntoGUI( stack, (this.width / 2) - 8, 30 );
         GlStateManager.popMatrix();
         
-        this.drawCenteredString( this.fontRenderer, this.title, this.width / 2, 15, HelperGui.TITLE_PURPLE );
+        this.drawCenteredString( this.fontRenderer, this.title, this.width / 2, 15, HelperGui.MAIN_PURPLE );
         
         skullOwnerTextField.drawTextBox();
         

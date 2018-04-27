@@ -138,7 +138,7 @@ public class GuiPose extends GuiScreen
             drawEntityOnScreen( (int) (this.width / 3 * 2.5), this.height - 50, 120 );
         }
         
-        this.drawCenteredString( this.fontRenderer, this.title, this.width / 2, 15, HelperGui.TITLE_PURPLE );
+        this.drawCenteredString( this.fontRenderer, this.title, this.width / 2, 15, HelperGui.MAIN_PURPLE );
         
         super.drawScreen( mouseX, mouseY, partialTicks );
         

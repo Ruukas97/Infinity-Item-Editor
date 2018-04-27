@@ -117,7 +117,7 @@ public class GuiEditString extends GuiScreen
     public void drawScreen( int mouseX, int mouseY, float partialTicks )
     {
         this.drawDefaultBackground();
-        this.drawCenteredString( this.fontRenderer, I18n.format( "gui.editstring" ), this.width / 2, 20, HelperGui.TITLE_PURPLE );
+        this.drawCenteredString( this.fontRenderer, I18n.format( "gui.editstring" ), this.width / 2, 20, HelperGui.MAIN_PURPLE );
         this.drawString( this.fontRenderer, tag.getTranslatedName(), this.width / 2 - 150, 40, 10526880 );
         this.textField.drawTextBox();
         // int i = 75;

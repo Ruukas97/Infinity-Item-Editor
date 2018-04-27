@@ -181,7 +181,7 @@ public class GuiNBT extends GuiScreen
         this.itemRender.renderItemAndEffectIntoGUI( stack, (width / 2) - 8, 30 );
         GlStateManager.popMatrix();
         
-        this.drawCenteredString( fontRenderer, title, width / 2, 15, HelperGui.TITLE_PURPLE );
+        this.drawCenteredString( fontRenderer, title, width / 2, 15, HelperGui.MAIN_PURPLE );
         
         this.drawCenteredString( fontRenderer, feedback, width / 2, 130, good ? HelperGui.GOOD_GREEN : HelperGui.BAD_RED );
         

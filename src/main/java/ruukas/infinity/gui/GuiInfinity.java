@@ -37,7 +37,7 @@ public abstract class GuiInfinity extends GuiScreen
     private boolean renderStack = false;
     private int stackX = 5;
     private int stackY = 5;
-    private float stackScale = 1.0f;
+    //private float stackScale = 1.0f;
     
     protected boolean renderTooltip = false;
     
@@ -58,7 +58,7 @@ public abstract class GuiInfinity extends GuiScreen
         renderStack = doRender;
         stackX = x - 8;
         stackY = y - 8;
-        stackScale = scale;
+        //stackScale = scale;
     }
     
     @Override
@@ -119,13 +119,15 @@ public abstract class GuiInfinity extends GuiScreen
             {
                 return;
             }
-            String id = stack.getItem().getRegistryName().toString();
+            stack.getItem();
+			String id = stack.getItem().getRegistryName().toString();
+			
+            //int id = Item.getIdFromItem(stack.getItem()); - Vanilla /give command doesn't seem to support numeric id's anymore
             
             if ( id.startsWith( "minecraft:" ) )
             {
                 id = id.substring( 10 );
             }
-            // TODO add more means of shortening the command, such as using numeric id
             
             String command = "/give @p " + id;
             
@@ -203,7 +205,8 @@ public abstract class GuiInfinity extends GuiScreen
     @Override
     public void drawScreen( int mouseX, int mouseY, float partialTicks )
     {
-        this.saveButton.enabled = this.dropButton.enabled = mc.playerController.isInCreativeMode();
+    	if(hasSave && this.saveButton != null)
+    		this.saveButton.enabled = this.dropButton.enabled = mc.playerController.isInCreativeMode();
         
         drawDefaultBackground();
         

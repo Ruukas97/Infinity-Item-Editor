@@ -239,7 +239,7 @@ public class GuiColor extends GuiScreen
         
         GlStateManager.popMatrix();
         
-        this.drawCenteredString( this.fontRenderer, this.title, this.width / 2, 15, HelperGui.TITLE_PURPLE );
+        this.drawCenteredString( this.fontRenderer, this.title, this.width / 2, 15, HelperGui.MAIN_PURPLE );
         
         drawRect( redSlider.x - 5, redSlider.y - 5, blueSlider.x + blueSlider.width + 5, blueSlider.y + blueSlider.height + 5, HelperGui.getColorFromRGB( 100, redSlider.getValueInt(), greenSlider.getValueInt(), blueSlider.getValueInt() ) );
         

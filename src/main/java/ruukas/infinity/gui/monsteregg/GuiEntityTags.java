@@ -99,7 +99,7 @@ public class GuiEntityTags extends GuiScreen
     {
         this.drawDefaultBackground();
         this.optionsRowList.drawScreen( mouseX, mouseY, partialTicks );
-        this.drawCenteredString( this.fontRenderer, this.screenTitle, this.width / 2, 5, HelperGui.TITLE_PURPLE );
+        this.drawCenteredString( this.fontRenderer, this.screenTitle, this.width / 2, 5, HelperGui.MAIN_PURPLE );
         super.drawScreen( mouseX, mouseY, partialTicks );
     }
     
