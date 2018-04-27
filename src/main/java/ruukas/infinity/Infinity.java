@@ -122,7 +122,7 @@ public class Infinity
          */
         for ( Item item : Item.REGISTRY )
         {
-            if ( item != null && item != Items.AIR && item.getCreativeTab() == null )
+            if ( item != null && item != Items.AIR && item.getCreativeTab() == null && item != Items.ENCHANTED_BOOK)
             {
                 item.setCreativeTab( UNAVAILABLE );
                 logger.info( "Item: " + item.getUnlocalizedName() + " was not added to a tab. Adding it to Unavailable." ); // Perhaps it should only print a count of how many items were added.
