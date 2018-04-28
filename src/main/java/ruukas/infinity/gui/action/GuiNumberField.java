@@ -110,6 +110,23 @@ public class GuiNumberField extends Gui
             }
         }
         
+        else if ( getIntValue() < minValue )
+        {
+            String minStr = (minValue + "");
+            int diff = digits.length - minStr.length();
+            char mC = minStr.charAt( this.cursorPosition - diff );
+            
+            if ( c == mC )
+            {
+                this.setValue( minValue );
+            }
+            else
+            {
+                this.setDigit( mC );
+            }
+        }
+ 
+        
         if ( action != null )
         {
             action.run();

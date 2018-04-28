@@ -1,8 +1,7 @@
 package ruukas.infinity.gui;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
 import org.lwjgl.input.Keyboard;
 
@@ -10,29 +9,34 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentData;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Items;
-import net.minecraft.item.ItemEnchantedBook;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.potion.PotionType;
+import net.minecraft.potion.PotionUtils;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import ruukas.infinity.gui.action.GuiNumberField;
+import ruukas.infinity.nbt.itemstack.tag.InfinityCustomPotionEffectList;
 import ruukas.infinity.nbt.itemstack.tag.InfinityEnchantmentList;
+import ruukas.infinity.nbt.itemstack.tag.custompotioneffects.InfinityPotionEffectTag;
 import ruukas.infinity.nbt.itemstack.tag.ench.InfinityEnchantmentTag;
 
 @SideOnly( Side.CLIENT )
-public class GuiEnchanting extends GuiInfinity
+public class GuiPotion extends GuiInfinity
 {            
     private GuiNumberField level;
+    private GuiNumberField time;
     
     private int rotOff = 0;
     private int mouseDist = 0;
-    private List<Enchantment> enchants = new ArrayList<>();
-    private ItemStack enchantBook;
+    private ItemStack potionIcon;
         
-    public GuiEnchanting(GuiScreen lastScreen, ItemStack stack) {
+    public GuiPotion(GuiScreen lastScreen, ItemStack stack) {
     	super(lastScreen, stack);
     }
     
@@ -43,28 +47,20 @@ public class GuiEnchanting extends GuiInfinity
     	
         Keyboard.enableRepeatEvents( true );
         
-        level = new GuiNumberField( 100, fontRenderer, 15, height - 33, 40, 18, 5 );
+        level = new GuiNumberField( 100, fontRenderer, 15, height - 33, 40, 18, 3 );
         level.minValue = 1;
-        level.maxValue = 32767;
+        level.maxValue = 127;
         level.setValue( 1 );
         
+        time = new GuiNumberField( 100, fontRenderer, 15, height - 60, 40, 18, 5 );
+        time.minValue = 1;
+        time.maxValue = 99999;
+        time.setValue( 1 );
+
         
-        enchants.clear();
-        for ( Enchantment e : Enchantment.REGISTRY )
-        {
-            if ( e.canApply( stack ) )
-            {
-                enchants.add( e );
-            }
-        }
+        potionIcon = new ItemStack( Items.POTIONITEM );
         
-        enchantBook = new ItemStack( Items.ENCHANTED_BOOK );
-        
-        if ( !enchants.isEmpty() )
-        {
-            EnchantmentData dat = new EnchantmentData( enchants.get( 0 ), 1 );
-            ItemEnchantedBook.addEnchantment( enchantBook, dat );
-        }
+        PotionUtils.addPotionToItemStack(potionIcon, PotionType.REGISTRY.getObjectById(0));
     }
     
     @Override
@@ -81,6 +77,7 @@ public class GuiEnchanting extends GuiInfinity
     {
     	super.updateScreen();
         level.updateCursorCounter();
+        time.updateCursorCounter();
         if ( Math.abs( mouseDist - (height / 3) ) >= 16 )
             rotOff++;
     }
@@ -97,6 +94,7 @@ public class GuiEnchanting extends GuiInfinity
         else
         {
             level.textboxKeyTyped( typedChar, keyCode );
+            time.textboxKeyTyped( typedChar, keyCode );
         }
     }
     
@@ -108,13 +106,14 @@ public class GuiEnchanting extends GuiInfinity
         super.mouseClicked( mouseX, mouseY, mouseButton );
         
         level.mouseClicked( mouseX, mouseY, mouseButton );
+        time.mouseClicked( mouseX, mouseY, mouseButton );
         
-        InfinityEnchantmentList list = new InfinityEnchantmentList( stack );
-        InfinityEnchantmentTag[] activeEnchants = list.getAll();
-        int start = midY - 5 * activeEnchants.length;
-        if ( activeEnchants.length > 0 && HelperGui.isMouseInRegion( mouseX, mouseY, 0, start, 5 + fontRenderer.getStringWidth( "Unbreaking 32767" ), 10 * activeEnchants.length ) )
+        InfinityCustomPotionEffectList list = new InfinityCustomPotionEffectList( stack );
+        InfinityPotionEffectTag[] activeEffects = list.getAll();
+        int start = midY - 5 * activeEffects.length;
+        if ( activeEffects.length > 0 && HelperGui.isMouseInRegion( mouseX, mouseY, 0, start, 5 + fontRenderer.getStringWidth( "Unbreaking 32767" ), 10 * activeEffects.length ) )
         {
-            list.removeEnchantment( (mouseY - start) / 10 );
+            list.removePotionEffect( (mouseY - start) / 10 );
             return;
         }
         
@@ -123,14 +122,16 @@ public class GuiEnchanting extends GuiInfinity
         // mouseDist = (int) Math.sqrt(distX * distX + distY * distY);
         if ( Math.abs( mouseDist - r ) < 16 )
         {
-            double angle = (2 * Math.PI) / enchants.size();
+        	Set<ResourceLocation> keyset = Potion.REGISTRY.getKeys();
+            double angle = (2 * Math.PI) / keyset.size();
 
             int lowDist = Integer.MAX_VALUE;
-            Enchantment enchantment = null;
+            Potion type = null;
             
-            for ( int i = 0 ; i < enchants.size() ; i++ )
+            int i = 0;
+            for (ResourceLocation key : keyset)
             {
-                double angleI = (((double) (rotOff) / 60d)) + (angle * i);
+                double angleI = (((double) (rotOff) / 60d)) + (angle * i++);
                 
                 int x = (int) (midX + (r * Math.cos( angleI )));
                 int y = (int) (midY + (r * Math.sin( angleI )));
@@ -142,13 +143,13 @@ public class GuiEnchanting extends GuiInfinity
                 if ( dist < 10 && dist < lowDist )
                 {
                     lowDist = dist;
-                    enchantment = enchants.get( i );
+                    type = Potion.REGISTRY.getObject(key);
                 }
             }
             
-            if ( enchantment != null )
+            if ( type != null )
             {
-                new InfinityEnchantmentList( stack ).set( enchantment, (short) (enchantment.getMaxLevel() == 1 ? 1 : level.getIntValue()) );
+                new InfinityCustomPotionEffectList( stack ).set(new PotionEffect(type, time.getIntValue()));
             }
         }
     }
@@ -182,6 +183,7 @@ public class GuiEnchanting extends GuiInfinity
         }
         
         level.drawTextBox();
+        time.drawTextBox();
                 
         
         int distX = midX - mouseX;
@@ -190,7 +192,8 @@ public class GuiEnchanting extends GuiInfinity
         
         int r = height / 3;
         
-        double angle = (2 * Math.PI) / enchants.size();
+    	Set<ResourceLocation> keyset = Potion.REGISTRY.getKeys();
+        double angle = (2 * Math.PI) / keyset.size();
         
         GlStateManager.pushMatrix();
         RenderHelper.enableGUIStandardItemLighting();
@@ -208,14 +211,32 @@ public class GuiEnchanting extends GuiInfinity
         
         GlStateManager.scale( 0.2, 0.2, 1 );
 
-        for ( int i = 0 ; i < enchants.size() ; i++ )
+        int i = 0;
+        for (ResourceLocation key : keyset)
         {
-            double angleI = (((double) (rotOff + (double) (Math.abs( mouseDist - r ) >= 16 ? partialTicks : 0d)) / 60d)) + (angle * i);
+            double angleI = (((double) (rotOff + (double) (Math.abs( mouseDist - r ) >= 16 ? partialTicks : 0d)) / 60d)) + (angle * i++);
             int x = (int) (midX + (r * Math.cos( angleI )));
             int y = (int) (midY + (r * Math.sin( angleI )));
-            this.drawCenteredString( this.fontRenderer, TextFormatting.getTextWithoutFormattingCodes( enchants.get( i ).getTranslatedName( enchants.get( i ).getMaxLevel() == 1 ? 1 : level.getIntValue() ).replace( "enchantment.level.", "" ) ), x, y - 17, HelperGui.MAIN_PURPLE );
+            
+            PotionEffect potEff = new PotionEffect( Potion.REGISTRY.getObject( key ), 20, level.getIntValue() );
+            String displayString = I18n.format( potEff.getEffectName() );
 
-            this.itemRender.renderItemAndEffectIntoGUI( enchantBook, x - 8, y - 8 );
+            if (potEff.getAmplifier() == 1)
+            {
+                displayString = displayString + " " + I18n.format("enchantment.level.2");
+            }
+            else if (potEff.getAmplifier() == 2)
+            {
+                displayString = displayString + " " + I18n.format("enchantment.level.3");
+            }
+            else if (potEff.getAmplifier() == 3)
+            {
+                displayString = displayString + " " + I18n.format("enchantment.level.4");
+            }
+            
+            this.drawCenteredString( fontRenderer, TextFormatting.getTextWithoutFormattingCodes( displayString ), x, y - 17, HelperGui.MAIN_PURPLE );
+
+            this.itemRender.renderItemAndEffectIntoGUI( potionIcon, x - 8, y - 8 );
             
             drawRect(x-1, y-1, x+1, y+1, HelperGui.getColorFromRGB(255, 255, 255, 255));
         }

@@ -3,6 +3,7 @@ package ruukas.infinity.gui.action;
 import net.minecraft.block.BlockChest;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemArmorStand;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemMonsterPlacer;
@@ -14,6 +15,7 @@ import ruukas.infinity.gui.GuiEnchanting;
 import ruukas.infinity.gui.GuiHead;
 import ruukas.infinity.gui.HelperGui;
 import ruukas.infinity.gui.GuiMonsterEgg;
+import ruukas.infinity.gui.GuiPotion;
 import ruukas.infinity.gui.chest.InventoryChestItem;
 import ruukas.infinity.nbt.NBTHelper;
 
@@ -147,6 +149,24 @@ public class ActionButtons
             public String getText()
             {
                 return I18n.format( "gui.enchanting" );
+            }
+        }, new GuiActionButton() {
+            @Override
+            public boolean condition()
+            {
+                return getItemStack().getItem() == Items.POTIONITEM; //Splash and lingering should be added too
+            }
+            
+            @Override
+            public void action()
+            {
+                Minecraft.getMinecraft().displayGuiScreen( new GuiPotion( Minecraft.getMinecraft().currentScreen, getItemStack() ) );
+            }
+            
+            @Override
+            public String getText()
+            {
+                return I18n.format( "gui.potion" );
             }
         } };
     }

@@ -1,7 +1,8 @@
-package ruukas.infinity.nbt;
+package ruukas.infinity.nbt.itemstack;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import ruukas.infinity.nbt.itemstack.tag.InfinityEnchantmentList;
 
 public class InfinityItemTag
 {
@@ -21,7 +22,7 @@ public class InfinityItemTag
         return stack;
     }
     
-    NBTTagCompound getTag()
+    public NBTTagCompound getTag()
     {
         if ( !stack.hasTagCompound() )
         {
