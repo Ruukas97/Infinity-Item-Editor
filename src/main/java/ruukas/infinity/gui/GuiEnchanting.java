@@ -43,12 +43,13 @@ public class GuiEnchanting extends GuiInfinity
     	
         Keyboard.enableRepeatEvents( true );
         
-        level = new GuiNumberField( 100, fontRenderer, midX + 2, height - 19, 40, 18, 5 );
+        level = new GuiNumberField( 100, fontRenderer, 15, height - 33, 40, 18, 5 );
         level.minValue = 1;
         level.maxValue = 32767;
         level.setValue( 1 );
         
         
+        enchants.clear();
         for ( Enchantment e : Enchantment.REGISTRY )
         {
             if ( e.canApply( stack ) )
