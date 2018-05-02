@@ -22,7 +22,7 @@ public class Infinity
 {
     public static final String MODID = "infinity";
     public static final String NAME = "Infinity Item Editor";
-    public static final String VERSION = "0.4";
+    public static final String VERSION = "0.5";
     
     public static Logger logger;
     
@@ -85,11 +85,7 @@ public class Infinity
     // Curative item (e.g. which item cures the effect - default is milk_bucket)
     
     // CHANGELOG:
-    // Fixed pig "saddled" showing as "unsaddled" in Spawnegg gui
-    // The very long tags "Signature" and "Value" for player heads are now "snipped", when viewing the tag.
-    // Added item overlays to Item Gui
-    // Added Potion Gui
-    // Potion effects now display correct roman numerals instead of "potion.potency.127" for high numbers.
+
     
     /**
      * A creative tab that contains all item that weren't added to any other tabs at {@link #postInit}
