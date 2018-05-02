@@ -53,7 +53,7 @@ public class InfinityCustomPotionEffectList
     
     public InfinityPotionEffectTag[] getAll()
     {
-    	InfinityPotionEffectTag[] array = new InfinityPotionEffectTag[ getTag().tagCount() ];
+        InfinityPotionEffectTag[] array = new InfinityPotionEffectTag[ getTag().tagCount() ];
         int i = 0;
         for ( NBTBase b : getTag() )
         {

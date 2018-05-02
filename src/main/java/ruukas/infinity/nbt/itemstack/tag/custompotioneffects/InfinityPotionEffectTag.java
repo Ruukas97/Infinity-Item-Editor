@@ -13,7 +13,7 @@ public class InfinityPotionEffectTag
         this( list, new NBTTagCompound() );
         potionList.getTag().appendTag( tag );
         
-        setEffect(effect);
+        setEffect( effect );
     }
     
     public InfinityPotionEffectTag(InfinityCustomPotionEffectList list, NBTTagCompound tag) {
@@ -21,12 +21,14 @@ public class InfinityPotionEffectTag
         this.tag = tag;
     }
     
-    public PotionEffect getEffect(){
-    	return PotionEffect.readCustomPotionEffectFromNBT(tag);
+    public PotionEffect getEffect()
+    {
+        return PotionEffect.readCustomPotionEffectFromNBT( tag );
     }
     
-    public InfinityPotionEffectTag setEffect(PotionEffect effect){
-    	effect.writeCustomPotionEffectToNBT(tag);
-    	return this;
+    public InfinityPotionEffectTag setEffect( PotionEffect effect )
+    {
+        effect.writeCustomPotionEffectToNBT( tag );
+        return this;
     }
 }

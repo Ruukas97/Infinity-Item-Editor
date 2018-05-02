@@ -22,29 +22,27 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import ruukas.infinity.gui.action.GuiNumberField;
 import ruukas.infinity.nbt.itemstack.tag.InfinityCustomPotionEffectList;
-import ruukas.infinity.nbt.itemstack.tag.InfinityEnchantmentList;
 import ruukas.infinity.nbt.itemstack.tag.custompotioneffects.InfinityPotionEffectTag;
-import ruukas.infinity.nbt.itemstack.tag.ench.InfinityEnchantmentTag;
 
 @SideOnly( Side.CLIENT )
 public class GuiPotion extends GuiInfinity
-{            
+{
     private GuiNumberField level;
     private GuiNumberField time;
     
     private int rotOff = 0;
     private int mouseDist = 0;
     private ItemStack potionIcon;
-        
+    
     public GuiPotion(GuiScreen lastScreen, ItemStack stack) {
-    	super(lastScreen, stack);
+        super( lastScreen, stack );
     }
     
     @Override
     public void initGui()
     {
         super.initGui();
-    	
+        
         Keyboard.enableRepeatEvents( true );
         
         level = new GuiNumberField( 100, fontRenderer, 15, height - 33, 40, 18, 3 );
@@ -52,21 +50,20 @@ public class GuiPotion extends GuiInfinity
         level.maxValue = 127;
         level.setValue( 1 );
         
-        time = new GuiNumberField( 100, fontRenderer, 15, height - 60, 40, 18, 5 );
+        time = new GuiNumberField( 101, fontRenderer, 15, height - 60, 40, 18, 5 );
         time.minValue = 1;
         time.maxValue = 99999;
         time.setValue( 1 );
-
         
         potionIcon = new ItemStack( Items.POTIONITEM );
         
-        PotionUtils.addPotionToItemStack(potionIcon, PotionType.REGISTRY.getObjectById(0));
+        PotionUtils.addPotionToItemStack( potionIcon, PotionType.REGISTRY.getObjectById( 0 ) );
     }
     
     @Override
     public void onGuiClosed()
     {
-    	super.onGuiClosed();
+        super.onGuiClosed();
         Keyboard.enableRepeatEvents( false );
     }
     
@@ -75,7 +72,7 @@ public class GuiPotion extends GuiInfinity
      */
     public void updateScreen()
     {
-    	super.updateScreen();
+        super.updateScreen();
         level.updateCursorCounter();
         time.updateCursorCounter();
         if ( Math.abs( mouseDist - (height / 3) ) >= 16 )
@@ -118,18 +115,18 @@ public class GuiPotion extends GuiInfinity
         }
         
         int r = height / 3;
-
+        
         // mouseDist = (int) Math.sqrt(distX * distX + distY * distY);
         if ( Math.abs( mouseDist - r ) < 16 )
         {
-        	Set<ResourceLocation> keyset = Potion.REGISTRY.getKeys();
+            Set<ResourceLocation> keyset = Potion.REGISTRY.getKeys();
             double angle = (2 * Math.PI) / keyset.size();
-
+            
             int lowDist = Integer.MAX_VALUE;
             Potion type = null;
             
             int i = 0;
-            for (ResourceLocation key : keyset)
+            for ( ResourceLocation key : keyset )
             {
                 double angleI = (((double) (rotOff) / 60d)) + (angle * i++);
                 
@@ -143,13 +140,13 @@ public class GuiPotion extends GuiInfinity
                 if ( dist < 10 && dist < lowDist )
                 {
                     lowDist = dist;
-                    type = Potion.REGISTRY.getObject(key);
+                    type = Potion.REGISTRY.getObject( key );
                 }
             }
             
             if ( type != null )
             {
-                new InfinityCustomPotionEffectList( stack ).set(new PotionEffect(type, time.getIntValue()));
+                new InfinityCustomPotionEffectList( stack ).set( new PotionEffect( type, time.getIntValue() * 20, level.getIntValue() ) );
             }
         }
     }
@@ -172,19 +169,23 @@ public class GuiPotion extends GuiInfinity
      * Draws the screen and all the components in it.
      */
     public void drawScreen( int mouseX, int mouseY, float partialTicks )
-    {        
+    {
         super.drawScreen( mouseX, mouseY, partialTicks );
-
-        InfinityEnchantmentTag[] enchantmentTags = new InfinityEnchantmentList( stack ).getAll();
-        for ( int i = 0 ; i < enchantmentTags.length ; i++ )
+        
+        InfinityPotionEffectTag[] potionTags = new InfinityCustomPotionEffectList( stack ).getAll();
+        for ( int i = 0 ; i < potionTags.length ; i++ )
         {
-            InfinityEnchantmentTag e = enchantmentTags[i];
-            drawString( fontRenderer, e.getEnchantment().getTranslatedName( e.getLevel() ).replace( "enchantment.level.", "" ), 5, midY + i * 10 - enchantmentTags.length * 5, HelperGui.MAIN_PURPLE );
+            InfinityPotionEffectTag e = potionTags[i];
+            PotionEffect effect = e.getEffect();
+            int ampli = effect.getAmplifier();
+            drawString( fontRenderer, I18n.format( effect.getEffectName() ) + (ampli > 1 ? ( " " + I18n.format( "potion.potency." + ampli ).trim()) : "") + " (" + (ampli+1) + ")", 5, midY + i * 10 - potionTags.length * 5, HelperGui.MAIN_PURPLE );
         }
         
         level.drawTextBox();
         time.drawTextBox();
-                
+        
+        drawString( fontRenderer, I18n.format( "gui.potion.time" ), 62, height-56, HelperGui.MAIN_PURPLE );
+        drawString( fontRenderer, I18n.format( "gui.potion.level" ), 62, height-29, HelperGui.MAIN_PURPLE );
         
         int distX = midX - mouseX;
         int distY = midY - mouseY;
@@ -192,7 +193,7 @@ public class GuiPotion extends GuiInfinity
         
         int r = height / 3;
         
-    	Set<ResourceLocation> keyset = Potion.REGISTRY.getKeys();
+        Set<ResourceLocation> keyset = Potion.REGISTRY.getKeys();
         double angle = (2 * Math.PI) / keyset.size();
         
         GlStateManager.pushMatrix();
@@ -210,44 +211,36 @@ public class GuiPotion extends GuiInfinity
         GlStateManager.translate( -(width / 10), -(height / 10), 0 );
         
         GlStateManager.scale( 0.2, 0.2, 1 );
-
+        
         int i = 0;
-        for (ResourceLocation key : keyset)
+        for ( ResourceLocation key : keyset )
         {
             double angleI = (((double) (rotOff + (double) (Math.abs( mouseDist - r ) >= 16 ? partialTicks : 0d)) / 60d)) + (angle * i++);
             int x = (int) (midX + (r * Math.cos( angleI )));
             int y = (int) (midY + (r * Math.sin( angleI )));
             
-            PotionEffect potEff = new PotionEffect( Potion.REGISTRY.getObject( key ), 20, level.getIntValue() );
+            PotionEffect potEff = new PotionEffect( Potion.REGISTRY.getObject( key ), 20, level.getIntValue() - 1 );
             String displayString = I18n.format( potEff.getEffectName() );
-
-            if (potEff.getAmplifier() == 1)
+            
+            if ( potEff.getAmplifier() > 0 )
             {
-                displayString = displayString + " " + I18n.format("enchantment.level.2");
-            }
-            else if (potEff.getAmplifier() == 2)
-            {
-                displayString = displayString + " " + I18n.format("enchantment.level.3");
-            }
-            else if (potEff.getAmplifier() == 3)
-            {
-                displayString = displayString + " " + I18n.format("enchantment.level.4");
+                displayString += " " + I18n.format( "potion.potency." + potEff.getAmplifier() ).trim();
             }
             
-            this.drawCenteredString( fontRenderer, TextFormatting.getTextWithoutFormattingCodes( displayString ), x, y - 17, HelperGui.MAIN_PURPLE );
-
-            this.itemRender.renderItemAndEffectIntoGUI( potionIcon, x - 8, y - 8 );
+            drawCenteredString( fontRenderer, TextFormatting.getTextWithoutFormattingCodes( displayString ), x, y - 17, HelperGui.MAIN_PURPLE );
             
-            drawRect(x-1, y-1, x+1, y+1, HelperGui.getColorFromRGB(255, 255, 255, 255));
+            itemRender.renderItemAndEffectIntoGUI( potionIcon, x - 8, y - 8 );
+            
+            drawRect( x - 1, y - 1, x + 1, y + 1, HelperGui.getColorFromRGB( 255, 255, 255, 255 ) );
         }
         GlStateManager.popMatrix();
         GlStateManager.enableDepth();
         RenderHelper.enableStandardItemLighting();
     }
- 
-
-	@Override
-	protected String getNameUnlocalized() {
-		return "enchanting";
-	}
+    
+    @Override
+    protected String getNameUnlocalized()
+    {
+        return "potion";
+    }
 }

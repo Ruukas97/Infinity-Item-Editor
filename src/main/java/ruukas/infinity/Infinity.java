@@ -80,10 +80,16 @@ public class Infinity
     // Write high levels with roman numerals - https://stackoverflow.com/questions/12967896
     // Support enchanted_book
     
+    // Potions
+    // Show particles toggle button (See PotionEffect.class)
+    // Curative item (e.g. which item cures the effect - default is milk_bucket)
+    
     // CHANGELOG:
     // Fixed pig "saddled" showing as "unsaddled" in Spawnegg gui
     // The very long tags "Signature" and "Value" for player heads are now "snipped", when viewing the tag.
     // Added item overlays to Item Gui
+    // Added Potion Gui
+    // Potion effects now display correct roman numerals instead of "potion.potency.127" for high numbers.
     
     /**
      * A creative tab that contains all item that weren't added to any other tabs at {@link #postInit}
@@ -103,7 +109,7 @@ public class Infinity
         // At the moment, it's alright to keep this line here, as the mod won't be loaded on serverside.
         ClientRegistry.registerKeyBinding( keybind );
         
-        UNAVAILABLE = new CreativeTabs( "unavailable" ) {
+        UNAVAILABLE = new CreativeTabs( "unavailable") {
             @Override
             public ItemStack getTabIconItem()
             {
@@ -122,7 +128,7 @@ public class Infinity
          */
         for ( Item item : Item.REGISTRY )
         {
-            if ( item != null && item != Items.AIR && item.getCreativeTab() == null && item != Items.ENCHANTED_BOOK)
+            if ( item != null && item != Items.AIR && item.getCreativeTab() == null && item != Items.ENCHANTED_BOOK )
             {
                 item.setCreativeTab( UNAVAILABLE );
                 logger.info( "Item: " + item.getUnlocalizedName() + " was not added to a tab. Adding it to Unavailable." ); // Perhaps it should only print a count of how many items were added.
