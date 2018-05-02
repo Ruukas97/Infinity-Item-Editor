@@ -84,6 +84,8 @@ public class Infinity
     // CHANGELOG:
     // Added Armor stand tag information for "Invisible" and "Marker" in tooltip
     
+    // Removed "Save" button from spawn egg gui
+    
     // Fix armor stand back button wasn't working
     // Fix armor stand in-gui rendering inherited colors from text
 

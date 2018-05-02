@@ -80,10 +80,9 @@ public class GuiMonsterEgg extends GuiScreen
         animalSpecificButton.visible = false;
         
         this.buttonList.add( new GuiInfinityButton( 200, this.width / 2 - 90, this.height - 35, 60, 20, I18n.format( "gui.back" ) ) );
-        this.buttonList.add( new GuiInfinityButton( 201, this.width / 2 - 30, this.height - 25, 60, 20, I18n.format( "gui.save" ) ) );
         this.buttonList.add( new GuiInfinityButton( 202, this.width / 2 + 30, this.height - 35, 60, 20, I18n.format( "gui.drop" ) ) );
         
-        this.buttonList.add( new GuiInfinityButton( 203, this.width / 2 - 30, this.height - 45, 60, 20, I18n.format( "gui.reset" ) ) );
+        this.buttonList.add( new GuiInfinityButton( 203, this.width / 2 - 30, this.height - 35, 60, 20, I18n.format( "gui.reset" ) ) );
         
         updateMob();
     }
@@ -155,13 +154,7 @@ public class GuiMonsterEgg extends GuiScreen
         {
             mc.displayGuiScreen( this.lastScreen );
         }
-        
-        else if ( button.id == 201 )
-        {
-            int slot = mc.player.inventory.currentItem;
-            mc.playerController.sendSlotPacket( stack, 36 + slot );
-            mc.displayGuiScreen( this.lastScreen );
-        }
+
         
         else if ( button.id == 202 )
         {
