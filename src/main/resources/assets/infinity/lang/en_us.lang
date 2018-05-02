@@ -20,6 +20,8 @@ gui.save=Save
 gui.drop=Drop
 gui.reset=Reset
 gui.clear=Clear
+gui.cancel=Cancel
+gui.select=Select
 
 gui.item=Infinity Editor
 gui.spawnegg=Spawn Egg Editor
