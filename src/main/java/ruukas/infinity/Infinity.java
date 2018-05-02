@@ -62,9 +62,8 @@ public class Infinity
     // Export in FTBUtil format
     
     // Armor Stand gui:
-    // Marker tag desc from wiki on tooltip?
-    // Armor stand rotation for viewingT
-    // Reset part pose
+    // Armor stand rotation for viewing
+    // Disable hand slots, if arms are disabled - not sure if it's a good idea or not
     
     // Color GUI
     // Are there other items than leather armor that support colors?
@@ -72,8 +71,6 @@ public class Infinity
     
     // Rendering
     // Custom render in hand for armor stand and spawn eggs
-    // Redesign colors (custom textures for buttons and colorful text etc.)
-    // Use GuiLabel in Guis
     
     // Enchanting
     // Book in background
@@ -85,6 +82,10 @@ public class Infinity
     // Curative item (e.g. which item cures the effect - default is milk_bucket)
     
     // CHANGELOG:
+    // Added Armor stand tag information for "Invisible" and "Marker" in tooltip
+    
+    // Fix armor stand back button wasn't working
+    // Fix armor stand in-gui rendering inherited colors from text
 
     
     /**

@@ -258,6 +258,8 @@ public abstract class GuiInfinity extends GuiScreen
         drawCenteredString( fontRenderer, title, midX, 15, HelperGui.MAIN_PURPLE );
         
         super.drawScreen( mouseX, mouseY, partialTicks );
+        
+        GlStateManager.color( 1.0f, 1.0f, 1.0f );
     }
     
     @Override

@@ -104,6 +104,10 @@ public class GuiArmorStand extends GuiInfinity
         {
             mc.displayGuiScreen( new GuiPose( this, stack ) );
         }
+        
+        else {
+            super.actionPerformed( button );
+        }
     }
     
     @Override
@@ -134,12 +138,18 @@ public class GuiArmorStand extends GuiInfinity
      */
     public void drawScreen( int mouseX, int mouseY, float partialTicks )
     {
-        super.drawScreen( mouseX, mouseY, partialTicks );
-        
+        super.drawScreen( mouseX, mouseY, partialTicks ); 
+
         if ( armorStand != null )
         {
             drawArmorStand( (int) (this.width / 3 * 2.5), this.height - 20, 70 );
         }
+        
+        GlStateManager.pushMatrix();
+        HelperGui.addTooltip( invisibleButton, mouseX, mouseY, I18n.format( "gui.armorstand.invisible.note" ) );
+        
+        HelperGui.addTooltip( markerButton, mouseX, mouseY, I18n.format( "gui.armorstand.marker.note" ) );
+        GlStateManager.popMatrix();
     }
     
     public void updateArmorStand()

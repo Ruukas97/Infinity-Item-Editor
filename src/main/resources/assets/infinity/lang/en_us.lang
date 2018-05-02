@@ -33,6 +33,8 @@ gui.potion=Potion Brewing
 
 gui.armorstand.pose=Armor Stand Pose Editor
 gui.armorstand.pose.reset.1=Only resets rotations!
+gui.armorstand.invisible.note=Note: It may be difficult to remove the armorstand without commands.
+gui.armorstand.marker.note=Marker disables interaction and makes hitbox small.
 
 gui.spawnegg.entity=Entity Specific
 gui.spawnegg.mob=Mob Specific
