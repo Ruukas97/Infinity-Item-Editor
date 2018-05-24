@@ -276,19 +276,25 @@ public class GuiItem extends GuiInfinity
         for ( int i = 0 ; i < numberFields.size() ; i++ )
         {
             GuiNumberField f = numberFields.get( i );
-            f.textboxKeyTyped( typedChar, keyCode );
+            if(f != null){
+                f.textboxKeyTyped( typedChar, keyCode );
+            }
         }
         
         for ( int i = 0 ; i < textFields.size() ; i++ )
         {
             GuiTextField f = textFields.get( i );
-            f.textboxKeyTyped( typedChar, keyCode );
+            if(f != null){
+                f.textboxKeyTyped( typedChar, keyCode );
+            }
         }
         
         for ( int i = 0 ; i < loreFields.size() ; i++ )
         {
             GuiTextField f = loreFields.get( i );
-            f.textboxKeyTyped( typedChar, keyCode );
+            if(f != null){
+                f.textboxKeyTyped( typedChar, keyCode );
+            }
         }
     }
     
