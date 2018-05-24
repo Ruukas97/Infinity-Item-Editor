@@ -22,7 +22,7 @@ public class Infinity
 {
     public static final String MODID = "infinity";
     public static final String NAME = "Infinity Item Editor";
-    public static final String VERSION = "0.5";
+    public static final String VERSION = "0.5.1";
     
     public static Logger logger;
     
