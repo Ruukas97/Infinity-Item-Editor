@@ -82,12 +82,7 @@ public class Infinity
     // Curative item (e.g. which item cures the effect - default is milk_bucket)
     
     // CHANGELOG:
-    // Added Armor stand tag information for "Invisible" and "Marker" in tooltip
-    
-    // Removed "Save" button from spawn egg gui
-    
-    // Fix armor stand back button wasn't working
-    // Fix armor stand in-gui rendering inherited colors from text
+
 
     
     /**
@@ -121,7 +116,8 @@ public class Infinity
     public void postInit( FMLPostInitializationEvent event )
     {
         /*
-         * Goes through each registered item and block that has been registered and adds them to UNAVAILABLE. This gives the player access to item that are not unavailable such as barriers and command blocks, and potentially items that are added by other mods too.
+         * Goes through each registered item and block that has been registered and adds them to UNAVAILABLE, if they haven't been assigned a tab.
+         * This gives the player access to item that are not unavailable such as barriers and command blocks, and potentially items that are added by other mods too.
          * 
          * It's also possible to go through the list, whenever the tab is opened, but this seems to be the favorable way of doing it.
          */
