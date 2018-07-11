@@ -175,7 +175,7 @@ public abstract class GuiInfinity extends GuiScreen
         {
             back();
         }
-        else if ( button.id == saveButton.id )
+        else if ( hasSave && button.id == saveButton.id )
         {
             save();
         }
