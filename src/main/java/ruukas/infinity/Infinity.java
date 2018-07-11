@@ -23,7 +23,7 @@ public class Infinity
 {
     public static final String MODID = "infinity";
     public static final String NAME = "Infinity Item Editor";
-    public static final String VERSION = "0.5.1";
+    public static final String VERSION = "0.6";
     
     public static Logger logger;
     
@@ -92,12 +92,6 @@ public class Infinity
     // Will feature things such as item picker!
     
     // CHANGELOG:
-    // Book gui
-    // Fixed potion levels
-    // Potion gui for splash and lingering potion
-    // Can now override existing effects on potions
-    // Added uncraftable potions and "empty spawnegg" to Unavailable tab
-    // Fixed crash in some guis that doesn't have a save button
     
     /**
      * A creative tab that contains all item that weren't added to any other tabs at {@link #postInit}

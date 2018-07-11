@@ -1,7 +1,5 @@
 package ruukas.infinity.nbt.itemstack.tag;
 
-import com.google.gson.stream.MalformedJsonException;
-
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
