@@ -146,7 +146,7 @@ public class GuiPotion extends GuiInfinity
             
             if ( type != null )
             {
-                new InfinityCustomPotionEffectList( stack ).set( new PotionEffect( type, time.getIntValue() * 20, level.getIntValue() ) );
+                new InfinityCustomPotionEffectList( stack ).set( new PotionEffect( type, time.getIntValue() * 20, level.getIntValue() - 1 ) );
             }
         }
     }
@@ -178,14 +178,14 @@ public class GuiPotion extends GuiInfinity
             InfinityPotionEffectTag e = potionTags[i];
             PotionEffect effect = e.getEffect();
             int ampli = effect.getAmplifier();
-            drawString( fontRenderer, I18n.format( effect.getEffectName() ) + (ampli > 1 ? ( " " + I18n.format( "potion.potency." + ampli ).trim()) : "") + " (" + (ampli+1) + ")", 5, midY + i * 10 - potionTags.length * 5, HelperGui.MAIN_PURPLE );
+            drawString( fontRenderer, I18n.format( effect.getEffectName() ) + (ampli > 1 ? (" " + I18n.format( "potion.potency." + ampli ).trim()) : "") + " (" + (ampli + 1) + ")", 5, midY + i * 10 - potionTags.length * 5, HelperGui.MAIN_PURPLE );
         }
         
         level.drawTextBox();
         time.drawTextBox();
         
-        drawString( fontRenderer, I18n.format( "gui.potion.time" ), 62, height-56, HelperGui.MAIN_PURPLE );
-        drawString( fontRenderer, I18n.format( "gui.potion.level" ), 62, height-29, HelperGui.MAIN_PURPLE );
+        drawString( fontRenderer, I18n.format( "gui.potion.time" ), 62, height - 56, HelperGui.MAIN_PURPLE );
+        drawString( fontRenderer, I18n.format( "gui.potion.level" ), 62, height - 29, HelperGui.MAIN_PURPLE );
         
         int distX = midX - mouseX;
         int distY = midY - mouseY;
