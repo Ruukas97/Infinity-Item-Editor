@@ -96,6 +96,7 @@ public class Infinity
     // Fixed potion levels
     // Potion gui for splash and lingering potion
     // Can now override existing effects on potions
+    // Added uncraftable potions and "empty spawnegg" to Unavailable tab
     // Fixed crash in some guis that doesn't have a save button
     
     /**
@@ -121,6 +122,17 @@ public class Infinity
             public ItemStack getTabIconItem()
             {
                 return new ItemStack( Blocks.BARRIER );
+            }
+            
+            @Override
+            public void displayAllRelevantItems( NonNullList<ItemStack> stackList )
+            {
+                super.displayAllRelevantItems( stackList );
+                
+                stackList.add( new ItemStack( Items.SPAWN_EGG ) );
+                stackList.add( new ItemStack( Items.POTIONITEM ) );
+                stackList.add( new ItemStack( Items.SPLASH_POTION ) );
+                stackList.add( new ItemStack( Items.LINGERING_POTION ) );
             }
         };
     }
