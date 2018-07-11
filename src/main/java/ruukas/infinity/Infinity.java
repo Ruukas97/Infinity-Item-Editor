@@ -80,8 +80,14 @@ public class Infinity
     // Potions
     // Show particles toggle button (See PotionEffect.class)
     // Curative item (e.g. which item cures the effect - default is milk_bucket)
+    // Vanilla potion types
+    // Custom color tag
     
     // CHANGELOG:
+    // Book gui
+    // Fixed potion levels
+    // Potion gui for splash and lingering potion
+    // Can now override existing effects on potions
 
 
     

@@ -154,7 +154,7 @@ public class ActionButtons
             @Override
             public boolean condition()
             {
-                return getItemStack().getItem() == Items.POTIONITEM; //Splash and lingering should be added too
+                return getItemStack().getItem() == Items.POTIONITEM || getItemStack().getItem() == Items.SPLASH_POTION || getItemStack().getItem() == Items.LINGERING_POTION;
             }
             
             @Override

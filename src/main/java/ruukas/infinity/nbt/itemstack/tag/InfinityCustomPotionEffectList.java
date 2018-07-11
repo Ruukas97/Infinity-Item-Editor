@@ -38,6 +38,7 @@ public class InfinityCustomPotionEffectList
         {
             if ( effect.getEffect().getPotion().equals( t.getPotion() ) )
             {
+                effect.setEffect( t );
                 return effect;
             }
         }
