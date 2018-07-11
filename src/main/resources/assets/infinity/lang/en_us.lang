@@ -30,11 +30,21 @@ gui.nbt=NBT Editor
 gui.nbtadv=NBT Browser
 gui.enchanting=Enchanting
 gui.potion=Potion Brewing
+gui.book=Book Editor
 
 gui.armorstand.pose=Armor Stand Pose Editor
 gui.armorstand.pose.reset.1=Only resets rotations!
 gui.armorstand.invisible.note=Note: It may be difficult to remove the armorstand without commands.
 gui.armorstand.marker.note=Marker disables interaction and makes hitbox small.
+
+gui.book.title=Title
+gui.book.author=Author
+gui.book.generation=Generation
+gui.book.resolved=Resolved
+gui.book.resolved.tooltip.1=Has been resolved by server
+gui.book.unresolved=Unresolved
+gui.book.unsign=Unsign
+gui.book.resign=Resign
 
 gui.spawnegg.entity=Entity Specific
 gui.spawnegg.mob=Mob Specific

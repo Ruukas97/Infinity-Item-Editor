@@ -10,6 +10,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -32,10 +33,12 @@ public class Infinity
     // ADD Config
     // - Chose between different preset interface colors or vanilla style
     // Allow in-game disabling and reloading
-    // Add Gui class that other guis extend
     // Implement code for displaying armor stands items as models (I've already done the code for this on laptop)
     // Support forge update json
-    // remove "this." where it's unneeded for better readability
+    // remove "this." from code where it's unneeded for better readability
+    
+    // Firework GUI:
+    //
     
     // Item GUI:
     // Add picker for ID and Meta (list that shows items)
@@ -46,6 +49,7 @@ public class Infinity
     // Render itemoverlay
     // Remove lore button shouldn't appear, if that line hasn't been added yet
     // id field doesn't work very well with numbers
+    // Do not allow id 0/Air
     
     // Monster Egg gui:
     // Implement more NBT
@@ -66,7 +70,7 @@ public class Infinity
     // Disable hand slots, if arms are disabled - not sure if it's a good idea or not
     
     // Color GUI
-    // Are there other items than leather armor that support colors?
+    // Are there other items than leather armor that support colors? Potions
     // Color pallete (save colors)
     
     // Rendering
@@ -83,13 +87,16 @@ public class Infinity
     // Vanilla potion types
     // Custom color tag
     
+    // Gui overlay:
+    // Similar to the right click in NBT explorer
+    // Will feature things such as item picker!
+    
     // CHANGELOG:
     // Book gui
     // Fixed potion levels
     // Potion gui for splash and lingering potion
     // Can now override existing effects on potions
-
-
+    // Fixed crash in some guis that doesn't have a save button
     
     /**
      * A creative tab that contains all item that weren't added to any other tabs at {@link #postInit}
@@ -122,10 +129,9 @@ public class Infinity
     public void postInit( FMLPostInitializationEvent event )
     {
         /*
-         * Goes through each registered item and block that has been registered and adds them to UNAVAILABLE, if they haven't been assigned a tab.
-         * This gives the player access to item that are not unavailable such as barriers and command blocks, and potentially items that are added by other mods too.
+         * Goes through each registered item and block that has been registered and adds them to UNAVAILABLE, if they haven't been assigned a tab. This gives the player access to item that are not unavailable such as barriers and command blocks, and potentially items that are added by other mods too.
          * 
-         * It's also possible to go through the list, whenever the tab is opened, but this seems to be the favorable way of doing it.
+         * It's also possible to go through the list, whenever the tab is opened, but this is better for performance reasons.
          */
         for ( Item item : Item.REGISTRY )
         {

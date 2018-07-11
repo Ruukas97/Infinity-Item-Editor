@@ -161,7 +161,7 @@ public class NBTHelper
         
         else
             return stack.getTagCompound().getBoolean( "Unbreakable" );
-        
+            
     }
     
     public static void setUnbreakable( ItemStack stack, boolean b )

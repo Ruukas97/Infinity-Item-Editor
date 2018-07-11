@@ -105,7 +105,7 @@ public class GuiItem extends GuiInfinity
         int fieldsAmount = 0;
         
         // ID
-        GuiActionTextField itemID = new GuiActionTextField( 250, fontRenderer, width / 2, 25 + (30 * ++fieldsAmount), 75, 20 );
+        GuiActionTextField itemID = new GuiActionTextField( 250, fontRenderer, midX, 25 + (30 * ++fieldsAmount), 75, 20 );
         String registryName = stack.getItem().getRegistryName().toString();
         itemID.setText( registryName.toLowerCase().startsWith( "minecraft:" ) ? registryName.replaceFirst( "minecraft:", "" ) : registryName );
         itemID.setTextColor( HelperGui.MAIN_PURPLE );
@@ -117,13 +117,8 @@ public class GuiItem extends GuiInfinity
                 NBTTagCompound tag = stack.getTagCompound();
                 stack = new ItemStack( item, stack.getCount() == 0 ? 1 : stack.getCount(), stack.getMetadata() );
                 stack.setTagCompound( tag );
-                itemID.setTextColor( HelperGui.MAIN_PURPLE );
                 buttonList.clear();
                 initGui();
-            }
-            else
-            {
-                itemID.setTextColor( HelperGui.MAIN_BLUE );
             }
         };
         
@@ -131,7 +126,7 @@ public class GuiItem extends GuiInfinity
         centerStrings.add( new CenterString( "Item ID", 31 + (30 * fieldsAmount) ) );
         
         // COUNT
-        GuiNumberField count = new GuiNumberField( 300 + fieldsAmount, fontRenderer, width / 2, 25 + (30 * ++fieldsAmount), 20, 20, 2 );
+        GuiNumberField count = new GuiNumberField( 300 + fieldsAmount, fontRenderer, midX, 25 + (30 * ++fieldsAmount), 20, 20, 2 );
         count.minValue = 1;
         count.maxValue = 64;
         count.setValue( stack.getCount() );
@@ -241,9 +236,9 @@ public class GuiItem extends GuiInfinity
         };
         loreFields.add( lore );
         
-        if ( loreFields.size() > 1 ) 
+        if ( loreFields.size() > 1 )
         {
-            GuiInfinityButton btn = new GuiInfinityButton( 181 + line, width - 195, 100 + (30 * (line-1)), 14, 20, TextFormatting.DARK_RED + "X" );
+            GuiInfinityButton btn = new GuiInfinityButton( 181 + line, width - 195, 100 + (30 * (line - 1)), 14, 20, TextFormatting.DARK_RED + "X" );
             
             this.loreButtons.add( btn );
             this.addButton( btn );
@@ -276,7 +271,8 @@ public class GuiItem extends GuiInfinity
         for ( int i = 0 ; i < numberFields.size() ; i++ )
         {
             GuiNumberField f = numberFields.get( i );
-            if(f != null){
+            if ( f != null )
+            {
                 f.textboxKeyTyped( typedChar, keyCode );
             }
         }
@@ -284,7 +280,8 @@ public class GuiItem extends GuiInfinity
         for ( int i = 0 ; i < textFields.size() ; i++ )
         {
             GuiTextField f = textFields.get( i );
-            if(f != null){
+            if ( f != null )
+            {
                 f.textboxKeyTyped( typedChar, keyCode );
             }
         }
@@ -292,7 +289,8 @@ public class GuiItem extends GuiInfinity
         for ( int i = 0 ; i < loreFields.size() ; i++ )
         {
             GuiTextField f = loreFields.get( i );
-            if(f != null){
+            if ( f != null )
+            {
                 f.textboxKeyTyped( typedChar, keyCode );
             }
         }

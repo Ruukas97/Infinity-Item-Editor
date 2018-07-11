@@ -9,6 +9,7 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemMonsterPlacer;
 import net.minecraft.item.ItemSkull;
 import ruukas.infinity.gui.GuiArmorStand;
+import ruukas.infinity.gui.GuiBook;
 import ruukas.infinity.gui.GuiChestItem;
 import ruukas.infinity.gui.GuiColor;
 import ruukas.infinity.gui.GuiEnchanting;
@@ -154,7 +155,7 @@ public class ActionButtons
             @Override
             public boolean condition()
             {
-                return getItemStack().getItem() == Items.WRITTEN_BOOK;
+                return getItemStack().getItem() == Items.POTIONITEM || getItemStack().getItem() == Items.SPLASH_POTION || getItemStack().getItem() == Items.LINGERING_POTION;
             }
             
             @Override
@@ -167,6 +168,24 @@ public class ActionButtons
             public String getText()
             {
                 return I18n.format( "gui.potion" );
+            }
+        }, new GuiActionButton() {
+            @Override
+            public boolean condition()
+            {
+                return getItemStack().getItem() == Items.WRITTEN_BOOK;
+            }
+            
+            @Override
+            public void action()
+            {
+                Minecraft.getMinecraft().displayGuiScreen( new GuiBook( Minecraft.getMinecraft().currentScreen, getItemStack() ) );
+            }
+            
+            @Override
+            public String getText()
+            {
+                return I18n.format( "gui.book" );
             }
         } };
     }
