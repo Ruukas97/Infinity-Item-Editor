@@ -1,7 +1,6 @@
 package ruukas.infinity.gui;
 
 import java.io.IOException;
-import java.util.Set;
 
 import org.lwjgl.input.Keyboard;
 
@@ -10,31 +9,39 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.entity.ai.attributes.IAttribute;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.potion.PotionType;
-import net.minecraft.potion.PotionUtils;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import ruukas.infinity.gui.action.GuiInfinityButton;
 import ruukas.infinity.gui.action.GuiNumberField;
-import ruukas.infinity.nbt.itemstack.tag.InfinityCustomPotionEffectList;
-import ruukas.infinity.nbt.itemstack.tag.custompotioneffects.InfinityPotionEffectTag;
+import ruukas.infinity.nbt.itemstack.tag.InfinityAttributeModifierList;
+import ruukas.infinity.nbt.itemstack.tag.attributemodifiers.InfinityAttributeModifierTag;
 
 @SideOnly( Side.CLIENT )
-public class GuiPotion extends GuiInfinity
+public class GuiAttributes extends GuiInfinity
 {
+    private static final ItemStack note = new ItemStack( Items.PAPER );
+    
+    private static final IAttribute playerReach = EntityPlayer.REACH_DISTANCE;
+    private static final IAttribute parrotFlying = SharedMonsterAttributes.FLYING_SPEED;
+    // private IAttribute horseJump = EntityHorse.JUMP_STRENGTH (It's protected)
+    // private static final IAttribute zombieReinforcements = EntityZombie.SPAWN_REINFORCEMENTS_CHANCE; (protected)
+    
+    private static final IAttribute[] sharedAttributes = { SharedMonsterAttributes.MAX_HEALTH, SharedMonsterAttributes.FOLLOW_RANGE, SharedMonsterAttributes.KNOCKBACK_RESISTANCE, SharedMonsterAttributes.MOVEMENT_SPEED, SharedMonsterAttributes.ATTACK_DAMAGE, SharedMonsterAttributes.ATTACK_SPEED, SharedMonsterAttributes.ARMOR, SharedMonsterAttributes.ARMOR_TOUGHNESS, SharedMonsterAttributes.LUCK, playerReach, parrotFlying };
+    
     private GuiNumberField level;
-    private GuiNumberField time;
+    private GuiInfinityButton slotButton, operationButton;
     
     private int rotOff = 0;
     private int mouseDist = 0;
-    private ItemStack potionIcon;
+    private int slot = 0, operation = 0;
     
-    public GuiPotion(GuiScreen lastScreen, ItemStack stack) {
+    public GuiAttributes(GuiScreen lastScreen, ItemStack stack) {
         super( lastScreen, stack );
     }
     
@@ -45,19 +52,15 @@ public class GuiPotion extends GuiInfinity
         
         Keyboard.enableRepeatEvents( true );
         
-        level = new GuiNumberField( 100, fontRenderer, 15, height - 33, 40, 18, 3 );
+        operationButton = addButton( new GuiInfinityButton( 250, 15, height - 93, 80, 20, I18n.format( "gui.attributes.operation." + operation )) );
+        
+        slotButton = addButton( new GuiInfinityButton( 251, 15, height - 63, 80, 20, I18n.format( "gui.attributes.slot." + slot )) );
+        
+        level = new GuiNumberField( 100, fontRenderer, 15, height - 33, 55, 18, 8 );
         level.minValue = 1;
-        level.maxValue = 127;
+        level.maxValue = 99999999;
         level.setValue( 1 );
         
-        time = new GuiNumberField( 101, fontRenderer, 15, height - 60, 40, 18, 5 );
-        time.minValue = 1;
-        time.maxValue = 99999;
-        time.setValue( 1 );
-        
-        potionIcon = new ItemStack( Items.POTIONITEM );
-        
-        PotionUtils.addPotionToItemStack( potionIcon, PotionType.REGISTRY.getObjectById( 0 ) );
     }
     
     @Override
@@ -74,7 +77,6 @@ public class GuiPotion extends GuiInfinity
     {
         super.updateScreen();
         level.updateCursorCounter();
-        time.updateCursorCounter();
         if ( Math.abs( mouseDist - (height / 3) ) >= 16 )
             rotOff++;
     }
@@ -91,7 +93,6 @@ public class GuiPotion extends GuiInfinity
         else
         {
             level.textboxKeyTyped( typedChar, keyCode );
-            time.textboxKeyTyped( typedChar, keyCode );
         }
     }
     
@@ -103,14 +104,14 @@ public class GuiPotion extends GuiInfinity
         super.mouseClicked( mouseX, mouseY, mouseButton );
         
         level.mouseClicked( mouseX, mouseY, mouseButton );
-        time.mouseClicked( mouseX, mouseY, mouseButton );
         
-        InfinityCustomPotionEffectList list = new InfinityCustomPotionEffectList( stack );
-        InfinityPotionEffectTag[] activeEffects = list.getAll();
-        int start = midY - 5 * activeEffects.length;
-        if ( activeEffects.length > 0 && HelperGui.isMouseInRegion( mouseX, mouseY, 0, start, 5 + fontRenderer.getStringWidth( "Unbreaking 32767" ), 10 * activeEffects.length ) )
+        InfinityAttributeModifierList list = new InfinityAttributeModifierList( stack );
+        InfinityAttributeModifierTag[] activeModifiers = list.getAll();
+        
+        int start = midY - 5 * activeModifiers.length;
+        if ( activeModifiers.length > 0 && HelperGui.isMouseInRegion( mouseX, mouseY, 0, start, 5 + fontRenderer.getStringWidth( "Unbreaking 32767" ), 10 * activeModifiers.length ) )
         {
-            list.removePotionEffect( (mouseY - start) / 10 );
+            list.removeModifier( (mouseY - start) / 10 );
             return;
         }
         
@@ -119,16 +120,14 @@ public class GuiPotion extends GuiInfinity
         // mouseDist = (int) Math.sqrt(distX * distX + distY * distY);
         if ( Math.abs( mouseDist - r ) < 16 )
         {
-            Set<ResourceLocation> keyset = Potion.REGISTRY.getKeys();
-            double angle = (2 * Math.PI) / keyset.size();
+            double angle = (2 * Math.PI) / sharedAttributes.length;
             
             int lowDist = Integer.MAX_VALUE;
-            Potion type = null;
+            IAttribute attribute = null;
             
-            int i = 0;
-            for ( ResourceLocation key : keyset )
+            for ( int i = 0 ; i < sharedAttributes.length ; i++ )
             {
-                double angleI = (((double) (rotOff) / 60d)) + (angle * i++);
+                double angleI = (((double) (rotOff) / 60d)) + (angle * i);
                 
                 int x = (int) (midX + (r * Math.cos( angleI )));
                 int y = (int) (midY + (r * Math.sin( angleI )));
@@ -140,13 +139,15 @@ public class GuiPotion extends GuiInfinity
                 if ( dist < 10 && dist < lowDist )
                 {
                     lowDist = dist;
-                    type = Potion.REGISTRY.getObject( key );
+                    attribute = sharedAttributes[i];
                 }
             }
             
-            if ( type != null )
+            if ( attribute != null )
             {
-                new InfinityCustomPotionEffectList( stack ).set( new PotionEffect( type, time.getIntValue() * 20, level.getIntValue() - 1 ) );
+                InfinityAttributeModifierTag tag = new InfinityAttributeModifierTag( new InfinityAttributeModifierList( stack ), new AttributeModifier( attribute.getName(), level.getIntValue(), 0 ) );
+                tag.setOperation(operation);
+                tag.setSlot(slot);
             }
         }
     }
@@ -154,7 +155,16 @@ public class GuiPotion extends GuiInfinity
     @Override
     protected void actionPerformed( GuiButton button ) throws IOException
     {
-        super.actionPerformed( button );
+        if ( button.id == operationButton.id )
+        {
+            operation = (operation+1)%3;
+            operationButton.displayString = I18n.format( "gui.attributes.operation." + operation );
+        }
+        else if(button.id == slotButton.id){
+            slot = (slot+1)%3;
+            slotButton.displayString = I18n.format( "gui.attributes.slot." + slot );
+        }
+        else super.actionPerformed( button );
     }
     
     /**
@@ -164,20 +174,14 @@ public class GuiPotion extends GuiInfinity
     {
         super.drawScreen( mouseX, mouseY, partialTicks );
         
-        InfinityPotionEffectTag[] potionTags = new InfinityCustomPotionEffectList( stack ).getAll();
-        for ( int i = 0 ; i < potionTags.length ; i++ )
+        InfinityAttributeModifierTag[] modifierTags = new InfinityAttributeModifierList( stack ).getAll();
+        for ( int i = 0 ; i < modifierTags.length ; i++ )
         {
-            InfinityPotionEffectTag e = potionTags[i];
-            PotionEffect effect = e.getEffect();
-            int ampli = effect.getAmplifier();
-            drawString( fontRenderer, I18n.format( effect.getEffectName() ) + (ampli > 1 ? (" " + I18n.format( "potion.potency." + ampli ).trim()) : "") + " (" + (ampli + 1) + ")", 5, midY + i * 10 - potionTags.length * 5, HelperGui.MAIN_PURPLE );
+            InfinityAttributeModifierTag m = modifierTags[i];
+            drawString( fontRenderer, m.getDisplayString(), 5, midY + i * 10 - modifierTags.length * 5, HelperGui.MAIN_PURPLE );
         }
         
         level.drawTextBox();
-        time.drawTextBox();
-        
-        drawString( fontRenderer, I18n.format( "gui.potion.time" ), 62, height - 56, HelperGui.MAIN_PURPLE );
-        drawString( fontRenderer, I18n.format( "gui.potion.level" ), 62, height - 29, HelperGui.MAIN_PURPLE );
         
         int distX = midX - mouseX;
         int distY = midY - mouseY;
@@ -185,8 +189,7 @@ public class GuiPotion extends GuiInfinity
         
         int r = height / 3;
         
-        Set<ResourceLocation> keyset = Potion.REGISTRY.getKeys();
-        double angle = (2 * Math.PI) / keyset.size();
+        double angle = (2 * Math.PI) / sharedAttributes.length;
         
         GlStateManager.pushMatrix();
         RenderHelper.enableGUIStandardItemLighting();
@@ -204,24 +207,14 @@ public class GuiPotion extends GuiInfinity
         
         GlStateManager.scale( 0.2, 0.2, 1 );
         
-        int i = 0;
-        for ( ResourceLocation key : keyset )
+        for ( int i = 0 ; i < sharedAttributes.length ; i++ )
         {
-            double angleI = (((double) (rotOff + (double) (Math.abs( mouseDist - r ) >= 16 ? partialTicks : 0d)) / 60d)) + (angle * i++);
+            double angleI = (((double) (rotOff + (double) (Math.abs( mouseDist - r ) >= 16 ? partialTicks : 0d)) / 60d)) + (angle * i);
             int x = (int) (midX + (r * Math.cos( angleI )));
             int y = (int) (midY + (r * Math.sin( angleI )));
+            this.drawCenteredString( this.fontRenderer, I18n.format( "attribute.name." + sharedAttributes[i].getName() ), x, y - 17, HelperGui.MAIN_PURPLE );
             
-            PotionEffect potEff = new PotionEffect( Potion.REGISTRY.getObject( key ), 20, level.getIntValue() - 1 );
-            String displayString = I18n.format( potEff.getEffectName() );
-            
-            if ( potEff.getAmplifier() > 0 )
-            {
-                displayString += " " + I18n.format( "potion.potency." + potEff.getAmplifier() ).trim();
-            }
-            
-            drawCenteredString( fontRenderer, TextFormatting.getTextWithoutFormattingCodes( displayString ), x, y - 17, HelperGui.MAIN_PURPLE );
-            
-            itemRender.renderItemAndEffectIntoGUI( potionIcon, x - 8, y - 8 );
+            this.itemRender.renderItemAndEffectIntoGUI( note, x - 8, y - 8 );
             
             drawRect( x - 1, y - 1, x + 1, y + 1, HelperGui.getColorFromRGB( 255, 255, 255, 255 ) );
         }
@@ -233,6 +226,6 @@ public class GuiPotion extends GuiInfinity
     @Override
     protected String getNameUnlocalized()
     {
-        return "potion";
+        return "attributes";
     }
 }

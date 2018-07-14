@@ -40,6 +40,11 @@ public class Infinity
     // Firework GUI:
     //
     
+    // Attributes GUI:
+    // EntityZombie SPAWN_REINFORCEMENTS_CHANCE
+    // AbstractHorse JUMP_STRENGTH
+    // EntityPlayer REACH_DISTANCE
+
     // Item GUI:
     // Add picker for ID and Meta (list that shows items)
     // Set "maxDamage" to lowest value which exists (has texture?)
@@ -92,6 +97,9 @@ public class Infinity
     // Will feature things such as item picker!
     
     // CHANGELOG:
+    // Attributes gui
+    // Fixed reset and drop buttons not working in enchanting and potion gui
+    // Changed nbt browser and nbt editor buttons to appear next to each other in the main item menu
     
     /**
      * A creative tab that contains all item that weren't added to any other tabs at {@link #postInit}

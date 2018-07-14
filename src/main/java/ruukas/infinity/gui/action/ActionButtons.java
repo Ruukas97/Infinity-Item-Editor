@@ -8,7 +8,9 @@ import net.minecraft.item.ItemArmorStand;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemMonsterPlacer;
 import net.minecraft.item.ItemSkull;
+import net.minecraft.item.ItemStack;
 import ruukas.infinity.gui.GuiArmorStand;
+import ruukas.infinity.gui.GuiAttributes;
 import ruukas.infinity.gui.GuiBook;
 import ruukas.infinity.gui.GuiChestItem;
 import ruukas.infinity.gui.GuiColor;
@@ -42,6 +44,24 @@ public class ActionButtons
             public String getText()
             {
                 return I18n.format( "tag.unbreakable." + (NBTHelper.isUnbreakable( getItemStack() ) ? 1 : 0) );
+            }
+        }, new GuiActionButton() {
+            @Override
+            public boolean condition()
+            {
+                return getItemStack() != ItemStack.EMPTY && getItemStack().getCount() > 0;
+            }
+            
+            @Override
+            public void action()
+            {
+                Minecraft.getMinecraft().displayGuiScreen( new GuiAttributes( Minecraft.getMinecraft().currentScreen, getItemStack() ) );
+            }
+            
+            @Override
+            public String getText()
+            {
+                return I18n.format( "gui.attributes" );
             }
         }, new GuiActionButton() {
             @Override

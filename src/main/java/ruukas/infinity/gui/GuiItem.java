@@ -148,8 +148,8 @@ public class GuiItem extends GuiInfinity
         centerStrings.add( new CenterString( "Meta Data", 31 + (30 * fieldsAmount) ) );
         
         // NBT BROWSER AND EDITOR
-        nbtButton = addButton( new GuiInfinityButton( 300 + (fieldsAmount), (width / 2) - 50, 25 + (30 * ++fieldsAmount), 100, 20, I18n.format( "gui.nbt" ) ) );
-        nbtAdvButton = addButton( new GuiInfinityButton( 300 + (fieldsAmount), (width / 2) - 50, 25 + (30 * ++fieldsAmount), 100, 20, I18n.format( "gui.nbtadv" ) ) );
+        nbtButton = addButton( new GuiInfinityButton( 300 + (fieldsAmount), (width / 2) - 82, 25 + (30 * ++fieldsAmount), 80, 20, I18n.format( "gui.nbt" ) ) );
+        nbtAdvButton = addButton( new GuiInfinityButton( 300 + (fieldsAmount), (width / 2) + 2, 25 + (30 * (fieldsAmount)), 80, 20, I18n.format( "gui.nbtadv" ) ) );
         
         // BUTTONS THAT DEPENDS ON THE KIND OF ITEM
         int specialID = 500;

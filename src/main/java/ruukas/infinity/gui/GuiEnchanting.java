@@ -156,15 +156,7 @@ public class GuiEnchanting extends GuiInfinity
     @Override
     protected void actionPerformed( GuiButton button ) throws IOException
     {
-        if ( button.id == backButton.id )
-        {
-            this.mc.displayGuiScreen( lastScreen );
-            
-            if ( this.mc.currentScreen == null )
-            {
-                this.mc.setIngameFocus();
-            }
-        }
+        super.actionPerformed( button );
     }
     
     /**

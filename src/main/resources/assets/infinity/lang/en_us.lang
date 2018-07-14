@@ -31,11 +31,24 @@ gui.nbtadv=NBT Browser
 gui.enchanting=Enchanting
 gui.potion=Potion Brewing
 gui.book=Book Editor
+gui.attributes=Attributes Editor
 
 gui.armorstand.pose=Armor Stand Pose Editor
 gui.armorstand.pose.reset.1=Only resets rotations!
 gui.armorstand.invisible.note=Note: It may be difficult to remove the armorstand without commands.
 gui.armorstand.marker.note=Marker disables interaction and makes hitbox small.
+
+gui.attributes.operation.0=Additive +
+gui.attributes.operation.1=Multiplicative *
+gui.attributes.operation.2=Exponential **
+gui.attributes.slot.0=Any Slot
+gui.attributes.slot.1=Mainhand
+gui.attributes.slot.2=Offhand
+gui.attributes.slot.3=Head
+gui.attributes.slot.4=Chest
+gui.attributes.slot.5=Legs
+gui.attributes.slot.6=Feet
+attribute.name.generic.flyingSpeed=Mob Flying Speed
 
 gui.book.title=Title
 gui.book.author=Author
