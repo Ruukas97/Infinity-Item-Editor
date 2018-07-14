@@ -23,7 +23,7 @@ public class Infinity
 {
     public static final String MODID = "infinity";
     public static final String NAME = "Infinity Item Editor";
-    public static final String VERSION = "0.6";
+    public static final String VERSION = "0.7";
     
     public static Logger logger;
     
@@ -97,9 +97,6 @@ public class Infinity
     // Will feature things such as item picker!
     
     // CHANGELOG:
-    // Attributes gui
-    // Fixed reset and drop buttons not working in enchanting and potion gui
-    // Changed nbt browser and nbt editor buttons to appear next to each other in the main item menu
     
     /**
      * A creative tab that contains all item that weren't added to any other tabs at {@link #postInit}
