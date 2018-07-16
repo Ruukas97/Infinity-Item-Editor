@@ -10,6 +10,7 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentData;
 import net.minecraft.init.Items;
@@ -18,41 +19,45 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import ruukas.infinity.gui.action.GuiInfinityButton;
 import ruukas.infinity.gui.action.GuiNumberField;
 import ruukas.infinity.nbt.itemstack.tag.InfinityEnchantmentList;
 import ruukas.infinity.nbt.itemstack.tag.ench.InfinityEnchantmentTag;
 
 @SideOnly( Side.CLIENT )
 public class GuiEnchanting extends GuiInfinity
-{            
+{
+    private static boolean showAll = false;
+    private GuiInfinityButton enchantToggleButton;
     private GuiNumberField level;
     
     private int rotOff = 0;
     private int mouseDist = 0;
     private List<Enchantment> enchants = new ArrayList<>();
     private ItemStack enchantBook;
-        
+    
     public GuiEnchanting(GuiScreen lastScreen, ItemStack stack) {
-    	super(lastScreen, stack);
+        super( lastScreen, stack );
     }
     
     @Override
     public void initGui()
     {
         super.initGui();
-    	
+        
         Keyboard.enableRepeatEvents( true );
+        
+        enchantToggleButton = addButton( new GuiInfinityButton( 150, 15, height - 63, 90, 20, I18n.format( "gui.enchanting.enchanttoggle." + (showAll ? 1 : 0) ) ) );
         
         level = new GuiNumberField( 100, fontRenderer, 15, height - 33, 40, 18, 5 );
         level.minValue = 1;
         level.maxValue = 32767;
         level.setValue( 1 );
         
-        
         enchants.clear();
         for ( Enchantment e : Enchantment.REGISTRY )
         {
-            if ( e.canApply( stack ) )
+            if ( showAll || e.canApply( stack ) )
             {
                 enchants.add( e );
             }
@@ -70,7 +75,7 @@ public class GuiEnchanting extends GuiInfinity
     @Override
     public void onGuiClosed()
     {
-    	super.onGuiClosed();
+        super.onGuiClosed();
         Keyboard.enableRepeatEvents( false );
     }
     
@@ -79,7 +84,7 @@ public class GuiEnchanting extends GuiInfinity
      */
     public void updateScreen()
     {
-    	super.updateScreen();
+        super.updateScreen();
         level.updateCursorCounter();
         if ( Math.abs( mouseDist - (height / 3) ) >= 16 )
             rotOff++;
@@ -119,12 +124,12 @@ public class GuiEnchanting extends GuiInfinity
         }
         
         int r = height / 3;
-
+        
         // mouseDist = (int) Math.sqrt(distX * distX + distY * distY);
         if ( Math.abs( mouseDist - r ) < 16 )
         {
             double angle = (2 * Math.PI) / enchants.size();
-
+            
             int lowDist = Integer.MAX_VALUE;
             Enchantment enchantment = null;
             
@@ -156,16 +161,22 @@ public class GuiEnchanting extends GuiInfinity
     @Override
     protected void actionPerformed( GuiButton button ) throws IOException
     {
-        super.actionPerformed( button );
+        if ( button.id == enchantToggleButton.id )
+        {
+            showAll = !showAll;
+            initGui();
+        }
+        else
+            super.actionPerformed( button );
     }
     
     /**
      * Draws the screen and all the components in it.
      */
     public void drawScreen( int mouseX, int mouseY, float partialTicks )
-    {        
+    {
         super.drawScreen( mouseX, mouseY, partialTicks );
-
+        
         InfinityEnchantmentTag[] enchantmentTags = new InfinityEnchantmentList( stack ).getAll();
         for ( int i = 0 ; i < enchantmentTags.length ; i++ )
         {
@@ -174,7 +185,6 @@ public class GuiEnchanting extends GuiInfinity
         }
         
         level.drawTextBox();
-                
         
         int distX = midX - mouseX;
         int distY = midY - mouseY;
@@ -199,7 +209,7 @@ public class GuiEnchanting extends GuiInfinity
         GlStateManager.translate( -(width / 10), -(height / 10), 0 );
         
         GlStateManager.scale( 0.2, 0.2, 1 );
-
+        
         for ( int i = 0 ; i < enchants.size() ; i++ )
         {
             double angleI = (((double) (rotOff + (double) (Math.abs( mouseDist - r ) >= 16 ? partialTicks : 0d)) / 60d)) + (angle * i);
@@ -211,16 +221,24 @@ public class GuiEnchanting extends GuiInfinity
 
             this.itemRender.renderItemAndEffectIntoGUI( enchantBook, x - 8, y - 8 );
             
-            drawRect(x-1, y-1, x+1, y+1, HelperGui.getColorFromRGB(255, 255, 255, 255));
+            drawRect( x - 1, y - 1, x + 1, y + 1, HelperGui.getColorFromRGB( 255, 255, 255, 255 ) );
         }
+        
+        if(mouseX > midX - 15 && mouseX < midX + 15 && mouseY > midY - 15 && mouseY < midY + 15){
+            GlStateManager.translate( 0, 0, 300 );
+            drawRect( midX - 15, midY - 15, midX + 15, midY + 15, HelperGui.MAIN_BLUE );
+            drawCenteredString( fontRenderer, I18n.format( "gui.enchanting.addall" ), midX, midY, HelperGui.MAIN_BLUE );
+            GlStateManager.translate( 0, 0, -300 );
+        }
+        
         GlStateManager.popMatrix();
         GlStateManager.enableDepth();
         RenderHelper.enableStandardItemLighting();
     }
- 
-
-	@Override
-	protected String getNameUnlocalized() {
-		return "enchanting";
-	}
+    
+    @Override
+    protected String getNameUnlocalized()
+    {
+        return "enchanting";
+    }
 }

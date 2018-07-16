@@ -48,11 +48,9 @@ public class Infinity
     // Item GUI:
     // Add picker for ID and Meta (list that shows items)
     // Set "maxDamage" to lowest value which exists (has texture?)
-    // Tab complete and arrow keys support for ID
+    // Tab complete
     // Remove quotes around field names in pretty printing
     // Change display of pretty printing and wrap lines
-    // Render itemoverlay
-    // Remove lore button shouldn't appear, if that line hasn't been added yet
     // id field doesn't work very well with numbers
     // Do not allow id 0/Air
     
@@ -97,6 +95,9 @@ public class Infinity
     // Will feature things such as item picker!
     
     // CHANGELOG:
+    // Added button to display all enchantments in enchanting gui
+    // Changed enchantment names to appear on top of items in enchanting gui
+    // Fixed crash when writing value lower than min value in number fields
     
     /**
      * A creative tab that contains all item that weren't added to any other tabs at {@link #postInit}
@@ -155,7 +156,7 @@ public class Infinity
         
         for ( Block block : Block.REGISTRY )
         {
-            if ( block != null && block.getCreativeTabToDisplayOn() == null )
+            if ( block != null && block != Blocks.AIR && block.getCreativeTabToDisplayOn() == null )
             {
                 block.setCreativeTab( UNAVAILABLE );
                 logger.info( "Block: " + block.getUnlocalizedName() + " was not added to a tab. Adding it to Unavailable." );

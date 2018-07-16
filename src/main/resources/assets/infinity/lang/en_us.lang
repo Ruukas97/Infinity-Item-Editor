@@ -32,6 +32,7 @@ gui.enchanting=Enchanting
 gui.potion=Potion Brewing
 gui.book=Book Editor
 gui.attributes=Attributes Editor
+gui.chestinventory=Chest Inventory
 
 gui.armorstand.pose=Armor Stand Pose Editor
 gui.armorstand.pose.reset.1=Only resets rotations!
@@ -59,12 +60,13 @@ gui.book.unresolved=Unresolved
 gui.book.unsign=Unsign
 gui.book.resign=Resign
 
+gui.enchanting.enchanttoggle.0=Show Applicable
+gui.enchanting.enchanttoggle.1=Show All
+
 gui.spawnegg.entity=Entity Specific
 gui.spawnegg.mob=Mob Specific
 gui.spawnegg.mobspecific=%s Specific
 gui.spawnegg.animalspecific=Animal Specific
-
-gui.chestinventory=Chest Inventory
 
 gui.head.save.tooltip.1=Might lag, when loading player info.
 gui.head.save.tooltip.2=This is a vanilla problem.
