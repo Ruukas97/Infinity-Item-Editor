@@ -16,6 +16,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import ruukas.infinity.InfinityConfig;
 import ruukas.infinity.gui.action.ActionButtons;
 import ruukas.infinity.gui.action.GuiActionButton;
 import ruukas.infinity.gui.action.GuiActionTextField;
@@ -27,6 +28,13 @@ import ruukas.infinity.nbt.NBTHelper;
 public class GuiItem extends GuiInfinity
 {
     private GuiInfinityButton nbtButton, nbtAdvButton;
+    
+    // Sidebar buttons
+    private GuiInfinityButton sidebarButton;
+    private boolean ignoreNextClick = false;
+    
+    private GuiInfinityButton shareButton; // Share to chat, copy to clipboard etc.
+    private GuiInfinityButton enderSlot;
     
     private ArrayList<GuiTextField> textFields = new ArrayList<>();
     
@@ -46,8 +54,6 @@ public class GuiItem extends GuiInfinity
     public GuiItem(GuiScreen lastScreen, ItemStack stack) {
         super( lastScreen, stack );
         hasSave = true;
-        renderTag = true;
-        renderTooltip = true;
     }
     
     @Override
@@ -74,7 +80,6 @@ public class GuiItem extends GuiInfinity
         }
     }
     
-    // TODO use GuiLabel instead
     private static class DrawString
     {
         private final String string;
@@ -91,7 +96,13 @@ public class GuiItem extends GuiInfinity
     public void initGui()
     {
         super.initGui();
+        
         setRenderStack( true, midX, 40, 1.0f );
+        
+        boolean sidebarOn = InfinityConfig.getItemSidebar();
+        
+        renderTag = !sidebarOn;
+        renderTooltip = !sidebarOn;
         
         Keyboard.enableRepeatEvents( true );
         
@@ -150,6 +161,20 @@ public class GuiItem extends GuiInfinity
         // NBT BROWSER AND EDITOR
         nbtButton = addButton( new GuiInfinityButton( 300 + (fieldsAmount), (width / 2) - 82, 25 + (30 * ++fieldsAmount), 80, 20, I18n.format( "gui.nbt" ) ) );
         nbtAdvButton = addButton( new GuiInfinityButton( 300 + (fieldsAmount), (width / 2) + 2, 25 + (30 * (fieldsAmount)), 80, 20, I18n.format( "gui.nbtadv" ) ) );
+        
+        int sidebarButtonID = 350;
+        
+        enderSlot = addButton( new GuiInfinityButton( sidebarButtonID++, width / 8 - 40, midY - 80, 80, 20, "Saved Items" ) );
+        enderSlot.enabled = false;
+        enderSlot.visible = sidebarOn;
+        
+        shareButton = addButton( new GuiInfinityButton( sidebarButtonID++, width / 8 - 40, midY - 45, 80, 20, "Share Item" ) );
+        shareButton.enabled = false;
+        shareButton.visible = sidebarOn;
+        
+        sidebarButton = addButton( new GuiInfinityButton( sidebarButtonID++, width / 8 - 40, midY - 10, 80, 20, I18n.format( "gui.item.toggleside" ) ) );
+        sidebarButton.enabled = sidebarOn;
+        sidebarButton.visible = sidebarOn;
         
         // BUTTONS THAT DEPENDS ON THE KIND OF ITEM
         int specialID = 500;
@@ -221,7 +246,6 @@ public class GuiItem extends GuiInfinity
         }
     }
     
-    // TODO hide button to remove line, if the line doesn't exist (use active boolean)
     public void addLoreTextField( int id, int line, boolean active )
     {
         GuiActionTextField lore = new GuiActionTextField( id, fontRenderer, width - 180, 100 + (30 * line), 170, 20 );
@@ -317,6 +341,16 @@ public class GuiItem extends GuiInfinity
         {
             f.mouseClicked( mouseX, mouseY, mouseButton );
         }
+        
+        if ( ignoreNextClick )
+        {
+            ignoreNextClick = false;
+        }
+        else if ( !InfinityConfig.getItemSidebar() && mouseX < width / 4 )
+        {
+            InfinityConfig.setItemSidebar( true );
+            initGui();
+        }
     }
     
     private void clearCustomName()
@@ -330,7 +364,6 @@ public class GuiItem extends GuiInfinity
     @Override
     protected void actionPerformed( GuiButton button ) throws IOException
     {
-        super.actionPerformed( button );
         if ( button.id == nbtButton.id )
         {
             this.mc.displayGuiScreen( new GuiNBT( this, stack ) );
@@ -379,6 +412,16 @@ public class GuiItem extends GuiInfinity
                 }
             }
         }
+        
+        else if ( button.id == sidebarButton.id )
+        {
+            InfinityConfig.setItemSidebar( false );
+            ignoreNextClick = true;
+            initGui();
+        }
+        
+        else
+            super.actionPerformed( button );
     }
     
     /**
@@ -418,12 +461,28 @@ public class GuiItem extends GuiInfinity
             this.drawString( this.fontRenderer, drawS.string, drawS.xPos, drawS.yPos, HelperGui.MAIN_PURPLE );
         }
         
+        if ( !InfinityConfig.getItemSidebar() && mouseX < width / 4 )
+        {
+            drawRect( 0, 0, width / 4, height, HelperGui.getColorFromRGB( 30, 100, 100, 250 ) );
+            drawCenteredString( fontRenderer, I18n.format( "gui.item.toggleside" ), width / 8, midY - 4, HelperGui.MAIN_BLUE );
+        }
+        
         GuiTextField textField = textFields.get( 0 );
         HelperGui.addTooltipTranslated( textField.x, textField.y, textField.width, textField.height, mouseX, mouseY, "gui.item.id.tooltip" );
         
         HelperGui.addTooltipTranslated( this.width / 2 + 30, this.height - 35, 60, 20, mouseX, mouseY, "gui.item.drop.tooltip" );
         
         HelperGui.addTooltipTranslated( colorButtons[1], mouseX, mouseY, "gui.item.colorremove.tooltip" );
+        
+        if ( enderSlot != null && enderSlot.visible )
+        {
+            HelperGui.addToolTip( enderSlot.x, enderSlot.y, enderSlot.width, enderSlot.height, mouseX, mouseY, "Not implemented yet." );
+        }
+        
+        if ( shareButton != null && shareButton.visible )
+        {
+            HelperGui.addToolTip( shareButton.x, shareButton.y, shareButton.width, shareButton.height, mouseX, mouseY, "Not implemented yet." );
+        }
     }
     
     @Override

@@ -73,6 +73,8 @@ gui.head.save.tooltip.2=This is a vanilla problem.
 gui.head.list.tooltip.1=List current players on the server.
 gui.head.list.tooltip.2=--Not implemented yet--
 
+gui.item.toggleside=Switch View
+
 gui.nbt.update=Update NBT
 
 gui.nbt.comp.open=Click to expand Compound Tag

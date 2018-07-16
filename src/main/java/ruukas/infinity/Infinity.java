@@ -104,6 +104,7 @@ public class Infinity
     // Added "potion brewing" button for tipped arrow
     // Shulker boxes now has "open inventory" button
     // Chest inventory screen shows "inventory is clone" message
+    // Item Gui sidebar in progress
     
     /**
      * A creative tab that contains all item that weren't added to any other tabs at {@link #postInit}
