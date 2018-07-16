@@ -113,6 +113,18 @@ public class GuiNumberField extends Gui
         else if ( getIntValue() < minValue )
         {
             String minStr = (minValue + "");
+            
+            String zeroes = "";
+            
+            int neededZeroes = digits.length - minStr.length();
+            
+            for ( int z = 0 ; z < neededZeroes ; z++ )
+            {
+                zeroes += "0";
+            }
+            
+            minStr = zeroes + minStr;
+            
             int diff = digits.length - minStr.length();
             char mC = minStr.charAt( this.cursorPosition - diff );
             
@@ -125,7 +137,6 @@ public class GuiNumberField extends Gui
                 this.setDigit( mC );
             }
         }
- 
         
         if ( action != null )
         {
