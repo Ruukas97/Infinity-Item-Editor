@@ -23,7 +23,7 @@ public class Infinity
 {
     public static final String MODID = "infinity";
     public static final String NAME = "Infinity Item Editor";
-    public static final String VERSION = "0.7";
+    public static final String VERSION = "0.8";
     
     public static Logger logger;
     
@@ -96,15 +96,6 @@ public class Infinity
     // Will feature things such as item picker!
         
     // CHANGELOG:
-    // Added button to display all enchantments in enchanting gui
-    // Changed enchantment names to appear on top of items in enchanting gui
-    // Fixed crash when writing value lower than min value in number fields
-    // Negative and decimal values possible in attribute editor
-    // Fixed slot button in attribute editor
-    // Added "potion brewing" button for tipped arrow
-    // Shulker boxes now has "open inventory" button
-    // Chest inventory screen shows "inventory is clone" message
-    // Item Gui sidebar in progress
     
     /**
      * A creative tab that contains all item that weren't added to any other tabs at {@link #postInit}
