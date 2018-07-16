@@ -36,6 +36,7 @@ public class Infinity
     // Implement code for displaying armor stands items as models (I've already done the code for this on laptop)
     // Support forge update json
     // remove "this." from code where it's unneeded for better readability
+    // Special characters in chat (GuiUtils.UNDO_CHAR)
     
     // Firework GUI:
     //
@@ -93,13 +94,14 @@ public class Infinity
     // Gui overlay:
     // Similar to the right click in NBT explorer
     // Will feature things such as item picker!
-    
+        
     // CHANGELOG:
     // Added button to display all enchantments in enchanting gui
     // Changed enchantment names to appear on top of items in enchanting gui
     // Fixed crash when writing value lower than min value in number fields
     // Negative and decimal values possible in attribute editor
     // Fixed slot button in attribute editor
+    // Added "potion brewing" button for tipped arrow
     
     /**
      * A creative tab that contains all item that weren't added to any other tabs at {@link #postInit}
