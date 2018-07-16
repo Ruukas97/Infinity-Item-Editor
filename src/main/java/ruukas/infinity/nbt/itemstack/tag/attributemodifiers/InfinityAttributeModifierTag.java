@@ -58,7 +58,7 @@ public class InfinityAttributeModifierTag
     {
         if ( slot > 0 && slot < 7 )
         {
-            tag.setString( "Slot", slots[slot] );
+            tag.setString( "Slot", slots[slot - 1] );
         }
         else
         {
@@ -73,9 +73,9 @@ public class InfinityAttributeModifierTag
     
     public String getDisplayString()
     {
-        return I18n.format( "attribute.name." + getName() ) + " " + new String[] { "+", "*", "**" }[getOperation() % 3] + getAmount() + " (" + getSlot() + ")";
+        return I18n.format( "attribute.name." + getName() ) + " " + new String[] { getAmount() < 0 ? "" : "+", "*", "**" }[getOperation() % 3] + getAmount() + " (" + getSlot() + ")";
     }
-
+    
     private double getAmount()
     {
         return tag.hasKey( "Amount" ) ? tag.getDouble( "Amount" ) : 0;

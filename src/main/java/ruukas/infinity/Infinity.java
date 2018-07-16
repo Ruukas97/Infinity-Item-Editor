@@ -98,6 +98,8 @@ public class Infinity
     // Added button to display all enchantments in enchanting gui
     // Changed enchantment names to appear on top of items in enchanting gui
     // Fixed crash when writing value lower than min value in number fields
+    // Negative and decimal values possible in attribute editor
+    // Fixed slot button in attribute editor
     
     /**
      * A creative tab that contains all item that weren't added to any other tabs at {@link #postInit}

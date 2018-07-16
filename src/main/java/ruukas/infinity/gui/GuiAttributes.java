@@ -35,7 +35,11 @@ public class GuiAttributes extends GuiInfinity
     private static final IAttribute[] sharedAttributes = { SharedMonsterAttributes.MAX_HEALTH, SharedMonsterAttributes.FOLLOW_RANGE, SharedMonsterAttributes.KNOCKBACK_RESISTANCE, SharedMonsterAttributes.MOVEMENT_SPEED, SharedMonsterAttributes.ATTACK_DAMAGE, SharedMonsterAttributes.ATTACK_SPEED, SharedMonsterAttributes.ARMOR, SharedMonsterAttributes.ARMOR_TOUGHNESS, SharedMonsterAttributes.LUCK, playerReach, parrotFlying };
     
     private GuiNumberField level;
+    private GuiNumberField levelDecimal;
     private GuiInfinityButton slotButton, operationButton;
+    
+    private GuiInfinityButton negativeButton;
+    private boolean negativeAmount = false;
     
     private int rotOff = 0;
     private int mouseDist = 0;
@@ -52,15 +56,35 @@ public class GuiAttributes extends GuiInfinity
         
         Keyboard.enableRepeatEvents( true );
         
-        operationButton = addButton( new GuiInfinityButton( 250, 15, height - 93, 80, 20, I18n.format( "gui.attributes.operation." + operation )) );
+        operationButton = addButton( new GuiInfinityButton( 250, 15, height - 93, 80, 20, I18n.format( "gui.attributes.operation." + operation ) ) );
         
-        slotButton = addButton( new GuiInfinityButton( 251, 15, height - 63, 80, 20, I18n.format( "gui.attributes.slot." + slot )) );
+        slotButton = addButton( new GuiInfinityButton( 251, 15, height - 63, 80, 20, I18n.format( "gui.attributes.slot." + slot ) ) );
         
-        level = new GuiNumberField( 100, fontRenderer, 15, height - 33, 55, 18, 8 );
-        level.minValue = 1;
-        level.maxValue = 99999999;
-        level.setValue( 1 );
+        negativeButton = addButton( new GuiInfinityButton( 252, 15, height - 33, 20, 20, negativeAmount ? "-" : "+" ) );
         
+        if ( level != null )
+        {
+            level.y = height - 32;
+        }
+        else
+        {
+            level = new GuiNumberField( 100, fontRenderer, 38, height - 32, 55, 18, 8 );
+            level.minValue = 0;
+            level.maxValue = 99999999;
+            level.setValue( 0 );
+        }
+        
+        if ( levelDecimal != null )
+        {
+            levelDecimal.y = height - 32;
+        }
+        else
+        {
+            levelDecimal = new GuiNumberField( 101, fontRenderer, 100, height - 32, 25, 18, 3 );
+            levelDecimal.minValue = 0;
+            levelDecimal.maxValue = 999;
+            levelDecimal.setValue( 0 );
+        }
     }
     
     @Override
@@ -77,6 +101,7 @@ public class GuiAttributes extends GuiInfinity
     {
         super.updateScreen();
         level.updateCursorCounter();
+        levelDecimal.updateCursorCounter();
         if ( Math.abs( mouseDist - (height / 3) ) >= 16 )
             rotOff++;
     }
@@ -93,6 +118,7 @@ public class GuiAttributes extends GuiInfinity
         else
         {
             level.textboxKeyTyped( typedChar, keyCode );
+            levelDecimal.textboxKeyTyped( typedChar, keyCode );
         }
     }
     
@@ -104,6 +130,7 @@ public class GuiAttributes extends GuiInfinity
         super.mouseClicked( mouseX, mouseY, mouseButton );
         
         level.mouseClicked( mouseX, mouseY, mouseButton );
+        levelDecimal.mouseClicked( mouseX, mouseY, mouseButton );
         
         InfinityAttributeModifierList list = new InfinityAttributeModifierList( stack );
         InfinityAttributeModifierTag[] activeModifiers = list.getAll();
@@ -145,9 +172,11 @@ public class GuiAttributes extends GuiInfinity
             
             if ( attribute != null )
             {
-                InfinityAttributeModifierTag tag = new InfinityAttributeModifierTag( new InfinityAttributeModifierList( stack ), new AttributeModifier( attribute.getName(), level.getIntValue(), 0 ) );
-                tag.setOperation(operation);
-                tag.setSlot(slot);
+                double amount = (negativeAmount ? -1.0d : 1.0d) * (((double) level.getIntValue()) + (((double) levelDecimal.getIntValue()) / 1000));
+                
+                InfinityAttributeModifierTag tag = new InfinityAttributeModifierTag( new InfinityAttributeModifierList( stack ), new AttributeModifier( attribute.getName(), amount, 0 ) );
+                tag.setOperation( operation );
+                tag.setSlot( slot );
             }
         }
     }
@@ -157,14 +186,21 @@ public class GuiAttributes extends GuiInfinity
     {
         if ( button.id == operationButton.id )
         {
-            operation = (operation+1)%3;
+            operation = (operation + 1) % 3;
             operationButton.displayString = I18n.format( "gui.attributes.operation." + operation );
         }
-        else if(button.id == slotButton.id){
-            slot = (slot+1)%3;
+        else if ( button.id == slotButton.id )
+        {
+            slot = (slot + 1) % 7;
             slotButton.displayString = I18n.format( "gui.attributes.slot." + slot );
         }
-        else super.actionPerformed( button );
+        else if ( button.id == negativeButton.id )
+        {
+            negativeAmount = !negativeAmount;
+            initGui();
+        }
+        else
+            super.actionPerformed( button );
     }
     
     /**
@@ -182,6 +218,8 @@ public class GuiAttributes extends GuiInfinity
         }
         
         level.drawTextBox();
+        levelDecimal.drawTextBox();
+        drawString( fontRenderer, ".", 96, height - 26, HelperGui.MAIN_PURPLE );
         
         int distX = midX - mouseX;
         int distY = midY - mouseY;
