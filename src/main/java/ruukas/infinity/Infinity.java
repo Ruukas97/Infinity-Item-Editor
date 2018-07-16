@@ -102,6 +102,8 @@ public class Infinity
     // Negative and decimal values possible in attribute editor
     // Fixed slot button in attribute editor
     // Added "potion brewing" button for tipped arrow
+    // Shulker boxes now has "open inventory" button
+    // Chest inventory screen shows "inventory is clone" message
     
     /**
      * A creative tab that contains all item that weren't added to any other tabs at {@link #postInit}

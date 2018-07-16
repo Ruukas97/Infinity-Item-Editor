@@ -6,6 +6,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.inventory.ClickType;
 import net.minecraft.inventory.ContainerChest;
 import net.minecraft.inventory.IInventory;
@@ -83,6 +84,9 @@ public class GuiChestItem extends GuiContainer
     {
         this.fontRenderer.drawString( this.lowerChestInventory.getDisplayName().getUnformattedText(), 8, 6, 4210752 );
         this.fontRenderer.drawString( this.upperChestInventory.getDisplayName().getUnformattedText(), 8, this.ySize - 96 + 2, 4210752 );
+        
+        String s = I18n.format( "gui.equipment.inventoryclone" );
+        this.fontRenderer.drawString( s, (width / 2) - guiLeft - (fontRenderer.getStringWidth( s ) / 2), -10, 0x7c2c87 );
     }
     
     /**

@@ -1,6 +1,7 @@
 package ruukas.infinity.gui.action;
 
 import net.minecraft.block.BlockChest;
+import net.minecraft.block.BlockShulkerBox;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Items;
@@ -85,7 +86,7 @@ public class ActionButtons
             @Override
             public boolean condition()
             {
-                return getItemStack().getItem() instanceof ItemBlock && ((ItemBlock) getItemStack().getItem()).getBlock() instanceof BlockChest;
+                return getItemStack().getItem() instanceof ItemBlock && (((ItemBlock) getItemStack().getItem()).getBlock() instanceof BlockChest || ((ItemBlock) getItemStack().getItem()).getBlock() instanceof BlockShulkerBox);
             }
             
             @Override
