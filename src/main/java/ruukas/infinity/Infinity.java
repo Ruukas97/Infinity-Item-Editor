@@ -85,6 +85,7 @@ public class Infinity
     // Book in background
     // Write high levels with roman numerals - https://stackoverflow.com/questions/12967896
     // Support enchanted_book
+    // Sort circle alphabetically
     
     // Potions
     // Show particles toggle button (See PotionEffect.class)

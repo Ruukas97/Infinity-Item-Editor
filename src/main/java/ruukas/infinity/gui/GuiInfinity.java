@@ -37,7 +37,7 @@ public abstract class GuiInfinity extends GuiScreen
     private boolean renderStack = false;
     private int stackX = 5;
     private int stackY = 5;
-    //private float stackScale = 1.0f;
+    // private float stackScale = 1.0f;
     
     protected boolean renderTooltip = false;
     
@@ -58,7 +58,7 @@ public abstract class GuiInfinity extends GuiScreen
         renderStack = doRender;
         stackX = x - 8;
         stackY = y - 8;
-        //stackScale = scale;
+        // stackScale = scale;
     }
     
     @Override
@@ -91,7 +91,7 @@ public abstract class GuiInfinity extends GuiScreen
      */
     protected void update()
     {
-        
+    
     }
     
     protected void back()
@@ -120,9 +120,9 @@ public abstract class GuiInfinity extends GuiScreen
                 return;
             }
             stack.getItem();
-			String id = stack.getItem().getRegistryName().toString();
-			
-            //int id = Item.getIdFromItem(stack.getItem()); - Vanilla /give command doesn't seem to support numeric id's anymore
+            String id = stack.getItem().getRegistryName().toString();
+            
+            // int id = Item.getIdFromItem(stack.getItem()); - Vanilla /give command doesn't seem to support numeric id's anymore
             
             if ( id.startsWith( "minecraft:" ) )
             {
@@ -205,9 +205,9 @@ public abstract class GuiInfinity extends GuiScreen
     @Override
     public void drawScreen( int mouseX, int mouseY, float partialTicks )
     {
-    	if(hasSave && this.saveButton != null)
-    		this.saveButton.enabled = this.dropButton.enabled = mc.playerController.isInCreativeMode();
-        
+        if ( hasSave && this.saveButton != null )
+            this.saveButton.enabled = this.dropButton.enabled = mc.playerController.isInCreativeMode();
+            
         drawDefaultBackground();
         
         if ( stack.getItem() != Items.AIR && stack != ItemStack.EMPTY )
@@ -221,7 +221,7 @@ public abstract class GuiInfinity extends GuiScreen
                 
                 if ( renderTooltip )
                     renderToolTip( stack, 0, 25 );
-                
+                    
                 if ( renderTag )
                 {
                     // This shouldn't be done on each draw

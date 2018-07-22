@@ -8,7 +8,6 @@ import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiChat;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItemFrame;
@@ -21,8 +20,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextComponentString;
-import net.minecraftforge.client.event.GuiScreenEvent.ActionPerformedEvent;
-import net.minecraftforge.client.event.GuiScreenEvent.InitGuiEvent;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -30,7 +27,6 @@ import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
 import ruukas.infinity.Infinity;
 import ruukas.infinity.gui.GuiItem;
 import ruukas.infinity.gui.HelperGui;
-import ruukas.infinity.gui.action.GuiInfinityButton;
 
 @Mod.EventBusSubscriber( modid = Infinity.MODID )
 public class InfinityEventHandler
@@ -112,7 +108,7 @@ public class InfinityEventHandler
                 mc.objectMouseOver = entity.rayTrace( d0, partialTicks );
                 Vec3d vec3d = entity.getPositionEyes( partialTicks );
                 boolean flag = false;
-                int i = 3;
+                // int i = 3;
                 double d1 = d0;
                 
                 if ( mc.playerController.extendedReach() )
@@ -137,7 +133,7 @@ public class InfinityEventHandler
                 Vec3d vec3d2 = vec3d.addVector( vec3d1.x * d0, vec3d1.y * d0, vec3d1.z * d0 );
                 pointedEntity = null;
                 Vec3d vec3d3 = null;
-                float f = 1.0F;
+                // float f = 1.0F;
                 List<Entity> list = mc.world.getEntitiesInAABBexcluding( entity, entity.getEntityBoundingBox().expand( vec3d1.x * d0, vec3d1.y * d0, vec3d1.z * d0 ).grow( 1.0D, 1.0D, 1.0D ), Predicates.and( EntitySelectors.NOT_SPECTATING, new Predicate<Entity>() {
                     public boolean apply( @Nullable Entity p_apply_1_ )
                     {

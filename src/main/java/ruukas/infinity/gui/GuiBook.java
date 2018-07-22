@@ -21,7 +21,7 @@ import ruukas.infinity.nbt.itemstack.tag.InfinityBookTags.SignedData;
 @SideOnly( Side.CLIENT )
 public class GuiBook extends GuiInfinity
 {
-    private GuiInfinityButton generationButton, resolvedButton, unsignButton, clearTitleButton, clearAuthorButton;
+    private GuiInfinityButton generationButton, resolvedButton, unsignButton;// , clearTitleButton, clearAuthorButton;
     
     private GuiActionTextField titleField, authorField;
     

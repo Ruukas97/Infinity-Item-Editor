@@ -156,12 +156,14 @@ public class GuiEnchanting extends GuiInfinity
                 new InfinityEnchantmentList( stack ).set( enchantment, (short) (enchantment.getMaxLevel() == 1 ? 1 : level.getIntValue()) );
             }
         }
-        else if(mouseX > midX - 15 && mouseX < midX + 15 && mouseY > midY - 15 && mouseY < midY + 15){
-            for(Enchantment e : enchants){
+        else if ( mouseX > midX - 15 && mouseX < midX + 15 && mouseY > midY - 15 && mouseY < midY + 15 )
+        {
+            for ( Enchantment e : enchants )
+            {
                 new InfinityEnchantmentList( stack ).set( e, (short) (e.getMaxLevel() == 1 ? 1 : level.getIntValue()) );
             }
         }
-
+        
     }
     
     @Override
@@ -224,15 +226,16 @@ public class GuiEnchanting extends GuiInfinity
             GlStateManager.translate( 0, 0, 300 );
             this.drawCenteredString( this.fontRenderer, TextFormatting.getTextWithoutFormattingCodes( enchants.get( i ).getTranslatedName( enchants.get( i ).getMaxLevel() == 1 ? 1 : level.getIntValue() ).replace( "enchantment.level.", "" ) ), x, y - 17, HelperGui.MAIN_PURPLE );
             GlStateManager.translate( 0, 0, -300 );
-
+            
             this.itemRender.renderItemAndEffectIntoGUI( enchantBook, x - 8, y - 8 );
             
             drawRect( x - 1, y - 1, x + 1, y + 1, HelperGui.getColorFromRGB( 255, 255, 255, 255 ) );
         }
         
-        if(mouseX > midX - 15 && mouseX < midX + 15 && mouseY > midY - 15 && mouseY < midY + 15){
+        if ( mouseX > midX - 15 && mouseX < midX + 15 && mouseY > midY - 15 && mouseY < midY + 15 )
+        {
             GlStateManager.translate( 0, 0, 300 );
-            //drawRect( midX - 15, midY - 15, midX + 15, midY + 15, HelperGui.MAIN_BLUE );
+            // drawRect( midX - 15, midY - 15, midX + 15, midY + 15, HelperGui.MAIN_BLUE );
             drawCenteredString( fontRenderer, I18n.format( "gui.enchanting.addall" ), midX, midY, HelperGui.MAIN_BLUE );
             GlStateManager.translate( 0, 0, -300 );
         }

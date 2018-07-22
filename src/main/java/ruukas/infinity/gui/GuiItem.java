@@ -168,7 +168,6 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
         nbtButton = addButton( new GuiInfinityButton( 300 + (fieldsAmount), (width / 2) - 82, 25 + (30 * ++fieldsAmount), 80, 20, I18n.format( "gui.nbt" ) ) );
         nbtAdvButton = addButton( new GuiInfinityButton( 300 + (fieldsAmount), (width / 2) + 2, 25 + (30 * (fieldsAmount)), 80, 20, I18n.format( "gui.nbtadv" ) ) );
         
-        
         // SIDEBAR BUTTONS
         int sidebarButtonID = 350;
         
@@ -438,7 +437,7 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
             {
                 String dLink = "https://discord.gg/PBCvQyy";
                 URI uri = new URI( dLink );
-                String s = uri.getScheme();
+                // String s = uri.getScheme();
                 
                 if ( this.mc.gameSettings.chatLinksPrompt )
                 {
@@ -504,7 +503,8 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
         
         GuiTextField textField = textFields.get( 0 );
         
-        if(textField.getText().length() > 9){
+        if ( textField.getText().length() > 9 )
+        {
             HelperGui.addToolTip( textField.x, textField.y, textField.width, textField.height, mouseX, mouseY, textField.getText() );
         }
         

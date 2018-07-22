@@ -132,18 +132,18 @@ public class HelperGui
         return color;
     }
     
-    public static void openWebLink(URI url)
+    public static void openWebLink( URI url )
     {
         try
         {
-            Class<?> oclass = Class.forName("java.awt.Desktop");
-            Object object = oclass.getMethod("getDesktop").invoke((Object)null);
-            oclass.getMethod("browse", URI.class).invoke(object, url);
+            Class<?> oclass = Class.forName( "java.awt.Desktop" );
+            Object object = oclass.getMethod( "getDesktop" ).invoke( (Object) null );
+            oclass.getMethod( "browse", URI.class ).invoke( object, url );
         }
-        catch (Throwable throwable1)
+        catch ( Throwable throwable1 )
         {
             Throwable throwable = throwable1.getCause();
-            Infinity.logger.error("Couldn't open link: {}", (Object)(throwable == null ? "<UNKNOWN>" : throwable.getMessage()));
+            Infinity.logger.error( "Couldn't open link: {}", (Object) (throwable == null ? "<UNKNOWN>" : throwable.getMessage()) );
         }
     }
 }
