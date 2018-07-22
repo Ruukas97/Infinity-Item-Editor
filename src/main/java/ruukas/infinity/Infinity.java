@@ -123,7 +123,7 @@ public class Infinity
         keybind = new KeyBinding( "key.infinity.desc", Keyboard.KEY_U, "key.infinity.category" );
         ClientRegistry.registerKeyBinding( keybind );
         
-        keybindCopy = new KeyBinding( "key.infinitycopy.desc", Keyboard.KEY_C, "key.infinity.category" );
+        keybindCopy = new KeyBinding( "key.infinitycopy.desc", Keyboard.KEY_V, "key.infinity.category" );
         ClientRegistry.registerKeyBinding( keybindCopy );
         
         UNAVAILABLE = new CreativeTabs( "unavailable") {
