@@ -503,7 +503,10 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
         }
         
         GuiTextField textField = textFields.get( 0 );
-        HelperGui.addTooltipTranslated( textField.x, textField.y, textField.width, textField.height, mouseX, mouseY, "gui.item.id.tooltip" );
+        
+        if(textField.getText().length() > 9){
+            HelperGui.addToolTip( textField.x, textField.y, textField.width, textField.height, mouseX, mouseY, textField.getText() );
+        }
         
         HelperGui.addTooltipTranslated( this.width / 2 + 30, this.height - 35, 60, 20, mouseX, mouseY, "gui.item.drop.tooltip" );
         

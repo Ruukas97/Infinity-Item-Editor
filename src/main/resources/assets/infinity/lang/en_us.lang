@@ -6,16 +6,6 @@ warning.notcreative=You need to be in creative mode to save items
 
 itemGroup.unavailable=Unavailable
 
-gui.item.id.tooltip.1=Try one of these:
-gui.item.id.tooltip.2=armor_stand
-gui.item.id.tooltip.3=spawn_egg
-gui.item.id.tooltip.4=skull
-gui.item.id.tooltip.5=chest
-gui.item.id.tooltip.6=leather_helmet
-gui.item.colorremove.tooltip.1=Remove all colors
-gui.item.drop.tooltip.1=Hold shift to use /give command
-gui.item.drop.tooltip.2=If the command is too long, it will be copied to your clipboard
-
 gui.close=Close
 gui.save=Save
 gui.drop=Drop
@@ -77,6 +67,10 @@ gui.head.list.tooltip.2=--Not implemented yet--
 
 gui.item.toggleside=Switch View
 gui.item.discord=Join Discord
+
+gui.item.colorremove.tooltip.1=Remove all colors
+gui.item.drop.tooltip.1=Hold shift to use /give command
+gui.item.drop.tooltip.2=If the command is too long, it will be copied to your clipboard
 
 gui.nbt.update=Update NBT
 

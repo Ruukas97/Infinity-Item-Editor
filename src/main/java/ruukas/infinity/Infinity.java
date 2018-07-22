@@ -100,6 +100,8 @@ public class Infinity
     // Add copy player keybind
     // Add add all enchants button
     // Add Discord button
+    // Add tipped arrow to Unavailable tab
+    // Changed id text field tooltip
     
     /**
      * A creative tab that contains all item that weren't added to any other tabs at {@link #postInit}
