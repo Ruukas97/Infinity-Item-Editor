@@ -176,7 +176,7 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
         enderSlot.enabled = false;
         enderSlot.visible = sidebarOn;
         
-        shareButton = addButton( new GuiInfinityButton( sidebarButtonID++, width / 8 - 40, midY - 45, 80, 20, "Share Item" ) );
+        shareButton = addButton( new GuiInfinityButton( sidebarButtonID++, width / 8 - 40, midY - 45, 80, 20, I18n.format( "gui.item.share" ) ) );
         shareButton.enabled = false;
         shareButton.visible = sidebarOn;
         

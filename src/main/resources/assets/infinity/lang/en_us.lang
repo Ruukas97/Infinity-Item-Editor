@@ -67,6 +67,7 @@ gui.head.list.tooltip.2=--Not implemented yet--
 
 gui.item.toggleside=Switch View
 gui.item.discord=Join Discord
+gui.item.share=Share Item
 
 gui.item.colorremove.tooltip.1=Remove all colors
 gui.item.drop.tooltip.1=Hold shift to use /give command
