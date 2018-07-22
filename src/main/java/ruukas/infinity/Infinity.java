@@ -46,7 +46,7 @@ public class Infinity
     // EntityZombie SPAWN_REINFORCEMENTS_CHANCE
     // AbstractHorse JUMP_STRENGTH
     // EntityPlayer REACH_DISTANCE
-
+    
     // Item GUI:
     // Add picker for ID and Meta (list that shows items)
     // Set "maxDamage" to lowest value which exists (has texture?)
@@ -95,8 +95,10 @@ public class Infinity
     // Gui overlay:
     // Similar to the right click in NBT explorer
     // Will feature things such as item picker!
-        
+    
     // CHANGELOG:
+    // Add copy player keybind
+    // Add add all enchants button
     
     /**
      * A creative tab that contains all item that weren't added to any other tabs at {@link #postInit}

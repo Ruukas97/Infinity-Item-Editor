@@ -156,6 +156,12 @@ public class GuiEnchanting extends GuiInfinity
                 new InfinityEnchantmentList( stack ).set( enchantment, (short) (enchantment.getMaxLevel() == 1 ? 1 : level.getIntValue()) );
             }
         }
+        else if(mouseX > midX - 15 && mouseX < midX + 15 && mouseY > midY - 15 && mouseY < midY + 15){
+            for(Enchantment e : enchants){
+                new InfinityEnchantmentList( stack ).set( e, (short) (e.getMaxLevel() == 1 ? 1 : level.getIntValue()) );
+            }
+        }
+
     }
     
     @Override
@@ -226,7 +232,7 @@ public class GuiEnchanting extends GuiInfinity
         
         if(mouseX > midX - 15 && mouseX < midX + 15 && mouseY > midY - 15 && mouseY < midY + 15){
             GlStateManager.translate( 0, 0, 300 );
-            drawRect( midX - 15, midY - 15, midX + 15, midY + 15, HelperGui.MAIN_BLUE );
+            //drawRect( midX - 15, midY - 15, midX + 15, midY + 15, HelperGui.MAIN_BLUE );
             drawCenteredString( fontRenderer, I18n.format( "gui.enchanting.addall" ), midX, midY, HelperGui.MAIN_BLUE );
             GlStateManager.translate( 0, 0, -300 );
         }
