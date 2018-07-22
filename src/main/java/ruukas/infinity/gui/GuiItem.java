@@ -152,7 +152,7 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
         centerStrings.add( new CenterString( "Count", 31 + (30 * fieldsAmount) ) );
         
         // META/DAMAGE
-        int maxDamage = stack.getItem() instanceof ItemBlock || stack.getMaxDamage() == 0 ? 15 : stack.getMaxDamage();
+        int maxDamage = stack.getItem() instanceof ItemBlock || stack.getMaxDamage() == 0 ? 9999 : stack.getMaxDamage();
         int digits = ("" + maxDamage).length();
         GuiNumberField damage = new GuiNumberField( 300 + fieldsAmount, fontRenderer, width / 2, 25 + (30 * ++fieldsAmount), Math.max( 10 * digits, 15 ), 20, digits );
         damage.minValue = 0;
