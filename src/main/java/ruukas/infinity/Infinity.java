@@ -23,7 +23,7 @@ public class Infinity
 {
     public static final String MODID = "infinity";
     public static final String NAME = "Infinity Item Editor";
-    public static final String VERSION = "0.8";
+    public static final String VERSION = "0.9";
     
     public static Logger logger;
     
@@ -98,12 +98,7 @@ public class Infinity
     // Will feature things such as item picker!
     
     // CHANGELOG:
-    // Add copy player keybind
-    // Add add all enchants button
-    // Add Discord button
-    // Add tipped arrow to Unavailable tab
-    // Changed id text field tooltip
-    // Changed metadata number field to allow higher values
+
     
     /**
      * A creative tab that contains all item that weren't added to any other tabs at {@link #postInit}
