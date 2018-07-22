@@ -1,5 +1,6 @@
 package ruukas.infinity.gui;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -129,5 +130,20 @@ public class HelperGui
         color += green << 8;
         color += blue;
         return color;
+    }
+    
+    public static void openWebLink(URI url)
+    {
+        try
+        {
+            Class<?> oclass = Class.forName("java.awt.Desktop");
+            Object object = oclass.getMethod("getDesktop").invoke((Object)null);
+            oclass.getMethod("browse", URI.class).invoke(object, url);
+        }
+        catch (Throwable throwable1)
+        {
+            Throwable throwable = throwable1.getCause();
+            Infinity.logger.error("Couldn't open link: {}", (Object)(throwable == null ? "<UNKNOWN>" : throwable.getMessage()));
+        }
     }
 }

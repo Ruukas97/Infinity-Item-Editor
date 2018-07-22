@@ -99,6 +99,7 @@ public class Infinity
     // CHANGELOG:
     // Add copy player keybind
     // Add add all enchants button
+    // Add Discord button
     
     /**
      * A creative tab that contains all item that weren't added to any other tabs at {@link #postInit}

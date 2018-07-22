@@ -76,6 +76,7 @@ gui.head.list.tooltip.1=List current players on the server.
 gui.head.list.tooltip.2=--Not implemented yet--
 
 gui.item.toggleside=Switch View
+gui.item.discord=Join Discord
 
 gui.nbt.update=Update NBT
 

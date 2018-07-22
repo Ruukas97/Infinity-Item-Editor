@@ -1,13 +1,17 @@
 package ruukas.infinity.gui;
 
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 import org.lwjgl.input.Keyboard;
 
 import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.GuiConfirmOpenLink;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;
+import net.minecraft.client.gui.GuiYesNoCallback;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -16,6 +20,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import ruukas.infinity.Infinity;
 import ruukas.infinity.InfinityConfig;
 import ruukas.infinity.gui.action.ActionButtons;
 import ruukas.infinity.gui.action.GuiActionButton;
@@ -25,7 +30,7 @@ import ruukas.infinity.gui.action.GuiNumberField;
 import ruukas.infinity.nbt.NBTHelper;
 
 @SideOnly( Side.CLIENT )
-public class GuiItem extends GuiInfinity
+public class GuiItem extends GuiInfinity implements GuiYesNoCallback
 {
     private GuiInfinityButton nbtButton, nbtAdvButton;
     
@@ -35,6 +40,7 @@ public class GuiItem extends GuiInfinity
     
     private GuiInfinityButton shareButton; // Share to chat, copy to clipboard etc.
     private GuiInfinityButton enderSlot;
+    private GuiInfinityButton discordButton;
     
     private ArrayList<GuiTextField> textFields = new ArrayList<>();
     
@@ -162,6 +168,8 @@ public class GuiItem extends GuiInfinity
         nbtButton = addButton( new GuiInfinityButton( 300 + (fieldsAmount), (width / 2) - 82, 25 + (30 * ++fieldsAmount), 80, 20, I18n.format( "gui.nbt" ) ) );
         nbtAdvButton = addButton( new GuiInfinityButton( 300 + (fieldsAmount), (width / 2) + 2, 25 + (30 * (fieldsAmount)), 80, 20, I18n.format( "gui.nbtadv" ) ) );
         
+        
+        // SIDEBAR BUTTONS
         int sidebarButtonID = 350;
         
         enderSlot = addButton( new GuiInfinityButton( sidebarButtonID++, width / 8 - 40, midY - 80, 80, 20, "Saved Items" ) );
@@ -175,6 +183,10 @@ public class GuiItem extends GuiInfinity
         sidebarButton = addButton( new GuiInfinityButton( sidebarButtonID++, width / 8 - 40, midY - 10, 80, 20, I18n.format( "gui.item.toggleside" ) ) );
         sidebarButton.enabled = sidebarOn;
         sidebarButton.visible = sidebarOn;
+        
+        discordButton = addButton( new GuiInfinityButton( sidebarButtonID++, width / 8 - 40, midY + 25, 80, 20, I18n.format( "gui.item.discord" ) ) );
+        discordButton.enabled = sidebarOn;
+        discordButton.visible = sidebarOn;
         
         // BUTTONS THAT DEPENDS ON THE KIND OF ITEM
         int specialID = 500;
@@ -420,6 +432,29 @@ public class GuiItem extends GuiInfinity
             initGui();
         }
         
+        else if ( button.id == discordButton.id )
+        {
+            try
+            {
+                String dLink = "https://discord.gg/PBCvQyy";
+                URI uri = new URI( dLink );
+                String s = uri.getScheme();
+                
+                if ( this.mc.gameSettings.chatLinksPrompt )
+                {
+                    this.mc.displayGuiScreen( new GuiConfirmOpenLink( this, dLink, 31102009, true ) );
+                }
+                else
+                {
+                    HelperGui.openWebLink( uri );
+                }
+            }
+            catch ( URISyntaxException urisyntaxexception )
+            {
+                Infinity.logger.error( "Can't open url for {}", discordButton, urisyntaxexception );
+            }
+        }
+        
         else
             super.actionPerformed( button );
     }
@@ -482,6 +517,27 @@ public class GuiItem extends GuiInfinity
         if ( shareButton != null && shareButton.visible )
         {
             HelperGui.addToolTip( shareButton.x, shareButton.y, shareButton.width, shareButton.height, mouseX, mouseY, "Not implemented yet." );
+        }
+    }
+    
+    @Override
+    public void confirmClicked( boolean result, int id )
+    {
+        if ( id == 31102009 )
+        {
+            if ( result )
+            {
+                try
+                {
+                    HelperGui.openWebLink( new URI( "https://discord.gg/PBCvQyy" ) );
+                }
+                catch ( URISyntaxException e )
+                {
+                    e.printStackTrace();
+                }
+            }
+            
+            this.mc.displayGuiScreen( this );
         }
     }
     
