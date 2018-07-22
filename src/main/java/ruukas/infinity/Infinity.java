@@ -138,6 +138,7 @@ public class Infinity
                 stackList.add( new ItemStack( Items.POTIONITEM ) );
                 stackList.add( new ItemStack( Items.SPLASH_POTION ) );
                 stackList.add( new ItemStack( Items.LINGERING_POTION ) );
+                stackList.add( new ItemStack( Items.TIPPED_ARROW ) );
             }
         };
     }
