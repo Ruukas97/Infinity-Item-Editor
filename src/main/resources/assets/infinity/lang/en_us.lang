@@ -1,5 +1,6 @@
 key.infinity.category=Infinity Item Editor
 key.infinity.desc=Edit Current Item
+key.infinitycopy.desc=Copy Target Player Equipment
 
 warning.notcreative=You need to be in creative mode to save items
 

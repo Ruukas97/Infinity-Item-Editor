@@ -28,6 +28,7 @@ public class Infinity
     public static Logger logger;
     
     public static KeyBinding keybind;
+    public static KeyBinding keybindCopy;
     
     // TODO
     // ADD Config
@@ -111,9 +112,12 @@ public class Infinity
     @EventHandler
     public void init( FMLInitializationEvent event )
     {
+        // At the moment, it's alright to keep this part here, as the mod won't be loaded on serverside.
         keybind = new KeyBinding( "key.infinity.desc", Keyboard.KEY_U, "key.infinity.category" );
-        // At the moment, it's alright to keep this line here, as the mod won't be loaded on serverside.
         ClientRegistry.registerKeyBinding( keybind );
+        
+        keybindCopy = new KeyBinding( "key.infinitycopy.desc", Keyboard.KEY_C, "key.infinity.category" );
+        ClientRegistry.registerKeyBinding( keybindCopy );
         
         UNAVAILABLE = new CreativeTabs( "unavailable") {
             @Override
