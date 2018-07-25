@@ -149,6 +149,16 @@ public class GuiPotion extends GuiInfinity
                 new InfinityCustomPotionEffectList( stack ).set( new PotionEffect( type, time.getIntValue() * 20, level.getIntValue() - 1 ) );
             }
         }
+        
+        else if ( mouseX > midX - 15 && mouseX < midX + 15 && mouseY > midY - 15 && mouseY < midY + 15 )
+        {
+            Set<ResourceLocation> keyset = Potion.REGISTRY.getKeys();
+            
+            for ( ResourceLocation key : keyset )
+            {
+                new InfinityCustomPotionEffectList( stack ).set( new PotionEffect( Potion.REGISTRY.getObject( key ), time.getIntValue() * 20, level.getIntValue() - 1 ) );
+            }
+        }
     }
     
     @Override
@@ -225,6 +235,14 @@ public class GuiPotion extends GuiInfinity
             
             drawRect( x - 1, y - 1, x + 1, y + 1, HelperGui.getColorFromRGB( 255, 255, 255, 255 ) );
         }
+        
+        if ( mouseX > midX - 15 && mouseX < midX + 15 && mouseY > midY - 15 && mouseY < midY + 15 )
+        {
+            GlStateManager.translate( 0, 0, 300 );
+            drawCenteredString( fontRenderer, I18n.format( "gui.enchanting.addall" ), midX, midY, HelperGui.MAIN_BLUE );
+            GlStateManager.translate( 0, 0, -300 );
+        }
+        
         GlStateManager.popMatrix();
         GlStateManager.enableDepth();
         RenderHelper.enableStandardItemLighting();

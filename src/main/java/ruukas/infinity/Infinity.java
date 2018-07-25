@@ -99,6 +99,7 @@ public class Infinity
     
     // CHANGELOG:
     // Fixed crash when trying to copy certain entities
+    // Added "add all potion effects" button
 
     
     /**
