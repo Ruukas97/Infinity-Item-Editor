@@ -22,23 +22,20 @@ public class InfinityTabSkulls extends InfinityTab
     
     @Override
     public void displayAllRelevantItems( NonNullList<ItemStack> stackList )
-    {        
+    {
         stackList.add( clientSkull() );
         
-        
-        for ( int i = 0 ; i < Minecraft.getMinecraft().world.loadedEntityList.size() ; i++ )
+        for ( int i = 0 ; i < Minecraft.getMinecraft().world.playerEntities.size() ; i++ )
         {
-            if ( Minecraft.getMinecraft().world.loadedEntityList.get( i ) instanceof EntityOtherPlayerMP )
+            if ( Minecraft.getMinecraft().world.playerEntities.get( i ) instanceof EntityOtherPlayerMP )
             {
-                String owner = ((EntityOtherPlayerMP) Minecraft.getMinecraft().world.loadedEntityList.get( i )).getDisplayNameString();
+                String owner = ((EntityOtherPlayerMP) Minecraft.getMinecraft().world.playerEntities.get( i )).getDisplayNameString();
                 ItemStack nearbySkull = new ItemStack( Items.SKULL, 1, 3 );
                 nearbySkull.setTagCompound( new NBTTagCompound() );
                 nearbySkull.getTagCompound().setTag( "SkullOwner", new NBTTagString( owner ) );
                 stackList.add( nearbySkull );
             }
         }
-        
-
         
         for ( String owner : mhfSkulls )
         {
@@ -58,23 +55,16 @@ public class InfinityTabSkulls extends InfinityTab
         }
         
         /*
-        for ( String[] skullStringArray : AlphabetSkulls.skulls )
-        {
-            if ( skullStringArray.length == 3 )
-            {
-                ItemStackTagSkull skullTag = new ItemStackTagSkull();
-                
-                skullTag.setOwner( new Owner( skullStringArray[1], skullStringArray[2] ) );
-                
-                ItemStack skull = new ItemStack( Items.SKULL, 1, 3 );
-                
-                skull.setTagCompound( skullTag );
-                skull.setStackDisplayName( skullStringArray[0] );
-                
-                stackList.add( skull );
-            }
-        }
-        */
+         * for ( String[] skullStringArray : AlphabetSkulls.skulls ) { if ( skullStringArray.length == 3 ) { ItemStackTagSkull skullTag = new ItemStackTagSkull();
+         * 
+         * skullTag.setOwner( new Owner( skullStringArray[1], skullStringArray[2] ) );
+         * 
+         * ItemStack skull = new ItemStack( Items.SKULL, 1, 3 );
+         * 
+         * skull.setTagCompound( skullTag ); skull.setStackDisplayName( skullStringArray[0] );
+         * 
+         * stackList.add( skull ); } }
+         */
     }
     
     private static final ItemStack clientSkull()

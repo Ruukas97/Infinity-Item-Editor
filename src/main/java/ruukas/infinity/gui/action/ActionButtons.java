@@ -13,10 +13,12 @@ import net.minecraft.item.ItemSkull;
 import net.minecraft.item.ItemStack;
 import ruukas.infinity.gui.GuiArmorStand;
 import ruukas.infinity.gui.GuiAttributes;
+import ruukas.infinity.gui.GuiBannerMaker;
 import ruukas.infinity.gui.GuiBook;
 import ruukas.infinity.gui.GuiChestItem;
 import ruukas.infinity.gui.GuiColor;
 import ruukas.infinity.gui.GuiEnchanting;
+import ruukas.infinity.gui.GuiFireworksMaker;
 import ruukas.infinity.gui.GuiHead;
 import ruukas.infinity.gui.GuiMonsterEgg;
 import ruukas.infinity.gui.GuiPotion;
@@ -208,6 +210,42 @@ public class ActionButtons
             public String getText()
             {
                 return I18n.format( "gui.book" );
+            }
+        }, new GuiActionButton() {
+            @Override
+            public boolean condition()
+            {
+                return getItemStack().getItem() == Items.BANNER || getItemStack().getItem() == Items.SHIELD;
+            }
+            
+            @Override
+            public void action()
+            {
+                Minecraft.getMinecraft().displayGuiScreen( new GuiBannerMaker( Minecraft.getMinecraft().currentScreen, Minecraft.getMinecraft().player ) );
+            }
+            
+            @Override
+            public String getText()
+            {
+                return I18n.format( "gui.bannermaker" );
+            }
+        }, new GuiActionButton() {
+            @Override
+            public boolean condition()
+            {
+                return getItemStack().getItem() == Items.FIREWORKS;
+            }
+            
+            @Override
+            public void action()
+            {
+                Minecraft.getMinecraft().displayGuiScreen( new GuiFireworksMaker(Minecraft.getMinecraft().currentScreen, Minecraft.getMinecraft().player) );
+            }
+            
+            @Override
+            public String getText()
+            {
+                return I18n.format( "gui.fireworks" );
             }
         } };
     }

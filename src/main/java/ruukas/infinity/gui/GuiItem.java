@@ -32,7 +32,7 @@ import ruukas.infinity.nbt.NBTHelper;
 @SideOnly( Side.CLIENT )
 public class GuiItem extends GuiInfinity implements GuiYesNoCallback
 {
-    private GuiInfinityButton nbtButton, nbtAdvButton;
+    private GuiInfinityButton nbtButton, nbtAdvButton, hideFlagsButton;
     
     // Sidebar buttons
     private GuiInfinityButton sidebarButton;
@@ -167,6 +167,8 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
         // NBT BROWSER AND EDITOR
         nbtButton = addButton( new GuiInfinityButton( 300 + (fieldsAmount), (width / 2) - 82, 25 + (30 * ++fieldsAmount), 80, 20, I18n.format( "gui.nbt" ) ) );
         nbtAdvButton = addButton( new GuiInfinityButton( 300 + (fieldsAmount), (width / 2) + 2, 25 + (30 * (fieldsAmount)), 80, 20, I18n.format( "gui.nbtadv" ) ) );
+        
+        hideFlagsButton = addButton( new GuiInfinityButton( 320, width - 75, 74, 70, 20, I18n.format( "gui.hideflags" ) ) );
         
         // SIDEBAR BUTTONS
         int sidebarButtonID = 350;
@@ -452,6 +454,11 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
             {
                 Infinity.logger.error( "Can't open url for {}", discordButton, urisyntaxexception );
             }
+        }
+        
+        else if ( button.id == hideFlagsButton.id )
+        {
+            this.mc.displayGuiScreen( new GuiHideFlags( this, stack ) );
         }
         
         else

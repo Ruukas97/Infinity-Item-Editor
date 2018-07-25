@@ -102,16 +102,36 @@ public class InfinityEventHandler
     @SubscribeEvent
     public static void onRenderTooltip( RenderTooltipEvent.Pre e )
     {
-        if ( (e.getStack().getItem() == Items.BANNER || e.getStack().getItem() == Items.SHIELD) && Minecraft.getMinecraft().currentScreen instanceof GuiContainerCreative )
+        if ( Minecraft.getMinecraft().currentScreen != null && Minecraft.getMinecraft().currentScreen instanceof GuiContainerCreative && (e.getStack().getItem() == Items.BANNER || e.getStack().getItem() == Items.SHIELD || e.getStack().getItem() == Items.FIREWORK_CHARGE || e.getStack().getItem() == Items.FIREWORKS) )
         {
             GuiContainerCreative gui = (GuiContainerCreative) Minecraft.getMinecraft().currentScreen;
             
-            if ( gui.getSelectedTabIndex() == Infinity.BANNERS.getTabIndex() && gui.getSlotUnderMouse() != null && gui.getSlotUnderMouse().inventory == Minecraft.getMinecraft().player.inventory )
+            if ( (gui.getSelectedTabIndex() == Infinity.BANNERS.getTabIndex() || gui.getSelectedTabIndex() == Infinity.FIREWORKS.getTabIndex()) && gui.getSlotUnderMouse() != null && gui.getSlotUnderMouse().inventory == Minecraft.getMinecraft().player.inventory )
             {
                 gui.initGui();
             }
         }
     }
+    
+    /*
+     * @SubscribeEvent public void updateTooltip(ItemTooltipEvent event) { ItemStack stack = event.getItemStack(); Item item = event.getItemStack().getItem(); List<String> tooltip = event.getToolTip();
+     * 
+     * boolean isAdvanced = event.getFlags().isAdvanced();
+     * 
+     * if (item instanceof ItemFood) { ItemFood food = (ItemFood) item; tooltip.add(TextFormatting.GOLD + "Food points: " + food.getHealAmount(event.getItemStack())); if (isAdvanced) { tooltip.add(TextFormatting.GOLD + "Saturation modifier: " + ItemStack.DECIMALFORMAT.format(food.getSaturationModifier(event.getItemStack())));
+     * 
+     * tooltip.add(TextFormatting.GOLD + "Quality: " + ItemStack.DECIMALFORMAT.format(QualityHelper.getFoodQuality(event.getItemStack().getItem()))); } } else if (item == Items.CAKE) { tooltip.add(TextFormatting.GOLD + "Food points: 14"); if (isAdvanced) { tooltip.add(TextFormatting.GOLD + "Saturation modifier: " + ItemStack.DECIMALFORMAT.format(0.1d)); tooltip.add(TextFormatting.GOLD + "Quality: " + ItemStack.DECIMALFORMAT.format(16.8d)); } } else if (item == Items.ARMOR_STAND) { tooltip.add(TextFormatting.DARK_PURPLE + "Quality Order info:"); if (stack.hasTagCompound() && stack.getTagCompound().hasKey("EntityTag", Constants.NBT.TAG_COMPOUND)) { NBTTagCompound entityTag = stack.getTagCompound().getCompoundTag("EntityTag");
+     * 
+     * if (entityTag.getByte("Small") == 1) { tooltip.add(TextFormatting.GOLD + "Small"); } else { tooltip.add(TextFormatting.GOLD + "Big"); }
+     * 
+     * if (entityTag.getByte("ShowArms") == 1) { tooltip.add(TextFormatting.GOLD + "Arms"); } else { tooltip.add(TextFormatting.GOLD + "No Arms"); }
+     * 
+     * if (entityTag.getByte("NoBasePlate") == 1) { tooltip.add(TextFormatting.GOLD + "No Base Plate"); } else { tooltip.add(TextFormatting.GOLD + "Base Plate"); }
+     * 
+     * if (stack.getTagCompound().getBoolean("QOArmor")) { tooltip.add(TextFormatting.ITALIC + "" + TextFormatting.GOLD + "Armor"); } else { tooltip.add(TextFormatting.ITALIC + "" + TextFormatting.GOLD + "No Armor"); } } else { tooltip.add(TextFormatting.ITALIC + "Default Armor Stand"); tooltip.add("Big"); tooltip.add("No Arms"); tooltip.add("Base Plate"); tooltip.add(TextFormatting.ITALIC + "No Armor"); } }else if(item == Items.DYE){ tooltip.add(1, "" + QualityHelper.getTextFormatFromDye(EnumDyeColor.byDyeDamage(stack.getItemDamage())) + EnumDyeColor.byDyeDamage(stack.getItemDamage())); }else if(item == Items.SKULL){ if(stack.hasTagCompound() && stack.getTagCompound().hasKey("SkullOwner", Constants.NBT.TAG_COMPOUND)){ if(stack.getTagCompound().getCompoundTag("SkullOwner").hasKey("Name", Constants.NBT.TAG_STRING)){ tooltip.add(1, TextFormatting.BLUE + stack.getTagCompound().getCompoundTag("SkullOwner").getString("Name")); }else{ tooltip.add(1, TextFormatting.GRAY + "Unavailable"); } } }else if(item == Items.NAME_TAG){ for(String[] specialNameArray : TabSpawnegg.specialMobNames){ if (stack.getDisplayName() == specialNameArray[0]) { tooltip.add(TextFormatting.GOLD + specialNameArray[1]); } } }else if(QualityHelper.getStackDPS(stack) > 0){ tooltip.add(TextFormatting.GOLD + "DPS: " + ItemStack.DECIMALFORMAT.format(QualityHelper.getStackDPS(stack))); if(item == QualityHelper.getStrongestSword()){ tooltip.add("Strongest Sword"); } }
+     * 
+     * if (isAdvanced) { if (item instanceof ItemBlock) { event.getToolTip().add(TextFormatting.DARK_GRAY + "Class: " + ((ItemBlock) item).getBlock().getClass().getSimpleName()); } else { event.getToolTip().add(TextFormatting.DARK_GRAY + "Class: " + event.getItemStack().getItem().getClass().getSimpleName()); } } }
+     */
     
     @Nullable
     private void getRayTraceResult( int range, float partialTicks )

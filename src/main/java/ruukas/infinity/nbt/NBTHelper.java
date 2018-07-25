@@ -25,6 +25,19 @@ import net.minecraftforge.common.util.Constants.NBT;
 
 public class NBTHelper
 {
+    public static ItemStack generateNote(String noteName, String... lore){
+        ItemStack stack = new ItemStack(Items.PAPER);
+        stack.setStackDisplayName(noteName);
+        if(lore != null){
+            NBTTagList loreTagList = new NBTTagList();
+            for(String str : lore){
+                loreTagList.appendTag(new NBTTagString(str));
+            }
+            stack.getTagCompound().getCompoundTag("display").setTag("Lore", loreTagList);
+        }
+        return stack;
+    }
+    
     public static void addLoreLine( ItemStack stack, String line )
     {
         NBTTagList lore = getLoreTagList( stack );

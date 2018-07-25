@@ -7,6 +7,8 @@ warning.notcreative=You need to be in creative mode to save items
 itemGroup.unavailable=Infinity - Unavailable
 itemGroup.banners=Infinity - Banners
 itemGroup.skulls=Infinity - Heads
+itemGroup.fireworks=Infinity - Fireworks
+itemGroup.thief=Infinity - Thief
 
 gui.close=Close
 gui.save=Save
@@ -26,6 +28,9 @@ gui.potion=Potion Brewing
 gui.book=Book Editor
 gui.attributes=Attributes Editor
 gui.chestinventory=Chest Inventory
+gui.hideflags=Hide Flags
+gui.bannermaker=Banner Maker
+gui.fireworks=Preview Rocket
 
 gui.armorstand.pose=Armor Stand Pose Editor
 gui.armorstand.pose.reset.1=Only resets rotations!

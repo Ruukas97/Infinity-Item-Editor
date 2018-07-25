@@ -18,7 +18,9 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import ruukas.infinity.tab.InfinityTabBanners;
+import ruukas.infinity.tab.InfinityTabFireworks;
 import ruukas.infinity.tab.InfinityTabSkulls;
+import ruukas.infinity.tab.InfinityTabThief;
 
 @Mod( modid = Infinity.MODID, name = Infinity.NAME, version = Infinity.VERSION, clientSideOnly = true )
 public class Infinity
@@ -31,6 +33,8 @@ public class Infinity
     
     public static KeyBinding keybind;
     public static KeyBinding keybindCopy;
+    
+    public static CreativeTabs UNAVAILABLE, BANNERS, SKULLS, FIREWORKS, THIEF;
     
     // TODO
     // ADD Config
@@ -112,11 +116,9 @@ public class Infinity
     // Fixed shift click on drop button
     // Increased max characters in nbt edit gui
     // Improved hex color code field in color gui
-    
-    /**
-     * A creative tab that contains all item that weren't added to any other tabs at {@link #postInit}
-     */
-    public static CreativeTabs UNAVAILABLE, BANNERS, SKULLS;
+    // Added 4 Creative Tabs from Quality Order
+    // Added banner maker
+    // Added firework preview gui
     
     @EventHandler
     public void preInit( FMLPreInitializationEvent event )
@@ -157,6 +159,10 @@ public class Infinity
         BANNERS = new InfinityTabBanners();
         
         SKULLS = new InfinityTabSkulls();
+        
+        FIREWORKS = new InfinityTabFireworks();
+        
+        THIEF = new InfinityTabThief();
     }
     
     @EventHandler
