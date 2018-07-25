@@ -21,6 +21,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.JsonToNBT;
 import net.minecraft.nbt.NBTException;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import ruukas.infinity.gui.action.GuiInfinityButton;
@@ -35,6 +36,7 @@ public class GuiNBT extends GuiScreen
     
     private GuiInfinityButton updateNbtButton;
     private GuiInfinityButton backButton, resetButton;
+    private GuiInfinityButton[] colorButtons;
     
     private GuiTextField nbtTextField;
     
@@ -62,6 +64,19 @@ public class GuiNBT extends GuiScreen
         
         backButton = addButton( new GuiInfinityButton( 200, this.width / 2 - 60, this.height - 25, 60, 20, I18n.format( "gui.back" ) ) );
         resetButton = addButton( new GuiInfinityButton( 201, this.width / 2, this.height - 25, 60, 20, I18n.format( "gui.reset" ) ) );
+        
+        // COLOR BUTTONS
+        TextFormatting[] formats = TextFormatting.values();
+        int colorAmount = 2 + formats.length;
+        colorButtons = new GuiInfinityButton[ colorAmount ];
+        colorButtons[0] = addButton( new GuiInfinityButton( 130, width - 1 - 13 * ((colorAmount + 2) / 2) + (13 * 1), height - 30, 13, 15, formats[0].toString().substring( 0, 1 ) ) );
+        colorButtons[1] = addButton( new GuiInfinityButton( 131, width - 1 - 13 * ((colorAmount + 2) / 2) + (13 * 2), height - 30, 13, 15, TextFormatting.DARK_RED + "%" ) );
+        
+        for ( int i = 2 ; i < colorAmount ; i++ )
+        {
+            TextFormatting f = formats[i - 2];
+            colorButtons[i] = addButton( new GuiInfinityButton( 130 + i, width - 1 - 13 * ((colorAmount + 2) / 2) + (13 * ((i % (colorAmount / 2)) + 1)), height - 30 + (15 * (i / (colorAmount / 2))), 13, 15, f.toString() + f.toString().substring( 1 ) ) );
+        }
     }
     
     @Override
@@ -132,6 +147,28 @@ public class GuiNBT extends GuiScreen
             if ( this.mc.currentScreen == null )
             {
                 this.mc.setIngameFocus();
+            }
+        }
+        
+        else if ( button.id >= 130 && button.id < 130 + colorButtons.length )
+        {
+            GuiTextField f = nbtTextField;
+            if ( f.isFocused() )
+            {
+                if ( button.id == 130 )
+                {
+                    f.setText( f.getText().substring( 0, f.getCursorPosition() ) + TextFormatting.values()[0].toString().substring( 0, 1 ) + f.getText().substring( f.getCursorPosition(), f.getText().length() ) );
+                }
+                
+                else if ( button.id == 131 )
+                {
+                    f.setText( TextFormatting.getTextWithoutFormattingCodes( f.getText() ) );
+                }
+                
+                else
+                {
+                    f.setText( f.getText().substring( 0, f.getCursorPosition() ) + TextFormatting.values()[button.id - 132] + f.getText().substring( f.getCursorPosition(), f.getText().length() ) );
+                }
             }
         }
         

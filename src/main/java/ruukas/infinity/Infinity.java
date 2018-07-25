@@ -104,6 +104,7 @@ public class Infinity
     // Sorted enchantments in gui
     // Made text appear on top of icons in potion and attribute gui
     // Fixed enchantment button didn't appear for all enchantable items
+    // Added color buttons to nbt edit gui
     
     /**
      * A creative tab that contains all item that weren't added to any other tabs at {@link #postInit}
