@@ -98,6 +98,7 @@ public class Infinity
     // Will feature things such as item picker!
     
     // CHANGELOG:
+    // Fixed crash when trying to copy certain entities
 
     
     /**

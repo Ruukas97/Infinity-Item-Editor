@@ -9,7 +9,9 @@ import com.google.common.base.Predicates;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.entity.item.EntityItemFrame;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -64,31 +66,35 @@ public class InfinityEventHandler
             
             if ( Minecraft.getMinecraft().pointedEntity != null )
             {
-                Entity playerHit = Minecraft.getMinecraft().pointedEntity;
-                
-                player.sendMessage( new TextComponentString( "Copying " + playerHit.getDisplayName().getUnformattedComponentText() ) );
-                
-                ItemStack[] stacks = new ItemStack[ 6 ];
-                
-                int i = 0;
-                for ( ItemStack stack : playerHit.getEquipmentAndArmor() )
+                Entity entityHit = Minecraft.getMinecraft().pointedEntity;
+                if ( entityHit instanceof EntityPlayer || entityHit instanceof EntityArmorStand || entityHit instanceof EntityLiving )
                 {
-                    stacks[i++] = stack;
+                    player.sendMessage( new TextComponentString( "Copying " ).appendSibling( entityHit.getDisplayName() ) );
+                    
+                    ItemStack[] stacks = new ItemStack[ 6 ];
+                    
+                    int i = 0;
+                    for ( ItemStack stack : entityHit.getEquipmentAndArmor() )
+                    {
+                        stacks[i++] = stack;
+                    }
+                    
+                    // Main hand
+                    if ( stacks != null && stacks.length > 0 )
+                    {
+                        player.inventory.setPickedItemStack( stacks[0] );
+                        mc.playerController.sendSlotPacket( stacks[0], player.inventory.currentItem + 36 ); // 36 is the index of the actionbar (5 crafting, 4 armor, and 27 inventory, if I remember correctly).
+                        
+                        mc.playerController.sendSlotPacket( stacks[1], 45 ); // 36 is the index of the actionbar (5 crafting, 4 armor, and 27 inventory, if I remember correctly).
+                        
+                        mc.playerController.sendSlotPacket( stacks[2], 8 ); // 36 is the index of the actionbar (5 crafting, 4 armor, and 27 inventory, if I remember correctly).
+                        mc.playerController.sendSlotPacket( stacks[3], 7 ); // 36 is the index of the actionbar (5 crafting, 4 armor, and 27 inventory, if I remember correctly).
+                        mc.playerController.sendSlotPacket( stacks[4], 6 ); // 36 is the index of the actionbar (5 crafting, 4 armor, and 27 inventory, if I remember correctly).
+                        mc.playerController.sendSlotPacket( stacks[5], 5 ); // 36 is the index of the actionbar (5 crafting, 4 armor, and 27 inventory, if I remember correctly).
+                    }
                 }
-                
-                // Main hand
-                player.inventory.setPickedItemStack( stacks[0] );
-                mc.playerController.sendSlotPacket( stacks[0], player.inventory.currentItem + 36 ); // 36 is the index of the actionbar (5 crafting, 4 armor, and 27 inventory, if I remember correctly).
-                
-                mc.playerController.sendSlotPacket( stacks[1], 45 ); // 36 is the index of the actionbar (5 crafting, 4 armor, and 27 inventory, if I remember correctly).
-                
-                mc.playerController.sendSlotPacket( stacks[2], 8 ); // 36 is the index of the actionbar (5 crafting, 4 armor, and 27 inventory, if I remember correctly).
-                mc.playerController.sendSlotPacket( stacks[3], 7 ); // 36 is the index of the actionbar (5 crafting, 4 armor, and 27 inventory, if I remember correctly).
-                mc.playerController.sendSlotPacket( stacks[4], 6 ); // 36 is the index of the actionbar (5 crafting, 4 armor, and 27 inventory, if I remember correctly).
-                mc.playerController.sendSlotPacket( stacks[5], 5 ); // 36 is the index of the actionbar (5 crafting, 4 armor, and 27 inventory, if I remember correctly).
             }
         }
-        
     }
     
     @Nullable
