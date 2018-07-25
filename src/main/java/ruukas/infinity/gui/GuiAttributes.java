@@ -250,8 +250,11 @@ public class GuiAttributes extends GuiInfinity
             double angleI = (((double) (rotOff + (double) (Math.abs( mouseDist - r ) >= 16 ? partialTicks : 0d)) / 60d)) + (angle * i);
             int x = (int) (midX + (r * Math.cos( angleI )));
             int y = (int) (midY + (r * Math.sin( angleI )));
-            this.drawCenteredString( this.fontRenderer, I18n.format( "attribute.name." + sharedAttributes[i].getName() ), x, y - 17, HelperGui.MAIN_PURPLE );
             
+            GlStateManager.translate( 0, 0, 300 );
+            this.drawCenteredString( this.fontRenderer, I18n.format( "attribute.name." + sharedAttributes[i].getName() ), x, y - 17, HelperGui.MAIN_PURPLE );
+            GlStateManager.translate( 0, 0, -300 );
+
             this.itemRender.renderItemAndEffectIntoGUI( note, x - 8, y - 8 );
             
             drawRect( x - 1, y - 1, x + 1, y + 1, HelperGui.getColorFromRGB( 255, 255, 255, 255 ) );

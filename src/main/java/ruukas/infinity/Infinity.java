@@ -102,6 +102,7 @@ public class Infinity
     // Added "add all potion effects" button
     // Changed colors of potion effects and enchantments to show bad effects
     // Sorted enchantments in gui
+    // Made text appear on top of icons in potion and attribute gui
 
     
     /**

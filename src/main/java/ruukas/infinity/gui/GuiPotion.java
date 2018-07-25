@@ -229,8 +229,10 @@ public class GuiPotion extends GuiInfinity
                 displayString += " " + I18n.format( "potion.potency." + potEff.getAmplifier() ).trim();
             }
             
+            GlStateManager.translate( 0, 0, 300 );
             drawCenteredString( fontRenderer, displayString, x, y - 17, HelperGui.MAIN_PURPLE );
-            
+            GlStateManager.translate( 0, 0, -300 );
+
             itemRender.renderItemAndEffectIntoGUI( potionIcon, x - 8, y - 8 );
             
             drawRect( x - 1, y - 1, x + 1, y + 1, HelperGui.getColorFromRGB( 255, 255, 255, 255 ) );
