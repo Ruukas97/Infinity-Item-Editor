@@ -17,6 +17,8 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import ruukas.infinity.tab.InfinityTabBanners;
+import ruukas.infinity.tab.InfinityTabSkulls;
 
 @Mod( modid = Infinity.MODID, name = Infinity.NAME, version = Infinity.VERSION, clientSideOnly = true )
 public class Infinity
@@ -114,7 +116,7 @@ public class Infinity
     /**
      * A creative tab that contains all item that weren't added to any other tabs at {@link #postInit}
      */
-    public static CreativeTabs UNAVAILABLE;
+    public static CreativeTabs UNAVAILABLE, BANNERS, SKULLS;
     
     @EventHandler
     public void preInit( FMLPreInitializationEvent event )
@@ -151,6 +153,10 @@ public class Infinity
                 stackList.add( new ItemStack( Items.TIPPED_ARROW ) );
             }
         };
+        
+        BANNERS = new InfinityTabBanners();
+        
+        SKULLS = new InfinityTabSkulls();
     }
     
     @EventHandler

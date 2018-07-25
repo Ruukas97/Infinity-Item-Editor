@@ -4,7 +4,9 @@ key.infinitycopy.desc=Copy Target Player Equipment
 
 warning.notcreative=You need to be in creative mode to save items
 
-itemGroup.unavailable=Unavailable
+itemGroup.unavailable=Infinity - Unavailable
+itemGroup.banners=Infinity - Banners
+itemGroup.skulls=Infinity - Heads
 
 gui.close=Close
 gui.save=Save
