@@ -70,8 +70,8 @@ gui.item.discord=Join Discord
 gui.item.share=Share Item
 
 gui.item.colorremove.tooltip.1=Remove all colors
-gui.item.drop.tooltip.1=Hold shift to use /give command
-gui.item.drop.tooltip.2=If the command is too long, it will be copied to your clipboard
+gui.item.drop.tooltip.1=Hold shift to copy /give command to your clipboard
+gui.item.drop.tooltip.2=You can then paste it somewhere else
 
 gui.nbt.update=Update NBT
 

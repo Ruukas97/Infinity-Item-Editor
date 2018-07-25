@@ -112,52 +112,42 @@ public abstract class GuiInfinity extends GuiScreen
     
     protected void drop()
     {
-        // Not sure if this part should be moved to HelperGui, it might be useful for other GUIs too.
         if ( isShiftKeyDown() )
         {
             if ( stack == ItemStack.EMPTY || stack.getItem() == Items.AIR || stack == null )
             {
                 return;
             }
-            stack.getItem();
+            
             String id = stack.getItem().getRegistryName().toString();
             
-            // int id = Item.getIdFromItem(stack.getItem()); - Vanilla /give command doesn't seem to support numeric id's anymore
+            String command = "/minecraft:give @p " + id;
             
-            if ( id.startsWith( "minecraft:" ) )
-            {
-                id = id.substring( 10 );
-            }
+            boolean shouldAddTag = stack.hasTagCompound();
+            boolean shouldAddMeta = shouldAddTag || stack.getMetadata() != 0;
+            boolean shouldAddCount = shouldAddMeta || stack.getCount() != 1;
             
-            String command = "/give @p " + id;
-            
-            boolean addTag = false, addMeta = false, addCount = false;
-            
-            addTag = stack.hasTagCompound();
-            
-            addMeta = addTag || stack.getMetadata() != 0;
-            
-            addCount = addMeta || stack.getCount() != 1;
-            
-            if ( addCount )
+            if ( shouldAddCount )
             {
                 command += " " + stack.getCount();
             }
             
-            if ( addMeta )
+            if ( shouldAddMeta )
             {
                 command += " " + stack.getMetadata();
             }
             
-            if ( addTag )
+            if ( shouldAddTag )
             {
                 command += " " + stack.getTagCompound().toString();
             }
             
-            mc.player.sendChatMessage( command );
+            setClipboardString( command );
         }
         else
+        {
             HelperGui.dropStack( stack );
+        }
     }
     
     protected void reset()
