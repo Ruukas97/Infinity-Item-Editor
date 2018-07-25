@@ -103,7 +103,7 @@ public class Infinity
     // Changed colors of potion effects and enchantments to show bad effects
     // Sorted enchantments in gui
     // Made text appear on top of icons in potion and attribute gui
-
+    // Fixed enchantment button didn't appear for all enchantable items
     
     /**
      * A creative tab that contains all item that weren't added to any other tabs at {@link #postInit}

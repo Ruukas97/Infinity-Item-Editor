@@ -4,6 +4,7 @@ import net.minecraft.block.BlockChest;
 import net.minecraft.block.BlockShulkerBox;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemArmorStand;
 import net.minecraft.item.ItemBlock;
@@ -17,9 +18,9 @@ import ruukas.infinity.gui.GuiChestItem;
 import ruukas.infinity.gui.GuiColor;
 import ruukas.infinity.gui.GuiEnchanting;
 import ruukas.infinity.gui.GuiHead;
-import ruukas.infinity.gui.HelperGui;
 import ruukas.infinity.gui.GuiMonsterEgg;
 import ruukas.infinity.gui.GuiPotion;
+import ruukas.infinity.gui.HelperGui;
 import ruukas.infinity.gui.chest.InventoryChestItem;
 import ruukas.infinity.nbt.NBTHelper;
 
@@ -158,7 +159,7 @@ public class ActionButtons
             @Override
             public boolean condition()
             {
-                return getItemStack().getItem().getItemEnchantability() > 0;
+                return getItemStack().getItem().isEnchantable( getItemStack() ) || EnumEnchantmentType.ALL.canEnchantItem( getItemStack().getItem() );
             }
             
             @Override
