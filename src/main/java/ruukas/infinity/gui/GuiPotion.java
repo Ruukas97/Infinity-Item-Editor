@@ -5,6 +5,7 @@ import java.util.Set;
 
 import org.lwjgl.input.Keyboard;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
@@ -20,6 +21,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import ruukas.infinity.gui.action.GuiInfinityButton;
 import ruukas.infinity.gui.action.GuiNumberField;
 import ruukas.infinity.nbt.itemstack.tag.InfinityCustomPotionEffectList;
 import ruukas.infinity.nbt.itemstack.tag.custompotioneffects.InfinityPotionEffectTag;
@@ -29,6 +31,8 @@ public class GuiPotion extends GuiInfinity
 {
     private GuiNumberField level;
     private GuiNumberField time;
+    
+    private GuiInfinityButton colorButton;
     
     private int rotOff = 0;
     private int mouseDist = 0;
@@ -54,6 +58,8 @@ public class GuiPotion extends GuiInfinity
         time.minValue = 1;
         time.maxValue = 99999;
         time.setValue( 1 );
+        
+        colorButton = addButton( new GuiInfinityButton( 102, 15, height - 90, 40, 20, I18n.format( "gui.color" ) ) );
         
         potionIcon = new ItemStack( Items.POTIONITEM );
         
@@ -164,6 +170,10 @@ public class GuiPotion extends GuiInfinity
     @Override
     protected void actionPerformed( GuiButton button ) throws IOException
     {
+        if ( button.id == colorButton.id )
+        {
+            Minecraft.getMinecraft().displayGuiScreen( new GuiColor( Minecraft.getMinecraft().currentScreen, getItemStack() ) );
+        }
         super.actionPerformed( button );
     }
     
@@ -232,7 +242,7 @@ public class GuiPotion extends GuiInfinity
             GlStateManager.translate( 0, 0, 300 );
             drawCenteredString( fontRenderer, displayString, x, y - 17, HelperGui.MAIN_PURPLE );
             GlStateManager.translate( 0, 0, -300 );
-
+            
             itemRender.renderItemAndEffectIntoGUI( potionIcon, x - 8, y - 8 );
             
             drawRect( x - 1, y - 1, x + 1, y + 1, HelperGui.getColorFromRGB( 255, 255, 255, 255 ) );

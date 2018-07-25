@@ -12,12 +12,15 @@ import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
+import net.minecraft.item.ItemPotion;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemTippedArrow;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagFloat;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagString;
 import net.minecraft.nbt.NBTUtil;
+import net.minecraft.potion.PotionUtils;
 import net.minecraftforge.common.util.Constants.NBT;
 
 public class NBTHelper
@@ -317,15 +320,26 @@ public class NBTHelper
     
     public static class ColorNBTHelper
     {
+        public static boolean isPotion( ItemStack stack )
+        {
+            return stack.getItem() instanceof ItemPotion || stack.getItem() instanceof ItemTippedArrow;
+        }
+        
         public static int getColorAsInt( ItemStack stack )
         {
+            if ( isPotion( stack ) )
+            {
+                return PotionUtils.getColor( stack );
+            }
+            
             if ( hasColor( stack ) )
             {
+                
                 return getDisplayTag( stack ).getInteger( "color" );
             }
             
             if ( applicableForColor( stack ) )
-            { // This is only for leather - update if more items become applicable
+            {
                 return 10511680;
             }
             
@@ -334,17 +348,33 @@ public class NBTHelper
         
         public static boolean hasColor( ItemStack stack )
         {
+            if ( isPotion( stack ) )
+            {
+                return stack.hasTagCompound() && stack.getTagCompound().hasKey( "CustomPotionColor", NBT.TAG_INT );
+            }
             return hasDisplayTag( stack ) && getDisplayTag( stack ).hasKey( "color", NBT.TAG_INT );
         }
         
         public static boolean applicableForColor( ItemStack stack )
         {
-            return stack.getItem() instanceof ItemArmor && ((ItemArmor) stack.getItem()).getArmorMaterial() == ArmorMaterial.LEATHER;
+            return isPotion( stack ) || stack.getItem() instanceof ItemArmor && ((ItemArmor) stack.getItem()).getArmorMaterial() == ArmorMaterial.LEATHER;
         }
         
         public static void setColor( ItemStack stack, int color )
         {
-            getDisplayTag( stack ).setInteger( "color", color );
+            if ( isPotion( stack ) )
+            {
+                if(!stack.hasTagCompound()){
+                    stack.setTagCompound( new NBTTagCompound() );
+                }
+                
+                stack.getTagCompound().setInteger( "CustomPotionColor", color );
+            }
+            else
+            {
+                getDisplayTag( stack ).setInteger( "color", color );
+                
+            }
         }
         
         public static int getRed( ItemStack stack )
