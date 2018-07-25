@@ -2,6 +2,7 @@ package ruukas.infinity.gui;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import org.lwjgl.input.Keyboard;
@@ -35,6 +36,17 @@ public class GuiEnchanting extends GuiInfinity
     private List<Enchantment> enchants = new ArrayList<>();
     private ItemStack enchantBook;
     
+    public static class EnchantComparator implements Comparator<Enchantment>
+    {
+        
+        @Override
+        public int compare( Enchantment o1, Enchantment o2 )
+        {
+            return o1.getTranslatedName( 1 ).compareToIgnoreCase( o2.getTranslatedName( 1 ) );
+        }
+        
+    }
+    
     public GuiEnchanting(GuiScreen lastScreen, ItemStack stack) {
         super( lastScreen, stack );
     }
@@ -61,6 +73,8 @@ public class GuiEnchanting extends GuiInfinity
                 enchants.add( e );
             }
         }
+        
+        enchants.sort( new EnchantComparator() );
         
         enchantBook = new ItemStack( Items.ENCHANTED_BOOK );
         
