@@ -27,7 +27,7 @@ public class Infinity
 {
     public static final String MODID = "infinity";
     public static final String NAME = "Infinity Item Editor";
-    public static final String VERSION = "0.9";
+    public static final String VERSION = "0.10";
     
     public static Logger logger;
     
@@ -104,22 +104,6 @@ public class Infinity
     // Will feature things such as item picker!
     
     // CHANGELOG:
-    // Fixed crash when trying to copy certain entities
-    // Added "add all potion effects" button
-    // Changed colors of potion effects and enchantments to show bad effects
-    // Sorted enchantments in gui
-    // Made text appear on top of icons in potion and attribute gui
-    // Fixed enchantment button didn't appear for all enchantable items
-    // Added color buttons to nbt edit gui
-    // Fixed color gui hex string to keep a length of 6
-    // Added potion support to color gui
-    // Fixed shift click on drop button
-    // Increased max characters in nbt edit gui
-    // Improved hex color code field in color gui
-    // Added 4 Creative Tabs from Quality Order
-    // Added banner maker
-    // Added firework preview gui
-    // Added hide flags gui
     
     @EventHandler
     public void preInit( FMLPreInitializationEvent event )
