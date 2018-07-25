@@ -119,6 +119,7 @@ public class Infinity
     // Added 4 Creative Tabs from Quality Order
     // Added banner maker
     // Added firework preview gui
+    // Added hide flags gui
     
     @EventHandler
     public void preInit( FMLPreInitializationEvent event )

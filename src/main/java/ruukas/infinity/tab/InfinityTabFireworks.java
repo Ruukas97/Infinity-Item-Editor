@@ -178,7 +178,7 @@ public class InfinityTabFireworks extends InfinityTab
             trailEffect.getTagCompound().setTag( DisplayTag.getKeyName(), trailDisplayTag );
             
             ItemStack newRocket = new ItemStack( Items.FIREWORKS );
-            newRocket.setStackDisplayName( "Quality Rocket" );
+            newRocket.setStackDisplayName( "Infinity Rocket" );
             newRocket.setCount( 1 );
             
             if ( currentRocket != null && currentRocket != ItemStack.EMPTY )

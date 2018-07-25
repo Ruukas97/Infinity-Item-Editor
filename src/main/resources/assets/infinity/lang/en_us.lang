@@ -97,6 +97,20 @@ gui.potion.level=Amplifier
 
 gui.equipment.inventoryclone=This is a copy of your inventory. Changes will not be saved.
 
+
+flag.enchantment.0=Enchantment: shown
+flag.enchantment.1=Enchantment: hidden
+flag.attributemod.0=Attribute Mod: shown
+flag.attributemod.1=Attribute Mod: hidden
+flag.unbreakable.0=Unbreakable: shown
+flag.unbreakable.1=Unbreakable: hidden
+flag.candestroy.0=Can Destroy: shown
+flag.candestroy.1=Can Destroy: hidden
+flag.canplaceon.0=Can Place On: shown
+flag.canplaceon.1=Can Place On: hidden
+flag.iteminfo.0=Item Info: shown
+flag.iteminfo.1=Item Info: hidden
+
 gui.editstring=Edit String
 
 gui.entitytags=Entity Tags

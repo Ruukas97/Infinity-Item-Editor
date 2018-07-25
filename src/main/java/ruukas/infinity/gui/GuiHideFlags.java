@@ -2,14 +2,17 @@ package ruukas.infinity.gui;
 
 import java.io.IOException;
 
+import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
+import ruukas.infinity.gui.action.GuiInfinityButton;
+import ruukas.infinity.nbt.itemstack.InfinityItemTag;
 
 public class GuiHideFlags extends GuiInfinity
 {
     
-    private static enum Flags {
+    public static enum Flags {
         ENCHANTMENTS( 1, "flag.enchantment" ), ATTRIBUTEMODIFIERS( 2, "flag.attributemod" ), UNBREAKABLE( 4, "flag.unbreakable" ), CANDESTROY( 8, "flag.candestroy" ), CANPLACEON( 16, "flag.canplaceon" ), ITEMINFO( 32, "flag.iteminfo" );
         
         private int denom;
@@ -30,14 +33,14 @@ public class GuiHideFlags extends GuiInfinity
             return key;
         }
         
-        public String getTranslatedName()
+        public String getTranslatedName( InfinityItemTag itemTag )
         {
-            return I18n.format( key );
+            return I18n.format( key + "." + (itemTag.getFlagHidden( this ) ? "1" : "0") );
         }
         
         public boolean hidden( int value )
         {
-            return (value & denom) == 0;
+            return (value & denom) > 0;
         }
     }
     
@@ -52,7 +55,25 @@ public class GuiHideFlags extends GuiInfinity
     {
         super.initGui();
         setRenderStack( true, midX, 40, 1 );
-
+        
+        InfinityItemTag itemTag = new InfinityItemTag( stack );
+        int buttons = 0;
+        for ( Flags f : Flags.values() )
+        {
+            addButton( new GuiInfinityButton( 300 + buttons, midX - 60, 60 + 30 * buttons++, 120, 20, f.getTranslatedName(itemTag) ) );
+        }
+    }
+    
+    @Override
+    protected void actionPerformed( GuiButton button ) throws IOException
+    {
+        if ( button.id >= 300 && button.id < 300 + Flags.values().length )
+        {
+            new InfinityItemTag( stack ).switchFlag( Flags.values()[button.id - 300] );
+            initGui();
+        }
+        
+        super.actionPerformed( button );
     }
     
     @Override
@@ -66,13 +87,6 @@ public class GuiHideFlags extends GuiInfinity
     public void drawScreen( int mouseX, int mouseY, float partialTicks )
     {
         super.drawScreen( mouseX, mouseY, partialTicks );
-        
-        int i = 0;
-        int size = 6;
-        
-        for(Flags f : Flags.values()){
-            //drawCenteredString( fontRendererIn, text, x, y, color );
-        }
     }
     
     @Override
