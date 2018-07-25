@@ -180,7 +180,7 @@ public class GuiPotion extends GuiInfinity
             InfinityPotionEffectTag e = potionTags[i];
             PotionEffect effect = e.getEffect();
             int ampli = effect.getAmplifier();
-            drawString( fontRenderer, I18n.format( effect.getEffectName() ) + (ampli > 1 ? (" " + I18n.format( "potion.potency." + ampli ).trim()) : "") + " (" + (ampli + 1) + ")", 5, midY + i * 10 - potionTags.length * 5, HelperGui.MAIN_PURPLE );
+            drawString( fontRenderer, (effect.getPotion().isBadEffect() ? TextFormatting.RED : TextFormatting.BLUE) + I18n.format( effect.getEffectName() ) + (ampli > 1 ? (" " + I18n.format( "potion.potency." + ampli ).trim()) : "") + " (" + (ampli + 1) + ")", 5, midY + i * 10 - potionTags.length * 5, HelperGui.MAIN_PURPLE );
         }
         
         level.drawTextBox();
@@ -222,14 +222,14 @@ public class GuiPotion extends GuiInfinity
             int y = (int) (midY + (r * Math.sin( angleI )));
             
             PotionEffect potEff = new PotionEffect( Potion.REGISTRY.getObject( key ), 20, level.getIntValue() - 1 );
-            String displayString = I18n.format( potEff.getEffectName() );
+            String displayString = (potEff.getPotion().isBadEffect() ? TextFormatting.RED : TextFormatting.BLUE) + I18n.format( potEff.getEffectName() );
             
             if ( potEff.getAmplifier() > 0 )
             {
                 displayString += " " + I18n.format( "potion.potency." + potEff.getAmplifier() ).trim();
             }
             
-            drawCenteredString( fontRenderer, TextFormatting.getTextWithoutFormattingCodes( displayString ), x, y - 17, HelperGui.MAIN_PURPLE );
+            drawCenteredString( fontRenderer, displayString, x, y - 17, HelperGui.MAIN_PURPLE );
             
             itemRender.renderItemAndEffectIntoGUI( potionIcon, x - 8, y - 8 );
             

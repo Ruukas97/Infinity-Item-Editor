@@ -16,7 +16,6 @@ import net.minecraft.enchantment.EnchantmentData;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemEnchantedBook;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import ruukas.infinity.gui.action.GuiInfinityButton;
@@ -224,7 +223,7 @@ public class GuiEnchanting extends GuiInfinity
             int x = (int) (midX + (r * Math.cos( angleI )));
             int y = (int) (midY + (r * Math.sin( angleI )));
             GlStateManager.translate( 0, 0, 300 );
-            this.drawCenteredString( this.fontRenderer, TextFormatting.getTextWithoutFormattingCodes( enchants.get( i ).getTranslatedName( enchants.get( i ).getMaxLevel() == 1 ? 1 : level.getIntValue() ).replace( "enchantment.level.", "" ) ), x, y - 17, HelperGui.MAIN_PURPLE );
+            this.drawCenteredString( this.fontRenderer, enchants.get( i ).getTranslatedName( enchants.get( i ).getMaxLevel() == 1 ? 1 : level.getIntValue() ).replace( "enchantment.level.", "" ), x, y - 17, HelperGui.MAIN_PURPLE );
             GlStateManager.translate( 0, 0, -300 );
             
             this.itemRender.renderItemAndEffectIntoGUI( enchantBook, x - 8, y - 8 );
