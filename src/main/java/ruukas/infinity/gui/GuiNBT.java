@@ -57,7 +57,7 @@ public class GuiNBT extends GuiScreen
     {
         Keyboard.enableRepeatEvents( true );
         nbtTextField = new GuiTextField( 100, this.fontRenderer, this.width / 4, 80, this.width / 2, 16 );
-        nbtTextField.setMaxStringLength( 5000 );
+        nbtTextField.setMaxStringLength( 20000 );
         nbtTextField.setText( stack.hasTagCompound() ? stack.getTagCompound().toString() : "{}" );
         
         updateNbtButton = this.addButton( new GuiInfinityButton( 105, 3 * width / 7, 100, width / 7, 20, I18n.format( "gui.nbt.update" ) ) );
