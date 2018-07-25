@@ -59,26 +59,38 @@ public class GuiColor extends GuiScreen
         
         hexText = new GuiActionTextField( 100, this.fontRenderer, (this.width / 2) - 25, this.height / 2 - 85, 50, 20 );
         hexText.setMaxStringLength( 7 );
-        hexText.setText( '#' + Integer.toHexString( ColorNBTHelper.getColorAsInt( stack ) ) );
-        
+        String hexS = Integer.toHexString( ColorNBTHelper.getColorAsInt( stack ) );
+        String zeroes = "";
+        for ( int i = 0 ; i < 6 - hexS.length() ; i++ )
+        {
+            zeroes += "0";
+        }
+        hexText.setText( "#" + zeroes + hexS );
         hexText.action = () -> {
-            String text = hexText.getText();
-            int length = text.length();
-            
-            if ( length == 7 )
-            {
-                text = text.substring( 1 );
-            }
-            
-            if ( length == 6 )
-            {
-                try
-                {
-                    ColorNBTHelper.setColor( stack, (int) Long.parseLong( text, 16 ) );
+            if(!(redSlider.dragging || greenSlider.dragging || blueSlider.dragging)){
+                String text = hexText.getText();
+                int length = text.length();
+                
+                if (length == 6 && !text.startsWith( "#" )){
+                    hexText.setText( "#" + text );
                 }
-                catch ( NumberFormatException e )
+                else if ( length == 7 )
                 {
-                    Infinity.logger.error( "Could not parse " + text + " as a hex color." );
+                    text = text.substring( 1 );
+                    length = 6;
+                }
+                
+                if ( hexText.getText().length() == 7 )
+                {
+                    try
+                    {
+                        ColorNBTHelper.setColor( stack, (int) Long.parseLong( text, 16 ) );
+                        redSlider.sliderValue = ColorNBTHelper.getRed( stack );
+                    }
+                    catch ( NumberFormatException e )
+                    {
+                        Infinity.logger.error( "Could not parse " + text + " as a hex color." );
+                    }
                 }
             }
         };

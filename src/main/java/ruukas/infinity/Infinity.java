@@ -109,6 +109,7 @@ public class Infinity
     // Added potion support to color gui
     // Fixed shift click on drop button
     // Increased max characters in nbt edit gui
+    // Improved hex color code field in color gui
     
     /**
      * A creative tab that contains all item that weren't added to any other tabs at {@link #postInit}
