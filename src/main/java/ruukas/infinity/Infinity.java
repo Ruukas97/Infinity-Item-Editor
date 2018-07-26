@@ -105,6 +105,10 @@ public class Infinity
     
     // CHANGELOG:
     
+    //TODO next version:
+    // Fix heads tab icon lag
+    // Fix banner maker title
+    
     @EventHandler
     public void preInit( FMLPreInitializationEvent event )
     {
