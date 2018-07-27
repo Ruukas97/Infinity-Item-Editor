@@ -174,8 +174,8 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
         // SIDEBAR BUTTONS
         int sidebarButtonID = 350;
         
-        enderSlot = addButton( new GuiInfinityButton( sidebarButtonID++, width / 8 - 40, midY - 80, 80, 20, "Saved Items" ) );
-        enderSlot.enabled = false;
+        enderSlot = addButton( new GuiInfinityButton( sidebarButtonID++, width / 8 - 40, midY - 80, 80, 20, "Test" ) );
+        enderSlot.enabled = sidebarOn;
         enderSlot.visible = sidebarOn;
         
         shareButton = addButton( new GuiInfinityButton( sidebarButtonID++, width / 8 - 40, midY - 45, 80, 20, I18n.format( "gui.item.share" ) ) );
@@ -436,6 +436,11 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
             InfinityConfig.setItemSidebar( false );
             ignoreNextClick = true;
             initGui();
+        }
+        
+        else if ( button.id == enderSlot.id )
+        {
+            mc.displayGuiScreen( new GuiHeadCollection( this ) );
         }
         
         else if ( button.id == specialButton.id )

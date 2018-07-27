@@ -108,8 +108,6 @@ public class Infinity
     
     //TODO next version:
     // Fix heads tab icon lag
-    // Fix banner maker title
-    // Make gui for all action buttons
     
     @EventHandler
     public void preInit( FMLPreInitializationEvent event )
