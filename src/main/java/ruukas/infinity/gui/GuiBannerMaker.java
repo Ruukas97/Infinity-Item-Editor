@@ -207,11 +207,9 @@ public class GuiBannerMaker extends InventoryEffectRenderer
             if ( !getCurrentBanner().hasTagCompound() )
             {
                 swappedBanner = new QualityBanner( new TileEntityTagBanner( EnumDyeColor.WHITE ), getCurrentBanner().getItem() == Items.BANNER );
-                System.out.println( "Doesn't have tag" );
             }
             else
             {
-                System.out.println( "Has tag" );
                 swappedBanner = new QualityBanner( getCurrentBanner().getTagCompound(), false, getCurrentBanner().getItem() == Items.BANNER );
             }
             setCurrentBanner( swappedBanner.getItemStack(), true );
@@ -554,7 +552,7 @@ public class GuiBannerMaker extends InventoryEffectRenderer
     protected void drawGuiContainerForegroundLayer( int mouseX, int mouseY )
     {
         GlStateManager.disableBlend();
-        this.fontRenderer.drawString( I18n.format( "qualityorder.gui.bannermaker", new Object[ 0 ] ), 8, 6, 4210752 );
+        this.fontRenderer.drawString( I18n.format( "gui.bannermaker", new Object[ 0 ] ), 8, 6, 4210752 );
     }
     
     @Override

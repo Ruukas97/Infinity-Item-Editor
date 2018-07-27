@@ -104,6 +104,7 @@ public class Infinity
     // Will feature things such as item picker!
     
     // CHANGELOG:
+    // Fix gui title of banner maker
     
     //TODO next version:
     // Fix heads tab icon lag
