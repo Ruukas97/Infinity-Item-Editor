@@ -40,6 +40,7 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
     
     private GuiInfinityButton shareButton; // Share to chat, copy to clipboard etc.
     private GuiInfinityButton enderSlot;
+    private GuiInfinityButton specialButton;
     private GuiInfinityButton discordButton;
     
     private ArrayList<GuiTextField> textFields = new ArrayList<>();
@@ -185,7 +186,11 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
         sidebarButton.enabled = sidebarOn;
         sidebarButton.visible = sidebarOn;
         
-        discordButton = addButton( new GuiInfinityButton( sidebarButtonID++, width / 8 - 40, midY + 25, 80, 20, I18n.format( "gui.item.discord" ) ) );
+        specialButton = addButton( new GuiInfinityButton( sidebarButtonID++, width / 8 - 40, midY + 25, 80, 20, I18n.format( "gui.specialbutton" ) ) );
+        specialButton.enabled = sidebarOn;
+        specialButton.visible = sidebarOn;
+        
+        discordButton = addButton( new GuiInfinityButton( sidebarButtonID++, width / 8 - 40, midY + 60, 80, 20, I18n.format( "gui.item.discord" ) ) );
         discordButton.enabled = sidebarOn;
         discordButton.visible = sidebarOn;
         
@@ -431,6 +436,11 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
             InfinityConfig.setItemSidebar( false );
             ignoreNextClick = true;
             initGui();
+        }
+        
+        else if ( button.id == specialButton.id )
+        {
+            mc.displayGuiScreen( new GuiSpecialButtons( this, stack ) );
         }
         
         else if ( button.id == discordButton.id )

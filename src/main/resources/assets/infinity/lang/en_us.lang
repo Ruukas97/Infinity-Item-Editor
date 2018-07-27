@@ -31,6 +31,7 @@ gui.chestinventory=Chest Inventory
 gui.hideflags=Hide Flags
 gui.bannermaker=Banner Maker
 gui.fireworks=Preview Rocket
+gui.specialbutton=Special NBT
 
 gui.armorstand.pose=Armor Stand Pose Editor
 gui.armorstand.pose.reset.1=Only resets rotations!

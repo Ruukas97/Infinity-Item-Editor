@@ -1,5 +1,7 @@
 package ruukas.infinity.gui.action;
 
+import java.util.Comparator;
+
 import net.minecraft.block.BlockChest;
 import net.minecraft.block.BlockShulkerBox;
 import net.minecraft.client.Minecraft;
@@ -248,5 +250,14 @@ public class ActionButtons
                 return I18n.format( "gui.fireworks" );
             }
         } };
+    }
+    
+    public static class SorterGuiActionButton implements Comparator<GuiActionButton>{
+        @Override
+        public int compare( GuiActionButton o1, GuiActionButton o2 )
+        {
+            return o1.getText().compareTo( o2.getText() );
+        }
+        
     }
 }

@@ -55,6 +55,18 @@ public abstract class GuiActionButton extends GuiInfinityButton
         return false;
     }
     
+    public void add( int id, List<GuiButton> buttonList, ItemStack stack, int x, int y, int width, int heigth )
+    {
+        this.stack = stack;
+        this.id = id;
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = heigth;
+        this.displayString = getText();
+        buttonList.add( this );
+    }
+    
     public ItemStack getItemStack()
     {
         return this.stack;
