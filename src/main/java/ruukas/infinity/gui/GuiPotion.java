@@ -59,7 +59,7 @@ public class GuiPotion extends GuiInfinity
         time.maxValue = 99999;
         time.setValue( 1 );
         
-        colorButton = addButton( new GuiInfinityButton( 102, 15, height - 90, 40, 20, I18n.format( "gui.color" ) ) );
+        colorButton = addButton( new GuiInfinityButton( 102, 15, height - 90, 80, 20, I18n.format( "gui.color" ) ) );
         
         potionIcon = new ItemStack( Items.POTIONITEM );
         
@@ -189,8 +189,13 @@ public class GuiPotion extends GuiInfinity
         {
             InfinityPotionEffectTag e = potionTags[i];
             PotionEffect effect = e.getEffect();
-            int ampli = effect.getAmplifier();
-            drawString( fontRenderer, (effect.getPotion().isBadEffect() ? TextFormatting.RED : TextFormatting.BLUE) + I18n.format( effect.getEffectName() ) + (ampli > 1 ? (" " + I18n.format( "potion.potency." + ampli ).trim()) : "") + " (" + (ampli + 1) + ")", 5, midY + i * 10 - potionTags.length * 5, HelperGui.MAIN_PURPLE );
+            if(effect != null){
+                int ampli = effect.getAmplifier();
+                drawString( fontRenderer, (effect.getPotion().isBadEffect() ? TextFormatting.RED : TextFormatting.BLUE) + I18n.format( effect.getEffectName() ) + (ampli > 1 ? (" " + I18n.format( "potion.potency." + ampli ).trim()) : "") + " (" + (ampli + 1) + ")", 5, midY + i * 10 - potionTags.length * 5, HelperGui.MAIN_PURPLE );
+            }
+            else{
+                drawString( fontRenderer, "Unknown ID (" + e.getId() + ")", 5, midY + i * 10 - potionTags.length * 5, HelperGui.BAD_RED );
+            }
         }
         
         level.drawTextBox();

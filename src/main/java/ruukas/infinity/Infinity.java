@@ -105,6 +105,7 @@ public class Infinity
     
     // CHANGELOG:
     // Fix gui title of banner maker
+    // Fixed crash related to unknown potion and enchanting id's
     
     //TODO next version:
     // Fix heads tab icon lag

@@ -202,7 +202,12 @@ public class GuiEnchanting extends GuiInfinity
         for ( int i = 0 ; i < enchantmentTags.length ; i++ )
         {
             InfinityEnchantmentTag e = enchantmentTags[i];
-            drawString( fontRenderer, e.getEnchantment().getTranslatedName( e.getLevel() ).replace( "enchantment.level.", "" ), 5, midY + i * 10 - enchantmentTags.length * 5, HelperGui.MAIN_PURPLE );
+            if(e.getEnchantment() != null){
+                drawString( fontRenderer, e.getEnchantment().getTranslatedName( e.getLevel() ).replace( "enchantment.level.", "" ), 5, midY + i * 10 - enchantmentTags.length * 5, HelperGui.MAIN_PURPLE );
+            }
+            else{
+                drawString( fontRenderer, "Unknown ID (" + e.getID() + ")", 5, midY + i * 10 - enchantmentTags.length * 5, HelperGui.BAD_RED );
+            }
         }
         
         level.drawTextBox();

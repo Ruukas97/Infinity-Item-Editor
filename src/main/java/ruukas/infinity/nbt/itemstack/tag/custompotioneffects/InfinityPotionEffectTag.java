@@ -31,4 +31,8 @@ public class InfinityPotionEffectTag
         effect.writeCustomPotionEffectToNBT( tag );
         return this;
     }
+    
+    public byte getId(){
+        return tag.getByte( "Id" );
+    }
 }
