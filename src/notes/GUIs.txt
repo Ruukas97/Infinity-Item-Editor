@@ -1,9 +1,0 @@
-Color Picker GUI
-Banner Maker
-Firework maker
-Armor Stand
-
-Command Gui:
- - Gamerule Switches
- - Gamemode Switches
- - Teleporting
