@@ -113,6 +113,15 @@ public class InfinityEventHandler
         }
     }
     
+    /*@SubscribeEvent
+    public static void onInitGuiPost(GuiScreenEvent.InitGuiEvent.Post e){
+    }
+    
+    @SubscribeEvent
+    public static void onActionPerformed(GuiScreenEvent.ActionPerformedEvent e){
+        
+    }*/
+    
     /*
      * @SubscribeEvent public void updateTooltip(ItemTooltipEvent event) { ItemStack stack = event.getItemStack(); Item item = event.getItemStack().getItem(); List<String> tooltip = event.getToolTip();
      * 

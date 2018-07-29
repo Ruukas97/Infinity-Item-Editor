@@ -32,6 +32,7 @@ gui.hideflags=Hide Flags
 gui.bannermaker=Banner Maker
 gui.fireworks=Preview Rocket
 gui.specialbutton=Special NBT
+gui.headcollection=Head Collection
 
 gui.armorstand.pose=Armor Stand Pose Editor
 gui.armorstand.pose.reset.1=Only resets rotations!
@@ -72,6 +73,23 @@ gui.head.save.tooltip.1=Might lag, when loading player info.
 gui.head.save.tooltip.2=This is a vanilla problem.
 gui.head.list.tooltip.1=List current players on the server.
 gui.head.list.tooltip.2=--Not implemented yet--
+
+gui.headcollection.category.alphabet=Alphabet
+gui.headcollection.category.animals=Animals
+gui.headcollection.category.blocks=Blocks
+gui.headcollection.category.decoration=Decoration
+gui.headcollection.category.food-drinks=Food/Drinks
+gui.headcollection.category.humans=Humans
+gui.headcollection.category.humanoid=Humanoid
+gui.headcollection.category.miscellaneous=Misc
+gui.headcollection.category.monsters=Monsters
+gui.headcollection.category.plants=Plants
+
+gui.headcollection.typesearch=Type to search
+gui.headcollection.clicksearch=Click to search!
+gui.headcollection.currentpage=Page %s/%s
+gui.headcollection.changecategory.1=Change Category
+gui.headcollection.changecategory.2=Takes a few seconds to load
 
 gui.item.toggleside=Switch View
 gui.item.discord=Join Discord

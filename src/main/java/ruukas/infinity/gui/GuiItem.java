@@ -38,8 +38,8 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
     private GuiInfinityButton sidebarButton;
     private boolean ignoreNextClick = false;
     
+    private GuiInfinityButton headCollectionButton;
     private GuiInfinityButton shareButton; // Share to chat, copy to clipboard etc.
-    private GuiInfinityButton enderSlot;
     private GuiInfinityButton specialButton;
     private GuiInfinityButton discordButton;
     
@@ -174,9 +174,9 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
         // SIDEBAR BUTTONS
         int sidebarButtonID = 350;
         
-        enderSlot = addButton( new GuiInfinityButton( sidebarButtonID++, width / 8 - 40, midY - 80, 80, 20, "Test" ) );
-        enderSlot.enabled = sidebarOn;
-        enderSlot.visible = sidebarOn;
+        headCollectionButton = addButton( new GuiInfinityButton( sidebarButtonID++, width / 8 - 40, midY - 80, 80, 20, I18n.format( "gui.headcollection" ) ) );
+        headCollectionButton.enabled = sidebarOn;
+        headCollectionButton.visible = sidebarOn;
         
         shareButton = addButton( new GuiInfinityButton( sidebarButtonID++, width / 8 - 40, midY - 45, 80, 20, I18n.format( "gui.item.share" ) ) );
         shareButton.enabled = false;
@@ -438,7 +438,7 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
             initGui();
         }
         
-        else if ( button.id == enderSlot.id )
+        else if ( button.id == headCollectionButton.id )
         {
             mc.displayGuiScreen( new GuiHeadCollection( this ) );
         }
@@ -534,9 +534,9 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
         
         HelperGui.addTooltipTranslated( colorButtons[1], mouseX, mouseY, "gui.item.colorremove.tooltip" );
         
-        if ( enderSlot != null && enderSlot.visible )
+        if ( headCollectionButton != null && headCollectionButton.visible )
         {
-            HelperGui.addToolTip( enderSlot.x, enderSlot.y, enderSlot.width, enderSlot.height, mouseX, mouseY, "Not implemented yet." );
+            HelperGui.addToolTip( headCollectionButton.x, headCollectionButton.y, headCollectionButton.width, headCollectionButton.height, mouseX, mouseY, "Not implemented yet." );
         }
         
         if ( shareButton != null && shareButton.visible )

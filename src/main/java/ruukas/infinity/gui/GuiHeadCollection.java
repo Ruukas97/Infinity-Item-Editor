@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Scanner;
 
+import org.lwjgl.input.Keyboard;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -12,8 +14,10 @@ import com.google.gson.JsonParser;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ChatAllowedCharacters;
 import net.minecraft.util.NonNullList;
 import ruukas.infinity.nbt.NBTHelper;
 import ruukas.infinity.nbt.itemstack.tag.InfinitySkullOwnerTag;
@@ -24,10 +28,18 @@ public class GuiHeadCollection extends GuiScreen
     private static final String API_URL = "https://minecraft-heads.com/scripts/api.php?cat=";
     
     private static int selCat = 0;
+    private static int currentElement = 0;
+    private static String filteredString = null;
+    private static String searchString = "";
+    
+    private int maxInRow;
+    private int amountInPage;
+    
+    private int loaded = -1;
     
     private final GuiScreen lastScreen;
-    private boolean loadSuccess = false;
-    private NonNullList<ItemStack> skulls = NonNullList.create();
+    private NonNullList<ItemStack> allSkulls = NonNullList.create();
+    private NonNullList<ItemStack> filteredSkulls = NonNullList.create();
     
     public GuiHeadCollection(GuiScreen lastScreen) {
         this.lastScreen = lastScreen;
@@ -37,16 +49,42 @@ public class GuiHeadCollection extends GuiScreen
     public void initGui()
     {
         super.initGui();
-        selCat = 0;
-        try
+        Keyboard.enableRepeatEvents( true );
+        if ( loaded != selCat )
         {
-            loadSkulls();
+            try
+            {
+                loadSkulls();
+            }
+            catch ( IOException e )
+            {
+                e.printStackTrace();
+            }
         }
-        catch ( IOException e )
+        if ( !searchString.equals( filteredString ) )
         {
-            e.printStackTrace();
+            filteredSkulls.clear();
+            
+            for ( ItemStack s : allSkulls )
+            {
+                if ( s.getDisplayName().toLowerCase().contains( searchString.toLowerCase() ) )
+                {
+                    filteredSkulls.add( s );
+                }
+            }
+            
+            currentElement = 0;
+            filteredString = searchString;
         }
         
+        maxInRow = (width - 250) / 16;
+        amountInPage = maxInRow * 10;
+    }
+    
+    @Override
+    public void onGuiClosed()
+    {
+        Keyboard.enableRepeatEvents( false );
     }
     
     @Override
@@ -54,15 +92,61 @@ public class GuiHeadCollection extends GuiScreen
     {
         super.mouseClicked( mouseX, mouseY, mouseButton );
         
-        int maxInRow = (width - 200) / 16;
-
-        for ( int i = 0 ; i < maxInRow * 10 ; i++ )
+        if ( mouseButton != 0 )
         {
-            int x = 100 + (16 * (i % maxInRow));
-            int y = 50 + (16 * (i / maxInRow));
+            return;
+        }
+        
+        int letterSpace = 80;
+        int space = ((width - (maxInRow * 16)) - letterSpace) / 2;
+        int nextPageW = fontRenderer.getStringWidth( "-->" );
+        int topbar = 20;
+        
+        int currentPage = currentElement / amountInPage;
+        int amountPages = ((int) Math.ceil( filteredSkulls.size() / amountInPage ) + 1);
+        
+        int searchW = fontRenderer.getStringWidth( searchString );
+        if ( searchString.length() > 0 && !searchString.equals( filteredString ) && HelperGui.isMouseInRegion( mouseX, mouseY, (width / 2) - searchW / 2, 56, searchW, 8 ) )
+        {
+            initGui();
+        }
+        
+        // Next page
+        else if ( currentPage + 1 < amountPages && HelperGui.isMouseInRegion( mouseX, mouseY, space + letterSpace + maxInRow * 16 - 3 - nextPageW, 50 + topbar + 168, nextPageW, 8 ) )
+        {
+            currentElement = Math.min( filteredSkulls.size() - 1, (currentPage + 1) * amountInPage );
+            return;
+        }
+        else if ( currentPage > 0 && HelperGui.isMouseInRegion( mouseX, mouseY, space + letterSpace + maxInRow * 16 - 25 - nextPageW * 2, 50 + topbar + 168, nextPageW, 8 ) )
+        {
+            currentElement = Math.max( 0, (currentPage - 1) * amountInPage );
+            return;
+        }
+        
+        for ( int i = 0 ; i < CATEGORIES.length ; i++ )
+        {
+            int x = space + letterSpace / 2;
+            int y = i * 15 + 59 + topbar;
+            
+            int sWH = fontRenderer.getStringWidth( CATEGORIES[i] ) / 2;
+            if ( mouseX > x - sWH && mouseX < x + sWH && mouseY > y - 1 && mouseY < y + 9 )
+            {
+                selCat = i;
+                currentElement = 0;
+                initGui();
+                return;
+            }
+        }
+        
+        for ( int i = (int) Math.min( filteredSkulls.size() - 1, currentPage * amountInPage ) ; i < (int) Math.min( filteredSkulls.size() - 1, (currentPage + 1) * amountInPage ) ; i++ )
+        {
+            int x = space + letterSpace + (16 * (i % maxInRow));
+            int y = 50 + topbar + (16 * ((i % amountInPage) / maxInRow));
+            
             if ( mouseX > x && mouseX < x + 16 && mouseY > y && mouseY < y + 16 )
             {
-                mc.playerController.sendSlotPacket( skulls.get( i ), mc.player.inventory.currentItem + 36 ); // 36 is the index of the action (4 armor, 1 off hand, 5 crafting, and 27 inventory, if I remember correctly).
+                mc.playerController.sendSlotPacket( filteredSkulls.get( i ), mc.player.inventory.currentItem + 36 ); // 36 is the index of the action (4 armor, 1 off hand, 5 crafting, and 27 inventory, if I remember correctly).
+                return;
             }
         }
     }
@@ -79,11 +163,85 @@ public class GuiHeadCollection extends GuiScreen
                 this.mc.setIngameFocus();
             }
         }
+        else if ( keyCode == Keyboard.KEY_BACK )
+        {
+            searchString = searchString.substring( 0, Math.max( searchString.length() - 1, 0 ) );
+            if ( searchString.length() < 1 && !searchString.equals( filteredString ) )
+            {
+                initGui();
+            }
+        }
+        else if ( (keyCode == Keyboard.KEY_RETURN || keyCode == Keyboard.KEY_NUMPADENTER) && !searchString.equals( filteredString ) )
+        {
+            initGui();
+        }
+        else if ( ChatAllowedCharacters.isAllowedCharacter( typedChar ) )
+        {
+            if ( searchString.length() < 20 )
+            {
+                searchString += typedChar;
+            }
+        }
     }
     
     @Override
     public void drawScreen( int mouseX, int mouseY, float partialTicks )
     {
+        int topbar = 20;
+        int letterSpace = 80;
+        int space = ((width - (maxInRow * 16 + 3)) - letterSpace) / 2;
+        int currentPage = currentElement / amountInPage;
+        int blandColor = HelperGui.getColorFromRGB( 255, 150, 200, 255 );
+        int amountPages = ((int) Math.ceil( filteredSkulls.size() / amountInPage ) + 1);
+        
+        // Topbar
+        drawRect( space, 50, space + letterSpace + (maxInRow * 16) + 3, 50 + topbar, HelperGui.getColorFromRGB( 200, 0, 122, 255 ) );
+        // Outlines
+        drawRect( space, 50 + topbar, space + 2, 50 + topbar + 161 + topbar, HelperGui.getColorFromRGB( 200, 0, 122, 255 ) );
+        drawRect( space + letterSpace + maxInRow * 16 + 1, 50 + topbar, space + letterSpace + maxInRow * 16 + 3, 50 + topbar + 161 + topbar, HelperGui.getColorFromRGB( 200, 0, 122, 255 ) );
+        drawRect( space + 2, 50 + topbar + 161, space + letterSpace + (maxInRow * 16) + 1, 50 + topbar + 163, HelperGui.getColorFromRGB( 200, 0, 122, 255 ) );
+        drawRect( space, 50 + topbar * 2 + 161, space + letterSpace + (maxInRow * 16) + 3, 50 + topbar * 2 + 163, HelperGui.getColorFromRGB( 200, 0, 122, 255 ) );
+        
+        // Background
+        drawRect( space, 50 + topbar, space + letterSpace + (maxInRow * 16) + 3, 50 + topbar * 2 + 163, HelperGui.getColorFromRGB( 100, 70, 50, 200 ) );
+        // Letterspace
+        drawRect( space + 2, 50 + topbar, space + letterSpace - 2, 50 + topbar + 161, HelperGui.getColorFromRGB( 100, 50, 50, 50 ) );
+        
+        for ( int i = 0 ; i < CATEGORIES.length ; i++ )
+        {
+            int x = space + letterSpace / 2;
+            int y = i * 15 + 59 + topbar;
+            int sWH = fontRenderer.getStringWidth( CATEGORIES[i] ) / 2;
+            
+            drawCenteredString( fontRenderer, I18n.format( "gui.headcollection.category." + CATEGORIES[i] ), x, y, (i == selCat || (mouseX > x - sWH && mouseX < x + sWH && mouseY > y - 1 && mouseY < y + 9) ? HelperGui.MAIN_BLUE : HelperGui.MAIN_PURPLE) );
+        }
+        
+        drawString( fontRenderer, I18n.format( "gui.headcollection" ) + " (" + filteredSkulls.size() + ")", space + 7, 56, blandColor );
+        
+        drawCenteredString( fontRenderer, searchString.length() > 0 ? searchString : I18n.format( "gui.headcollection.typesearch" ), width / 2, 56, blandColor );
+        
+        String pageString = I18n.format( "gui.headcollection.currentpage", currentPage + 1, amountPages );
+        drawString( fontRenderer, pageString, space + letterSpace + maxInRow * 16 - fontRenderer.getStringWidth( pageString ), 56, blandColor );
+        
+        String nextPage = "-->";
+        int nextPageW = fontRenderer.getStringWidth( nextPage );
+        if ( currentPage + 1 < amountPages )
+        {
+            boolean selectedN = HelperGui.isMouseInRegion( mouseX, mouseY, space + letterSpace + maxInRow * 16 - 3 - nextPageW, 50 + topbar + 168, nextPageW, 8 );
+            drawString( fontRenderer, nextPage, space + letterSpace + maxInRow * 16 - 3 - nextPageW, 50 + topbar + 168, selectedN ? HelperGui.MAIN_BLUE : blandColor );
+        }
+        
+        drawCenteredString( fontRenderer, "" + (currentPage + 1), space + letterSpace + maxInRow * 16 - 13 - nextPageW, 50 + topbar + 168, blandColor );
+        
+        if ( currentPage > 0 )
+        {
+            String previousPage = "<--";
+            boolean selectedP = HelperGui.isMouseInRegion( mouseX, mouseY, space + letterSpace + maxInRow * 16 - 25 - nextPageW * 2, 50 + topbar + 168, nextPageW, 8 );
+            drawString( fontRenderer, previousPage, space + letterSpace + maxInRow * 16 - 25 - nextPageW * 2, 50 + topbar + 168, selectedP ? HelperGui.MAIN_BLUE : blandColor );
+        }
+        
+        drawString( fontRenderer, "From https://minecraft-heads.com API", space + 7, 50 + topbar + 168, blandColor );
+        
         GlStateManager.pushMatrix();
         RenderHelper.enableGUIStandardItemLighting();
         GlStateManager.disableLighting();
@@ -91,21 +249,36 @@ public class GuiHeadCollection extends GuiScreen
         GlStateManager.enableColorMaterial();
         GlStateManager.enableLighting();
         itemRender.zLevel = 100.0F;
-        int maxInRow = (width - 200) / 16;
-        // int maxInRow = (width - 16) / 16;
-        for ( int i = 0 ; i < maxInRow * 10 ; i++ )
+        ItemStack hovered = null;
+        for ( int i = (int) Math.min( filteredSkulls.size() - 1, currentPage * amountInPage ) ; i < (int) Math.min( filteredSkulls.size() - 1, (currentPage + 1) * amountInPage ) ; i++ )
         {
-            int x = 100 + (16 * (i % maxInRow));
-            int y = 50 + (16 * (i / maxInRow));
-            itemRender.renderItemAndEffectIntoGUI( skulls.get( i ), x, y );
+            int x = space + letterSpace + (16 * (i % maxInRow));
+            int y = 50 + topbar + (16 * ((i % amountInPage) / maxInRow));
+            itemRender.renderItemAndEffectIntoGUI( filteredSkulls.get( i ), x, y );
             if ( mouseX > x && mouseX < x + 16 && mouseY > y && mouseY < y + 16 )
             {
-                drawRect( x, y, x+16, y+16, HelperGui.getColorFromRGB( 150, 150, 150, 150 ) );
+                drawRect( x, y, x + 16, y + 16, HelperGui.getColorFromRGB( 150, 150, 150, 150 ) );
+                hovered = filteredSkulls.get( i );
             }
         }
         
         GlStateManager.enableLighting();
         GlStateManager.popMatrix();
+        
+        int searchW = fontRenderer.getStringWidth( searchString );
+        
+        if ( hovered != null )
+        {
+            drawHoveringText( hovered.getDisplayName(), mouseX, mouseY );
+        }
+        else if ( !searchString.equals( filteredString ) && HelperGui.isMouseInRegion( mouseX, mouseY, (width / 2) - searchW / 2, 56, searchW, 8 ) )
+        {
+            drawHoveringText( I18n.format("gui.headcollection.clicksearch"), mouseX, mouseY );
+        }
+        else
+        {
+            HelperGui.addTooltipTranslated( space + 2, 50 + topbar, letterSpace - 4, 161, mouseX, mouseY, "gui.headcollection.changecategory" );
+        }
     }
     
     public void loadSkulls() throws IOException
@@ -123,7 +296,7 @@ public class GuiHeadCollection extends GuiScreen
             return;
         }
         
-        skulls.clear();
+        allSkulls.clear();
         
         JsonParser parser = new JsonParser();
         JsonArray array = (JsonArray) parser.parse( line );
@@ -135,8 +308,11 @@ public class GuiHeadCollection extends GuiScreen
             NBTHelper.getDisplayTag( skull ).setString( "Name", ob.get( "Name" ).getAsString() );
             new InfinitySkullOwnerTag( skull ).setId( ob.get( "UUID" ).getAsString() ).setValue( ob.get( "Value" ).getAsString() );
             
-            skulls.add( skull );
+            allSkulls.add( skull );
         }
+        
+        loaded = selCat;
+        filteredString = null;
     }
     
     @Override
