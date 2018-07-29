@@ -27,7 +27,7 @@ public class Infinity
 {
     public static final String MODID = "infinity";
     public static final String NAME = "Infinity Item Editor";
-    public static final String VERSION = "0.10";
+    public static final String VERSION = "0.11pre1";
     
     public static Logger logger;
     
@@ -45,13 +45,10 @@ public class Infinity
     // remove "this." from code where it's unneeded for better readability
     // Special characters in chat (GuiUtils.UNDO_CHAR)
     
-    // Firework GUI:
-    //
-    
     // Attributes GUI:
     // EntityZombie SPAWN_REINFORCEMENTS_CHANCE
     // AbstractHorse JUMP_STRENGTH
-    // EntityPlayer REACH_DISTANCE
+    // EntityPlayer REACH_DISTANCE is from forge
     
     // Item GUI:
     // Add picker for ID and Meta (list that shows items)
@@ -69,7 +66,6 @@ public class Infinity
     
     // Head gui:
     // Add list to pick from players on the server
-    // Add list of premade heads
     
     // Export GUI
     // Export as give command
@@ -108,14 +104,11 @@ public class Infinity
     // CHANGELOG:
     // Added head collection gui
     // Added lore gui
+    // Changed "Infinity - Heads" tab icon
     // Fix gui title of banner maker
     // Fixed crash related to unknown potion and enchanting id's
     // Fixed last lore line didn't have clear button
-    
-    // TODO next version:
-    // Fix heads tab icon lag
-    // More spawning option for head collection
-    
+        
     @EventHandler
     public void preInit( FMLPreInitializationEvent event )
     {
