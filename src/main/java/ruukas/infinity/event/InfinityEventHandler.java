@@ -48,7 +48,7 @@ public class InfinityEventHandler
                 return;
             }
             
-            Minecraft.getMinecraft().displayGuiScreen( new GuiItem( Minecraft.getMinecraft().currentScreen, currentStack.copy() ) );
+            Minecraft.getMinecraft().displayGuiScreen( new GuiItem( Minecraft.getMinecraft().currentScreen, currentStack.copy(), -1 ) );
         }
         
         if ( Infinity.keybindCopy.isPressed() && Minecraft.getMinecraft().world != null )
@@ -113,14 +113,13 @@ public class InfinityEventHandler
         }
     }
     
-    /*@SubscribeEvent
-    public static void onInitGuiPost(GuiScreenEvent.InitGuiEvent.Post e){
-    }
-    
-    @SubscribeEvent
-    public static void onActionPerformed(GuiScreenEvent.ActionPerformedEvent e){
-        
-    }*/
+    /*
+     * @SubscribeEvent public static void onInitGuiPost(GuiScreenEvent.InitGuiEvent.Post e){ }
+     * 
+     * @SubscribeEvent public static void onActionPerformed(GuiScreenEvent.ActionPerformedEvent e){
+     * 
+     * }
+     */
     
     /*
      * @SubscribeEvent public void updateTooltip(ItemTooltipEvent event) { ItemStack stack = event.getItemStack(); Item item = event.getItemStack().getItem(); List<String> tooltip = event.getToolTip();

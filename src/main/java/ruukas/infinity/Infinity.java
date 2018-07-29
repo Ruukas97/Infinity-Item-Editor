@@ -97,18 +97,24 @@ public class Infinity
     // Show particles toggle button (See PotionEffect.class)
     // Curative item (e.g. which item cures the effect - default is milk_bucket)
     // Vanilla potion types
-    // Custom color tag
     
     // Gui overlay:
     // Similar to the right click in NBT explorer
     // Will feature things such as item picker!
     
+    // Hide flags:
+    // Add button to clear lore
+    
     // CHANGELOG:
+    // Added head collection gui
+    // Added lore gui
     // Fix gui title of banner maker
     // Fixed crash related to unknown potion and enchanting id's
+    // Fixed last lore line didn't have clear button
     
-    //TODO next version:
+    // TODO next version:
     // Fix heads tab icon lag
+    // More spawning option for head collection
     
     @EventHandler
     public void preInit( FMLPreInitializationEvent event )

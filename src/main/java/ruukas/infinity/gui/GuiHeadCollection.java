@@ -145,7 +145,14 @@ public class GuiHeadCollection extends GuiScreen
             
             if ( mouseX > x && mouseX < x + 16 && mouseY > y && mouseY < y + 16 )
             {
-                mc.playerController.sendSlotPacket( filteredSkulls.get( i ), mc.player.inventory.currentItem + 36 ); // 36 is the index of the action (4 armor, 1 off hand, 5 crafting, and 27 inventory, if I remember correctly).
+                if ( isShiftKeyDown() )
+                {
+                    mc.playerController.sendPacketDropItem( filteredSkulls.get( i ));
+                }
+                else
+                {
+                    mc.playerController.sendSlotPacket( filteredSkulls.get( i ), mc.player.inventory.currentItem + 36 ); // 36 is the index of the action (4 armor, 1 off hand, 5 crafting, and 27 inventory, if I remember correctly).
+                }
                 return;
             }
         }
@@ -269,11 +276,11 @@ public class GuiHeadCollection extends GuiScreen
         
         if ( hovered != null )
         {
-            drawHoveringText( hovered.getDisplayName(), mouseX, mouseY );
+            HelperGui.addToolTip( 0, 0, width, height, mouseX, mouseY, hovered.getDisplayName(), I18n.format( "gui.headcollection.clickhead" ), I18n.format( "gui.headcollection.clickheadshift" ) );
         }
         else if ( !searchString.equals( filteredString ) && HelperGui.isMouseInRegion( mouseX, mouseY, (width / 2) - searchW / 2, 56, searchW, 8 ) )
         {
-            drawHoveringText( I18n.format("gui.headcollection.clicksearch"), mouseX, mouseY );
+            drawHoveringText( I18n.format( "gui.headcollection.clicksearch" ), mouseX, mouseY );
         }
         else
         {

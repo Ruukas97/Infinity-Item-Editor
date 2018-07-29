@@ -33,6 +33,7 @@ gui.bannermaker=Banner Maker
 gui.fireworks=Preview Rocket
 gui.specialbutton=Special NBT
 gui.headcollection=Head Collection
+gui.lore=Lore Editor
 
 gui.armorstand.pose=Armor Stand Pose Editor
 gui.armorstand.pose.reset.1=Only resets rotations!
@@ -85,6 +86,8 @@ gui.headcollection.category.miscellaneous=Misc
 gui.headcollection.category.monsters=Monsters
 gui.headcollection.category.plants=Plants
 
+gui.headcollection.clickhead=Click to replace current item
+gui.headcollection.clickheadshift=Hold shift to drop head
 gui.headcollection.typesearch=Type to search
 gui.headcollection.clicksearch=Click to search!
 gui.headcollection.currentpage=Page %s/%s

@@ -79,6 +79,6 @@ public class InfinityTabSkulls extends InfinityTab
     @Override
     public ItemStack getTabIconItem()
     {
-        return clientSkull();
+        return new ItemStack( Items.SKULL, 1, 3 );
     };
 }

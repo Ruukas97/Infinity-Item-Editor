@@ -48,6 +48,7 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
     private ArrayList<GuiNumberField> numberFields = new ArrayList<>();
     
     private ArrayList<GuiTextField> loreFields = new ArrayList<>();
+    private ArrayList<GuiInfinityButton> loreButtons = new ArrayList<>();
     
     private ArrayList<CenterString> centerStrings = new ArrayList<>();
     private ArrayList<DrawString> drawStrings = new ArrayList<>();
@@ -56,11 +57,12 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
     
     private ArrayList<GuiInfinityButton> specialButtons = new ArrayList<>();
     
-    private ArrayList<GuiInfinityButton> loreButtons = new ArrayList<>();
+    private int slot;
     
-    public GuiItem(GuiScreen lastScreen, ItemStack stack) {
+    public GuiItem(GuiScreen lastScreen, ItemStack stack, int slot) {
         super( lastScreen, stack );
         hasSave = true;
+        this.slot = slot;
     }
     
     @Override
@@ -74,6 +76,21 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
     {
         super.reset();
         clearCustomName();
+    }
+    
+    @Override
+    protected void save()
+    {
+        if ( slot < 1 )
+        {
+            mc.playerController.sendSlotPacket( stack, mc.player.inventory.currentItem + 36 ); // 36 is the index of the action (4 armor, 1 off hand, 5 crafting, and 27 inventory, if I remember correctly).
+        }
+        else
+        {
+            mc.playerController.sendSlotPacket( stack, slot);
+        }
+        
+        super.save();
     }
     
     private static class CenterString
@@ -242,7 +259,7 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
     {
         for ( GuiButton b : loreButtons )
         {
-            if ( b.id >= 181 && b.id <= 186 )
+            if ( (b.id >= 181 && b.id <= 186) || b.id == 260 )
             {
                 buttonList.remove( b );
             }
@@ -251,16 +268,24 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
         loreButtons.clear();
         loreFields.clear();
         int id = 251;
-        
-        for ( int i = 0 ; i < 6 ; i++ )
+        int amount = 0;
+        for ( int i = 0 ; i < 5 ; i++ )
         {
             if ( NBTHelper.getLoreLine( stack, i ) != null )
+            {
                 addLoreTextField( id++, i, true );
+                amount++;
+            }
             else
             {
                 addLoreTextField( id++, i, false ); // Adds one extra line before breaking so there's a field to potentially add an extra line.
                 break;
             }
+        }
+        
+        if ( amount >= 5 )
+        {
+            addIfNotIn( new GuiInfinityButton( 260, width - 180, 250, 170, 20, I18n.format( "gui.lore" ) ), loreButtons );
         }
     }
     
@@ -268,22 +293,54 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
     {
         GuiActionTextField lore = new GuiActionTextField( id, fontRenderer, width - 180, 100 + (30 * line), 170, 20 );
         lore.setMaxStringLength( 100 );
-        lore.setText( NBTHelper.getLoreLine( stack, line ) != null ? NBTHelper.getLoreLine( stack, line ) : "Lore" + (line + 1) );
+        String loreLine = NBTHelper.getLoreLine( stack, line );
+        lore.setText( loreLine != null ? NBTHelper.getLoreLine( stack, line ) : "Lore" + (line + 1) );
         lore.action = () -> {
             NBTHelper.editLoreLine( stack, line, lore.getText() );
-            if ( line < 5 && loreFields.size() - 1 == line )
+            if ( line < 4 && loreFields.size() - 1 == line )
             {
                 addLoreTextField( id + 1, line + 1, false );
             }
+            else
+            {
+                if ( line == 4 )
+                {
+                    addIfNotIn( new GuiInfinityButton( 260, width - 180, 250, 170, 20, I18n.format( "gui.lore" ) ), loreButtons );
+                }
+                
+                addIfNotIn( new GuiInfinityButton( 182 + line, width - 195, 100 + 30 * line, 14, 20, TextFormatting.DARK_RED + "X" ), loreButtons );
+                
+            }
         };
+        
         loreFields.add( lore );
+        
+        if ( loreLine != null )
+        {
+            addIfNotIn( new GuiInfinityButton( 182 + line, width - 195, 100 + 30 * line, 14, 20, TextFormatting.DARK_RED + "X" ), loreButtons );
+        }
         
         if ( loreFields.size() > 1 )
         {
-            GuiInfinityButton btn = new GuiInfinityButton( 181 + line, width - 195, 100 + (30 * (line - 1)), 14, 20, TextFormatting.DARK_RED + "X" );
-            
-            this.loreButtons.add( btn );
-            this.addButton( btn );
+            addIfNotIn( new GuiInfinityButton( 181 + line, width - 195, 100 + 30 * (line - 1), 14, 20, TextFormatting.DARK_RED + "X" ), loreButtons );
+        }
+    }
+    
+    private void addIfNotIn( GuiInfinityButton button, ArrayList<GuiInfinityButton> list )
+    {
+        boolean exists = false;
+        for ( GuiInfinityButton b : loreButtons )
+        {
+            if ( b.id == button.id )
+            {
+                exists = true;
+                break;
+            }
+        }
+        
+        if ( !exists )
+        {
+            list.add( addButton( button ) );
         }
     }
     
@@ -401,6 +458,11 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
         {
             NBTHelper.removeLoreLine( stack, button.id - 181 - 1 );
             addLoreStuff();
+        }
+        
+        else if ( button.id == 260 )
+        {
+            this.mc.displayGuiScreen( new GuiLore( this, stack ) );
         }
         
         else if ( button.id >= 130 && button.id < 130 + colorButtons.length )
@@ -533,11 +595,6 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
         HelperGui.addTooltipTranslated( this.width / 2 + 30, this.height - 35, 60, 20, mouseX, mouseY, "gui.item.drop.tooltip" );
         
         HelperGui.addTooltipTranslated( colorButtons[1], mouseX, mouseY, "gui.item.colorremove.tooltip" );
-        
-        if ( headCollectionButton != null && headCollectionButton.visible )
-        {
-            HelperGui.addToolTip( headCollectionButton.x, headCollectionButton.y, headCollectionButton.width, headCollectionButton.height, mouseX, mouseY, "Not implemented yet." );
-        }
         
         if ( shareButton != null && shareButton.visible )
         {
