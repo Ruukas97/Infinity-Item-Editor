@@ -102,13 +102,14 @@ public class Infinity
     // Add button to clear lore
     
     // CHANGELOG:
+    // Made U usable inside a gui
     // Added head collection gui
     // Added lore gui
     // Changed "Infinity - Heads" tab icon
     // Fix gui title of banner maker
     // Fixed crash related to unknown potion and enchanting id's
     // Fixed last lore line didn't have clear button
-        
+    
     @EventHandler
     public void preInit( FMLPreInitializationEvent event )
     {

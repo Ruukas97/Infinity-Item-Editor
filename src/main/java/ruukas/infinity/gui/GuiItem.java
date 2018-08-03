@@ -81,16 +81,14 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
     @Override
     protected void save()
     {
-        if ( slot < 1 )
+        if ( slot < 0 )
         {
             mc.playerController.sendSlotPacket( stack, mc.player.inventory.currentItem + 36 ); // 36 is the index of the action (4 armor, 1 off hand, 5 crafting, and 27 inventory, if I remember correctly).
         }
         else
         {
-            mc.playerController.sendSlotPacket( stack, slot);
+            mc.playerController.sendSlotPacket( stack, slot );
         }
-        
-        super.save();
     }
     
     private static class CenterString

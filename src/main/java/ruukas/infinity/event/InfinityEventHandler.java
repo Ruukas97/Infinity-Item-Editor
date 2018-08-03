@@ -4,10 +4,14 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import org.lwjgl.input.Keyboard;
+
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.gui.inventory.GuiContainerCreative;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -16,6 +20,7 @@ import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.entity.item.EntityItemFrame;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EntitySelectors;
 import net.minecraft.util.EnumFacing;
@@ -24,6 +29,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.client.event.RenderTooltipEvent;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -37,7 +43,7 @@ import ruukas.infinity.gui.HelperGui;
 public class InfinityEventHandler
 {
     
-    @SubscribeEvent( )
+    @SubscribeEvent
     public static void onKeyPress( KeyInputEvent event )
     {
         if ( Infinity.keybind.isPressed() && Minecraft.getMinecraft().world != null )
@@ -94,6 +100,45 @@ public class InfinityEventHandler
                         mc.playerController.sendSlotPacket( stacks[4], 6 ); // 36 is the index of the actionbar (5 crafting, 4 armor, and 27 inventory, if I remember correctly).
                         mc.playerController.sendSlotPacket( stacks[5], 5 ); // 36 is the index of the actionbar (5 crafting, 4 armor, and 27 inventory, if I remember correctly).
                     }
+                }
+            }
+        }
+    }
+    
+    @SubscribeEvent
+    public static void onKeyboardInput( GuiScreenEvent.KeyboardInputEvent.Pre e )
+    {
+        EntityPlayerSP player = Minecraft.getMinecraft().player;
+        if ( Keyboard.isKeyDown( Infinity.keybind.getKeyCode() ) && Minecraft.getMinecraft().world != null && player != null && e.getGui() instanceof GuiContainer )
+        {
+            ItemStack cursorStack = player.inventory.getItemStack();
+            if ( cursorStack == ItemStack.EMPTY || cursorStack.getItem() == Items.AIR )
+            {
+                GuiContainer gui = (GuiContainer) e.getGui();
+                Slot s = gui.getSlotUnderMouse();
+                if ( s != null && s.inventory == player.inventory )
+                {
+                    int i = s.getSlotIndex();
+                    
+                    if ( i <= 8 )
+                    {
+                        i += 36;
+                    }
+                    else if ( 36 <= i && i <= 39 )
+                    {
+                        i = 8 - (i % 4);
+                        // 39 - 5: Head
+                        // 38 - 6: Chest
+                        // 37 - 7: Legs
+                        // 36 - 8: Feet
+                    }
+                    else if ( i == 40 )
+                    {
+                        i = 45;
+                    }
+                                        
+                    Minecraft.getMinecraft().displayGuiScreen( new GuiItem( Minecraft.getMinecraft().currentScreen, s.getStack().copy(), i ) );
+                    e.setCanceled( true );
                 }
             }
         }

@@ -1,6 +1,7 @@
 package ruukas.infinity.gui;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.Scanner;
 
@@ -292,11 +293,11 @@ public class GuiHeadCollection extends GuiScreen
     {
         URL url = new URL( API_URL + CATEGORIES[selCat] );
         
-        String line;
-        try ( Scanner s = new Scanner( url.openStream() ))
-        {
-            line = s.nextLine();
-        }
+        InputStream st = url.openStream();
+        Scanner s = new Scanner( st );
+        String line = s.nextLine();
+        s.close();
+        st.close();
         
         if ( line == null || line.length() < 1 )
         {
