@@ -105,6 +105,7 @@ public class Infinity
     // Made U usable inside a gui
     // Added head collection gui
     // Added lore gui
+    // Can now use U with empty hand on multiplayer
     // Changed "Infinity - Heads" tab icon
     // Fix gui title of banner maker
     // Fixed crash related to unknown potion and enchanting id's

@@ -49,10 +49,6 @@ public class InfinityEventHandler
         if ( Infinity.keybind.isPressed() && Minecraft.getMinecraft().world != null )
         {
             ItemStack currentStack = Minecraft.getMinecraft().player.getHeldItemMainhand();
-            if ( currentStack == null || currentStack == ItemStack.EMPTY )
-            {
-                return;
-            }
             
             Minecraft.getMinecraft().displayGuiScreen( new GuiItem( Minecraft.getMinecraft().currentScreen, currentStack.copy(), -1 ) );
         }
