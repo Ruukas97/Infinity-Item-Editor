@@ -1,1 +1,9 @@
 theme: jekyll-theme-leap-day
+
+title: Infinity Item Editor
+description: The Ultimate In-Game Item Editor for Minecraft
+
+show_downloads: true
+#google_analytics: [Your Google Analytics tracking ID]
+
+curseforge: https://minecraft.curseforge.com/projects/infinity-item-editor/files
