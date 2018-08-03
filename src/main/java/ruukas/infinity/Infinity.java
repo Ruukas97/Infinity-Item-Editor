@@ -110,6 +110,7 @@ public class Infinity
     // Fix gui title of banner maker
     // Fixed crash related to unknown potion and enchanting id's
     // Fixed last lore line didn't have clear button
+    // Added webhooks to Discord channel
     
     @EventHandler
     public void preInit( FMLPreInitializationEvent event )
