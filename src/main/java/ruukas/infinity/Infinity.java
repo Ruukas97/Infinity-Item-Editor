@@ -105,6 +105,7 @@ public class Infinity
     // Made U usable inside a gui
     // Added head collection gui
     // Added lore gui
+    // Added enchanted book to "Unavailable" tab
     // Can now use U with empty hand on multiplayer
     // Changed "Infinity - Heads" tab icon
     // Fix gui title of banner maker
@@ -145,6 +146,7 @@ public class Infinity
                 stackList.add( new ItemStack( Items.SPLASH_POTION ) );
                 stackList.add( new ItemStack( Items.LINGERING_POTION ) );
                 stackList.add( new ItemStack( Items.TIPPED_ARROW ) );
+                stackList.add( new ItemStack(Items.ENCHANTED_BOOK) );
             }
         };
         
