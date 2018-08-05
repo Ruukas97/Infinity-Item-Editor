@@ -30,7 +30,7 @@ public class Infinity
 {
     public static final String MODID = "infinity";
     public static final String NAME = "Infinity Item Editor";
-    public static final String VERSION = "0.11pre1";
+    public static final String VERSION = "0.11pre2";
     
     public static Logger logger;
     
@@ -111,6 +111,7 @@ public class Infinity
     // Added enchanted book to "Unavailable" tab
     // Can now use U with empty hand on multiplayer
     // Changed "Infinity - Heads" tab icon
+    // If using an older version of java, will add Let's Encrypt certificate to support the Head collection gui
     // Fix gui title of banner maker
     // Fixed crash related to unknown potion and enchanting id's
     // Fixed last lore line didn't have clear button
