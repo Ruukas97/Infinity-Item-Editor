@@ -11,8 +11,10 @@ import com.google.common.base.Predicates;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.gui.inventory.GuiContainerCreative;
+import net.minecraft.client.settings.GameSettings;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -104,8 +106,9 @@ public class InfinityEventHandler
     @SubscribeEvent
     public static void onKeyboardInput( GuiScreenEvent.KeyboardInputEvent.Pre e )
     {
-        EntityPlayerSP player = Minecraft.getMinecraft().player;
-        if ( Keyboard.isKeyDown( Infinity.keybind.getKeyCode() ) && Minecraft.getMinecraft().world != null && player != null && e.getGui() instanceof GuiContainer )
+        Minecraft mc = Minecraft.getMinecraft();
+        EntityPlayerSP player = mc.player;
+        if ( Keyboard.isKeyDown( Infinity.keybind.getKeyCode() ) && mc.world != null && player != null && e.getGui() instanceof GuiContainer )
         {
             ItemStack cursorStack = player.inventory.getItemStack();
             if ( cursorStack == ItemStack.EMPTY || cursorStack.getItem() == Items.AIR )
@@ -133,8 +136,24 @@ public class InfinityEventHandler
                         i = 45;
                     }
                                         
-                    Minecraft.getMinecraft().displayGuiScreen( new GuiItem( Minecraft.getMinecraft().currentScreen, s.getStack().copy(), i ) );
+                    mc.displayGuiScreen( new GuiItem( mc.currentScreen, s.getStack().copy(), i ) );
                     e.setCanceled( true );
+                }
+            }
+        }
+        
+        if(GameSettings.isKeyDown( mc.gameSettings.keyBindDrop ) && player != null){
+            e.getGui();
+            if(e.getGui() != null && e.getGui() instanceof GuiContainer && GuiScreen.isCtrlKeyDown()){
+                GuiContainer gui = (GuiContainer)e.getGui();
+                Slot slot = gui.getSlotUnderMouse();
+                if(slot != null){
+                    ItemStack stack = slot.getStack();
+                    if(stack != null && stack.getItem() != Items.AIR && stack != ItemStack.EMPTY){
+                        mc.playerController.sendPacketDropItem( stack.copy() );
+                        player.sendMessage( new TextComponentString( "Adding "  ).appendSibling( stack.getTextComponent() ).appendText( " to thieving tab." ));
+                        e.setCanceled( true );
+                    }
                 }
             }
         }
