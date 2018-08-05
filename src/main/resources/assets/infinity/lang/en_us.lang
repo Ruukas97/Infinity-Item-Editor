@@ -40,6 +40,8 @@ gui.armorstand.pose.reset.1=Only resets rotations!
 gui.armorstand.invisible.note=Note: It may be difficult to remove the armorstand without commands.
 gui.armorstand.marker.note=Marker disables interaction and makes hitbox small.
 
+gui.attributes.infinity.0=Input Value
+gui.attributes.infinity.1=Infinity
 gui.attributes.operation.0=Additive +
 gui.attributes.operation.1=Multiplicative *
 gui.attributes.operation.2=Exponential **

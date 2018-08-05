@@ -36,7 +36,7 @@ public class GuiAttributes extends GuiInfinity
     
     private GuiNumberField level;
     private GuiNumberField levelDecimal;
-    private GuiInfinityButton slotButton, operationButton;
+    private GuiInfinityButton slotButton, operationButton, infinityButton;
     
     private GuiInfinityButton negativeButton;
     private boolean negativeAmount = false;
@@ -44,6 +44,7 @@ public class GuiAttributes extends GuiInfinity
     private int rotOff = 0;
     private int mouseDist = 0;
     private int slot = 0, operation = 0;
+    private boolean isInfinity = false;
     
     public GuiAttributes(GuiScreen lastScreen, ItemStack stack) {
         super( lastScreen, stack );
@@ -56,11 +57,13 @@ public class GuiAttributes extends GuiInfinity
         
         Keyboard.enableRepeatEvents( true );
         
-        operationButton = addButton( new GuiInfinityButton( 250, 15, height - 93, 80, 20, I18n.format( "gui.attributes.operation." + operation ) ) );
+        infinityButton = addButton( new GuiInfinityButton( 250, 15, height - 123, 80, 20, I18n.format( "gui.attributes.infinity." + (isInfinity ? "1" : "0") ) ) );
         
-        slotButton = addButton( new GuiInfinityButton( 251, 15, height - 63, 80, 20, I18n.format( "gui.attributes.slot." + slot ) ) );
+        operationButton = addButton( new GuiInfinityButton( 251, 15, height - 93, 80, 20, I18n.format( "gui.attributes.operation." + operation ) ) );
         
-        negativeButton = addButton( new GuiInfinityButton( 252, 15, height - 33, 20, 20, negativeAmount ? "-" : "+" ) );
+        slotButton = addButton( new GuiInfinityButton( 252, 15, height - 63, 80, 20, I18n.format( "gui.attributes.slot." + slot ) ) );
+        
+        negativeButton = addButton( new GuiInfinityButton( 253, 15, height - 33, 20, 20, negativeAmount ? "-" : "+" ) );
         
         if ( level != null )
         {
@@ -172,10 +175,10 @@ public class GuiAttributes extends GuiInfinity
             
             if ( attribute != null )
             {
-                double amount = (negativeAmount ? -1.0d : 1.0d) * (((double) level.getIntValue()) + (((double) levelDecimal.getIntValue()) / 1000));
+                double amount = isInfinity ? (negativeAmount ? Double.NEGATIVE_INFINITY : Double.POSITIVE_INFINITY) : (negativeAmount ? -1.0d : 1.0d) * (((double) level.getIntValue()) + (((double) levelDecimal.getIntValue()) / 1000));
                 
                 InfinityAttributeModifierTag tag = new InfinityAttributeModifierTag( new InfinityAttributeModifierList( stack ), new AttributeModifier( attribute.getName(), amount, 0 ) );
-                tag.setOperation( operation );
+                tag.setOperation( operationButton.enabled ? operation : 0 );
                 tag.setSlot( slot );
             }
         }
@@ -184,7 +187,15 @@ public class GuiAttributes extends GuiInfinity
     @Override
     protected void actionPerformed( GuiButton button ) throws IOException
     {
-        if ( button.id == operationButton.id )
+        if ( button.id == infinityButton.id )
+        {
+            isInfinity = !isInfinity;
+            infinityButton.displayString = I18n.format( "gui.attributes.infinity." + (isInfinity ? "1" : "0") );
+            level.setEnabled( !isInfinity );
+            levelDecimal.setEnabled( !isInfinity );
+            operationButton.enabled = !isInfinity;
+        }
+        else if ( button.id == operationButton.id )
         {
             operation = (operation + 1) % 3;
             operationButton.displayString = I18n.format( "gui.attributes.operation." + operation );
@@ -254,7 +265,7 @@ public class GuiAttributes extends GuiInfinity
             GlStateManager.translate( 0, 0, 300 );
             this.drawCenteredString( this.fontRenderer, I18n.format( "attribute.name." + sharedAttributes[i].getName() ), x, y - 17, HelperGui.MAIN_PURPLE );
             GlStateManager.translate( 0, 0, -300 );
-
+            
             this.itemRender.renderItemAndEffectIntoGUI( note, x - 8, y - 8 );
             
             drawRect( x - 1, y - 1, x + 1, y + 1, HelperGui.getColorFromRGB( 255, 255, 255, 255 ) );

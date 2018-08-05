@@ -40,6 +40,8 @@ gui.armorstand.pose.reset.1=Resetea SOLO Poses
 gui.armorstand.invisible.note=Note: Podria ser dificil removerlo sin comandos!
 gui.armorstand.marker.not="Marker" Te quita la habilidad de interactuar con este
 
+gui.attributes.infinity.0=Input Value 
+gui.attributes.infinity.1=Infinity
 gui.attributes.operation.0=Additivo +
 gui.attributes.operation.1=Multiplicativo *
 gui.attributes.operation.2=Exponential **
