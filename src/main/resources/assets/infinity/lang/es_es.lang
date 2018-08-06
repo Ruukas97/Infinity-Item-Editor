@@ -38,7 +38,7 @@ gui.lore=Editor De Lore
 gui.armorstand.pose=Editor De Poses
 gui.armorstand.pose.reset.1=Resetea SOLO Poses
 gui.armorstand.invisible.note=Note: Podria ser dificil removerlo sin comandos!
-gui.armorstand.marker.not="Marker" Te quita la habilidad de interactuar con este
+gui.armorstand.marker.note="Marker" Te quita la habilidad de interactuar con este
 
 gui.attributes.infinity.0=Introducir Datos 
 gui.attributes.infinity.1=Infinito
