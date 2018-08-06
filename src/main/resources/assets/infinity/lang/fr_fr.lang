@@ -1,11 +1,11 @@
-key.infinity.category=Éditeur d'objets infini
+ï»¿key.infinity.category=Ã‰diteur d'objets infini
 key.infinity.desc=Editeur d'objet actuel
-key.infinitycopy.desc=Copier l'équipement du joueur cible
+key.infinitycopy.desc=Copier l'Ã©quipement du joueur cible
 
-warning.notcreative=Vous devez être en mode créatif pour enregistrer des éléments
+warning.notcreative=Vous devez Ãªtre en mode crÃ©atif pour enregistrer des Ã©lÃ©ments
 
 itemGroup.unavailable=Infini - Indisponible
-itemGroup.banners=Infini - Bannières
+itemGroup.banners=Infini - BanniÃ¨res
 itemGroup.skulls=Infini - Tete
 itemGroup.fireworks=Infini - Feux d'artifice
 itemGroup.thief=Infini - Voleur
@@ -13,7 +13,7 @@ itemGroup.thief=Infini - Voleur
 gui.close=Fermer
 gui.save=Sauvegarder
 gui.drop=Baisse
-gui.reset=Réinitialiser
+gui.reset=RÃ©initialiser
 gui.clear=Retirer
 
 gui.item=Infini Editeur
@@ -29,25 +29,25 @@ gui.book=Editeur de Livre
 gui.attributes=Editeur des attributs
 gui.chestinventory=Inventaire de la poitrine
 gui.hideflags=Masquer les drapeaux
-gui.bannermaker=Créateur de bannière
-gui.fireworks=Aperçu Feux d'artifice
+gui.bannermaker=CrÃ©ateur de banniÃ¨re
+gui.fireworks=AperÃ§u Feux d'artifice
 gui.specialbutton=NBT de Specialitie
-gui.headcollection=Collection de têtes
-gui.lore=Éditeur de connaissances
+gui.headcollection=Collection de tÃªtes
+gui.lore=Ã‰diteur de connaissances
 
 gui.armorstand.pose=Stand de Armor Pose Editeur
-gui.armorstand.pose.reset.1=Ne réinitialise que les rotations!
-gui.armorstand.invisible.note=Remarque: il peut être difficile de retirer l’armoirat sans commandes.
-gui.armorstand.marker.note=Marker désactive l'interaction et rend la hitbox petite.
+gui.armorstand.pose.reset.1=Ne rÃ©initialise que les rotations!
+gui.armorstand.invisible.note=Remarque: il peut Ãªtre difficile de retirer lâ€™armoirat sans commandes.
+gui.armorstand.marker.note=Marker dÃ©sactive l'interaction et rend la hitbox petite.
 
-gui.attributes.infinity.0=Valeur d'entrée
+gui.attributes.infinity.0=Valeur d'entrÃ©e
 gui.attributes.infinity.1=Infini
 gui.attributes.operation.0=Additif +
 gui.attributes.operation.1=Multiplicatif *
 gui.attributes.operation.2=Exponentiel **
 gui.attributes.slot.0=Toute fente
 gui.attributes.slot.1=Main Main
-gui.attributes.slot.2=À part
+gui.attributes.slot.2=Ã€ part
 gui.attributes.slot.3=Tete
 gui.attributes.slot.4=Poitrine
 gui.attributes.slot.5=Jambes
@@ -57,9 +57,9 @@ attribute.name.generic.flyingSpeed=Vitesse de vol
 gui.book.title=Titre
 gui.book.author=Auteur
 gui.book.generation=Gen
-gui.book.resolved=Résolu
-gui.book.resolved.tooltip.1=A été résolu par le serveur
-gui.book.unresolved=Ne Résolu Pas
+gui.book.resolved=RÃ©solu
+gui.book.resolved.tooltip.1=A Ã©tÃ© rÃ©solu par le serveur
+gui.book.unresolved=Ne RÃ©solu Pas
 gui.book.unsign=Ne pas signer
 gui.book.resign=Ceder a
 
@@ -67,15 +67,15 @@ gui.enchanting.enchanttoggle.0=Montrer applicable
 gui.enchanting.enchanttoggle.1=Montre tout
 gui.enchanting.addall=Ajouter tout visible
 
-gui.spawnegg.entity=Entité spécifique
-gui.spawnegg.mob=Monstre Spécifique
+gui.spawnegg.entity=EntitÃ© spÃ©cifique
+gui.spawnegg.mob=Monstre SpÃ©cifique
 gui.spawnegg.mobspecific=%s Specifique
 gui.spawnegg.animalspecific=Animaux Specifique
 
-gui.head.save.tooltip.1=Peut être retardé lors du chargement des informations du joueur.
-gui.head.save.tooltip.2=Ceci est un problème de vanille.
-gui.head.list.tooltip.1=Répertorie les joueurs actuels sur le serveur.
-gui.head.list.tooltip.2=--Pas encore mis en œuvre--
+gui.head.save.tooltip.1=Peut Ãªtre retardÃ© lors du chargement des informations du joueur.
+gui.head.save.tooltip.2=Ceci est un problÃ¨me de vanille.
+gui.head.list.tooltip.1=RÃ©pertorie les joueurs actuels sur le serveur.
+gui.head.list.tooltip.2=--Pas encore mis en Å“uvre--
 
 gui.headcollection.category.alphabet=Alphabet
 gui.headcollection.category.animals=Animaux
@@ -88,12 +88,12 @@ gui.headcollection.category.miscellaneous=Misc
 gui.headcollection.category.monsters=Monstre
 gui.headcollection.category.plants=Les plantes
 
-gui.headcollection.clickhead=Cliquez pour remplacer l'élément actuel
-gui.headcollection.clickheadshift=Maintenez la touche enfoncée pour laisser tomber la tête
+gui.headcollection.clickhead=Cliquez pour remplacer l'Ã©lÃ©ment actuel
+gui.headcollection.clickheadshift=Maintenez la touche enfoncÃ©e pour laisser tomber la tÃªte
 gui.headcollection.typesearch=Tapez pour rechercher
 gui.headcollection.clicksearch=Cliquez pour rechercher
 gui.headcollection.currentpage=Page %s/%s
-gui.headcollection.changecategory.1=Changer de catégorie
+gui.headcollection.changecategory.1=Changer de catÃ©gorie
 gui.headcollection.changecategory.2=Prend quelques secondes pour charger
 
 gui.item.toggleside=Changer de vue
@@ -101,16 +101,16 @@ gui.item.discord=Rejoignez Discord
 gui.item.share=Partager l'article
 
 gui.item.colorremove.tooltip.1=Supprimer toutes les couleurs
-gui.item.drop.tooltip.1=Maintenez la touche Maj enfoncée pour copier / donner des commandes à votre presse-papiers
+gui.item.drop.tooltip.1=Maintenez la touche Maj enfoncÃ©e pour copier / donner des commandes Ã  votre presse-papiers
 gui.item.drop.tooltip.2=Vous pouvez ensuite le coller ailleurs
 
 gui.nbt.update=Changer le NBT
 
-gui.nbt.comp.open=Cliquez pour agrandir Tag composé
-gui.nbt.comp.close=Cliquez pour réduire la variable composée
+gui.nbt.comp.open=Cliquez pour agrandir Tag composÃ©
+gui.nbt.comp.close=Cliquez pour rÃ©duire la variable composÃ©e
 
 tag.head.0=Tete de Squelette
-tag.head.1=Tete de Flétrir
+tag.head.1=Tete de FlÃ©trir
 tag.head.2=Tete de Monstre
 tag.head.3=Tete de Joueur
 tag.head.4=Tete de Creeper
@@ -119,29 +119,29 @@ tag.head.5=Tete de Dragon
 gui.potion.time=Temps (Secondes)
 gui.potion.level=Amplificateur
 
-gui.equipment.inventoryclone=Ceci est une copie de votre inventaire. Les modifications ne seront pas enregistrées.
+gui.equipment.inventoryclone=Ceci est une copie de votre inventaire. Les modifications ne seront pas enregistrÃ©es.
 
 
-flag.enchantment.0=Enchantement: montré
-flag.enchantment.1=Enchantement: caché
+flag.enchantment.0=Enchantement: montrÃ©
+flag.enchantment.1=Enchantement: cachÃ©
 flag.attributemod.0=Attribut Mod: montre
 flag.attributemod.1=Attribut Mod: cache
 flag.unbreakable.0=Incassable: montre
 flag.unbreakable.1=Incassable: cache
-flag.candestroy.0=Peut détruire: montre
-flag.candestroy.1=Peut détruire: cache
+flag.candestroy.0=Peut dÃ©truire: montre
+flag.candestroy.1=Peut dÃ©truire: cache
 flag.canplaceon.0=Peut placer sur: montre
 flag.canplaceon.1=Peut placer sur: cache
 flag.iteminfo.0=Informatique d'objet: montre
 flag.iteminfo.1=Informatique d'objet: cache
 
-gui.editstring=Modifier une chaîne
+gui.editstring=Modifier une chaÃ®ne
 
-gui.entitytags=Balises d'entité
+gui.entitytags=Balises d'entitÃ©
 gui.mobspecific=Monstre Specifique
 
 
-tag.skullowner=Propriétaire de Tete
+tag.skullowner=PropriÃ©taire de Tete
 
 tag.unbreakable.0=Cassable
 tag.unbreakable.1=Incassable
@@ -149,17 +149,17 @@ tag.unbreakable.1=Incassable
 tag.fire.on=Sur feux pour %s ticks
 tag.fire.off=Ne sur feux pas
 
-tag.customname=Changer le nom personnalisé
-tag.nogravity.on=Pas de gravité
+tag.customname=Changer le nom personnalisÃ©
+tag.nogravity.on=Pas de gravitÃ©
 tag.nogravity.off=Gravite
 tag.invulnerable.on=Invulnerable
 tag.invulnerable.off=Vulnerable
-tag.customnamevisible.on=Nom personnalisé visible
-tag.customnamevisible.off=Nom personnalisé pas visible
+tag.customnamevisible.on=Nom personnalisÃ© visible
+tag.customnamevisible.off=Nom personnalisÃ© pas visible
 tag.silent.on=Silencieux
 tag.silent.off=Ne Silencieux Pas
-tag.glowing.on=Embrasé
-tag.glowing.off=Ne Embrasé Pas
+tag.glowing.on=EmbrasÃ©
+tag.glowing.off=Ne EmbrasÃ© Pas
 
 tag.health.on=%s Sante
 tag.health.off=Mort
@@ -167,9 +167,9 @@ tag.absorption.on=%s Absorption
 tag.absorption.off=Ne Absorption Pas
 tag.fallflying.on=Elytra Gliding
 tag.fallflying.off=Chute normale
-tag.noai.on=AI désactivé
-tag.noai.off=AI Activé
-tag.persistencerequired.on=Ne dépouille pas normalement
+tag.noai.on=AI dÃ©sactivÃ©
+tag.noai.off=AI ActivÃ©
+tag.persistencerequired.on=Ne dÃ©pouille pas normalement
 tag.persistencerequired.off=Depouille normalement
 tag.canpickuploot.on=Ramasse le butin
 tag.canpickuploot.off=Ne Ramasse le butin pas
@@ -187,21 +187,21 @@ tag.armorstand.marker.1=Marqueur
 tag.armorstand.inventory=D'objets
 tag.armorstand.pose=Pose
 
-tag.creeper.powered.on=Alimenté
-tag.creeper.powered.off=Ne Alimenté Pas
+tag.creeper.powered.on=AlimentÃ©
+tag.creeper.powered.off=Ne AlimentÃ© Pas
 tag.creeper.explosionradius.on=Rayon d'explosion: %s
 tag.creeper.explosionradius.off=Ne Rayon d'explosion rien
 tag.creeper.fuse.on=Il est temps d'exploser: %s
-tag.creeper.fuse.off=Explosion instantanée
-tag.creeper.ignited.on=Allumé
-tag.creeper.ignited.off=Ne Allumé Pas
+tag.creeper.fuse.off=Explosion instantanÃ©e
+tag.creeper.ignited.on=AllumÃ©
+tag.creeper.ignited.off=Ne AllumÃ© Pas
 
-tag.endermite.lifetime.off=Durée de vie non définie
+tag.endermite.lifetime.off=DurÃ©e de vie non dÃ©finie
 tag.endermite.lifetime.on=Vie: %s
 tag.endermite.playerspawned.off=JouererSpawned: 0
 tag.endermite.playerspawned.on=JourerSpawned: 1
 
-tag.parrot.variant.-1=Variante Aléatoire
+tag.parrot.variant.-1=Variante AlÃ©atoire
 tag.parrot.variant.0=Rouge Variante
 tag.parrot.variant.1=Bleu Variante
 tag.parrot.variant.2=Vert Variante
@@ -248,8 +248,8 @@ tag.shulker.color.14=Rouge
 tag.shulker.color.15=Noire
 
 tag.villager.profession.0=Peau de fermier
-tag.villager.profession.1=Peau de bibliothécaire
-tag.villager.profession.2=Peau de prêtre
+tag.villager.profession.1=Peau de bibliothÃ©caire
+tag.villager.profession.2=Peau de prÃªtre
 tag.villager.profession.3=Smith Peau
 tag.villager.profession.4=Peau de boucher
 tag.villager.profession.5=Nitwit Peau
