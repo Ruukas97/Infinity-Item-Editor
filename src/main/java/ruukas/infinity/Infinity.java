@@ -105,6 +105,7 @@ public class Infinity
     // Add button to clear lore
     
     // CHANGELOG:
+    // Fixed banner maker "scroll button" not rendering in right position
 
     @EventHandler
     public void preInit( FMLPreInitializationEvent event )

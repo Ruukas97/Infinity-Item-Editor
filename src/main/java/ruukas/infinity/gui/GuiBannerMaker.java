@@ -567,9 +567,9 @@ public class GuiBannerMaker extends InventoryEffectRenderer
         GlStateManager.color( 1.0F, 1.0F, 1.0F, 1.0F );
         int i = this.guiLeft + 9;
         int j = this.guiTop + 28;
-        int k = j + 142;
+        int k = i + 142;
         
-        this.drawTexturedModalRect( i + (int) ((float) (k - i + 51) * this.currentScroll), j, 241, 0, 15, 10 );
+        this.drawTexturedModalRect( i+((float) (k - i - 15) * this.currentScroll), j, 241, 0, 15, 10 );
         
         if ( getCurrentBanner() == null || getCurrentBanner() == ItemStack.EMPTY )
         {
