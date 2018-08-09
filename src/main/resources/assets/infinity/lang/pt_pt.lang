@@ -1,0 +1,390 @@
+key.infinity.category=Infinity Item Editor
+key.infinity.desc=Edite este item
+key.infinitycopy.desc=Copie quem você está assistindo
+
+warning.notcreative=Você precisa estar no modo criativo para salvar items!
+
+itemGroup.unavailable=Infinity - Inobtenible
+itemGroup.banners=Infinity - Bandeira
+itemGroup.skulls=Infinity - Cabeças
+itemGroup.fireworks=Infinity - Fogos de artifício
+itemGroup.thief=Infinity - Ladrão
+
+gui.close=Fechar
+gui.save=Salvar
+gui.drop=Duplicar
+gui.reset=Reajustar
+gui.clear=Excluir
+
+gui.item=Infinity Editor [Traduzido por Nacho4785]
+gui.spawnegg=Editor de ovos
+gui.head=Editor de Cabeças
+gui.armorstand=Editor de suporte de armadura
+gui.color=Editor de cores
+gui.nbt=Editor do NBT
+gui.nbtadv=Visualizador NBT
+gui.enchanting=Encantamentos
+gui.potion=Criador de poções
+gui.book=Editor de livros
+gui.attributes=Editor de atributos
+gui.chestinventory=Veja dentro do baúl
+gui.hideflags=Ocultar tags de NBT
+gui.bannermaker=Creador De Estandartes
+gui.fireworks=Observar Fuegos Artificiales
+gui.specialbutton=NBT Especial
+gui.headcollection=Coleção de cabeças
+gui.lore=Editor de descrição
+
+gui.armorstand.pose=Editor de Poses
+gui.armorstand.pose.reset.1=Coloque pose por padrão
+gui.armorstand.invisible.note=Nota: Pode ser difícil de remover sem comandos!
+gui.armorstand.marker.note="Marker" não permitirá que você interaja com ele.
+
+gui.attributes.infinity.0=Inserir valor
+gui.attributes.infinity.1=Infinito
+gui.attributes.operation.0=Additivo (+)
+gui.attributes.operation.1=Multiplicativo (*)
+gui.attributes.operation.2=Exponencial (**)
+gui.attributes.slot.0=Qualquer slot
+gui.attributes.slot.1=Mão principal
+gui.attributes.slot.2=Mão secundária
+gui.attributes.slot.3=Cabeça
+gui.attributes.slot.4=Peito
+gui.attributes.slot.5=Pernas
+gui.attributes.slot.6=Pés
+attribute.name.generic.flyingSpeed=Velocidade de Voo na criatura
+
+gui.book.title=Titulo
+gui.book.author=Autor
+gui.book.generation=Geração
+gui.book.resolved=Resolvido
+gui.book.resolved.tooltip.1=Foi resolvido pelo mesmo servidor
+gui.book.unresolved=Não resolvido
+gui.book.unsign=Des-atribuir
+gui.book.resign=Re-atribuir
+
+gui.enchanting.enchanttoggle.0=Mostrar aplicável
+gui.enchanting.enchanttoggle.1=Mostrar tudo
+gui.enchanting.addall=Adicione tudo
+
+gui.spawnegg.entity=Entidade específica
+gui.spawnegg.mob=Mob específico
+gui.spawnegg.mobspecific=Específico do %s
+gui.spawnegg.animalspecific=Específico do %s
+
+gui.head.save.tooltip.1=É possível que o jogo fica lag enquanto ganha informações do jogador.
+gui.head.save.tooltip.2=Este é um problema do Minecraft Vanilla
+gui.head.list.tooltip.1=Veja a lista de jogadores no servidor.
+gui.head.list.tooltip.2=>> Ainda não implementado <<
+
+gui.headcollection.category.alphabet=Alfabeto
+gui.headcollection.category.animals=Animais
+gui.headcollection.category.blocks=Blocos
+gui.headcollection.category.decoration=Decoração
+gui.headcollection.category.food-drinks=Comida e bebida
+gui.headcollection.category.humans=Humanos
+gui.headcollection.category.humanoid=Robôs
+gui.headcollection.category.miscellaneous=Misc
+gui.headcollection.category.monsters=Monstros
+gui.headcollection.category.plants=Plantas
+
+gui.headcollection.clickhead=Clique para substituir este objeto
+gui.headcollection.clickheadshift=Pressione e segure "shift" para dobrar sua cabeça
+gui.headcollection.typesearch=Escreva para achar cabeças
+gui.headcollection.clicksearch=Clique para achar cabeças
+gui.headcollection.currentpage=Pagina %s/%s
+gui.headcollection.changecategory.1=Alterar categoria
+gui.headcollection.changecategory.2=Vai demorar para carregar, este é um problema de Minecraft Vanilla
+
+gui.item.toggleside=Alterar vista
+gui.item.discord=Entrar no servidor de discord
+gui.item.share=Compartilhar objeto
+
+gui.item.colorremove.tooltip.1=Remover todas as cores
+gui.item.drop.tooltip.1=Mantem pressionando "shift" para obter o item em um comando "/give"
+gui.item.drop.tooltip.2=Então você pode copiá-lo em outro lugar
+
+gui.nbt.update=Atualizar NBT
+
+gui.nbt.comp.open=Clique para expandir a tag
+gui.nbt.comp.close=Clique para fechar a tag
+
+tag.head.0=Crânio esqueleto
+tag.head.1=Crânio esqueleto wither
+tag.head.2=Cabeça de zombie
+tag.head.3=Cabeça
+tag.head.4=Cabeça de creeper
+tag.head.5=Cabeça do Ender Dragon
+
+gui.potion.time=Duração (Em segundos)
+gui.potion.level=Amplificador
+
+gui.equipment.inventoryclone=Tudo isso é uma cópia do seu inventário atual, nada vai mudar.
+
+flag.enchantment.0=Encantamientos: Visível
+flag.enchantment.1=Encantamientos: Não é visível
+flag.attributemod.0=Atributos: Visível
+flag.attributemod.1=Atributos: Não é visível
+flag.unbreakable.0=Irrompible: Visível
+flag.unbreakable.1=Irrompible: Não é visível
+flag.candestroy.0=Se Pueden Destruir: Visível
+flag.candestroy.1=Se Pueden Destruir: Não é visível
+flag.canplaceon.0=Se Puede Poner En: Visível
+flag.canplaceon.1=Se Puede Poner En: Não é visível
+flag.iteminfo.0=Info De Item: Visível
+flag.iteminfo.1=Info De Item: Não é visível
+
+gui.editstring=Editar 
+
+gui.entitytags=Tags de entidades
+gui.mobspecific=Mobs específicos
+
+
+tag.skullowner=Dono da cabeça (SkullOwner)
+
+tag.unbreakable.0=Rompible
+tag.unbreakable.1=Irrompible
+
+tag.fire.on=Em chamas por &s ticks
+tag.fire.off=Não está em chamas
+
+tag.customname=Alterar nome personalizado
+tag.nogravity.on=Sem gravidade
+tag.nogravity.off=Com gravidade
+tag.invulnerable.on=Invulnerable
+tag.invulnerable.off=Vulnerable
+tag.customnamevisible.on=Nome visível
+tag.customnamevisible.off=Nome não visível
+tag.silent.on=Silencioso
+tag.silent.off=Não é silencioso
+tag.glowing.on=Brilha
+tag.glowing.off=Não brilha
+
+tag.health.on=%s HP
+tag.health.off=Morto
+tag.absorption.on=%s de vida extra
+tag.absorption.off=Sem vida extra
+tag.fallflying.on=Queda deslizante
+tag.fallflying.off=Queda normal
+tag.noai.on=Não tem AI
+tag.noai.off=Tem AI
+tag.persistencerequired.on=Persistente
+tag.persistencerequired.off=Não é persistente
+tag.canpickuploot.on=Pode pegar items
+tag.canpickuploot.off=Não pode pegar items
+
+tag.armorstand.arms.0=Não tem mãos
+tag.armorstand.arms.1=Tem mãos
+tag.armorstand.small.0=Normal
+tag.armorstand.small.1=Pequenho
+tag.armorstand.invisible.0=Visible
+tag.armorstand.invisible.1=Invisible
+tag.armorstand.nobase.0=Tem uma base
+tag.armorstand.nobase.1=Não tem uma base
+tag.armorstand.marker.0=Sem Marker
+tag.armorstand.marker.1=Com Marker
+tag.armorstand.inventory=Inventário
+tag.armorstand.pose=Pose
+
+tag.creeper.powered.on=ON
+tag.creeper.powered.off=OFF
+tag.creeper.explosionradius.on=Radio de explosão: %s
+tag.creeper.explosionradius.off=Sem radio de explosão
+tag.creeper.fuse.on=Tempo restante para a explosão: %s
+tag.creeper.fuse.off=Explosão instantânea
+tag.creeper.ignited.on=ON
+tag.creeper.ignited.off=OFF
+
+tag.endermite.lifetime.off=Tempo de vida aleatória
+tag.endermite.lifetime.on=Tempo de vida: %s
+tag.endermite.playerspawned.off=Spawneado por jogador: 0
+tag.endermite.playerspawned.on=Spawneado por jogador: 1
+
+tag.parrot.variant.-1=Variante aleatório
+tag.parrot.variant.0=Variante vermelho
+tag.parrot.variant.1=Variante azul
+tag.parrot.variant.2=Variante verde
+tag.parrot.variant.3=Variante cían
+tag.parrot.variant.4=Variante cinza
+
+tag.pig.saddled.on=Tem sela
+tag.pig.saddled.off=Sem sela
+
+tag.sheep.color.0=Branco
+tag.sheep.color.1=Laranja
+tag.sheep.color.2=Lila
+tag.sheep.color.3=Azul Claro
+tag.sheep.color.4=Amarelo
+tag.sheep.color.5=Verde Claro
+tag.sheep.color.6=Rosa
+tag.sheep.color.7=Cinza
+tag.sheep.color.8=Cinza Claro
+tag.sheep.color.9=Cían
+tag.sheep.color.10=Roxo
+tag.sheep.color.11=Azul
+tag.sheep.color.12=Marrom
+tag.sheep.color.13=Verde escuro
+tag.sheep.color.14=Vermelho
+tag.sheep.color.15=Preto
+tag.sheep.sheared.on=Sem lã
+tag.sheep.sheared.off=Com lã
+
+tag.shulker.color.0=Brancoanco
+tag.shulker.color.1=Laranja
+tag.shulker.color.2=Lila
+tag.shulker.color.3=Azul Claro
+tag.shulker.color.4=Amarelo
+tag.shulker.color.5=Verde Claro
+tag.shulker.color.6=Rosa
+tag.shulker.color.7=Cinza
+tag.shulker.color.8=Cinza Claro
+tag.shulker.color.9=Cían
+tag.shulker.color.10=Roxo
+tag.shulker.color.11=Azul
+tag.shulker.color.12=Marrom
+tag.shulker.color.13=Verde Oscuro
+tag.shulker.color.14=Vermelho
+tag.shulker.color.15=Preto
+
+tag.villager.profession.0=Farmer
+tag.villager.profession.1=Librerian
+tag.villager.profession.2=Sacerdorte 
+tag.villager.profession.3=Smith 
+tag.villager.profession.4=Butcher 
+tag.villager.profession.5=Nitwit 
+
+
+tag.vindicator.johnny.on=Johnny Behaviour
+tag.vindicator.johnny.off=Normal Behavior
+
+tag.zombie.isbaby.on=Bebê
+tag.zombie.isbaby.off=Adulta
+tag.zombie.canbreakdoors.on=Pode quebrar portas
+tag.zombie.canbreakdoors.off=Não pode quebrar portas
+
+potion.potency.3=IV
+potion.potency.4=V
+potion.potency.5=VI
+potion.potency.6=VII
+potion.potency.7=VIII
+potion.potency.8=IX
+potion.potency.9=X
+potion.potency.10=XI
+potion.potency.11=XII
+potion.potency.12=XIII
+potion.potency.13=XIV
+potion.potency.14=XV
+potion.potency.15=XVI
+potion.potency.16=XVII
+potion.potency.17=XVIII
+potion.potency.18=XIX
+potion.potency.19=XX
+potion.potency.20=XXI
+potion.potency.21=XXII
+potion.potency.22=XXIII
+potion.potency.23=XXIV
+potion.potency.24=XXV
+potion.potency.25=XXVI
+potion.potency.26=XXVII
+potion.potency.27=XXVIII
+potion.potency.28=XXIX
+potion.potency.29=XXX
+potion.potency.30=XXXI
+potion.potency.31=XXXII
+potion.potency.32=XXXIII
+potion.potency.33=XXXIV
+potion.potency.34=XXXV
+potion.potency.35=XXXVI
+potion.potency.36=XXXVII
+potion.potency.37=XXXVIII
+potion.potency.38=XXXIX
+potion.potency.39=XL
+potion.potency.40=XLI
+potion.potency.41=XLII
+potion.potency.42=XLIII
+potion.potency.43=XLIV
+potion.potency.44=XLV
+potion.potency.45=XLVI
+potion.potency.46=XLVII
+potion.potency.47=XLVIII
+potion.potency.48=XLIX
+potion.potency.49=L
+potion.potency.50=LI
+potion.potency.51=LII
+potion.potency.52=LIII
+potion.potency.53=LIV
+potion.potency.54=LV
+potion.potency.55=LVI
+potion.potency.56=LVII
+potion.potency.57=LVIII
+potion.potency.58=LIX
+potion.potency.59=LX
+potion.potency.60=LXI
+potion.potency.61=LXII
+potion.potency.62=LXIII
+potion.potency.63=LXIV
+potion.potency.64=LXV
+potion.potency.65=LXVI
+potion.potency.66=LXVII
+potion.potency.67=LXVIII
+potion.potency.68=LXIX
+potion.potency.69=LXX
+potion.potency.70=LXXI
+potion.potency.71=LXXII
+potion.potency.72=LXXIII
+potion.potency.73=LXXIV
+potion.potency.74=LXXV
+potion.potency.75=LXXVI
+potion.potency.76=LXXVII
+potion.potency.77=LXXVIII
+potion.potency.78=LXXIX
+potion.potency.79=LXXX
+potion.potency.80=LXXXI
+potion.potency.81=LXXXII
+potion.potency.82=LXXXIII
+potion.potency.83=LXXXIV
+potion.potency.84=LXXXV
+potion.potency.85=LXXXVI
+potion.potency.86=LXXXVII
+potion.potency.87=LXXXVIII
+potion.potency.88=LXXXIX
+potion.potency.89=XC
+potion.potency.90=XCI
+potion.potency.91=XCII
+potion.potency.92=XCIII
+potion.potency.93=XCIV
+potion.potency.94=XCV
+potion.potency.95=XCVI
+potion.potency.96=XCVII
+potion.potency.97=XCVIII
+potion.potency.98=XCIX
+potion.potency.99=C
+potion.potency.100=CI
+potion.potency.101=CII
+potion.potency.102=CIII
+potion.potency.103=CIV
+potion.potency.104=CV
+potion.potency.105=CVI
+potion.potency.106=CVII
+potion.potency.107=CVIII
+potion.potency.108=CIX
+potion.potency.109=CX
+potion.potency.110=CXI
+potion.potency.111=CXII
+potion.potency.112=CXIII
+potion.potency.113=CXIV
+potion.potency.114=CXV
+potion.potency.115=CXVI
+potion.potency.116=CXVII
+potion.potency.117=CXVIII
+potion.potency.118=CXIX
+potion.potency.119=CXX
+potion.potency.120=CXXI
+potion.potency.121=CXXII
+potion.potency.122=CXXIII
+potion.potency.123=CXXIV
+potion.potency.124=CXXV
+potion.potency.125=CXXVI
+potion.potency.126=CXXVII
+potion.potency.127=CXXVIII
+
