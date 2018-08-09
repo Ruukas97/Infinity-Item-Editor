@@ -105,20 +105,7 @@ public class Infinity
     // Add button to clear lore
     
     // CHANGELOG:
-    // Made U usable inside a gui
-    // Added head collection gui
-    // Added lore gui
-    // Added enchanted book to "Unavailable" tab
-    // Added Ctrl+Drop keybind combination inside inventory to drop item and link it in chat. Useful with /invsee
-    // Added Infinity button to attribute gui
-    // Can now use U with empty hand on multiplayer
-    // Changed "Infinity - Heads" tab icon
-    // If using an older version of java, will add Let's Encrypt certificate to support the Head collection gui
-    // Fix gui title of banner maker
-    // Fixed crash related to unknown potion and enchanting id's
-    // Fixed last lore line didn't have clear button
-    // Added webhooks to Discord channel
-    
+
     @EventHandler
     public void preInit( FMLPreInitializationEvent event )
     {
