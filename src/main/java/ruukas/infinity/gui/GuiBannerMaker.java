@@ -569,7 +569,7 @@ public class GuiBannerMaker extends InventoryEffectRenderer
         int j = this.guiTop + 28;
         int k = i + 142;
         
-        this.drawTexturedModalRect( i+((float) (k - i - 15) * this.currentScroll), j, 241, 0, 15, 10 );
+        this.drawTexturedModalRect( i + ((float) (k - i - 15) * this.currentScroll), j, 241, 0, 15, 10 );
         
         if ( getCurrentBanner() == null || getCurrentBanner() == ItemStack.EMPTY )
         {

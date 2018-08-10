@@ -106,7 +106,7 @@ public class Infinity
     
     // CHANGELOG:
     // Fixed banner maker "scroll button" not rendering in right position
-
+    
     @EventHandler
     public void preInit( FMLPreInitializationEvent event )
     {
@@ -140,7 +140,7 @@ public class Infinity
                 stackList.add( new ItemStack( Items.SPLASH_POTION ) );
                 stackList.add( new ItemStack( Items.LINGERING_POTION ) );
                 stackList.add( new ItemStack( Items.TIPPED_ARROW ) );
-                stackList.add( new ItemStack(Items.ENCHANTED_BOOK) );
+                stackList.add( new ItemStack( Items.ENCHANTED_BOOK ) );
             }
         };
         
@@ -185,7 +185,8 @@ public class Infinity
         }
         catch ( IOException e )
         {
-            logger.warn( "Failed to connect to API for head collection. Check your internet connection." );;
+            logger.warn( "Failed to connect to API for head collection. Check your internet connection." );
+            ;
         }
     }
 }
