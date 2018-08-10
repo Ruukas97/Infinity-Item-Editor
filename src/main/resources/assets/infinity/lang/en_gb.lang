@@ -34,6 +34,7 @@ gui.fireworks=Preview Rocket
 gui.specialbutton=Special NBT
 gui.headcollection=Head Collection
 gui.lore=Lore Editor
+gui.sign=Sign Editor
 
 gui.armorstand.pose=Armour Stand Pose Editor
 gui.armorstand.pose.reset.1=Only resets rotations!

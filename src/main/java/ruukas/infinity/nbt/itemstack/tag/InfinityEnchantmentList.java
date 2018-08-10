@@ -91,6 +91,7 @@ public class InfinityEnchantmentList
         if ( getTag().hasNoTags() )
         {
             itemTag.getTag().removeTag( key );
+            itemTag.checkEmpty();
         }
         
         return this;

@@ -24,6 +24,7 @@ import ruukas.infinity.gui.GuiFireworksMaker;
 import ruukas.infinity.gui.GuiHead;
 import ruukas.infinity.gui.GuiMonsterEgg;
 import ruukas.infinity.gui.GuiPotion;
+import ruukas.infinity.gui.GuiSign;
 import ruukas.infinity.gui.HelperGui;
 import ruukas.infinity.gui.chest.InventoryChestItem;
 import ruukas.infinity.nbt.NBTHelper;
@@ -163,7 +164,7 @@ public class ActionButtons
             @Override
             public boolean condition()
             {
-                return getItemStack().getItem().isEnchantable( getItemStack() ) || EnumEnchantmentType.ALL.canEnchantItem( getItemStack().getItem()) || getItemStack().getItem() == Items.ENCHANTED_BOOK;
+                return getItemStack().getItem().isEnchantable( getItemStack() ) || EnumEnchantmentType.ALL.canEnchantItem( getItemStack().getItem() ) || getItemStack().getItem() == Items.ENCHANTED_BOOK;
             }
             
             @Override
@@ -241,7 +242,7 @@ public class ActionButtons
             @Override
             public void action()
             {
-                Minecraft.getMinecraft().displayGuiScreen( new GuiFireworksMaker(Minecraft.getMinecraft().currentScreen, Minecraft.getMinecraft().player) );
+                Minecraft.getMinecraft().displayGuiScreen( new GuiFireworksMaker( Minecraft.getMinecraft().currentScreen, Minecraft.getMinecraft().player ) );
             }
             
             @Override
@@ -249,10 +250,29 @@ public class ActionButtons
             {
                 return I18n.format( "gui.fireworks" );
             }
+        }, new GuiActionButton() {
+            @Override
+            public boolean condition()
+            {
+                return getItemStack().getItem() == Items.SIGN;
+            }
+            
+            @Override
+            public void action()
+            {
+                Minecraft.getMinecraft().displayGuiScreen( new GuiSign( Minecraft.getMinecraft().currentScreen, getItemStack() ) );
+            }
+            
+            @Override
+            public String getText()
+            {
+                return I18n.format( "gui.sign" );
+            }
         } };
     }
     
-    public static class SorterGuiActionButton implements Comparator<GuiActionButton>{
+    public static class SorterGuiActionButton implements Comparator<GuiActionButton>
+    {
         @Override
         public int compare( GuiActionButton o1, GuiActionButton o2 )
         {

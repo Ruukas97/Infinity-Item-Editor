@@ -34,6 +34,7 @@ gui.fireworks=Observar Fuegos Artificiales
 gui.specialbutton=NBT Especial
 gui.headcollection=Coleccion De Cabezas
 gui.lore=Editor De Lore
+gui.sign=Sign Editor
 
 gui.armorstand.pose=Editor De Poses
 gui.armorstand.pose.reset.1=Resetea SOLO Poses

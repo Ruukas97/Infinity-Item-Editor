@@ -34,6 +34,7 @@ public class InfinityTabThief extends InfinityTab
     @Override
     public void displayAllRelevantItems( NonNullList<ItemStack> stackList )
     {        
+        
         for ( EntityPlayer entity : Minecraft.getMinecraft().world.playerEntities )
         {
             if ( entity == Minecraft.getMinecraft().player )

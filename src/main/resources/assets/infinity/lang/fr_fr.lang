@@ -34,6 +34,7 @@ gui.fireworks=Aperçu Feux d'artifice
 gui.specialbutton=NBT de Specialitie
 gui.headcollection=Collection de têtes
 gui.lore=Éditeur de connaissances
+gui.sign=Sign Editor
 
 gui.armorstand.pose=Stand de Armor Pose Editeur
 gui.armorstand.pose.reset.1=Ne réinitialise que les rotations!
