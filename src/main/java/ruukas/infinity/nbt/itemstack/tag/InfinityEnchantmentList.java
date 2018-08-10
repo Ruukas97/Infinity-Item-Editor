@@ -1,6 +1,7 @@
 package ruukas.infinity.nbt.itemstack.tag;
 
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
@@ -11,11 +12,19 @@ import ruukas.infinity.nbt.itemstack.tag.ench.InfinityEnchantmentTag;
 
 public class InfinityEnchantmentList
 {
-    private static String key = "ench";
+    private String key;
     private final InfinityItemTag itemTag;
     
     public InfinityEnchantmentList(InfinityItemTag itemTag) {
         this.itemTag = itemTag;
+        if ( itemTag.getItemStack().getItem() == Items.ENCHANTED_BOOK )
+        {
+            key = "StoredEnchantments";
+        }
+        else
+        {
+            key = "ench";
+        }
     }
     
     public InfinityEnchantmentList(ItemStack stack) {

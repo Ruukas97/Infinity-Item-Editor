@@ -163,7 +163,7 @@ public class ActionButtons
             @Override
             public boolean condition()
             {
-                return getItemStack().getItem().isEnchantable( getItemStack() ) || EnumEnchantmentType.ALL.canEnchantItem( getItemStack().getItem() );
+                return getItemStack().getItem().isEnchantable( getItemStack() ) || EnumEnchantmentType.ALL.canEnchantItem( getItemStack().getItem()) || getItemStack().getItem() == Items.ENCHANTED_BOOK;
             }
             
             @Override
