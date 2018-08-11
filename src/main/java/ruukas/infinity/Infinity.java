@@ -110,6 +110,8 @@ public class Infinity
     // Fixed banner maker "scroll button" not rendering in right position
     // Enchanting editor now supports enchanted books
     // Added sign gui
+    // Added infinity realm
+    // Removed Ctrl+Drop keybind
     
     // TODO next version:
     // Change modid
