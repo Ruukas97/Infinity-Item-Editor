@@ -34,8 +34,7 @@ gui.fireworks=Observar Fuegos Artificiales
 gui.specialbutton=NBT Especial
 gui.headcollection=Coleção de cabeças
 gui.lore=Editor de descrição
-gui.sign=Sign Editor
-
+gui.sign=Editor de cartaz
 gui.armorstand.pose=Editor de Poses
 gui.armorstand.pose.reset.1=Coloque pose por padrão
 gui.armorstand.invisible.note=Nota: Pode ser difícil de remover sem comandos!

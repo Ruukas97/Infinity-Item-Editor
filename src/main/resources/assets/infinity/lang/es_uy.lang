@@ -1,4 +1,4 @@
-key.infinity.category=Infinity Item Editor §b§l[Traducción al Español por Nacho4785]
+key.infinity.category=§0Dark Infinity Item Editor §b§l[By Nacho4785]
 key.infinity.desc=Editar item
 key.infinitycopy.desc=Copiar items a quien apuntes
 
@@ -34,7 +34,7 @@ gui.fireworks=Ver fuegos artificiales
 gui.specialbutton=NBT Especial
 gui.headcollection=Colección De Cabezas
 gui.lore=Editor de descripción (Lore)
-
+gui.sign=Editor de carteles
 gui.armorstand.pose=Editor de Poses
 gui.armorstand.pose.reset.1=Poner por defecto las poses
 gui.armorstand.invisible.note=Nota: ¡Podría ser difícil removerlo sin comandos!

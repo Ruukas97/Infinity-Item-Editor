@@ -1,67 +1,66 @@
-key.infinity.category=Infinity Item Editor
-key.infinity.desc=Edita Este Item
-key.infinitycopy.desc=Copia A Quien Apuntes
+key.infinity.category=Infinity Item Editor §b§l[Traducción por Nacho4785]
+key.infinity.desc=Editar item
+key.infinitycopy.desc=Copiar items a quien apuntes
 
-warning.notcreative=Necesitas estar en modo creativo para guardar items!
+warning.notcreative=¡Necesitas estar en modo creativo para guardar items!, ¡Presiona Shift+Click para guardarlo como un comando!
 
 itemGroup.unavailable=Infinity - Inobtenible
 itemGroup.banners=Infinity - Estandartes
 itemGroup.skulls=Infinity - Cabezas
 itemGroup.fireworks=Infinity - Fuegos Artificiales
-itemGroup.thief=Infinity - Ladron
+itemGroup.thief=Infinity - Ladrón
 
 gui.close=Cerrar
 gui.save=Guardar
-gui.drop=Duplicar
+gui.drop=Dropear
 gui.reset=Resetear
 gui.clear=Limpiar
 
-gui.item=Infinity Editor
-gui.spawnegg=Editor De Huevos
-gui.head=Editor De Cabezas
+gui.item=Infinity Editor [Traducción español por Nacho4785]
+gui.spawnegg=Editor de huevos de Spawn
+gui.head=Editor de cabezas
 gui.armorstand=Editor De Soporte De Armadura
 gui.color=Editor De Colores
 gui.nbt=Editor De NBT
-gui.nbtadv=Buscador De NBT
+gui.nbtadv=Buscar NBT
 gui.enchanting=Encantamientos
-gui.potion=Creacion De Pociones
+gui.potion=Creación De Pociones
 gui.book=Editor De Libros
 gui.attributes=Editor De Atributos
 gui.chestinventory=Ver Inventario De Cofre
 gui.hideflags=Escondedor
-gui.bannermaker=Creador De Estandartes
-gui.fireworks=Observar Fuegos Artificiales
+gui.bannermaker=Creador de Banderas
+gui.fireworks=Ver fuegos artificiales
 gui.specialbutton=NBT Especial
-gui.headcollection=Coleccion De Cabezas
-gui.lore=Editor De Lore
-gui.sign=Sign Editor
-
-gui.armorstand.pose=Editor De Poses
-gui.armorstand.pose.reset.1=Resetea SOLO Poses
-gui.armorstand.invisible.note=Note: Podria ser dificil removerlo sin comandos!
+gui.headcollection=Colección De Cabezas
+gui.lore=Editor de descripción (Lore)
+gui.sign=Editor de carteles
+gui.armorstand.pose=Editor de Poses
+gui.armorstand.pose.reset.1=Poner por defecto las poses
+gui.armorstand.invisible.note=Nota: ¡Podría ser difícil removerlo sin comandos!
 gui.armorstand.marker.note="Marker" Te quita la habilidad de interactuar con este
 
 gui.attributes.infinity.0=Introducir Datos 
 gui.attributes.infinity.1=Infinito
-gui.attributes.operation.0=Additivo +
-gui.attributes.operation.1=Multiplicativo *
-gui.attributes.operation.2=Exponential **
+gui.attributes.operation.0=Additivo (+)
+gui.attributes.operation.1=Multiplicativo (*)
+gui.attributes.operation.2=Exponental (**)
 gui.attributes.slot.0=Cualquier Sitio
-gui.attributes.slot.1=Mano Dominante
-gui.attributes.slot.2=Mano No Dominante
+gui.attributes.slot.1=Mano principal
+gui.attributes.slot.2=Mano secundaria
 gui.attributes.slot.3=Cabeza
 gui.attributes.slot.4=Pecho
 gui.attributes.slot.5=Piernas
 gui.attributes.slot.6=Pies
-attribute.name.generic.flyingSpeed=Velocidad Voladora De Mob
+attribute.name.generic.flyingSpeed=Velocidad de vuelo en mob
 
-gui.book.title=Titulo
+gui.book.title=Título
 gui.book.author=Autor
-gui.book.generation=Generacion
-gui.book.resolved=Resolvido
-gui.book.resolved.tooltip.1=Ha sido resolvido por el servidor
-gui.book.unresolved=No Resolvido
-gui.book.unsign=DeAsignar
+gui.book.generation=Generación
+gui.book.resolved=Resuelto
+gui.book.resolved.tooltip.1=Ha sido resuelto por el servidor
+gui.book.unresolved=No está resuelto
+gui.book.unsign=DesAsignar
 gui.book.resign=ReAsignar
 
 gui.enchanting.enchanttoggle.0=Mostrar Aplicable
@@ -73,54 +72,54 @@ gui.spawnegg.mob=Especifico de mob
 gui.spawnegg.mobspecific=Especifico de %s
 gui.spawnegg.animalspecific=Especifico De %s
 
-gui.head.save.tooltip.1=Alomejor laguea mientras consigue los datos.
-gui.head.save.tooltip.2=Esto es un problema Vanilla.
+gui.head.save.tooltip.1=Puede laguearse mientras carga la información del jugador.
+gui.head.save.tooltip.2=Esto es un problema de Minecraft Vanilla.
 gui.head.list.tooltip.1=Mira la lista de personas en el servidor.
-gui.head.list.tooltip.2=--No Implementado Todavia--
+gui.head.list.tooltip.2=--No implementado aún--
 
-gui.headcollection.category.alphabet=Alfabeto
+gui.headcollection.category.alphabet=Letras
 gui.headcollection.category.animals=Animales
-gui.headcollection.category.blocks=Blockes
-gui.headcollection.category.decoration=Decoracion
+gui.headcollection.category.blocks=Bloques
+gui.headcollection.category.decoration=Decoración
 gui.headcollection.category.food-drinks=Comidas/Bebidas
 gui.headcollection.category.humans=Humanos
 gui.headcollection.category.humanoid=Humanoides
-gui.headcollection.category.miscellaneous=Miscellaneos
+gui.headcollection.category.miscellaneous=Otros, étc.
 gui.headcollection.category.monsters=Mounstros
 gui.headcollection.category.plants=Plantas
 
 gui.headcollection.clickhead=Click para remplazar este objeto
-gui.headcollection.clickheadshift=Deja presionado shift para duplicar cabeza
-gui.headcollection.typesearch=Escribe para buscar!
-gui.headcollection.clicksearch=Click para buscar!
-gui.headcollection.currentpage=Pagina %s/%s
-gui.headcollection.changecategory.1=Cambiar Categoria De Cabezas
-gui.headcollection.changecategory.2=Toma unos segundos para cargar (Problema Vanilla)
+gui.headcollection.clickheadshift=Mantené presionado shift para duplicar la cabeza.
+gui.headcollection.typesearch=¡Escribí algo para buscar!
+gui.headcollection.clicksearch=¡Click para buscar!
+gui.headcollection.currentpage=Página %s/%s
+gui.headcollection.changecategory.1=Cambiar categoría de cabezas
+gui.headcollection.changecategory.2=Va a demorar unos segundos para cargar (Problema  de Minecraft Vanilla)
 
-gui.item.toggleside=Cambia Vista
-gui.item.discord=Unirse a Discord
-gui.item.share=Compartir Objeto
+gui.item.toggleside=Cambiar vista
+gui.item.discord=Unirse al servidor de discord!
+gui.item.share=Compartir objeto
 
-gui.item.colorremove.tooltip.1=Quita Todos Los Colores
-gui.item.drop.tooltip.1=Deja pulsado Shift para optener comando /give
-gui.item.drop.tooltip.2=Para despues copiarlo en otro sitio
+gui.item.colorremove.tooltip.1=Sacar todos los colores
+gui.item.drop.tooltip.1=Mantené pulsado Shift para obtenerlo en un comando /give
+gui.item.drop.tooltip.2=Para después copiarlo en otro lado.
 
 gui.nbt.update=Actualizar NBT
 
 gui.nbt.comp.open=Click para expandir Tag
-gui.nbt.comp.close=Click para colapsar Tag
+gui.nbt.comp.close=Click para cerrar la Tag
 
-tag.head.0=Calavera De Esqueleto
-tag.head.1=Calavera De Esqueleto Marchito
+tag.head.0=Calavera de Esqueleto
+tag.head.1=Calavera de Esqueleto Whiter
 tag.head.2=Cabeza Zombie
-tag.head.3=Cabeza De Jugador
-tag.head.4=Cabeza Creeper
-tag.head.5=Cabeza De Dragon
+tag.head.3=Cabeza de Jugador
+tag.head.4=Cabeza de Creeper
+tag.head.5=Cabeza de Dragón
 
-gui.potion.time=Duracion (Segundos)
+gui.potion.time=Duración (Segundos)
 gui.potion.level=Amplificador 
 
-gui.equipment.inventoryclone=Esto es una copia de tu inventario. Nada se cambiara.
+gui.equipment.inventoryclone=Esto es una copia de tu inventario. Todo vá a quedar igual, tranqui.
 
 flag.enchantment.0=Encantamientos: Se Ven
 flag.enchantment.1=Encantamientos: No Se Ven
@@ -135,19 +134,19 @@ flag.canplaceon.1=Se Puede Poner En: No Se Ven
 flag.iteminfo.0=Info De Item: Se Ve
 flag.iteminfo.1=Info De Item: No Se Ve
 
-gui.editstring=Edita 
+gui.editstring=Editar
 
 gui.entitytags=Tags De Entidades
 gui.mobspecific=Especifico De Mobs
 
 
-tag.skullowner=SkullOwner
+tag.skullowner=Nick
 
 tag.unbreakable.0=Rompible
 tag.unbreakable.1=Irrompible
 
 tag.fire.on=En fuego por &s ticks
-tag.fire.off=No en fuego
+tag.fire.off=No está en fuego
 
 tag.customname=Cambiar Nombre
 tag.nogravity.on=Sin Gravedad
@@ -163,40 +162,40 @@ tag.glowing.off=Sin Brillar
 
 tag.health.on=%s De Vida
 tag.health.off=Muerto
-tag.absorption.on=%s De Absorption
-tag.absorption.off=Sin Absorption
-tag.fallflying.on=Volando Con Elytra
-tag.fallflying.off=Caida Normal
-tag.noai.on=Sin AI
-tag.noai.off=Con AI
-tag.persistencerequired.on=NO Despawneara
-tag.persistencerequired.off=Despawneara
-tag.canpickuploot.on=Cogera Items
-tag.canpickuploot.off=Ignorara Items
+tag.absorption.on=%s De Absorciónn
+tag.absorption.off=Sin Absorción
+tag.fallflying.on=Caída suave
+tag.fallflying.off=Caida normal
+tag.noai.on=Sin IA (Movimiento)
+tag.noai.off=Con IA (Movimiento)
+tag.persistencerequired.on=No desaparecerá
+tag.persistencerequired.off=Va a desaparecer
+tag.canpickuploot.on=Va a poder agarrar items
+tag.canpickuploot.off=Va a ignorar los items.
 
-tag.armorstand.arms.0=Sin Manos
-tag.armorstand.arms.1=Con Manos
+tag.armorstand.arms.0=Sin brazos
+tag.armorstand.arms.1=Con brazos
 tag.armorstand.small.0=Normal
 tag.armorstand.small.1=Pequeño
 tag.armorstand.invisible.0=Visible
 tag.armorstand.invisible.1=Invisible
-tag.armorstand.nobase.0=Tiene Placa Base
-tag.armorstand.nobase.1=Sin Placa Base
-tag.armorstand.marker.0=No Marker
-tag.armorstand.marker.1=Marker
-tag.armorstand.inventory=Equipamiento
+tag.armorstand.nobase.0=Tiene Placa
+tag.armorstand.nobase.1=Sin Placa
+tag.armorstand.marker.0=No tiene Marker
+tag.armorstand.marker.1=Tiene Marker
+tag.armorstand.inventory=Inventario
 tag.armorstand.pose=Pose
 
-tag.creeper.powered.on=Encendido
-tag.creeper.powered.off=Unpowered
-tag.creeper.explosionradius.on=Radio de explosion: %s
-tag.creeper.explosionradius.off=Sin radio de explosion
+tag.creeper.powered.on=OP Encendido
+tag.creeper.powered.off=OP Apagado
+tag.creeper.explosionradius.on=Radio de explosión: %s
+tag.creeper.explosionradius.off=Sin radio de explosión
 tag.creeper.fuse.on=Tiempo hasta que explote: %s
-tag.creeper.fuse.off=Explosion Instantanea
-tag.creeper.ignited.on=Ecendido
-tag.creeper.ignited.off=Apagado
+tag.creeper.fuse.off=Explosión Instantanea
+tag.creeper.ignited.on=Fuego Ecendido
+tag.creeper.ignited.off=Fuego Apagado
 
-tag.endermite.lifetime.off=Esperanza de vida aleatoria
+tag.endermite.lifetime.off=Tiempo de vida aleatorio
 tag.endermite.lifetime.on=Esperanza de vida: %s
 tag.endermite.playerspawned.off=Spawneado por jugador: 0
 tag.endermite.playerspawned.on=Spawneado por jugador: 1
@@ -208,8 +207,8 @@ tag.parrot.variant.2=Variante Verde
 tag.parrot.variant.3=Variante Cyan
 tag.parrot.variant.4=Variante Plata
 
-tag.pig.saddled.on=Con Silla
-tag.pig.saddled.off=Sin Silla
+tag.pig.saddled.on=Con montura
+tag.pig.saddled.off=Sin montura
 
 tag.sheep.color.0=Blanco
 tag.sheep.color.1=Naranja
@@ -250,7 +249,7 @@ tag.shulker.color.15=Negro
 tag.villager.profession.0=Granjero
 tag.villager.profession.1=Librario
 tag.villager.profession.2=Sacerdorte 
-tag.villager.profession.3=Smith 
+tag.villager.profession.3=Armero
 tag.villager.profession.4=Butcher 
 tag.villager.profession.5=Nitwit 
 
@@ -260,8 +259,8 @@ tag.vindicator.johnny.off=Normal Behavior
 
 tag.zombie.isbaby.on=Baby
 tag.zombie.isbaby.off=Adult
-tag.zombie.canbreakdoors.on=Can Break Doors
-tag.zombie.canbreakdoors.off=Cannot Break Doors
+tag.zombie.canbreakdoors.on=Puede romper puertas
+tag.zombie.canbreakdoors.off=No puede romper puertas
 
 potion.potency.3=IV
 potion.potency.4=V
