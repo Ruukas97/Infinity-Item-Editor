@@ -1,6 +1,7 @@
 key.infinity.category=Infinity Item Editor
 key.infinity.desc=Edit Current Item
 key.infinitycopy.desc=Copy Target Player Equipment
+key.infinitysave.desc=Save current item to the realm
 
 warning.notcreative=You need to be in creative mode to save items
 
@@ -9,6 +10,7 @@ itemGroup.banners=Infinity - Banners
 itemGroup.skulls=Infinity - Heads
 itemGroup.fireworks=Infinity - Fireworks
 itemGroup.thief=Infinity - Thief
+itemGroup.realm=Infinity - Realm
 
 gui.close=Close
 gui.save=Save

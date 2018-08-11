@@ -22,7 +22,7 @@ import ruukas.qualityorder.util.nbt.itemstack.ItemStackTag.DisplayTag;
 public class InfinityTabFireworks extends InfinityTab
 {
     public InfinityTabFireworks() {
-        super( "fireworks" );
+        super( 17, "fireworks" );
     }
     
     // TODO Add ability to combine colors

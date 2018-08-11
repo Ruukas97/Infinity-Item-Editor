@@ -28,12 +28,12 @@ public class InfinityTabThief extends InfinityTab
 {
     
     public InfinityTabThief() {
-        super( "thief" );
+        super( 15, "thief" );
     }
     
     @Override
     public void displayAllRelevantItems( NonNullList<ItemStack> stackList )
-    {        
+    {
         
         for ( EntityPlayer entity : Minecraft.getMinecraft().world.playerEntities )
         {
@@ -60,7 +60,7 @@ public class InfinityTabThief extends InfinityTab
                         {
                             if ( !addedNote )
                             {
-                                stackList.add( NBTHelper.generateNote( "Stolen from " + playerToStealFrom.getName(), (String[])null ) );
+                                stackList.add( NBTHelper.generateNote( "Stolen from " + playerToStealFrom.getName(), (String[]) null ) );
                                 addedNote = true;
                             }
                             stackList.add( stack );
@@ -106,7 +106,8 @@ public class InfinityTabThief extends InfinityTab
                         }
                         if ( shouldAdd )
                         {
-                            if(!addedAnyChat){
+                            if ( !addedAnyChat )
+                            {
                                 stackList.add( NBTHelper.generateNote( "Linked in chat", "Items linked in chat, such as death messages" ) );
                                 addedAnyChat = true;
                             }

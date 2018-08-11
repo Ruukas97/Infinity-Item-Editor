@@ -1,28 +1,25 @@
 package ruukas.infinity;
 
+import java.io.File;
 import java.io.IOException;
 
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.input.Keyboard;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import ruukas.infinity.tab.InfinityTabBanners;
-import ruukas.infinity.tab.InfinityTabFireworks;
-import ruukas.infinity.tab.InfinityTabSkulls;
-import ruukas.infinity.tab.InfinityTabThief;
+import ruukas.infinity.tab.InfinityTab;
 import ruukas.infinity.util.CertificateHandler;
 
 @Mod( modid = Infinity.MODID, name = Infinity.NAME, version = Infinity.VERSION, clientSideOnly = true )
@@ -33,11 +30,16 @@ public class Infinity
     public static final String VERSION = "0.11";
     
     public static Logger logger;
+    public static File dataDir;
     
     public static KeyBinding keybind;
     public static KeyBinding keybindCopy;
+    // public static KeyBinding keybindRealm;
+    public static KeyBinding keybindSave;
     
-    public static CreativeTabs UNAVAILABLE, BANNERS, SKULLS, FIREWORKS, THIEF;
+    public static CreativeTabs UNAVAILABLE, REALM, BANNERS, SKULLS, FIREWORKS, THIEF;
+    
+    public static InfinitySettings infinitySettings;
     
     // TODO
     // ADD Config
@@ -101,16 +103,25 @@ public class Infinity
     // Similar to the right click in NBT explorer
     // Will feature things such as item picker!
     
-    // Hide flags:
+    // Hide flags gui:
     // Add button to clear lore
     
     // CHANGELOG:
     // Fixed banner maker "scroll button" not rendering in right position
+    // Enchanting editor now supports enchanted books
+    // Added sign gui
+    
+    // TODO next version:
+    // Change modid
     
     @EventHandler
     public void preInit( FMLPreInitializationEvent event )
     {
         logger = event.getModLog();
+        dataDir = new File( Minecraft.getMinecraft().mcDataDir, "infinity-data" );
+        dataDir.mkdirs();
+        
+        InfinityTab.initTabs();
     }
     
     @EventHandler
@@ -123,34 +134,11 @@ public class Infinity
         keybindCopy = new KeyBinding( "key.infinitycopy.desc", Keyboard.KEY_V, "key.infinity.category" );
         ClientRegistry.registerKeyBinding( keybindCopy );
         
-        UNAVAILABLE = new CreativeTabs( "unavailable") {
-            @Override
-            public ItemStack getTabIconItem()
-            {
-                return new ItemStack( Blocks.BARRIER );
-            }
-            
-            @Override
-            public void displayAllRelevantItems( NonNullList<ItemStack> stackList )
-            {
-                super.displayAllRelevantItems( stackList );
-                
-                stackList.add( new ItemStack( Items.SPAWN_EGG ) );
-                stackList.add( new ItemStack( Items.POTIONITEM ) );
-                stackList.add( new ItemStack( Items.SPLASH_POTION ) );
-                stackList.add( new ItemStack( Items.LINGERING_POTION ) );
-                stackList.add( new ItemStack( Items.TIPPED_ARROW ) );
-                stackList.add( new ItemStack( Items.ENCHANTED_BOOK ) );
-            }
-        };
+        // keybindRealm = new KeyBinding( "key.infinityrealm.desc", Keyboard.KEY_H, "key.infinity.category" );
+        // ClientRegistry.registerKeyBinding( keybindRealm );
         
-        BANNERS = new InfinityTabBanners();
-        
-        SKULLS = new InfinityTabSkulls();
-        
-        FIREWORKS = new InfinityTabFireworks();
-        
-        THIEF = new InfinityTabThief();
+        keybindSave = new KeyBinding( "key.infinitysave.desc", Keyboard.KEY_G, "key.infinity.category" );
+        ClientRegistry.registerKeyBinding( keybindSave );
     }
     
     @EventHandler

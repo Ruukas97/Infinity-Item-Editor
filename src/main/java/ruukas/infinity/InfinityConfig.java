@@ -9,12 +9,14 @@ public class InfinityConfig
 {
     public static boolean itemGuiSidebar = false;
     
-    public static void setItemSidebar(boolean value){
+    public static void setItemSidebar( boolean value )
+    {
         itemGuiSidebar = value;
         ConfigManager.sync( Infinity.MODID, Type.INSTANCE );
     }
     
-    public static boolean getItemSidebar(){
+    public static boolean getItemSidebar()
+    {
         return itemGuiSidebar;
     }
 }

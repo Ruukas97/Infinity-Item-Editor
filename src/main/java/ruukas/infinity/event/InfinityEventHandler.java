@@ -11,7 +11,6 @@ import com.google.common.base.Predicates;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
-import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.gui.inventory.GuiContainerCreative;
 import net.minecraft.client.settings.GameSettings;
@@ -21,6 +20,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.entity.item.EntityItemFrame;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
@@ -48,11 +48,19 @@ public class InfinityEventHandler
     @SubscribeEvent
     public static void onKeyPress( KeyInputEvent event )
     {
+        System.out.println( "HEY" );
         if ( Infinity.keybind.isPressed() && Minecraft.getMinecraft().world != null )
         {
             ItemStack currentStack = Minecraft.getMinecraft().player.getHeldItemMainhand();
             
             Minecraft.getMinecraft().displayGuiScreen( new GuiItem( Minecraft.getMinecraft().currentScreen, currentStack.copy(), -1 ) );
+        }
+        
+        if ( Infinity.keybindSave.isPressed() && Minecraft.getMinecraft().world != null )
+        {
+            EntityPlayerSP player = Minecraft.getMinecraft().player;
+            ItemStack currentStack = player.getHeldItemMainhand();
+            Infinity.infinitySettings.addItemStack( player, currentStack );
         }
         
         if ( Infinity.keybindCopy.isPressed() && Minecraft.getMinecraft().world != null )
@@ -135,24 +143,29 @@ public class InfinityEventHandler
                     {
                         i = 45;
                     }
-                                        
+                    
                     mc.displayGuiScreen( new GuiItem( mc.currentScreen, s.getStack().copy(), i ) );
                     e.setCanceled( true );
                 }
             }
         }
         
-        if(GameSettings.isKeyDown( mc.gameSettings.keyBindDrop ) && player != null){
+        if ( GameSettings.isKeyDown( Infinity.keybindSave ) && player != null )
+        {
             e.getGui();
-            if(e.getGui() != null && e.getGui() instanceof GuiContainer && GuiScreen.isCtrlKeyDown()){
-                GuiContainer gui = (GuiContainer)e.getGui();
+            if ( e.getGui() != null && e.getGui() instanceof GuiContainerCreative )
+            {
+                GuiContainerCreative gui = (GuiContainerCreative) e.getGui();
                 Slot slot = gui.getSlotUnderMouse();
-                if(slot != null){
-                    ItemStack stack = slot.getStack();
-                    if(stack != null && stack.getItem() != Items.AIR && stack != ItemStack.EMPTY){
-                        mc.playerController.sendPacketDropItem( stack.copy() );
-                        player.sendMessage( new TextComponentString( "Adding "  ).appendSibling( stack.getTextComponent() ).appendText( " to thieving tab." ));
-                        e.setCanceled( true );
+                if ( slot != null )
+                {
+                    if ( gui.getSelectedTabIndex() == Infinity.REALM.getTabIndex() && !(slot.inventory instanceof InventoryPlayer) )
+                    {
+                        Infinity.infinitySettings.removeItemStack( player, slot.getStack() );
+                    }
+                    else
+                    {
+                        Infinity.infinitySettings.addItemStack( player, slot.getStack() );
                     }
                 }
             }
