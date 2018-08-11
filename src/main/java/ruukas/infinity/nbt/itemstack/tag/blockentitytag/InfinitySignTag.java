@@ -2,7 +2,10 @@ package ruukas.infinity.nbt.itemstack.tag.blockentitytag;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.event.ClickEvent;
+import net.minecraft.util.text.event.ClickEvent.Action;
 import net.minecraftforge.common.util.Constants.NBT;
 import ruukas.infinity.nbt.itemstack.tag.InfinityBlockEntityTag;
 
@@ -39,7 +42,14 @@ public class InfinitySignTag
     
     public InfinitySignTag setLineUnformatted( int line, String text )
     {
-        return setLine( line, new TextComponentString( text ) );
+        ITextComponent comp = new TextComponentString( text );;
+        Style style = null;
+        if ( hasLine( line ) )
+        {
+            style = getLineComponent( line ).getStyle();
+        }
+
+        return setLine( line, comp.setStyle( style ) );
     }
     
     public String getLine( int line )
@@ -47,7 +57,8 @@ public class InfinitySignTag
         return tileTag.getTag().getString( "Text" + (line + 1) );
     }
     
-    public String getLineFormatted(int line){
+    public String getLineFormatted( int line )
+    {
         return getLineComponent( line ).getFormattedText();
     }
     
@@ -56,8 +67,70 @@ public class InfinitySignTag
         return ITextComponent.Serializer.fromJsonLenient( getLine( line ) );
     }
     
+    public boolean hasLine( int line )
+    {
+        return tileTag.exists() && tileTag.getTag().hasKey( "Text" + (line + 1), NBT.TAG_STRING );
+    }
     
-    public boolean hasLine( int line){
-        return tileTag.exists() && tileTag.getTag().hasKey( "Text" + ( line + 1), NBT.TAG_STRING );
+    public boolean hasCommand()
+    {
+        if ( !hasLine( 0 ) )
+        {
+            return false;
+        }
+        
+        Style style = getLineComponent( 0 ).getStyle();
+        
+        if ( style != null && style.getClickEvent() != null )
+        {
+            ClickEvent clickevent = style.getClickEvent();
+            
+            if ( clickevent.getAction() == ClickEvent.Action.RUN_COMMAND )
+            {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+    
+    public InfinitySignTag setCommand( String command )
+    {
+        boolean remove = command == null || command.length() < 1;
+        
+        if ( !hasLine( 0 ) )
+        {
+            if(remove){
+                return this;
+            }
+            else setLine( 0, "" );
+        }
+        
+        ITextComponent comp = getLineComponent( 0 );
+        setLine( 0, comp.setStyle( remove ? null : comp.getStyle().setClickEvent( new ClickEvent( Action.RUN_COMMAND, command ) ) ) );
+        
+        return this;
+    }
+    
+    public String getCommand()
+    {
+        if ( !hasLine( 0 ) )
+        {
+            return null;
+        }
+        
+        Style style = getLineComponent( 0 ).getStyle();
+        
+        if ( style != null && style.getClickEvent() != null )
+        {
+            ClickEvent clickevent = style.getClickEvent();
+            
+            if ( clickevent.getAction() == ClickEvent.Action.RUN_COMMAND )
+            {
+                return clickevent.getValue();
+            }
+        }
+        
+        return null;
     }
 }

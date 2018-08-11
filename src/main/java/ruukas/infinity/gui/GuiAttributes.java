@@ -17,6 +17,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import ruukas.infinity.InfinityConfig;
 import ruukas.infinity.gui.action.GuiInfinityButton;
 import ruukas.infinity.gui.action.GuiNumberField;
 import ruukas.infinity.nbt.itemstack.tag.InfinityAttributeModifierList;
@@ -225,12 +226,12 @@ public class GuiAttributes extends GuiInfinity
         for ( int i = 0 ; i < modifierTags.length ; i++ )
         {
             InfinityAttributeModifierTag m = modifierTags[i];
-            drawString( fontRenderer, m.getDisplayString(), 5, midY + i * 10 - modifierTags.length * 5, HelperGui.MAIN_PURPLE );
+            drawString( fontRenderer, m.getDisplayString(), 5, midY + i * 10 - modifierTags.length * 5, InfinityConfig.MAIN_COLOR );
         }
         
         level.drawTextBox();
         levelDecimal.drawTextBox();
-        drawString( fontRenderer, ".", 96, height - 26, HelperGui.MAIN_PURPLE );
+        drawString( fontRenderer, ".", 96, height - 26, InfinityConfig.MAIN_COLOR );
         
         int distX = midX - mouseX;
         int distY = midY - mouseY;
@@ -263,7 +264,7 @@ public class GuiAttributes extends GuiInfinity
             int y = (int) (midY + (r * Math.sin( angleI )));
             
             GlStateManager.translate( 0, 0, 300 );
-            this.drawCenteredString( this.fontRenderer, I18n.format( "attribute.name." + sharedAttributes[i].getName() ), x, y - 17, HelperGui.MAIN_PURPLE );
+            this.drawCenteredString( this.fontRenderer, I18n.format( "attribute.name." + sharedAttributes[i].getName() ), x, y - 17, InfinityConfig.MAIN_COLOR );
             GlStateManager.translate( 0, 0, -300 );
             
             this.itemRender.renderItemAndEffectIntoGUI( note, x - 8, y - 8 );

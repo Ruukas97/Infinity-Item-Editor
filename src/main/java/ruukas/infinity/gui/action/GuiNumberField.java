@@ -7,7 +7,7 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import ruukas.infinity.gui.HelperGui;
+import ruukas.infinity.InfinityConfig;
 
 @SideOnly( Side.CLIENT )
 public class GuiNumberField extends Gui
@@ -46,8 +46,8 @@ public class GuiNumberField extends Gui
     
     private int cursorPosition;
     
-    private int enabledColor = HelperGui.MAIN_PURPLE;
-    private int cursorColor = HelperGui.MAIN_BLUE;
+    private int enabledColor = InfinityConfig.MAIN_COLOR;
+    private int cursorColor = InfinityConfig.CONTRAST_COLOR;
     private int disabledColor = 7368816;
     
     /** True if this textbox is visible */
@@ -380,7 +380,7 @@ public class GuiNumberField extends Gui
             if ( this.getEnableBackgroundDrawing() )
             {
                 drawRect( this.x - 1, this.y - 1, this.x + this.width + 1, this.y + this.height + 1, color );
-                drawRect( this.x, this.y, this.x + this.width, this.y + this.height, HelperGui.ALT_PURPLE );
+                drawRect( this.x, this.y, this.x + this.width, this.y + this.height, InfinityConfig.ALT_COLOR );
             }
             
             int cursorPos = this.cursorPosition;

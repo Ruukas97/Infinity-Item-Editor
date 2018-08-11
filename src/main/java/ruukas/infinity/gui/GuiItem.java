@@ -141,7 +141,7 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
         GuiActionTextField itemID = new GuiActionTextField( 250, fontRenderer, midX, 25 + (30 * ++fieldsAmount), 75, 20 );
         String registryName = stack.getItem().getRegistryName().toString();
         itemID.setText( registryName.toLowerCase().startsWith( "minecraft:" ) ? registryName.replaceFirst( "minecraft:", "" ) : registryName );
-        itemID.setTextColor( HelperGui.MAIN_PURPLE );
+        itemID.setTextColor( InfinityConfig.MAIN_COLOR );
         itemID.setMaxStringLength( 100 );
         itemID.action = () -> {
             Item item = Item.getByNameOrId( itemID.getText() );
@@ -549,7 +549,7 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
         
         if ( mc.playerController.isNotCreative() )
         {
-            drawCenteredString( fontRenderer, I18n.format( "warning.notcreative" ), width / 2, height - 60, HelperGui.MAIN_BLUE );
+            drawCenteredString( fontRenderer, I18n.format( "warning.notcreative" ), width / 2, height - 60, InfinityConfig.CONTRAST_COLOR );
         }
         
         for ( GuiNumberField f : numberFields )
@@ -569,18 +569,18 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
         
         for ( CenterString centerS : centerStrings )
         {
-            this.drawString( this.fontRenderer, centerS.string, this.width / 2 - fontRenderer.getStringWidth( centerS.string ) - 5, centerS.yPos, HelperGui.MAIN_PURPLE );
+            this.drawString( this.fontRenderer, centerS.string, this.width / 2 - fontRenderer.getStringWidth( centerS.string ) - 5, centerS.yPos, InfinityConfig.MAIN_COLOR );
         }
         
         for ( DrawString drawS : drawStrings )
         {
-            this.drawString( this.fontRenderer, drawS.string, drawS.xPos, drawS.yPos, HelperGui.MAIN_PURPLE );
+            this.drawString( this.fontRenderer, drawS.string, drawS.xPos, drawS.yPos, InfinityConfig.MAIN_COLOR );
         }
         
         if ( !InfinityConfig.getItemSidebar() && mouseX < width / 4 )
         {
             drawRect( 0, 0, width / 4, height, HelperGui.getColorFromRGB( 30, 100, 100, 250 ) );
-            drawCenteredString( fontRenderer, I18n.format( "gui.item.toggleside" ), width / 8, midY - 4, HelperGui.MAIN_BLUE );
+            drawCenteredString( fontRenderer, I18n.format( "gui.item.toggleside" ), width / 8, midY - 4, InfinityConfig.CONTRAST_COLOR );
         }
         
         GuiTextField textField = textFields.get( 0 );

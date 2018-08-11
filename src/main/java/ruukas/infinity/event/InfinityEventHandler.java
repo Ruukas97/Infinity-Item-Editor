@@ -34,6 +34,9 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.client.event.RenderTooltipEvent;
 import net.minecraftforge.client.event.TextureStitchEvent;
+import net.minecraftforge.common.config.ConfigManager;
+import net.minecraftforge.common.config.Config.Type;
+import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
@@ -44,6 +47,12 @@ import ruukas.infinity.gui.HelperGui;
 @Mod.EventBusSubscriber( modid = Infinity.MODID )
 public class InfinityEventHandler
 {
+    
+    @SubscribeEvent
+    public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs) {
+        if (eventArgs.getModID().equals(Infinity.MODID))
+            ConfigManager.sync( Infinity.MODID, Type.INSTANCE );
+    }
     
     @SubscribeEvent
     public static void onKeyPress( KeyInputEvent event )
@@ -166,6 +175,8 @@ public class InfinityEventHandler
                     {
                         Infinity.infinitySettings.addItemStack( player, slot.getStack().copy() );
                     }
+                    
+                    e.setCanceled( true );
                 }
             }
         }

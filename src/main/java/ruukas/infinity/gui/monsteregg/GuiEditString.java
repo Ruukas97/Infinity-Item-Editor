@@ -11,7 +11,7 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import ruukas.infinity.gui.HelperGui;
+import ruukas.infinity.InfinityConfig;
 
 @SideOnly( Side.CLIENT )
 public class GuiEditString extends GuiScreen
@@ -117,7 +117,7 @@ public class GuiEditString extends GuiScreen
     public void drawScreen( int mouseX, int mouseY, float partialTicks )
     {
         this.drawDefaultBackground();
-        this.drawCenteredString( this.fontRenderer, I18n.format( "gui.editstring" ), this.width / 2, 20, HelperGui.MAIN_PURPLE );
+        this.drawCenteredString( this.fontRenderer, I18n.format( "gui.editstring" ), this.width / 2, 20, InfinityConfig.MAIN_COLOR );
         this.drawString( this.fontRenderer, tag.getTranslatedName(), this.width / 2 - 150, 40, 10526880 );
         this.textField.drawTextBox();
         // int i = 75;

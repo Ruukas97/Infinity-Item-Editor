@@ -22,6 +22,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import ruukas.infinity.InfinityConfig;
 import ruukas.infinity.gui.action.GuiInfinityButton;
 import ruukas.infinity.nbt.NBTHelper;
 
@@ -235,7 +236,7 @@ public class GuiHead extends GuiScreen
         this.itemRender.renderItemAndEffectIntoGUI( stack, (this.width / 2) - 8, 30 );
         GlStateManager.popMatrix();
         
-        this.drawCenteredString( this.fontRenderer, this.title, this.width / 2, 15, HelperGui.MAIN_PURPLE );
+        this.drawCenteredString( this.fontRenderer, this.title, this.width / 2, 15, InfinityConfig.MAIN_COLOR );
         
         skullOwnerTextField.drawTextBox();
         

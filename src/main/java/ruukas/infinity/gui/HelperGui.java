@@ -26,9 +26,7 @@ import ruukas.infinity.Infinity;
 public class HelperGui
 {
     public static final ResourceLocation EMPTY_ARMOR_SLOT_SWORD = new ResourceLocation( Infinity.MODID, "items/empty_armor_slot_sword" );
-    public static final int MAIN_PURPLE = getColorFromRGB( 255, 150, 0, 200 );
-    public static final int ALT_PURPLE = getColorFromRGB( 255, 50, 20, 75 );
-    public static final int MAIN_BLUE = getColorFromRGB( 255, 0, 100, 255 );
+    
     public static final int GOOD_GREEN = 0x52b738;
     public static final int BAD_RED = 0xf44262;
     

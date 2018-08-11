@@ -21,6 +21,7 @@ import net.minecraftforge.fml.client.config.GuiSlider;
 import net.minecraftforge.fml.client.config.GuiSlider.ISlider;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import ruukas.infinity.InfinityConfig;
 import ruukas.infinity.gui.action.GuiInfinityButton;
 import ruukas.infinity.nbt.NBTHelper;
 import ruukas.infinity.nbt.NBTHelper.EnumPosePart;
@@ -90,7 +91,7 @@ public class GuiPose extends GuiScreen
     @Override
     public void onGuiClosed()
     {
-        
+    
     }
     
     /**
@@ -138,7 +139,7 @@ public class GuiPose extends GuiScreen
             drawEntityOnScreen( (int) (this.width / 3 * 2.5), this.height - 50, 120 );
         }
         
-        this.drawCenteredString( this.fontRenderer, this.title, this.width / 2, 15, HelperGui.MAIN_PURPLE );
+        this.drawCenteredString( this.fontRenderer, this.title, this.width / 2, 15, InfinityConfig.MAIN_COLOR );
         
         super.drawScreen( mouseX, mouseY, partialTicks );
         

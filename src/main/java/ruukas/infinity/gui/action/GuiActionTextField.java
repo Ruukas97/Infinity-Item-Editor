@@ -2,7 +2,7 @@ package ruukas.infinity.gui.action;
 
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiTextField;
-import ruukas.infinity.gui.HelperGui;
+import ruukas.infinity.InfinityConfig;
 
 public class GuiActionTextField extends GuiTextField
 {
@@ -11,8 +11,8 @@ public class GuiActionTextField extends GuiTextField
     public GuiActionTextField(int componentId, FontRenderer fontrendererObj, int x, int y, int par5Width, int par6Height) {
         super( componentId, fontrendererObj, x, y, par5Width, par6Height );
         
-        setDisabledTextColour( HelperGui.MAIN_BLUE );
-        setTextColor( HelperGui.MAIN_PURPLE );
+        setDisabledTextColour( InfinityConfig.CONTRAST_COLOR );
+        setTextColor( InfinityConfig.MAIN_COLOR );
     }
     
     @Override

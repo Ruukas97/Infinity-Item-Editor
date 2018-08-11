@@ -7,7 +7,7 @@ import net.minecraft.client.gui.GuiListExtended;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
-import ruukas.infinity.gui.HelperGui;
+import ruukas.infinity.InfinityConfig;
 
 public class GuiEntityTags extends GuiScreen
 {
@@ -99,7 +99,7 @@ public class GuiEntityTags extends GuiScreen
     {
         this.drawDefaultBackground();
         this.optionsRowList.drawScreen( mouseX, mouseY, partialTicks );
-        this.drawCenteredString( this.fontRenderer, this.screenTitle, this.width / 2, 5, HelperGui.MAIN_PURPLE );
+        this.drawCenteredString( this.fontRenderer, this.screenTitle, this.width / 2, 5, InfinityConfig.MAIN_COLOR );
         super.drawScreen( mouseX, mouseY, partialTicks );
     }
     

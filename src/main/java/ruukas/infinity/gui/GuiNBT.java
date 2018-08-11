@@ -24,6 +24,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import ruukas.infinity.InfinityConfig;
 import ruukas.infinity.gui.action.GuiInfinityButton;
 
 @SideOnly( Side.CLIENT )
@@ -218,7 +219,7 @@ public class GuiNBT extends GuiScreen
         this.itemRender.renderItemAndEffectIntoGUI( stack, (width / 2) - 8, 30 );
         GlStateManager.popMatrix();
         
-        this.drawCenteredString( fontRenderer, title, width / 2, 15, HelperGui.MAIN_PURPLE );
+        this.drawCenteredString( fontRenderer, title, width / 2, 15, InfinityConfig.MAIN_COLOR );
         
         this.drawCenteredString( fontRenderer, feedback, width / 2, 130, good ? HelperGui.GOOD_GREEN : HelperGui.BAD_RED );
         

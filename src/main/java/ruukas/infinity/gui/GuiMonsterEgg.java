@@ -36,6 +36,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import ruukas.infinity.InfinityConfig;
 import ruukas.infinity.gui.action.GuiInfinityButton;
 import ruukas.infinity.gui.monsteregg.GuiEntityTags;
 import ruukas.infinity.gui.monsteregg.MobTag;
@@ -90,7 +91,7 @@ public class GuiMonsterEgg extends GuiScreen
     @Override
     public void onGuiClosed()
     {
-        
+    
     }
     
     /**
@@ -154,7 +155,6 @@ public class GuiMonsterEgg extends GuiScreen
         {
             mc.displayGuiScreen( this.lastScreen );
         }
-
         
         else if ( button.id == 202 )
         {
@@ -200,7 +200,7 @@ public class GuiMonsterEgg extends GuiScreen
         this.itemRender.renderItemAndEffectIntoGUI( stack, (this.width / 2) - 8, 30 );
         GlStateManager.popMatrix();
         
-        this.drawCenteredString( this.fontRenderer, this.title, this.width / 2, 15, HelperGui.MAIN_PURPLE );
+        this.drawCenteredString( this.fontRenderer, this.title, this.width / 2, 15, InfinityConfig.MAIN_COLOR );
         
         super.drawScreen( mouseX, mouseY, partialTicks );
         

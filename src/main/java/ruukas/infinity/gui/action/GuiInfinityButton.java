@@ -3,6 +3,7 @@ package ruukas.infinity.gui.action;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
+import ruukas.infinity.InfinityConfig;
 import ruukas.infinity.gui.HelperGui;
 
 public class GuiInfinityButton extends GuiButton
@@ -24,7 +25,7 @@ public class GuiInfinityButton extends GuiButton
             FontRenderer fontrenderer = mc.fontRenderer;
             this.hovered = mouseX >= this.x && mouseY >= this.y && mouseX < this.x + this.width && mouseY < this.y + this.height;
             int i = this.getHoverState( this.hovered );
-            drawRect( x, y, x + width, y + height, HelperGui.ALT_PURPLE );
+            drawRect( x, y, x + width, y + height, InfinityConfig.ALT_COLOR );
             // Light shade
             drawRect( x, y, x + width, y + 1, HelperGui.getColorFromRGB( 26, 255, 255, 255 ) );
             drawRect( x, y + 1, x + 1, y + height, HelperGui.getColorFromRGB( 26, 255, 255, 255 ) );
@@ -32,7 +33,7 @@ public class GuiInfinityButton extends GuiButton
             drawRect( x, y + height - 1, x + width, y + height, HelperGui.getColorFromRGB( 50, 0, 0, 0 ) );
             drawRect( x + width - 1, y, x + width, y + height, HelperGui.getColorFromRGB( 50, 0, 0, 0 ) );
             this.mouseDragged( mc, mouseX, mouseY );
-            int color = HelperGui.MAIN_PURPLE;
+            int color = InfinityConfig.MAIN_COLOR;
             
             switch ( i )
             {
@@ -40,7 +41,7 @@ public class GuiInfinityButton extends GuiButton
                     color = HelperGui.BAD_RED;
                     break;
                 case 2:
-                    color = HelperGui.MAIN_BLUE;
+                    color = InfinityConfig.CONTRAST_COLOR;
                 default:
                     break;
             }

@@ -20,6 +20,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatAllowedCharacters;
 import net.minecraft.util.NonNullList;
+import ruukas.infinity.InfinityConfig;
 import ruukas.infinity.nbt.NBTHelper;
 import ruukas.infinity.nbt.itemstack.tag.InfinitySkullOwnerTag;
 
@@ -148,7 +149,7 @@ public class GuiHeadCollection extends GuiScreen
             {
                 if ( isShiftKeyDown() )
                 {
-                    mc.playerController.sendPacketDropItem( filteredSkulls.get( i ));
+                    mc.playerController.sendPacketDropItem( filteredSkulls.get( i ) );
                 }
                 else
                 {
@@ -221,7 +222,7 @@ public class GuiHeadCollection extends GuiScreen
             int y = i * 15 + 59 + topbar;
             int sWH = fontRenderer.getStringWidth( CATEGORIES[i] ) / 2;
             
-            drawCenteredString( fontRenderer, I18n.format( "gui.headcollection.category." + CATEGORIES[i] ), x, y, (i == selCat || (mouseX > x - sWH && mouseX < x + sWH && mouseY > y - 1 && mouseY < y + 9) ? HelperGui.MAIN_BLUE : HelperGui.MAIN_PURPLE) );
+            drawCenteredString( fontRenderer, I18n.format( "gui.headcollection.category." + CATEGORIES[i] ), x, y, (i == selCat || (mouseX > x - sWH && mouseX < x + sWH && mouseY > y - 1 && mouseY < y + 9) ? InfinityConfig.CONTRAST_COLOR : InfinityConfig.MAIN_COLOR) );
         }
         
         drawString( fontRenderer, I18n.format( "gui.headcollection" ) + " (" + filteredSkulls.size() + ")", space + 7, 56, blandColor );
@@ -236,7 +237,7 @@ public class GuiHeadCollection extends GuiScreen
         if ( currentPage + 1 < amountPages )
         {
             boolean selectedN = HelperGui.isMouseInRegion( mouseX, mouseY, space + letterSpace + maxInRow * 16 - 3 - nextPageW, 50 + topbar + 168, nextPageW, 8 );
-            drawString( fontRenderer, nextPage, space + letterSpace + maxInRow * 16 - 3 - nextPageW, 50 + topbar + 168, selectedN ? HelperGui.MAIN_BLUE : blandColor );
+            drawString( fontRenderer, nextPage, space + letterSpace + maxInRow * 16 - 3 - nextPageW, 50 + topbar + 168, selectedN ? InfinityConfig.CONTRAST_COLOR : blandColor );
         }
         
         drawCenteredString( fontRenderer, "" + (currentPage + 1), space + letterSpace + maxInRow * 16 - 13 - nextPageW, 50 + topbar + 168, blandColor );
@@ -245,7 +246,7 @@ public class GuiHeadCollection extends GuiScreen
         {
             String previousPage = "<--";
             boolean selectedP = HelperGui.isMouseInRegion( mouseX, mouseY, space + letterSpace + maxInRow * 16 - 25 - nextPageW * 2, 50 + topbar + 168, nextPageW, 8 );
-            drawString( fontRenderer, previousPage, space + letterSpace + maxInRow * 16 - 25 - nextPageW * 2, 50 + topbar + 168, selectedP ? HelperGui.MAIN_BLUE : blandColor );
+            drawString( fontRenderer, previousPage, space + letterSpace + maxInRow * 16 - 25 - nextPageW * 2, 50 + topbar + 168, selectedP ? InfinityConfig.CONTRAST_COLOR : blandColor );
         }
         
         drawString( fontRenderer, "From https://minecraft-heads.com API", space + 7, 50 + topbar + 168, blandColor );

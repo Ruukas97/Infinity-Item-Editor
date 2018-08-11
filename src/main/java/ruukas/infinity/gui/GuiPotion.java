@@ -21,6 +21,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import ruukas.infinity.InfinityConfig;
 import ruukas.infinity.gui.action.GuiInfinityButton;
 import ruukas.infinity.gui.action.GuiNumberField;
 import ruukas.infinity.nbt.itemstack.tag.InfinityCustomPotionEffectList;
@@ -189,11 +190,13 @@ public class GuiPotion extends GuiInfinity
         {
             InfinityPotionEffectTag e = potionTags[i];
             PotionEffect effect = e.getEffect();
-            if(effect != null){
+            if ( effect != null )
+            {
                 int ampli = effect.getAmplifier();
-                drawString( fontRenderer, (effect.getPotion().isBadEffect() ? TextFormatting.RED : TextFormatting.BLUE) + I18n.format( effect.getEffectName() ) + (ampli > 1 ? (" " + I18n.format( "potion.potency." + ampli ).trim()) : "") + " (" + (ampli + 1) + ")", 5, midY + i * 10 - potionTags.length * 5, HelperGui.MAIN_PURPLE );
+                drawString( fontRenderer, (effect.getPotion().isBadEffect() ? TextFormatting.RED : TextFormatting.BLUE) + I18n.format( effect.getEffectName() ) + (ampli > 1 ? (" " + I18n.format( "potion.potency." + ampli ).trim()) : "") + " (" + (ampli + 1) + ")", 5, midY + i * 10 - potionTags.length * 5, InfinityConfig.MAIN_COLOR );
             }
-            else{
+            else
+            {
                 drawString( fontRenderer, "Unknown ID (" + e.getId() + ")", 5, midY + i * 10 - potionTags.length * 5, HelperGui.BAD_RED );
             }
         }
@@ -201,8 +204,8 @@ public class GuiPotion extends GuiInfinity
         level.drawTextBox();
         time.drawTextBox();
         
-        drawString( fontRenderer, I18n.format( "gui.potion.time" ), 62, height - 56, HelperGui.MAIN_PURPLE );
-        drawString( fontRenderer, I18n.format( "gui.potion.level" ), 62, height - 29, HelperGui.MAIN_PURPLE );
+        drawString( fontRenderer, I18n.format( "gui.potion.time" ), 62, height - 56, InfinityConfig.MAIN_COLOR );
+        drawString( fontRenderer, I18n.format( "gui.potion.level" ), 62, height - 29, InfinityConfig.MAIN_COLOR );
         
         int distX = midX - mouseX;
         int distY = midY - mouseY;
@@ -245,7 +248,7 @@ public class GuiPotion extends GuiInfinity
             }
             
             GlStateManager.translate( 0, 0, 300 );
-            drawCenteredString( fontRenderer, displayString, x, y - 17, HelperGui.MAIN_PURPLE );
+            drawCenteredString( fontRenderer, displayString, x, y - 17, InfinityConfig.MAIN_COLOR );
             GlStateManager.translate( 0, 0, -300 );
             
             itemRender.renderItemAndEffectIntoGUI( potionIcon, x - 8, y - 8 );
@@ -256,7 +259,7 @@ public class GuiPotion extends GuiInfinity
         if ( mouseX > midX - 15 && mouseX < midX + 15 && mouseY > midY - 15 && mouseY < midY + 15 )
         {
             GlStateManager.translate( 0, 0, 300 );
-            drawCenteredString( fontRenderer, I18n.format( "gui.enchanting.addall" ), midX, midY, HelperGui.MAIN_BLUE );
+            drawCenteredString( fontRenderer, I18n.format( "gui.enchanting.addall" ), midX, midY, InfinityConfig.CONTRAST_COLOR );
             GlStateManager.translate( 0, 0, -300 );
         }
         

@@ -16,6 +16,7 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
+import ruukas.infinity.InfinityConfig;
 import ruukas.infinity.gui.action.GuiInfinityButton;
 
 public abstract class GuiInfinity extends GuiScreen
@@ -245,7 +246,7 @@ public abstract class GuiInfinity extends GuiScreen
             }
         }
         
-        drawCenteredString( fontRenderer, title, midX, 15, HelperGui.MAIN_PURPLE );
+        drawCenteredString( fontRenderer, title, midX, 15, InfinityConfig.MAIN_COLOR );
         
         super.drawScreen( mouseX, mouseY, partialTicks );
         

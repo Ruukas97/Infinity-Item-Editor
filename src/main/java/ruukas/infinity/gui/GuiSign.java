@@ -49,7 +49,7 @@ public class GuiSign extends GuiInfinity
         
         for ( int i = 0 ; i < 4 ; i++ )
         {
-            GuiActionTextField line = new GuiActionTextField( 500 + i, fontRenderer, midX-60, 60 + 30 * i, 120, 20 );
+            GuiActionTextField line = new GuiActionTextField( 500 + i, fontRenderer, midX - 60, 60 + 30 * i, 120, 20 );
             line.setMaxStringLength( 100 );
             line.setText( tag.hasLine( i ) && tag.getLine( i ) != null ? tag.getLineFormatted( i ) : "Line" + (i + 1) );
             line.action = () -> {
@@ -57,6 +57,14 @@ public class GuiSign extends GuiInfinity
             };
             signFields.add( line );
         }
+        
+        GuiActionTextField command = new GuiActionTextField( 504, fontRenderer, midX - 60, 180, 120, 20 );
+        command.setMaxStringLength( 100 );
+        command.setText( tag.hasCommand() && tag.getCommand() != null ? tag.getCommand() : "Command" );
+        command.action = () -> {
+            tag.setCommand( command.getText() );
+        };
+        signFields.add( command );
         
     }
     

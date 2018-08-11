@@ -19,6 +19,7 @@ import net.minecraft.item.ItemEnchantedBook;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import ruukas.infinity.InfinityConfig;
 import ruukas.infinity.gui.action.GuiInfinityButton;
 import ruukas.infinity.gui.action.GuiNumberField;
 import ruukas.infinity.nbt.itemstack.tag.InfinityEnchantmentList;
@@ -202,10 +203,12 @@ public class GuiEnchanting extends GuiInfinity
         for ( int i = 0 ; i < enchantmentTags.length ; i++ )
         {
             InfinityEnchantmentTag e = enchantmentTags[i];
-            if(e.getEnchantment() != null){
-                drawString( fontRenderer, e.getEnchantment().getTranslatedName( e.getLevel() ).replace( "enchantment.level.", "" ), 5, midY + i * 10 - enchantmentTags.length * 5, HelperGui.MAIN_PURPLE );
+            if ( e.getEnchantment() != null )
+            {
+                drawString( fontRenderer, e.getEnchantment().getTranslatedName( e.getLevel() ).replace( "enchantment.level.", "" ), 5, midY + i * 10 - enchantmentTags.length * 5, InfinityConfig.MAIN_COLOR );
             }
-            else{
+            else
+            {
                 drawString( fontRenderer, "Unknown ID (" + e.getID() + ")", 5, midY + i * 10 - enchantmentTags.length * 5, HelperGui.BAD_RED );
             }
         }
@@ -242,7 +245,7 @@ public class GuiEnchanting extends GuiInfinity
             int x = (int) (midX + (r * Math.cos( angleI )));
             int y = (int) (midY + (r * Math.sin( angleI )));
             GlStateManager.translate( 0, 0, 300 );
-            this.drawCenteredString( this.fontRenderer, enchants.get( i ).getTranslatedName( enchants.get( i ).getMaxLevel() == 1 ? 1 : level.getIntValue() ).replace( "enchantment.level.", "" ), x, y - 17, HelperGui.MAIN_PURPLE );
+            this.drawCenteredString( this.fontRenderer, enchants.get( i ).getTranslatedName( enchants.get( i ).getMaxLevel() == 1 ? 1 : level.getIntValue() ).replace( "enchantment.level.", "" ), x, y - 17, InfinityConfig.MAIN_COLOR );
             GlStateManager.translate( 0, 0, -300 );
             
             this.itemRender.renderItemAndEffectIntoGUI( enchantBook, x - 8, y - 8 );
@@ -254,7 +257,7 @@ public class GuiEnchanting extends GuiInfinity
         {
             GlStateManager.translate( 0, 0, 300 );
             // drawRect( midX - 15, midY - 15, midX + 15, midY + 15, HelperGui.MAIN_BLUE );
-            drawCenteredString( fontRenderer, I18n.format( "gui.enchanting.addall" ), midX, midY, HelperGui.MAIN_BLUE );
+            drawCenteredString( fontRenderer, I18n.format( "gui.enchanting.addall" ), midX, midY, InfinityConfig.CONTRAST_COLOR );
             GlStateManager.translate( 0, 0, -300 );
         }
         

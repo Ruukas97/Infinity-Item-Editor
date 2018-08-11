@@ -13,6 +13,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import ruukas.infinity.InfinityConfig;
 import ruukas.infinity.gui.action.GuiActionTextField;
 import ruukas.infinity.gui.action.GuiInfinityButton;
 import ruukas.infinity.nbt.itemstack.tag.InfinityBookTags;
@@ -188,11 +189,11 @@ public class GuiBook extends GuiInfinity
         
         titleField.drawTextBox();
         String titleStr = I18n.format( "gui.book.title" );
-        drawString( fontRenderer, titleStr, titleField.x - fontRenderer.getStringWidth( titleStr ) - 5, titleField.y + 6, HelperGui.MAIN_PURPLE );
+        drawString( fontRenderer, titleStr, titleField.x - fontRenderer.getStringWidth( titleStr ) - 5, titleField.y + 6, InfinityConfig.MAIN_COLOR );
         
         authorField.drawTextBox();
         String authorStr = I18n.format( "gui.book.author" );
-        drawString( fontRenderer, authorStr, authorField.x - fontRenderer.getStringWidth( authorStr ) - 5, authorField.y + 6, HelperGui.MAIN_PURPLE );
+        drawString( fontRenderer, authorStr, authorField.x - fontRenderer.getStringWidth( authorStr ) - 5, authorField.y + 6, InfinityConfig.MAIN_COLOR );
         
         HelperGui.addTooltipTranslated( resolvedButton, mouseX, mouseY, I18n.format( "gui.book.resolved.tooltip" ) );
     }
