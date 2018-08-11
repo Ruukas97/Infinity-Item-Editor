@@ -1,7 +1,7 @@
 ﻿key.infinity.category=Éditeur d'objets infini
 key.infinity.desc=Editeur d'objet actuel
 key.infinitycopy.desc=Copier l'équipement du joueur cible
-key.infinitysave.desc=Save current item to the realm
+key.infinitysave.desc=Enregistrer l'élément actuel dans le royaume
 
 warning.notcreative=Vous devez être en mode créatif pour enregistrer des éléments
 
@@ -10,7 +10,7 @@ itemGroup.banners=Infini - Bannières
 itemGroup.skulls=Infini - Tete
 itemGroup.fireworks=Infini - Feux d'artifice
 itemGroup.thief=Infini - Voleur
-itemGroup.realm=Infinity - Realm
+itemGroup.realm=Infini - Domaine
 
 gui.close=Fermer
 gui.save=Sauvegarder
