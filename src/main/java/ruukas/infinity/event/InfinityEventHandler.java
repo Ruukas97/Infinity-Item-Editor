@@ -48,7 +48,6 @@ public class InfinityEventHandler
     @SubscribeEvent
     public static void onKeyPress( KeyInputEvent event )
     {
-        System.out.println( "HEY" );
         if ( Infinity.keybind.isPressed() && Minecraft.getMinecraft().world != null )
         {
             ItemStack currentStack = Minecraft.getMinecraft().player.getHeldItemMainhand();
@@ -60,7 +59,7 @@ public class InfinityEventHandler
         {
             EntityPlayerSP player = Minecraft.getMinecraft().player;
             ItemStack currentStack = player.getHeldItemMainhand();
-            Infinity.infinitySettings.addItemStack( player, currentStack );
+            Infinity.infinitySettings.addItemStack( player, currentStack.copy() );
         }
         
         if ( Infinity.keybindCopy.isPressed() && Minecraft.getMinecraft().world != null )
@@ -165,7 +164,7 @@ public class InfinityEventHandler
                     }
                     else
                     {
-                        Infinity.infinitySettings.addItemStack( player, slot.getStack() );
+                        Infinity.infinitySettings.addItemStack( player, slot.getStack().copy() );
                     }
                 }
             }
