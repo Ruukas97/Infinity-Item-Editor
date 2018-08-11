@@ -49,8 +49,9 @@ public class InfinityEventHandler
 {
     
     @SubscribeEvent
-    public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs) {
-        if (eventArgs.getModID().equals(Infinity.MODID))
+    public void onConfigChanged( ConfigChangedEvent.OnConfigChangedEvent eventArgs )
+    {
+        if ( eventArgs.getModID().equals( Infinity.MODID ) )
             ConfigManager.sync( Infinity.MODID, Type.INSTANCE );
     }
     
@@ -161,13 +162,13 @@ public class InfinityEventHandler
         if ( GameSettings.isKeyDown( Infinity.keybindSave ) && player != null )
         {
             e.getGui();
-            if ( e.getGui() != null && e.getGui() instanceof GuiContainerCreative )
+            if ( e.getGui() != null && e.getGui() instanceof GuiContainer )
             {
-                GuiContainerCreative gui = (GuiContainerCreative) e.getGui();
+                GuiContainer gui = (GuiContainer) e.getGui();
                 Slot slot = gui.getSlotUnderMouse();
                 if ( slot != null )
                 {
-                    if ( gui.getSelectedTabIndex() == Infinity.REALM.getTabIndex() && !(slot.inventory instanceof InventoryPlayer) )
+                    if ( (gui instanceof GuiContainerCreative && ((GuiContainerCreative) gui).getSelectedTabIndex() == Infinity.REALM.getTabIndex()) && !(slot.inventory instanceof InventoryPlayer) )
                     {
                         Infinity.infinitySettings.removeItemStack( player, slot.getStack() );
                     }
