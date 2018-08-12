@@ -34,8 +34,8 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.client.event.RenderTooltipEvent;
 import net.minecraftforge.client.event.TextureStitchEvent;
-import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.common.config.Config.Type;
+import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -161,7 +161,6 @@ public class InfinityEventHandler
         
         if ( GameSettings.isKeyDown( Infinity.keybindSave ) && player != null )
         {
-            e.getGui();
             if ( e.getGui() != null && e.getGui() instanceof GuiContainer )
             {
                 GuiContainer gui = (GuiContainer) e.getGui();
