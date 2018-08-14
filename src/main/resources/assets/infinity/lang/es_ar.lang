@@ -1,7 +1,6 @@
-key.infinity.category=§0Dark Infinity Item Editor §b§l[By Nacho4785]
+key.infinity.category=Infinity Item Editor
 key.infinity.desc=Editar item
 key.infinitycopy.desc=Copiar items a quien apuntes
-key.infinitysave.desc=Save current item to the realm
 
 warning.notcreative=¡Necesitas estar en modo creativo para guardar items!, ¡Presiona Shift+Click para guardarlo como un comando!
 
@@ -10,7 +9,6 @@ itemGroup.banners=Infinity - Estandartes
 itemGroup.skulls=Infinity - Cabezas
 itemGroup.fireworks=Infinity - Fuegos Artificiales
 itemGroup.thief=Infinity - Ladrón
-itemGroup.realm=Infinity - Realm
 
 gui.close=Cerrar
 gui.save=Guardar

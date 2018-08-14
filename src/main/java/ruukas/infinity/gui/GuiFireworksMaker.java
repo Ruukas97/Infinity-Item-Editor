@@ -26,7 +26,7 @@ import ruukas.infinity.util.QualityHelper;
 
 public class GuiFireworksMaker extends InventoryEffectRenderer {
 	private static final ResourceLocation background = new ResourceLocation("qualityorder", "textures/gui/fireworkmaker.png");
-    private final GuiScreen lastScreen;
+    //private final GuiScreen lastScreen;
 	private EntityFireworkRocket rocket;
 	private int tick = 100;
 	private float initialPitch;
@@ -35,7 +35,7 @@ public class GuiFireworksMaker extends InventoryEffectRenderer {
 
 	public GuiFireworksMaker(GuiScreen lastScreen, EntityPlayer player) {
 		super(new ContainerFirework(player));
-		this.lastScreen = lastScreen;
+		//this.lastScreen = lastScreen;
 
 		player.openContainer = this.inventorySlots;
 		this.allowUserInput = false;

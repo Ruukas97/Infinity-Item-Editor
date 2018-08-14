@@ -1,0 +1,394 @@
+key.infinity.category=Infinity Item Editor
+key.infinity.desc=Ændre Nuværende Item
+key.infinitycopy.desc=Kopier spillers udstyr
+key.infinitysave.desc=Gem nuværende item til realm
+
+warning.notcreative=Du skal være i Creative Mode for a gemme items. Shift+Klik på Drop-knappen for a kopiere command.
+
+itemGroup.unavailable=Infinity - Utilgængelig
+itemGroup.banners=Infinity - Bannere
+itemGroup.skulls=Infinity - Hoveder
+itemGroup.fireworks=Infinity - Fyrværkeri
+itemGroup.thief=Infinity - Tyv
+itemGroup.realm=Infinity - Realm
+
+gui.close=Luk
+gui.save=Gem
+gui.drop=Drop
+gui.reset=Nulstil
+gui.clear=Ryd Data
+
+gui.item=Infinity Editor
+gui.spawnegg=Spawn Egg Editor
+gui.head=Hoved Editor
+gui.armorstand=Armor Stand Editor
+gui.color=Farve Editor
+gui.nbt=NBT Editor
+gui.nbtadv=NBT Browser
+gui.enchanting=Enchanting
+gui.potion=Potion Editor
+gui.book=Bog Editor
+gui.attributes=Attributes Editor
+gui.chestinventory=Kiste Inventory
+gui.hideflags=Fjern Flags
+gui.bannermaker=Banner Maker
+gui.fireworks=Se Fyrværkeri
+gui.specialbutton=Andre Editors
+gui.headcollection=Hovedkollektion
+gui.lore=Info Editor
+gui.sign=Skilt Editor
+
+gui.armorstand.pose=Armor Stand Stilling Editor
+gui.armorstand.pose.reset.1=Nulstiller kun stilling!
+gui.armorstand.invisible.note=Note: Det kan være svært at fjerne den, uden kommandoer.
+gui.armorstand.marker.note=Marker slår interaktioner fra, og gør hitboksen lille.
+
+gui.attributes.infinity.0=Indsæt Værdi
+gui.attributes.infinity.1=Uendelig
+gui.attributes.operation.0=Adderende +
+gui.attributes.operation.1=Multiplerende *
+gui.attributes.operation.2=Eksponentiel **
+gui.attributes.slot.0=Alle Slots
+gui.attributes.slot.1=Primære Hånd
+gui.attributes.slot.2=Anden Hånd
+gui.attributes.slot.3=Hoved
+gui.attributes.slot.4=Torso
+gui.attributes.slot.5=Ben
+gui.attributes.slot.6=Fødder
+attribute.name.generic.flyingSpeed=Mob Flyvehastighed
+
+gui.book.title=Titel
+gui.book.author=Forfatter
+gui.book.generation=Generation
+gui.book.resolved=Tjekket
+gui.book.resolved.tooltip.1=Er blevet tjekket af serveren
+gui.book.unresolved=Ikke Tjekket
+gui.book.unsign=Utjek
+gui.book.resign=Gentjek
+
+gui.enchanting.enchanttoggle.0=Vis Gældende
+gui.enchanting.enchanttoggle.1=Vis Alle
+gui.enchanting.addall=Tilføj alle viste
+
+gui.spawnegg.entity=Entity Specifik
+gui.spawnegg.mob=Mob Specifik
+gui.spawnegg.mobspecific=%s Specifik
+gui.spawnegg.animalspecific=Animal Specifik
+
+gui.head.save.tooltip.1=Lagger måske, når spillerinfo loades
+gui.head.save.tooltip.2=Dette er et vanilla-problem.
+gui.head.list.tooltip.1=Vis spillere på nuværende server.
+gui.head.list.tooltip.2=--Ikke implementeret endnu--
+
+gui.headcollection.category.alphabet=Alfabet
+gui.headcollection.category.animals=Dyr
+gui.headcollection.category.blocks=Blokke
+gui.headcollection.category.decoration=Dekoration
+gui.headcollection.category.food-drinks=Mad/Drikke
+gui.headcollection.category.humans=Mennesker
+gui.headcollection.category.humanoid=Menneskelige
+gui.headcollection.category.miscellaneous=Diverse
+gui.headcollection.category.monsters=Monstre
+gui.headcollection.category.plants=Planter
+
+gui.headcollection.clickhead=Klik for at overskrive nuværende item
+gui.headcollection.clickheadshift=Hold shift for at droppe
+gui.headcollection.typesearch=Skriv for at søge
+gui.headcollection.clicksearch=Klik for at søge!
+gui.headcollection.currentpage=Side %s/%s
+gui.headcollection.changecategory.1=Skift Kategori
+gui.headcollection.changecategory.2=Det tager lidt tid at loade
+
+gui.item.toggleside=Skift Visning
+gui.item.discord=Tilslut Discord
+gui.item.share=Del Item
+
+gui.item.colorremove.tooltip.1=Fjern alle farver
+gui.item.drop.tooltip.1=Hold shift for at kopiere /give kommando
+gui.item.drop.tooltip.2=Bagefter kan du indsætte den et andet sted
+
+gui.nbt.update=Opdater NBT
+
+gui.nbt.comp.open=Klik for at vise Compound Tag
+gui.nbt.comp.close=Klik for at skjule Compound Tag
+
+tag.head.0=Kranie
+tag.head.1=Wither-kranie
+tag.head.2=Zombiehoved
+tag.head.3=Spillerhoved
+tag.head.4=Creeperhoved
+tag.head.5=Dragehoved
+
+gui.potion.time=Tid (Sekunder)
+gui.potion.level=Forstærker
+
+gui.equipment.inventoryclone=Dette er en kopi af dit inventory, ændringer vil ikke blive gemt.
+
+
+flag.enchantment.0=Enchantment: vist
+flag.enchantment.1=Enchantment: skjult
+flag.attributemod.0=Attribute Mod: vist
+flag.attributemod.1=Attribute Mod: skjult
+flag.unbreakable.0=Unbreakable: vist
+flag.unbreakable.1=Unbreakable: skjult
+flag.candestroy.0=Can Destroy: vist
+flag.candestroy.1=Can Destroy: skjult
+flag.canplaceon.0=Can Place On: vist
+flag.canplaceon.1=Can Place On: skjult
+flag.iteminfo.0=Item Info: vist
+flag.iteminfo.1=Item Info: skjult
+
+gui.editstring=Ændre String
+
+gui.entitytags=Entity Tags
+gui.mobspecific=Mob Specifik
+
+
+tag.skullowner=SkullOwner
+
+tag.unbreakable.0=Tager Skade
+tag.unbreakable.1=Ubrydelig
+
+tag.fire.on=Flammer i %s ticks
+tag.fire.off=Ingen flammer
+
+tag.customname=Skift brugerdefineret navn
+tag.nogravity.on=Ingen tyngdekraft
+tag.nogravity.off=Tyngdekraft
+tag.invulnerable.on=Uskadelig
+tag.invulnerable.off=Skadelig
+tag.customnamevisible.on=Brugerdefineret navn synligt
+tag.customnamevisible.off=Brugerdefineret navn skjult
+tag.silent.on=Stille
+tag.silent.off=Ikke stille
+tag.glowing.on=Lysende
+tag.glowing.off=Ikke Lysende
+
+tag.health.on=%s liv
+tag.health.off=Død
+tag.absorption.on=%s absorbation
+tag.absorption.off=Ingen Absorption
+tag.fallflying.on=Elytra fald
+tag.fallflying.off=Normal fald
+tag.noai.on=AI slået fra
+tag.noai.off=AI slået til
+tag.persistencerequired.on=Despawner ikke
+tag.persistencerequired.off=Despawner som normalt
+tag.canpickuploot.on=Samlet loot op
+tag.canpickuploot.off=Ignorerer loot
+
+tag.armorstand.arms.0=Ingen arme
+tag.armorstand.arms.1=Har arme
+tag.armorstand.small.0=Normal
+tag.armorstand.small.1=Lille
+tag.armorstand.invisible.0=Synlig
+tag.armorstand.invisible.1=Usynlig
+tag.armorstand.nobase.0=Har Plade
+tag.armorstand.nobase.1=Ingen Plade
+tag.armorstand.marker.0=Ikke Marker
+tag.armorstand.marker.1=Marker
+tag.armorstand.inventory=Udstyr
+tag.armorstand.pose=Stilling
+
+tag.creeper.powered.on=Powered
+tag.creeper.powered.off=Ikke Powered
+tag.creeper.explosionradius.on=Eksplosionsradius: %s
+tag.creeper.explosionradius.off=No Eksplosionsradius
+tag.creeper.fuse.on=Tid til eksplotion: %s
+tag.creeper.fuse.off=Ekplosion med det samme
+tag.creeper.ignited.on=Tændt
+tag.creeper.ignited.off=Ikke tændt
+
+tag.endermite.lifetime.off=Udefineret Livstid
+tag.endermite.lifetime.on=Livstid: %s
+tag.endermite.playerspawned.off=PlayerSpawned: 0
+tag.endermite.playerspawned.on=PlayerSpawned: 1
+
+tag.parrot.variant.-1=Tilfældig Variant
+tag.parrot.variant.0=Rød Variant
+tag.parrot.variant.1=Blå Variant
+tag.parrot.variant.2=Grøn Variant
+tag.parrot.variant.3=Turkis Variant
+tag.parrot.variant.4=Sølv Variant
+
+tag.pig.saddled.on=Sadlet
+tag.pig.saddled.off=Usadlet
+
+tag.sheep.color.0=Hvid Uld
+tag.sheep.color.1=Orange Uld
+tag.sheep.color.2=Magenta Uld
+tag.sheep.color.3=Lyseblå Uld
+tag.sheep.color.4=Gul Uld
+tag.sheep.color.5=Lysegrøn Uld
+tag.sheep.color.6=Pink Uld
+tag.sheep.color.7=Grå Uld
+tag.sheep.color.8=LysegråUld
+tag.sheep.color.9=Turkis Uld
+tag.sheep.color.10=Lilla Uld
+tag.sheep.color.11=Blå Uld
+tag.sheep.color.12=Brun Uld
+tag.sheep.color.13=Mørkegrøn Uld
+tag.sheep.color.14=Rød Uld
+tag.sheep.color.15=Sort Uld
+tag.sheep.sheared.on=Klippet
+tag.sheep.sheared.off=Has Uld
+
+tag.shulker.color.0=Hvid
+tag.shulker.color.1=Orange
+tag.shulker.color.2=Magenta
+tag.shulker.color.3=Lyseblå
+tag.shulker.color.4=Gul
+tag.shulker.color.5=Lysegrøn
+tag.shulker.color.6=Pink
+tag.shulker.color.7=Grå
+tag.shulker.color.8=Lysegrå
+tag.shulker.color.9=Turkis
+tag.shulker.color.10=Lilla
+tag.shulker.color.11=Blå
+tag.shulker.color.12=Brun
+tag.shulker.color.13=Mørkegrøn
+tag.shulker.color.14=Rød
+tag.shulker.color.15=Sort
+
+tag.villager.profession.0=Farmer
+tag.villager.profession.1=Bibliotekar
+tag.villager.profession.2=Præst
+tag.villager.profession.3=Smed
+tag.villager.profession.4=Slagter
+tag.villager.profession.5=Tumpe
+
+
+tag.vindicator.johnny.on=Johnny Opførsel
+tag.vindicator.johnny.off=Normal Opførsel
+
+tag.zombie.isbaby.on=Baby
+tag.zombie.isbaby.off=Voksen
+tag.zombie.canbreakdoors.on=Kan ødelægge døre
+tag.zombie.canbreakdoors.off=Kan ikke ødelægge døre
+
+potion.potency.3=IV
+potion.potency.4=V
+potion.potency.5=VI
+potion.potency.6=VII
+potion.potency.7=VIII
+potion.potency.8=IX
+potion.potency.9=X
+potion.potency.10=XI
+potion.potency.11=XII
+potion.potency.12=XIII
+potion.potency.13=XIV
+potion.potency.14=XV
+potion.potency.15=XVI
+potion.potency.16=XVII
+potion.potency.17=XVIII
+potion.potency.18=XIX
+potion.potency.19=XX
+potion.potency.20=XXI
+potion.potency.21=XXII
+potion.potency.22=XXIII
+potion.potency.23=XXIV
+potion.potency.24=XXV
+potion.potency.25=XXVI
+potion.potency.26=XXVII
+potion.potency.27=XXVIII
+potion.potency.28=XXIX
+potion.potency.29=XXX
+potion.potency.30=XXXI
+potion.potency.31=XXXII
+potion.potency.32=XXXIII
+potion.potency.33=XXXIV
+potion.potency.34=XXXV
+potion.potency.35=XXXVI
+potion.potency.36=XXXVII
+potion.potency.37=XXXVIII
+potion.potency.38=XXXIX
+potion.potency.39=XL
+potion.potency.40=XLI
+potion.potency.41=XLII
+potion.potency.42=XLIII
+potion.potency.43=XLIV
+potion.potency.44=XLV
+potion.potency.45=XLVI
+potion.potency.46=XLVII
+potion.potency.47=XLVIII
+potion.potency.48=XLIX
+potion.potency.49=L
+potion.potency.50=LI
+potion.potency.51=LII
+potion.potency.52=LIII
+potion.potency.53=LIV
+potion.potency.54=LV
+potion.potency.55=LVI
+potion.potency.56=LVII
+potion.potency.57=LVIII
+potion.potency.58=LIX
+potion.potency.59=LX
+potion.potency.60=LXI
+potion.potency.61=LXII
+potion.potency.62=LXIII
+potion.potency.63=LXIV
+potion.potency.64=LXV
+potion.potency.65=LXVI
+potion.potency.66=LXVII
+potion.potency.67=LXVIII
+potion.potency.68=LXIX
+potion.potency.69=LXX
+potion.potency.70=LXXI
+potion.potency.71=LXXII
+potion.potency.72=LXXIII
+potion.potency.73=LXXIV
+potion.potency.74=LXXV
+potion.potency.75=LXXVI
+potion.potency.76=LXXVII
+potion.potency.77=LXXVIII
+potion.potency.78=LXXIX
+potion.potency.79=LXXX
+potion.potency.80=LXXXI
+potion.potency.81=LXXXII
+potion.potency.82=LXXXIII
+potion.potency.83=LXXXIV
+potion.potency.84=LXXXV
+potion.potency.85=LXXXVI
+potion.potency.86=LXXXVII
+potion.potency.87=LXXXVIII
+potion.potency.88=LXXXIX
+potion.potency.89=XC
+potion.potency.90=XCI
+potion.potency.91=XCII
+potion.potency.92=XCIII
+potion.potency.93=XCIV
+potion.potency.94=XCV
+potion.potency.95=XCVI
+potion.potency.96=XCVII
+potion.potency.97=XCVIII
+potion.potency.98=XCIX
+potion.potency.99=C
+potion.potency.100=CI
+potion.potency.101=CII
+potion.potency.102=CIII
+potion.potency.103=CIV
+potion.potency.104=CV
+potion.potency.105=CVI
+potion.potency.106=CVII
+potion.potency.107=CVIII
+potion.potency.108=CIX
+potion.potency.109=CX
+potion.potency.110=CXI
+potion.potency.111=CXII
+potion.potency.112=CXIII
+potion.potency.113=CXIV
+potion.potency.114=CXV
+potion.potency.115=CXVI
+potion.potency.116=CXVII
+potion.potency.117=CXVIII
+potion.potency.118=CXIX
+potion.potency.119=CXX
+potion.potency.120=CXXI
+potion.potency.121=CXXII
+potion.potency.122=CXXIII
+potion.potency.123=CXXIV
+potion.potency.124=CXXV
+potion.potency.125=CXXVI
+potion.potency.126=CXXVII
+potion.potency.127=CXXVIII
+
