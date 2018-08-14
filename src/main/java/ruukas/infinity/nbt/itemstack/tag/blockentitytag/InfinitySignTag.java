@@ -37,18 +37,29 @@ public class InfinitySignTag
     
     public InfinitySignTag setLine( int line, ITextComponent text )
     {
+        if ( text.getFormattedText().length() < 1 && text.getStyle().getClickEvent() == null )
+        {
+            return setLine( line, (String) null );
+        }
+        
         return setLine( line, ITextComponent.Serializer.componentToJson( text ) );
     }
     
     public InfinitySignTag setLineUnformatted( int line, String text )
     {
-        ITextComponent comp = new TextComponentString( text );;
+        if ( text.length() < 1 && !hasCommand() )
+        {
+            return setLine( line, (String) null );
+        }
+        
+        ITextComponent comp = new TextComponentString( text );
+        
         Style style = null;
         if ( hasLine( line ) )
         {
             style = getLineComponent( line ).getStyle();
         }
-
+        
         return setLine( line, comp.setStyle( style ) );
     }
     
@@ -74,39 +85,20 @@ public class InfinitySignTag
     
     public boolean hasCommand()
     {
-        if ( !hasLine( 0 ) )
-        {
-            return false;
-        }
-        
-        Style style = getLineComponent( 0 ).getStyle();
-        
-        if ( style != null && style.getClickEvent() != null )
-        {
-            ClickEvent clickevent = style.getClickEvent();
-            
-            if ( clickevent.getAction() == ClickEvent.Action.RUN_COMMAND )
-            {
-                return true;
-            }
-        }
-        
-        return false;
+        return hasLine( 0 ) && getLineComponent( 0 ).getStyle().getClickEvent().getAction() == ClickEvent.Action.RUN_COMMAND;
     }
     
     public InfinitySignTag setCommand( String command )
     {
         boolean remove = command == null || command.length() < 1;
+        boolean noLine = !hasLine( 0 );
         
-        if ( !hasLine( 0 ) )
+        if ( noLine && remove )
         {
-            if(remove){
-                return this;
-            }
-            else setLine( 0, "" );
+            return this;
         }
         
-        ITextComponent comp = getLineComponent( 0 );
+        ITextComponent comp = noLine ? new TextComponentString( "" ) : getLineComponent( 0 );
         setLine( 0, comp.setStyle( remove ? null : comp.getStyle().setClickEvent( new ClickEvent( Action.RUN_COMMAND, command ) ) ) );
         
         return this;

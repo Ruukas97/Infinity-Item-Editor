@@ -145,10 +145,10 @@ public class InfinityEventHandler
                     else if ( 36 <= i && i <= 39 )
                     {
                         i = 8 - (i % 4);
-                        // 39 - 5: Head
-                        // 38 - 6: Chest
-                        // 37 - 7: Legs
-                        // 36 - 8: Feet
+                        // 39 -> 5: Head
+                        // 38 -> 6: Chest
+                        // 37 -> 7: Legs
+                        // 36 -> 8: Feet
                     }
                     else if ( i == 40 )
                     {
@@ -206,10 +206,6 @@ public class InfinityEventHandler
                 else if ( 36 <= i && i <= 39 )
                 {
                     i = 8 - (i % 4);
-                    // 39 - 5: Head
-                    // 38 - 6: Chest
-                    // 37 - 7: Legs
-                    // 36 - 8: Feet
                 }
                 else if ( i == 40 )
                 {
