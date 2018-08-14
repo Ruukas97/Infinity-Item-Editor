@@ -27,7 +27,7 @@ public class Infinity
 {
     public static final String MODID = "infinity";
     public static final String NAME = "Infinity Item Editor";
-    public static final String VERSION = "0.11";
+    public static final String VERSION = "0.12-pre1";
     
     public static Logger logger;
     public static File dataDir;
@@ -112,6 +112,8 @@ public class Infinity
     // Added sign gui
     // Added infinity realm
     // Removed Ctrl+Drop keybind
+    // Copy paste in inventory
+    // Danish localization
     
     // TODO next version:
     // Change modid
@@ -176,7 +178,6 @@ public class Infinity
         catch ( IOException e )
         {
             logger.warn( "Failed to connect to API for head collection. Check your internet connection." );
-            ;
         }
     }
 }
