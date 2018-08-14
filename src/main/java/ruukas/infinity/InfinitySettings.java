@@ -48,7 +48,7 @@ public class InfinitySettings
         }
         catch ( Exception exception )
         {
-            LOGGER.error( "Failed to load creative mode options", (Throwable) exception );
+            LOGGER.error( "Failed to load infinity realm", (Throwable) exception );
         }
     }
     
@@ -69,7 +69,7 @@ public class InfinitySettings
         }
         catch ( Exception exception )
         {
-            LOGGER.error( "Failed to save creative mode options", (Throwable) exception );
+            LOGGER.error( "Failed to save infinity realm", (Throwable) exception );
         }
     }
     

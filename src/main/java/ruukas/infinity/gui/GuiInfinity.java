@@ -115,7 +115,7 @@ public abstract class GuiInfinity extends GuiScreen
     {
         if ( isShiftKeyDown() )
         {
-            if ( stack == ItemStack.EMPTY || stack.getItem() == Items.AIR || stack == null )
+            if ( stack == null || stack.isEmpty() )
             {
                 return;
             }

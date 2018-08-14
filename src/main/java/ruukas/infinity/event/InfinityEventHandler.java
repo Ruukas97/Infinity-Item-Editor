@@ -11,6 +11,7 @@ import com.google.common.base.Predicates;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.gui.inventory.GuiContainerCreative;
 import net.minecraft.client.settings.GameSettings;
@@ -24,13 +25,20 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.JsonToNBT;
+import net.minecraft.nbt.NBTBase;
+import net.minecraft.nbt.NBTException;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EntitySelectors;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.event.HoverEvent;
+import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.client.event.RenderTooltipEvent;
 import net.minecraftforge.client.event.TextureStitchEvent;
@@ -43,6 +51,7 @@ import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
 import ruukas.infinity.Infinity;
 import ruukas.infinity.gui.GuiItem;
 import ruukas.infinity.gui.HelperGui;
+import ruukas.infinity.util.GiveHelper;
 
 @Mod.EventBusSubscriber( modid = Infinity.MODID )
 public class InfinityEventHandler
@@ -178,6 +187,43 @@ public class InfinityEventHandler
                     
                     e.setCanceled( true );
                 }
+            }
+        }
+        
+        if ( e.getGui() != null && e.getGui() instanceof GuiContainer )
+        {
+            GuiContainer gui = (GuiContainer) e.getGui();
+            Slot slot = gui.getSlotUnderMouse();
+            
+            if ( GuiScreen.isKeyComboCtrlC( Keyboard.isKeyDown( 46 ) ? 46 : 0 ) && slot.getHasStack())
+            {
+                String s = GiveHelper.getStringFromItemStack( slot.getStack() );
+                GuiScreen.setClipboardString( s );
+            }
+            
+            else if ( GuiScreen.isKeyComboCtrlV( Keyboard.isKeyDown( 47 ) ? 47 : 0 ) && slot.inventory == player.inventory )
+            {
+                ItemStack stack = GiveHelper.getItemStackFromString( GuiScreen.getClipboardString() );
+                int i = slot.getSlotIndex();
+                
+                if ( i <= 8 )
+                {
+                    i += 36;
+                }
+                else if ( 36 <= i && i <= 39 )
+                {
+                    i = 8 - (i % 4);
+                    // 39 - 5: Head
+                    // 38 - 6: Chest
+                    // 37 - 7: Legs
+                    // 36 - 8: Feet
+                }
+                else if ( i == 40 )
+                {
+                    i = 45;
+                }
+                
+                mc.playerController.sendSlotPacket( stack, i );
             }
         }
     }
