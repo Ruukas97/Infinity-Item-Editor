@@ -186,10 +186,9 @@ public class InfinityEventHandler
                     }
                     else
                     {
-                        Infinity.infinitySettings.addItemStack( player, slot.getStack().copy() );
-                        new InfinityVoid( slot.getStack() ).addItemStack( Minecraft.getMinecraft().player, slot.getStack().copy() );
-                        
+                        Infinity.infinitySettings.addItemStack( player, slot.getStack().copy() );                        
                     }
+                    new InfinityVoid( slot.getStack() ).addItemStack( Minecraft.getMinecraft().player, slot.getStack().copy() );
                     
                     e.setCanceled( true );
                 }
