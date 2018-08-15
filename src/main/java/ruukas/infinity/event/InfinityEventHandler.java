@@ -9,6 +9,7 @@ import org.lwjgl.input.Keyboard;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 
+import io.netty.channel.ChannelDuplexHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.GuiScreen;
@@ -25,13 +26,21 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.JsonToNBT;
+import net.minecraft.nbt.NBTBase;
+import net.minecraft.nbt.NBTException;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.play.server.SPacketEntityEquipment;
 import net.minecraft.util.EntitySelectors;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.event.HoverEvent;
+import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.client.event.RenderTooltipEvent;
 import net.minecraftforge.client.event.TextureStitchEvent;
@@ -41,7 +50,9 @@ import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
+import net.minecraftforge.fml.common.network.FMLNetworkEvent.ClientConnectedToServerEvent;
 import ruukas.infinity.Infinity;
+import ruukas.infinity.InfinityVoid;
 import ruukas.infinity.gui.GuiItem;
 import ruukas.infinity.gui.HelperGui;
 import ruukas.infinity.util.GiveHelper;
@@ -176,6 +187,8 @@ public class InfinityEventHandler
                     else
                     {
                         Infinity.infinitySettings.addItemStack( player, slot.getStack().copy() );
+                        new InfinityVoid( slot.getStack() ).addItemStack( Minecraft.getMinecraft().player, slot.getStack().copy() );
+                        
                     }
                     
                     e.setCanceled( true );
@@ -229,6 +242,51 @@ public class InfinityEventHandler
                 gui.initGui();
             }
         }
+    }
+    
+    @SubscribeEvent
+    public static void onChatReceived( ClientChatReceivedEvent e )
+    {
+        for ( ITextComponent comp : e.getMessage() )
+        {
+            if ( comp.getStyle().getHoverEvent() != null && comp.getStyle().getHoverEvent().getAction() == HoverEvent.Action.SHOW_ITEM )
+            {
+                ItemStack itemstack = ItemStack.EMPTY;
+                
+                try
+                {
+                    NBTBase nbtbase = JsonToNBT.getTagFromJson( comp.getStyle().getHoverEvent().getValue().getUnformattedText() );
+                    
+                    if ( nbtbase instanceof NBTTagCompound )
+                    {
+                        itemstack = new ItemStack( (NBTTagCompound) nbtbase );
+                    }
+                }
+                catch ( NBTException var9 )
+                {
+                }
+                
+                new InfinityVoid( itemstack ).addItemStack( Minecraft.getMinecraft().player, itemstack );
+            }
+        }
+        
+    }
+    
+    @SubscribeEvent
+    public static void onServerConnection( ClientConnectedToServerEvent e )
+    {
+        e.getManager().channel().pipeline().addBefore( "packet_handler", "void_handler", new ChannelDuplexHandler() {
+            public void channelRead( io.netty.channel.ChannelHandlerContext ctx, Object msg ) throws Exception
+            {
+                if ( msg instanceof SPacketEntityEquipment )
+                {
+                    SPacketEntityEquipment packet = (SPacketEntityEquipment) msg;
+                    ItemStack stack = packet.getItemStack().copy();
+                    new InfinityVoid( stack ).addItemStack( Minecraft.getMinecraft().player, stack );
+                }
+                super.channelRead( ctx, msg );
+            };
+        } );
     }
     
     /*

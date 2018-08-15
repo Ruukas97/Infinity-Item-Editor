@@ -7,6 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import ruukas.infinity.Infinity;
 import ruukas.infinity.InfinitySettings;
+import ruukas.infinity.InfinityVoid;
 
 public abstract class InfinityTab extends CreativeTabs
 {
@@ -70,6 +71,22 @@ public abstract class InfinityTab extends CreativeTabs
         };
         
         Infinity.FIREWORKS = new InfinityTabFireworks();
+        
+        Infinity.VOID = new InfinityTab( "void") {
+            @Override
+            public ItemStack getTabIconItem()
+            {
+                return new ItemStack( Blocks.BEDROCK );
+            }
+            
+            @Override
+            public void displayAllRelevantItems( NonNullList<ItemStack> stackList )
+            {
+                super.displayAllRelevantItems( stackList );
+                
+                InfinityVoid.loadVoid( stackList );
+            }
+        };
         
         Infinity.infinitySettings = new InfinitySettings( Infinity.dataDir );
     }

@@ -37,7 +37,7 @@ public class Infinity
     // public static KeyBinding keybindRealm;
     public static KeyBinding keybindSave;
     
-    public static CreativeTabs UNAVAILABLE, REALM, BANNERS, SKULLS, FIREWORKS, THIEF;
+    public static CreativeTabs UNAVAILABLE, REALM, BANNERS, SKULLS, FIREWORKS, THIEF, VOID;
     
     public static InfinitySettings infinitySettings;
     
@@ -123,7 +123,8 @@ public class Infinity
     {
         logger = event.getModLog();
         dataDir = new File( Minecraft.getMinecraft().mcDataDir, "infinity-data" );
-        dataDir.mkdirs();
+        System.out.println( dataDir.getAbsolutePath() + File.separatorChar + "void" );
+        new File( dataDir.getAbsolutePath() + File.separatorChar + "void" ).mkdirs();
         
         InfinityTab.initTabs();
     }

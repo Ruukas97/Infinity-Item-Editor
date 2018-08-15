@@ -76,7 +76,7 @@ public class InfinityTabThief extends InfinityTab
             for ( ITextComponent comp : line.getChatComponent() )
             {
                 Style style = comp.getStyle();
-                if ( style != null && style.getHoverEvent() != null && style.getHoverEvent().getAction() == Action.SHOW_ITEM )
+                if ( style.getHoverEvent() != null && style.getHoverEvent().getAction() == Action.SHOW_ITEM )
                 {
                     ItemStack stack = ItemStack.EMPTY;
                     
