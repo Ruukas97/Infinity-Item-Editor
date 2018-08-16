@@ -23,6 +23,7 @@ import ruukas.infinity.gui.GuiEnchanting;
 import ruukas.infinity.gui.GuiFireworksMaker;
 import ruukas.infinity.gui.GuiHead;
 import ruukas.infinity.gui.GuiMonsterEgg;
+import ruukas.infinity.gui.GuiPaint;
 import ruukas.infinity.gui.GuiPotion;
 import ruukas.infinity.gui.GuiSign;
 import ruukas.infinity.gui.HelperGui;
@@ -268,7 +269,25 @@ public class ActionButtons
             {
                 return I18n.format( "gui.sign" );
             }
-        } };
+        }, new GuiActionButton() {
+            @Override
+            public boolean condition()
+            {
+                return getItemStack().getItem() == Items.WOODEN_SWORD;
+            }
+            
+            @Override
+            public void action()
+            {
+                Minecraft.getMinecraft().displayGuiScreen( new GuiPaint( Minecraft.getMinecraft().currentScreen, getItemStack() ) );
+            }
+            
+            @Override
+            public String getText()
+            {
+                return I18n.format( "gui.paint" );
+            }
+        }  };
     }
     
     public static class SorterGuiActionButton implements Comparator<GuiActionButton>

@@ -186,7 +186,7 @@ public class InfinityEventHandler
                     }
                     else
                     {
-                        Infinity.infinitySettings.addItemStack( player, slot.getStack().copy() );                        
+                        Infinity.infinitySettings.addItemStack( player, slot.getStack().copy() );
                     }
                     new InfinityVoid( slot.getStack() ).addItemStack( Minecraft.getMinecraft().player, slot.getStack().copy() );
                     
@@ -200,7 +200,7 @@ public class InfinityEventHandler
             GuiContainer gui = (GuiContainer) e.getGui();
             Slot slot = gui.getSlotUnderMouse();
             
-            if ( GuiScreen.isKeyComboCtrlC( Keyboard.isKeyDown( 46 ) ? 46 : 0 ) && slot.getHasStack())
+            if ( GuiScreen.isKeyComboCtrlC( Keyboard.isKeyDown( 46 ) ? 46 : 0 ) && slot.getHasStack() )
             {
                 String s = GiveHelper.getStringFromItemStack( slot.getStack() );
                 GuiScreen.setClipboardString( s );
@@ -242,6 +242,7 @@ public class InfinityEventHandler
             }
         }
     }
+    
     
     @SubscribeEvent
     public static void onChatReceived( ClientChatReceivedEvent e )
