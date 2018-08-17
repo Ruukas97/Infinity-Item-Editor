@@ -103,7 +103,8 @@ public class InfinityVoid
             }
         }
         
-        player.sendMessage( new TextComponentString( "Added " ).appendSibling( stack.getTextComponent() ).appendText( " to Infinity Void." ) );
+        if ( InfinityConfig.voidAddNotification )
+            player.sendMessage( new TextComponentString( "Added " ).appendSibling( stack.getTextComponent() ).appendText( " to Infinity Void." ) );
         stackList.add( stack );
         
         synchronized ( Infinity.dataDir )

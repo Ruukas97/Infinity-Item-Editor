@@ -10,6 +10,8 @@ import ruukas.infinity.gui.HelperGui;
 public class InfinityConfig
 {
     public static boolean itemGuiSidebar = false;
+    public static boolean voidTab = true;
+    public static boolean voidAddNotification = false;
     
     @Ignore
     public static int MAIN_COLOR = HelperGui.getColorFromRGB( 255, 150, 0, 200 );
@@ -27,5 +29,10 @@ public class InfinityConfig
     public static boolean getItemSidebar()
     {
         return itemGuiSidebar;
+    }
+    
+    public static boolean getIsVoidEnabled()
+    {
+        return voidTab;
     }
 }
