@@ -121,6 +121,8 @@ tag.head.5=Tete de Dragon
 
 gui.potion.time=Temps (Secondes)
 gui.potion.level=Amplificateur
+gui.potion.showparticles.0=Hide Particles
+gui.potion.showparticles.1=Show Particles
 
 gui.equipment.inventoryclone=Ceci est une copie de votre inventaire. Les modifications ne seront pas enregistrées.
 

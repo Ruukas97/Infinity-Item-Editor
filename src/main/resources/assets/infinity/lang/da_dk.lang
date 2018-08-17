@@ -120,7 +120,10 @@ tag.head.4=Creeperhoved
 tag.head.5=Dragehoved
 
 gui.potion.time=Tid (Sekunder)
-gui.potion.level=Forstærker
+gui.potion.level=Styrke
+gui.potion.showparticles.0=Skjul Partikler
+gui.potion.showparticles.1=Vis Partikler
+
 
 gui.equipment.inventoryclone=Dette er en kopi af dit inventory, ændringer vil ikke blive gemt.
 

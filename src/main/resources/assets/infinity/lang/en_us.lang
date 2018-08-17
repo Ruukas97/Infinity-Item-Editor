@@ -121,6 +121,8 @@ tag.head.5=Dragon Head
 
 gui.potion.time=Time (Seconds)
 gui.potion.level=Amplifier
+gui.potion.showparticles.0=Hide Particles
+gui.potion.showparticles.1=Show Particles
 
 gui.equipment.inventoryclone=This is a copy of your inventory. Changes will not be saved.
 

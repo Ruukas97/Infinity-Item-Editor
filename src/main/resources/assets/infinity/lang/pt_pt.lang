@@ -120,6 +120,8 @@ tag.head.5=Cabeça do Ender Dragon
 
 gui.potion.time=Duração (Em segundos)
 gui.potion.level=Amplificador
+gui.potion.showparticles.0=Hide Particles
+gui.potion.showparticles.1=Show Particles
 
 gui.equipment.inventoryclone=Tudo isso é uma cópia do seu inventário atual, nada vai mudar.
 

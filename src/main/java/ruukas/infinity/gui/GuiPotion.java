@@ -34,7 +34,9 @@ public class GuiPotion extends GuiInfinity
     private GuiNumberField time;
     
     private GuiInfinityButton colorButton;
+    private GuiInfinityButton particleButton;
     
+    private boolean showParticles = true;
     private int rotOff = 0;
     private int mouseDist = 0;
     private ItemStack potionIcon;
@@ -60,7 +62,8 @@ public class GuiPotion extends GuiInfinity
         time.maxValue = 99999;
         time.setValue( 1 );
         
-        colorButton = addButton( new GuiInfinityButton( 102, 15, height - 90, 80, 20, I18n.format( "gui.color" ) ) );
+        colorButton = addButton( new GuiInfinityButton( 150, 15, height - 120, 80, 20, I18n.format( "gui.color" ) ) );
+        particleButton = addButton( new GuiInfinityButton( 151, 15, height - 90, 80, 20, I18n.format( "gui.potion.showparticles." + (showParticles ? "1" : "0") ) ) );
         
         potionIcon = new ItemStack( Items.POTIONITEM );
         
@@ -153,7 +156,7 @@ public class GuiPotion extends GuiInfinity
             
             if ( type != null )
             {
-                new InfinityCustomPotionEffectList( stack ).set( new PotionEffect( type, time.getIntValue() * 20, level.getIntValue() - 1 ) );
+                new InfinityCustomPotionEffectList( stack ).set( new PotionEffect( type, time.getIntValue() * 20, level.getIntValue() - 1, false, showParticles ) );
             }
         }
         
@@ -175,6 +178,11 @@ public class GuiPotion extends GuiInfinity
         {
             Minecraft.getMinecraft().displayGuiScreen( new GuiColor( Minecraft.getMinecraft().currentScreen, getItemStack() ) );
         }
+        else if ( button.id == particleButton.id )
+        {
+            showParticles = !showParticles;
+            initGui();
+        }
         super.actionPerformed( button );
     }
     
@@ -193,7 +201,7 @@ public class GuiPotion extends GuiInfinity
             if ( effect != null )
             {
                 int ampli = effect.getAmplifier();
-                drawString( fontRenderer, (effect.getPotion().isBadEffect() ? TextFormatting.RED : TextFormatting.BLUE) + I18n.format( effect.getEffectName() ) + (ampli > 1 ? (" " + I18n.format( "potion.potency." + ampli ).trim()) : "") + " (" + (ampli + 1) + ")", 5, midY + i * 10 - potionTags.length * 5, InfinityConfig.MAIN_COLOR );
+                drawString( fontRenderer, (effect.getPotion().isBadEffect() ? TextFormatting.RED : TextFormatting.BLUE) + I18n.format( effect.getEffectName() ) + " (" + (ampli + 1) + ")" + (ampli > 1 ? (" " + I18n.format( "potion.potency." + ampli ).trim()) : "") + (effect.doesShowParticles() ? " P:S" : " P:H"), 5, midY + i * 10 - potionTags.length * 5, InfinityConfig.MAIN_COLOR );
             }
             else
             {

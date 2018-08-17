@@ -12,7 +12,6 @@ public class InfinityPotionEffectTag
     public InfinityPotionEffectTag(InfinityCustomPotionEffectList list, PotionEffect effect) {
         this( list, new NBTTagCompound() );
         potionList.getTag().appendTag( tag );
-        
         setEffect( effect );
     }
     
@@ -32,7 +31,8 @@ public class InfinityPotionEffectTag
         return this;
     }
     
-    public byte getId(){
+    public byte getId()
+    {
         return tag.getByte( "Id" );
     }
 }

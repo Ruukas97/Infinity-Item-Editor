@@ -1,6 +1,7 @@
 key.infinity.category=Infinity Item Editor
 key.infinity.desc=Editar item
 key.infinitycopy.desc=Copiar items a quien apuntes
+key.infinitysave.desc=Save current item to the realm
 
 warning.notcreative=¡Necesitas estar en modo creativo para guardar items!, ¡Presiona Shift+Click para guardarlo como un comando!
 
@@ -117,7 +118,9 @@ tag.head.4=Cabeza de Creeper
 tag.head.5=Cabeza de Dragón
 
 gui.potion.time=Duración (Segundos)
-gui.potion.level=Amplificador 
+gui.potion.level=Amplificador
+gui.potion.showparticles.0=Hide Particles
+gui.potion.showparticles.1=Show Particles
 
 gui.equipment.inventoryclone=Esto es una copia de tu inventario. Todo vá a quedar igual, tranqui.
 
