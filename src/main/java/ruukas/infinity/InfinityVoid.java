@@ -16,6 +16,7 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import ruukas.infinity.util.ItemStackUtil;
 
 @SideOnly( Side.CLIENT )
 public class InfinityVoid
@@ -81,30 +82,32 @@ public class InfinityVoid
     
     public void addItemStack( EntityPlayerSP player, ItemStack stack )
     {
-        synchronized ( Infinity.dataDir )
+        
+        if ( stack == null || stack.isEmpty() || !stack.hasTagCompound() )
         {
-            if ( stack == null || stack.isEmpty() || !stack.hasTagCompound() )
+            return;
+        }
+        
+        stack.setCount( 1 );
+        if ( stack.getItem().isDamageable() )
+        {
+            stack.setItemDamage( 0 );
+        }
+        
+        for ( ItemStack s : stackList )
+        {
+            if ( ItemStackUtil.isSameStack( s, stack ) )
             {
+                // player.sendMessage( new TextComponentString( "Didn't add " ).appendSibling( stack.getTextComponent() ).appendText( " to Infinity Void, as it was already found." ) );
                 return;
             }
-            
-            stack.setCount( 1 );
-            if ( stack.getItem().isDamageable() )
-            {
-                stack.setItemDamage( 0 );
-            }
-            
-            for ( ItemStack s : stackList )
-            {
-                if ( ItemStack.areItemStacksEqual( s, stack ) )
-                {
-                    // player.sendMessage( new TextComponentString( "Didn't add " ).appendSibling( stack.getTextComponent() ).appendText( " to Infinity Void, as it was already found." ) );
-                    return;
-                }
-            }
-            
-            player.sendMessage( new TextComponentString( "Added " ).appendSibling( stack.getTextComponent() ).appendText( " to Infinity Void." ) );
-            stackList.add( stack );
+        }
+        
+        player.sendMessage( new TextComponentString( "Added " ).appendSibling( stack.getTextComponent() ).appendText( " to Infinity Void." ) );
+        stackList.add( stack );
+        
+        synchronized ( Infinity.dataDir )
+        {
             write();
         }
     }
