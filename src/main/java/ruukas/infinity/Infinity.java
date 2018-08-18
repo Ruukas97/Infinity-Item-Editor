@@ -127,6 +127,8 @@ public class Infinity
         new File( dataDir.getAbsolutePath() + File.separatorChar + "void" ).mkdirs();
         
         InfinityTab.initTabs();
+        
+        Infinity.infinitySettings = new InfinitySettings( Infinity.dataDir );
     }
     
     @EventHandler
