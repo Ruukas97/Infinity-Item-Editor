@@ -85,7 +85,7 @@ public class InfinitySignTag
     
     public boolean hasCommand()
     {
-        return hasLine( 0 ) && getLineComponent( 0 ).getStyle().getClickEvent().getAction() == ClickEvent.Action.RUN_COMMAND;
+        return hasLine( 0 ) && getLineComponent( 0 ) != null && getLineComponent( 0 ).getStyle().getClickEvent().getAction() == ClickEvent.Action.RUN_COMMAND;
     }
     
     public InfinitySignTag setCommand( String command )
