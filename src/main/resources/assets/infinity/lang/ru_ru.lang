@@ -1,0 +1,392 @@
+key.infinity.category=Infinity Item Editor
+key.infinity.desc=Редактировать текущий предмет
+key.infinitycopy.desc=Копировать Инвентарь Игрока
+key.infinitysave.desc=Сохранить текущий предмет в область сохранений
+
+warning.notcreative=Вам нужно быть в творческом режиме для сохранения предметов
+
+itemGroup.unavailable=Infinity - Недоступные вещи
+itemGroup.banners=Infinity - Флаги
+itemGroup.skulls=Infinity - Головы
+itemGroup.fireworks=Infinity - Феерверки
+itemGroup.thief=Infinity - Область сохранений
+
+gui.close=Закрыть
+gui.save=Сохранить
+gui.drop=Выкинуть
+gui.reset=Исходное положение
+gui.clear=Удалить вещь
+
+gui.item=Infinity Редактор
+gui.spawnegg=Редактор яиц призыва
+gui.head=Редактор голов
+gui.armorstand=Редактор стоек для брони
+gui.color=Редактор цветов
+gui.nbt=NBT Редактор
+gui.nbtadv=NBT Браузер
+gui.enchanting=Зачарования
+gui.potion=Зельеварение
+gui.book=Редактор Книг
+gui.attributes=Редактор Атрибутов
+gui.chestinventory=Инвентарь сундука
+gui.hideflags=Спрятать Пометки
+gui.bannermaker=Создатель Баннеров
+gui.fireworks=Предварительный Просмотр Ракеты
+gui.specialbutton=Специальный NBT
+gui.headcollection=Коллекция Голов
+gui.lore=Редактор Описаний
+gui.sign=Редактор Табличек
+
+gui.armorstand.pose=Редактор позиции стойки для брони
+gui.armorstand.pose.reset.1=Лишь вращает стойку
+gui.armorstand.invisible.note=Заметка: Ломание стойки для брони может оказаться затруднительным без команд
+gui.armorstand.marker.note=Маркер останавливает взаймодействие со стойкой и делает хитбокс маленьким
+
+gui.attributes.infinity.0=Число по умолчанию
+gui.attributes.infinity.1=Бесконечность
+gui.attributes.operation.0=Добавление в цифрах +
+gui.attributes.operation.1=Добавление в процентах *
+gui.attributes.operation.2=Умножение в процентах **
+gui.attributes.slot.0=Любой слот
+gui.attributes.slot.1=Правая рука
+gui.attributes.slot.2=Левая рука
+gui.attributes.slot.3=Голова
+gui.attributes.slot.4=Тело
+gui.attributes.slot.5=Ноги
+gui.attributes.slot.6=Ступни
+attribute.name.generic.flyingSpeed=Скорость полета моба
+
+gui.book.title=Название
+gui.book.author=Автор
+gui.book.generation=Генерация
+gui.book.resolved=Решено
+gui.book.resolved.tooltip.1=Книга должна быть решена сервером
+gui.book.unresolved=Не решено
+gui.book.unsign=Не подписанно
+gui.book.resign=Подписанно
+
+gui.enchanting.enchanttoggle.0=Показать применимые
+gui.enchanting.enchanttoggle.1=Показать все
+gui.enchanting.addall=Добавить все
+
+gui.spawnegg.entity=Специальные настройки сущности
+gui.spawnegg.mob=Специальные настройки моба
+gui.spawnegg.mobspecific=%s 
+gui.spawnegg.animalspecific=Специальные настройки животного
+
+gui.head.save.tooltip.1=Может виснуть, когда игрок загружает информацию
+gui.head.save.tooltip.2=Это проблема ванильной версии Minecraft'а.
+gui.head.list.tooltip.1=Список людей на сервере
+gui.head.list.tooltip.2=--Пока не сделано--
+
+gui.headcollection.category.alphabet=Алфавит
+gui.headcollection.category.animals=Животные
+gui.headcollection.category.blocks=Блоки
+gui.headcollection.category.decoration=Декорации
+gui.headcollection.category.food-drinks=Еда/Напитки
+gui.headcollection.category.humans=Люди
+gui.headcollection.category.humanoid=Очеловеченные головы
+gui.headcollection.category.miscellaneous=Разное
+gui.headcollection.category.monsters=Монстры
+gui.headcollection.category.plants=Растения
+gui.headcollection.clickhead=Нажмите для замены текущего предмета
+gui.headcollection.clickheadshift=Зажмите Shift чтобы выбросить голову
+gui.headcollection.typesearch=Напишите для поиска
+gui.headcollection.clicksearch=Нажмите для поиска!
+gui.headcollection.currentpage=Страница %s/%s
+gui.headcollection.changecategory.1=Изменить категорию
+gui.headcollection.changecategory.2=Требует несколько секунд для загрузки
+
+gui.item.toggleside=Изменить просмотр
+gui.item.discord=Войти на наш Discord сервер
+gui.item.share=Поделиться предметом
+
+gui.item.colorremove.tooltip.1=Удалить все цвета
+gui.item.drop.tooltip.1=Зажмите shift чтобы скопировать команду /give в ваш буфер обмена
+gui.item.drop.tooltip.2=Затем можно вставить куда-то в другое место
+
+gui.nbt.update=Обновить NBT
+
+gui.nbt.comp.open=Нажмите чтобы увеличить Compound Tag
+gui.nbt.comp.close=Нажмите чтобы убрать Compound Tag
+
+tag.head.0=Череп скелета
+tag.head.1=Череп визер-скелета
+tag.head.2=Голова зомби
+tag.head.3=Голова игрока
+tag.head.4=Голова крипера
+tag.head.5=Голова дракона
+
+gui.potion.time=Время(В секундах)
+gui.potion.level=Уровень
+gui.potion.showparticles.0=Спрятать частицы
+gui.potion.showparticles.1=Показать частицы
+
+gui.equipment.inventoryclone=Это копия вашего инвентаря. Изменения не будут сохранены.
+
+flag.enchantment.0=Зачарования: показаны
+flag.enchantment.1=Зачарования: спрятаны
+flag.attributemod.0=Атрибуты: показаны
+flag.attributemod.1=Атрибуты: спрятаны
+flag.unbreakable.0=Неразрушаемость: показана
+flag.unbreakable.1=Неразрушаемость: спрятана
+flag.candestroy.0=Ломающиеся блоки: показаны
+flag.candestroy.1=Ломающиеся блоки: спрятаны
+flag.canplaceon.0=Блоки, на которые предмет ставится: показано
+flag.canplaceon.1=Блоки, на которые предмет ставится: спрятано
+flag.iteminfo.0=Информация о предмете: показано
+flag.iteminfo.1=Информация о предмете: спрятано
+
+gui.editstring=Редактировать текст
+
+gui.entitytags=Теги сущности
+gui.mobspecific=Специальные настройки мобов
+
+
+tag.skullowner=Владелец головы
+
+tag.unbreakable.0=Разрушаемый
+tag.unbreakable.1=Неразрушаемый
+
+tag.fire.on=Горит %s тиков
+tag.fire.off=Не горит
+
+tag.customname=Изменить пользовательское имя
+tag.nogravity.on=Без гравитации
+tag.nogravity.off=С гравитацией
+tag.invulnerable.on=Неуязвимый
+tag.invulnerable.off=Уязвимый
+tag.customnamevisible.on=Пользовательское имя видно
+tag.customnamevisible.off=Пользовательское имя спрятано
+tag.silent.on=Бесшумный
+tag.silent.off=Не бесшумный
+tag.glowing.on=Светящийся
+tag.glowing.off=Не светящийся
+
+tag.health.on=%s Здоровья
+tag.health.off=Мертв
+tag.absorption.on=%s Дополнительных сердец (Эффект поглощения)
+tag.absorption.off=Без дополнительных сердец (Эффект поглощения)
+tag.fallflying.on=Приземление, как на элитре
+tag.fallflying.off=Нормальное падение
+tag.noai.on=ИИ выключен
+tag.noai.off=ИИ включен
+tag.persistencerequired.on=Не исчезает как обычно
+tag.persistencerequired.off=Исчезает как обычно
+tag.canpickuploot.on=Подбирает дроп
+tag.canpickuploot.off=Игнорирует дроп
+
+tag.armorstand.arms.0=Без рук
+tag.armorstand.arms.1=С руками
+tag.armorstand.small.0=Обычный
+tag.armorstand.small.1=Маленький
+tag.armorstand.invisible.0=Видимый
+tag.armorstand.invisible.1=Невидимый
+tag.armorstand.nobase.0=С плитой
+tag.armorstand.nobase.1=Без плиты
+tag.armorstand.marker.0=Не маркировать
+tag.armorstand.marker.1=Маркировать
+tag.armorstand.inventory=Вооружение
+tag.armorstand.pose=Позиция
+
+tag.creeper.powered.on=Заряженный
+tag.creeper.powered.off=Не заряженный
+tag.creeper.explosionradius.on=Радиус взрыва: %s
+tag.creeper.explosionradius.off=Не повреждает блоки
+tag.creeper.fuse.on=Время взрывания: %s
+tag.creeper.fuse.off=Мгновенное взрывание
+tag.creeper.ignited.on=Подожённый
+tag.creeper.ignited.off=Неподожённый
+
+tag.endermite.lifetime.off=Неопределённое время жизни
+tag.endermite.lifetime.on=Время жизни: %s
+tag.endermite.playerspawned.off=Игрок призвал: 0
+tag.endermite.playerspawned.on=:Игрок призвал: 1
+
+tag.parrot.variant.-1=Случайный вариант
+tag.parrot.variant.0=Красный вариант
+tag.parrot.variant.1=Синий вариант
+tag.parrot.variant.2=Зелёный вариант
+tag.parrot.variant.3=Бирюзовый вариант
+tag.parrot.variant.4=Серебряный вариант
+
+tag.pig.saddled.on=С седлом
+tag.pig.saddled.off=Без седла
+
+tag.sheep.color.0=Белая шерсть
+tag.sheep.color.1=Оранжевая шерсть
+tag.sheep.color.2=Пурпурная шерсть
+tag.sheep.color.3=Голубая шерсть
+tag.sheep.color.4=Жёлтая шерсть
+tag.sheep.color.5=Лаймовая шерсть
+tag.sheep.color.6=Розовая шерсть
+tag.sheep.color.7=Серая шерсть
+tag.sheep.color.8=Светло-серая шерсть
+tag.sheep.color.9=Бирюзовая шерсть
+tag.sheep.color.10=Фиолетовая шерсть
+tag.sheep.color.11=Синяя шерсть
+tag.sheep.color.12=Коричневая шерсть
+tag.sheep.color.13=Тёмно-зелёная шерсть
+tag.sheep.color.14=Красная шерсть
+tag.sheep.color.15=Чёрная шерсть
+tag.sheep.sheared.on=Пострижена
+tag.sheep.sheared.off=Имеет шерсть
+
+tag.shulker.color.0=Белый
+tag.shulker.color.1=Оранжевый
+tag.shulker.color.2=Пурпурный
+tag.shulker.color.3=Голубой
+tag.shulker.color.4=Жёлтый
+tag.shulker.color.5=Лаймовый
+tag.shulker.color.6=Розовый
+tag.shulker.color.7=Серый
+tag.shulker.color.8=Светло-серый
+tag.shulker.color.9=Бирюзовый
+tag.shulker.color.10=Фиолетовый
+tag.shulker.color.11=Синий
+tag.shulker.color.12=Коричневый
+tag.shulker.color.13=Тёмно-коричневый
+tag.shulker.color.14=Красный
+tag.shulker.color.15=Чёрный
+
+tag.villager.profession.0=Фермер
+tag.villager.profession.1=Библиотекарь
+tag.villager.profession.2=Священник
+tag.villager.profession.3=Кузнец
+tag.villager.profession.4=Мясник
+tag.villager.profession.5=Житель
+
+
+tag.vindicator.johnny.on=Убийца мобов
+tag.vindicator.johnny.off=Нормальное поведение
+
+tag.zombie.isbaby.on=Ребёнок
+tag.zombie.isbaby.off=Взрослый
+tag.zombie.canbreakdoors.on=Может сломать дверь
+tag.zombie.canbreakdoors.off=Не может сломать дверь
+
+potion.potency.3=IV
+potion.potency.4=V
+potion.potency.5=VI
+potion.potency.6=VII
+potion.potency.7=VIII
+potion.potency.8=IX
+potion.potency.9=X
+potion.potency.10=XI
+potion.potency.11=XII
+potion.potency.12=XIII
+potion.potency.13=XIV
+potion.potency.14=XV
+potion.potency.15=XVI
+potion.potency.16=XVII
+potion.potency.17=XVIII
+potion.potency.18=XIX
+potion.potency.19=XX
+potion.potency.20=XXI
+potion.potency.21=XXII
+potion.potency.22=XXIII
+potion.potency.23=XXIV
+potion.potency.24=XXV
+potion.potency.25=XXVI
+potion.potency.26=XXVII
+potion.potency.27=XXVIII
+potion.potency.28=XXIX
+potion.potency.29=XXX
+potion.potency.30=XXXI
+potion.potency.31=XXXII
+potion.potency.32=XXXIII
+potion.potency.33=XXXIV
+potion.potency.34=XXXV
+potion.potency.35=XXXVI
+potion.potency.36=XXXVII
+potion.potency.37=XXXVIII
+potion.potency.38=XXXIX
+potion.potency.39=XL
+potion.potency.40=XLI
+potion.potency.41=XLII
+potion.potency.42=XLIII
+potion.potency.43=XLIV
+potion.potency.44=XLV
+potion.potency.45=XLVI
+potion.potency.46=XLVII
+potion.potency.47=XLVIII
+potion.potency.48=XLIX
+potion.potency.49=L
+potion.potency.50=LI
+potion.potency.51=LII
+potion.potency.52=LIII
+potion.potency.53=LIV
+potion.potency.54=LV
+potion.potency.55=LVI
+potion.potency.56=LVII
+potion.potency.57=LVIII
+potion.potency.58=LIX
+potion.potency.59=LX
+potion.potency.60=LXI
+potion.potency.61=LXII
+potion.potency.62=LXIII
+potion.potency.63=LXIV
+potion.potency.64=LXV
+potion.potency.65=LXVI
+potion.potency.66=LXVII
+potion.potency.67=LXVIII
+potion.potency.68=LXIX
+potion.potency.69=LXX
+potion.potency.70=LXXI
+potion.potency.71=LXXII
+potion.potency.72=LXXIII
+potion.potency.73=LXXIV
+potion.potency.74=LXXV
+potion.potency.75=LXXVI
+potion.potency.76=LXXVII
+potion.potency.77=LXXVIII
+potion.potency.78=LXXIX
+potion.potency.79=LXXX
+potion.potency.80=LXXXI
+potion.potency.81=LXXXII
+potion.potency.82=LXXXIII
+potion.potency.83=LXXXIV
+potion.potency.84=LXXXV
+potion.potency.85=LXXXVI
+potion.potency.86=LXXXVII
+potion.potency.87=LXXXVIII
+potion.potency.88=LXXXIX
+potion.potency.89=XC
+potion.potency.90=XCI
+potion.potency.91=XCII
+potion.potency.92=XCIII
+potion.potency.93=XCIV
+potion.potency.94=XCV
+potion.potency.95=XCVI
+potion.potency.96=XCVII
+potion.potency.97=XCVIII
+potion.potency.98=XCIX
+potion.potency.99=C
+potion.potency.100=CI
+potion.potency.101=CII
+potion.potency.102=CIII
+potion.potency.103=CIV
+potion.potency.104=CV
+potion.potency.105=CVI
+potion.potency.106=CVII
+potion.potency.107=CVIII
+potion.potency.108=CIX
+potion.potency.109=CX
+potion.potency.110=CXI
+potion.potency.111=CXII
+potion.potency.112=CXIII
+potion.potency.113=CXIV
+potion.potency.114=CXV
+potion.potency.115=CXVI
+potion.potency.116=CXVII
+potion.potency.117=CXVIII
+potion.potency.118=CXIX
+potion.potency.119=CXX
+potion.potency.120=CXXI
+potion.potency.121=CXXII
+potion.potency.122=CXXIII
+potion.potency.123=CXXIV
+potion.potency.124=CXXV
+potion.potency.125=CXXVI
+potion.potency.126=CXXVII
+potion.potency.127=CXXVIII
