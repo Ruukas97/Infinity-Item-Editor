@@ -27,7 +27,7 @@ public class Infinity
 {
     public static final String MODID = "infinity";
     public static final String NAME = "Infinity Item Editor";
-    public static final String VERSION = "0.12-pre1";
+    public static final String VERSION = "0.12";
     
     public static Logger logger;
     public static File dataDir;
@@ -114,9 +114,6 @@ public class Infinity
     // Removed Ctrl+Drop keybind
     // Copy paste in inventory
     // Danish localization
-    
-    // TODO next version:
-    // Change modid
     
     @EventHandler
     public void preInit( FMLPreInitializationEvent event )
