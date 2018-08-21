@@ -11,6 +11,7 @@ itemGroup.skulls=Infinity - Heads
 itemGroup.fireworks=Infinity - Fireworks
 itemGroup.thief=Infinity - Thief
 itemGroup.realm=Infinity - Realm
+imteGroup.void=Infinity - Void
 
 gui.close=Close
 gui.save=Save
@@ -37,6 +38,7 @@ gui.specialbutton=Special NBT
 gui.headcollection=Head Collection
 gui.lore=Lore Editor
 gui.sign=Sign Editor
+gui.paint=Texture Paint
 
 gui.armorstand.pose=Armor Stand Pose Editor
 gui.armorstand.pose.reset.1=Only resets rotations!
@@ -102,10 +104,14 @@ gui.headcollection.changecategory.2=Takes a few seconds to load
 gui.item.toggleside=Switch View
 gui.item.discord=Join Discord
 gui.item.share=Share Item
-
 gui.item.colorremove.tooltip.1=Remove all colors
 gui.item.drop.tooltip.1=Hold shift to copy /give command to your clipboard
 gui.item.drop.tooltip.2=You can then paste it somewhere else
+gui.item.id=Item ID
+gui.item.count=Count
+gui.item.meta=Meta
+gui.item.name=Item Name
+gui.item.lore=Lore
 
 gui.nbt.update=Update NBT
 
