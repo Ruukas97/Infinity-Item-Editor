@@ -1,4 +1,4 @@
-﻿key.infinity.category=Éditeur d'objets infini
+key.infinity.category=Éditeur d'objets infini
 key.infinity.desc=Editeur d'objet actuel
 key.infinitycopy.desc=Copier l'équipement du joueur cible
 key.infinitysave.desc=Enregistrer l'élément actuel dans le royaume
@@ -170,7 +170,7 @@ tag.health.on=%s Sante
 tag.health.off=Mort
 tag.absorption.on=%s Absorption
 tag.absorption.off=Ne Absorption Pas
-tag.fallflying.on=Elytra Gliding
+tag.fallflying.on=Elytra Glide
 tag.fallflying.off=Chute normale
 tag.noai.on=AI désactivé
 tag.noai.off=AI Activé
