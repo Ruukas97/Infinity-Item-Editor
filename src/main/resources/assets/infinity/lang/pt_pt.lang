@@ -1,7 +1,7 @@
 key.infinity.category=Infinity Item Editor
 key.infinity.desc=Edite este item
 key.infinitycopy.desc=Copie quem você está assistindo
-key.infinitysave.desc=Save current item to the realm
+key.infinitysave.desc=Salvar item no reino
 
 warning.notcreative=Você precisa estar no modo criativo para salvar items!
 
@@ -10,7 +10,7 @@ itemGroup.banners=Infinity - Bandeira
 itemGroup.skulls=Infinity - Cabeças
 itemGroup.fireworks=Infinity - Fogos de artifício
 itemGroup.thief=Infinity - Ladrão
-itemGroup.realm=Infinity - Realm
+itemGroup.realm=Infinity - Reino
 
 gui.close=Fechar
 gui.save=Salvar

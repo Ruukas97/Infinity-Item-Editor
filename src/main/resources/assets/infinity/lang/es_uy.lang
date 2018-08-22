@@ -1,7 +1,7 @@
 key.infinity.category=Infinity Item Editor
 key.infinity.desc=Editar item
 key.infinitycopy.desc=Copiar items a quien apuntes
-key.infinitysave.desc=Save current item to the realm
+key.infinitysave.desc=Guardar el item actual al reino
 
 warning.notcreative=¡Necesitas estar en modo creativo para guardar items!, ¡Presiona Shift+Click para guardarlo como un comando!
 
@@ -10,6 +10,8 @@ itemGroup.banners=Infinity - Estandartes
 itemGroup.skulls=Infinity - Cabezas
 itemGroup.fireworks=Infinity - Fuegos Artificiales
 itemGroup.thief=Infinity - Ladrón
+itemGroup.realm=Infinity - Reino
+imteGroup.void=Infinity - Vacio
 
 gui.close=Cerrar
 gui.save=Guardar
@@ -37,6 +39,7 @@ gui.headcollection=Colección De Cabezas
 gui.lore=Editor de descripción (Lore)
 gui.sign=Editor de carteles
 gui.armorstand.pose=Editor de Poses
+gui.paint=Editor de textura
 gui.armorstand.pose.reset.1=Poner por defecto las poses
 gui.armorstand.invisible.note=Nota: ¡Podría ser difícil removerlo sin comandos!
 gui.armorstand.marker.note="Marker" Te quita la habilidad de interactuar con este
@@ -104,7 +107,11 @@ gui.item.share=Compartir objeto
 gui.item.colorremove.tooltip.1=Sacar todos los colores
 gui.item.drop.tooltip.1=Mantené pulsado Shift para obtenerlo en un comando /give
 gui.item.drop.tooltip.2=Para después copiarlo en otro lado.
-
+gui.item.id=ID del item
+gui.item.count=Cantidad
+gui.item.meta=Meta
+gui.item.name=Nombre del item
+gui.item.lore=Descripción
 gui.nbt.update=Actualizar NBT
 
 gui.nbt.comp.open=Click para expandir Tag
