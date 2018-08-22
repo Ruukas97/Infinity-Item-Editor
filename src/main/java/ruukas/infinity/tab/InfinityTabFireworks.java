@@ -21,8 +21,8 @@ import ruukas.qualityorder.util.nbt.itemstack.ItemStackTag.DisplayTag;
 
 public class InfinityTabFireworks extends InfinityTab
 {
-    public InfinityTabFireworks() {
-        super( 17, "fireworks" );
+    public InfinityTabFireworks(int i) {
+        super( i, "fireworks" );
     }
     
     // TODO Add ability to combine colors
@@ -77,7 +77,7 @@ public class InfinityTabFireworks extends InfinityTab
             
             if ( !currentStar.hasTagCompound() )
                 currentStar.setTagCompound( new NBTTagCompound() );
-                
+            
             NonNullList<ItemStack> dyes = NonNullList.<ItemStack>create();
             Items.DYE.getSubItems( Items.DYE.getCreativeTab(), dyes );
             
@@ -156,7 +156,7 @@ public class InfinityTabFireworks extends InfinityTab
             
             if ( !currentStar.hasTagCompound() )
                 currentStar.setTagCompound( new NBTTagCompound() );
-                
+            
             ItemStack twinkleEffect = new ItemStack( Items.GLOWSTONE_DUST );
             if ( !twinkleEffect.hasTagCompound() )
             {

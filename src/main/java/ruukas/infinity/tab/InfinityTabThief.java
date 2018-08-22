@@ -27,8 +27,8 @@ import ruukas.infinity.nbt.NBTHelper;
 public class InfinityTabThief extends InfinityTab
 {
     
-    public InfinityTabThief() {
-        super( 15, "thief" );
+    public InfinityTabThief(int i) {
+        super( i, "thief" );
     }
     
     @Override

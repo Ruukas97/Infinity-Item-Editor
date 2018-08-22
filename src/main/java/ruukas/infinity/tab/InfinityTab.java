@@ -6,7 +6,6 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import ruukas.infinity.Infinity;
-import ruukas.infinity.InfinitySettings;
 import ruukas.infinity.InfinityVoid;
 
 public abstract class InfinityTab extends CreativeTabs
@@ -21,7 +20,25 @@ public abstract class InfinityTab extends CreativeTabs
     
     public static void initTabs()
     {
-        Infinity.UNAVAILABLE = new InfinityTab( 12, "unavailable") {
+        int tabs = 7;
+        int id = getNextID();
+        
+        boolean successRealm = false;
+        int foundId = id;
+        
+        for ( int i = foundId ; i < foundId + tabs ; i++ )
+        {
+            if ( (i - 16) % 5 == 0 )
+            {
+                foundId = i;
+                successRealm = true;
+                break;
+            }
+        }
+        
+        Infinity.REALM = new InfinityTabRealm( successRealm ? foundId : id++, "realm", successRealm );
+        
+        Infinity.UNAVAILABLE = new InfinityTab( id >= foundId ? 1 + id++ : id++, "unavailable" ) {
             @Override
             public ItemStack getTabIconItem()
             {
@@ -42,41 +59,19 @@ public abstract class InfinityTab extends CreativeTabs
             }
         };
         
-        Infinity.BANNERS = new InfinityTabBanners();
+        Infinity.BANNERS = new InfinityTabBanners( id >= foundId ? 1 + id++ : id++ );
         
-        Infinity.SKULLS = new InfinityTabSkulls();
+        Infinity.SKULLS = new InfinityTabSkulls( id >= foundId ? 1 + id++ : id++ );
         
-        Infinity.THIEF = new InfinityTabThief();
+        Infinity.THIEF = new InfinityTabThief( id >= foundId ? 1 + id++ : id++ );
         
-        Infinity.REALM = new InfinityTab( 16, "realm") {
+        Infinity.FIREWORKS = new InfinityTabFireworks( id >= foundId ? 1 + id++ : id++ );
+        
+        Infinity.VOID = new InfinityTab( id >= foundId ? 1 + id++ : id++, "void" ) {
             @Override
             public ItemStack getTabIconItem()
             {
-                return new ItemStack( Blocks.ENDER_CHEST );
-            }
-            
-            @Override
-            public boolean isAlignedRight()
-            {
-                return true;
-            }
-            
-            @Override
-            public void displayAllRelevantItems( NonNullList<ItemStack> stackList )
-            {
-                super.displayAllRelevantItems( stackList );
-                
-                stackList.addAll( Infinity.infinitySettings.getStackList() );
-            }
-        };
-        
-        Infinity.FIREWORKS = new InfinityTabFireworks();
-        
-        Infinity.VOID = new InfinityTab( "void") {
-            @Override
-            public ItemStack getTabIconItem()
-            {
-                return new ItemStack( Blocks.BEDROCK );
+                return new ItemStack( Blocks.STAINED_GLASS, 1, 15 );
             }
             
             @Override
@@ -87,7 +82,5 @@ public abstract class InfinityTab extends CreativeTabs
                 InfinityVoid.loadVoid( stackList );
             }
         };
-        
-        Infinity.infinitySettings = new InfinitySettings( Infinity.dataDir );
     }
 }

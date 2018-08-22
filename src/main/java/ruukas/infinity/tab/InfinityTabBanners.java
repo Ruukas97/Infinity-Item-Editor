@@ -20,8 +20,8 @@ public class InfinityTabBanners extends InfinityTab
 {
     public static ItemStack iconBanner = generateIconBanner();
     
-    public InfinityTabBanners() {
-        super( 13, "banners" );
+    public InfinityTabBanners(int index) {
+        super( index, "banners" );
     }
     
     @Override
@@ -77,7 +77,7 @@ public class InfinityTabBanners extends InfinityTab
         {
             if ( !currentBanner.hasTagCompound() )
                 currentBanner.setTagCompound( new NBTTagCompound() );
-                
+            
             ItemStack otherVariant = null;
             if ( currentBanner.getItem().equals( Items.BANNER ) )
             {

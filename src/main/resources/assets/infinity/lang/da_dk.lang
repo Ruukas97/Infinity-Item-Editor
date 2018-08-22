@@ -11,6 +11,7 @@ itemGroup.skulls=Infinity - Hoveder
 itemGroup.fireworks=Infinity - Fyrværkeri
 itemGroup.thief=Infinity - Tyv
 itemGroup.realm=Infinity - Realm
+itemGroup.void=Infinity - Void
 
 gui.close=Luk
 gui.save=Gem
@@ -36,7 +37,8 @@ gui.fireworks=Se Fyrværkeri
 gui.specialbutton=Andre Editors
 gui.headcollection=Hovedkollektion
 gui.lore=Info Editor
-gui.sign=Skilt Editor
+gui.sign=Skilte Editor
+gui.paint=Texture Paint
 
 gui.armorstand.pose=Armor Stand Stilling Editor
 gui.armorstand.pose.reset.1=Nulstiller kun stilling!
@@ -102,10 +104,15 @@ gui.headcollection.changecategory.2=Det tager lidt tid at loade
 gui.item.toggleside=Skift Visning
 gui.item.discord=Tilslut Discord
 gui.item.share=Del Item
-
 gui.item.colorremove.tooltip.1=Fjern alle farver
 gui.item.drop.tooltip.1=Hold shift for at kopiere /give kommando
 gui.item.drop.tooltip.2=Bagefter kan du indsætte den et andet sted
+gui.item.id=Item ID
+gui.item.count=Antal
+gui.item.meta=Meta
+gui.item.name=Navn
+gui.item.lore=Info
+
 
 gui.nbt.update=Opdater NBT
 

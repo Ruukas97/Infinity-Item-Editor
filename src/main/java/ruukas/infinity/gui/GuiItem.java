@@ -156,7 +156,7 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
         };
         
         textFields.add( itemID );
-        centerStrings.add( new CenterString( "Item ID", 31 + (30 * fieldsAmount) ) );
+        centerStrings.add( new CenterString( I18n.format( "gui.item.id" ), 31 + (30 * fieldsAmount) ) );
         
         // COUNT
         GuiNumberField count = new GuiNumberField( 300 + fieldsAmount, fontRenderer, midX, 25 + (30 * ++fieldsAmount), 20, 20, 2 );
@@ -165,7 +165,7 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
         count.setValue( stack.getCount() );
         count.action = () -> stack.setCount( count.getIntValue() );
         numberFields.add( count );
-        centerStrings.add( new CenterString( "Count", 31 + (30 * fieldsAmount) ) );
+        centerStrings.add( new CenterString( I18n.format( "gui.item.count" ), 31 + (30 * fieldsAmount) ) );
         
         // META/DAMAGE
         int maxDamage = stack.getItem() instanceof ItemBlock || stack.getMaxDamage() == 0 ? 9999 : stack.getMaxDamage();
@@ -178,7 +178,7 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
         damage.setValue( stack.getItemDamage() );
         damage.action = () -> stack.setItemDamage( damage.getIntValue() );
         numberFields.add( damage );
-        centerStrings.add( new CenterString( "Meta Data", 31 + (30 * fieldsAmount) ) );
+        centerStrings.add( new CenterString( I18n.format( "gui.item.meta" ), 31 + (30 * fieldsAmount) ) );
         
         // NBT BROWSER AND EDITOR
         nbtButton = addButton( new GuiInfinityButton( 300 + (fieldsAmount), (width / 2) - 82, 25 + (30 * ++fieldsAmount), 80, 20, I18n.format( "gui.nbt" ) ) );
@@ -233,7 +233,7 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
         
         // DISPLAY NAME
         int textID = 251;
-        drawStrings.add( new DrawString( "Name", width - 110, 35 ) );
+        drawStrings.add( new DrawString( I18n.format( "gui.item.name" ), width - 110, 35 ) );
         
         GuiActionTextField name = new GuiActionTextField( textID++, fontRenderer, width - 180, 50, 130, 20 );
         name.setMaxStringLength( 100 );
@@ -243,7 +243,7 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
         addButton( new GuiInfinityButton( 180, width - 45, 50, 40, 20, I18n.format( "gui.clear" ) ) );
         
         // LORE
-        drawStrings.add( new DrawString( "Lore", width - 110, 80 ) );
+        drawStrings.add( new DrawString( I18n.format( "gui.item.lore" ), width - 110, 80 ) );
         addLoreStuff();
     }
     

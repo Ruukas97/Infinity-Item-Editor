@@ -52,6 +52,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
 import net.minecraftforge.fml.common.network.FMLNetworkEvent.ClientConnectedToServerEvent;
 import ruukas.infinity.Infinity;
+import ruukas.infinity.InfinityConfig;
 import ruukas.infinity.InfinityVoid;
 import ruukas.infinity.gui.GuiItem;
 import ruukas.infinity.gui.HelperGui;
@@ -188,7 +189,10 @@ public class InfinityEventHandler
                     {
                         Infinity.infinitySettings.addItemStack( player, slot.getStack().copy() );
                     }
-                    new InfinityVoid( slot.getStack() ).addItemStack( Minecraft.getMinecraft().player, slot.getStack().copy() );
+                    
+                    if(InfinityConfig.getIsVoidEnabled()){
+                        new InfinityVoid( slot.getStack() ).addItemStack( Minecraft.getMinecraft().player, slot.getStack().copy() );
+                    }
                     
                     e.setCanceled( true );
                 }
@@ -247,6 +251,10 @@ public class InfinityEventHandler
     @SubscribeEvent
     public static void onChatReceived( ClientChatReceivedEvent e )
     {
+        if(!InfinityConfig.getIsVoidEnabled()){
+            return;
+        }
+        
         for ( ITextComponent comp : e.getMessage() )
         {
             if ( comp.getStyle().getHoverEvent() != null && comp.getStyle().getHoverEvent().getAction() == HoverEvent.Action.SHOW_ITEM )
@@ -275,18 +283,20 @@ public class InfinityEventHandler
     @SubscribeEvent
     public static void onServerConnection( ClientConnectedToServerEvent e )
     {
-        e.getManager().channel().pipeline().addBefore( "packet_handler", "void_handler", new ChannelDuplexHandler() {
-            public void channelRead( io.netty.channel.ChannelHandlerContext ctx, Object msg ) throws Exception
-            {
-                if ( msg instanceof SPacketEntityEquipment )
+        if(InfinityConfig.getIsVoidEnabled()){
+            e.getManager().channel().pipeline().addBefore( "packet_handler", "void_handler", new ChannelDuplexHandler() {
+                public void channelRead( io.netty.channel.ChannelHandlerContext ctx, Object msg ) throws Exception
                 {
-                    SPacketEntityEquipment packet = (SPacketEntityEquipment) msg;
-                    ItemStack stack = packet.getItemStack().copy();
-                    new InfinityVoid( stack ).addItemStack( Minecraft.getMinecraft().player, stack );
-                }
-                super.channelRead( ctx, msg );
-            };
-        } );
+                    if ( msg instanceof SPacketEntityEquipment )
+                    {
+                        SPacketEntityEquipment packet = (SPacketEntityEquipment) msg;
+                        ItemStack stack = packet.getItemStack().copy();
+                        new InfinityVoid( stack ).addItemStack( Minecraft.getMinecraft().player, stack );
+                    }
+                    super.channelRead( ctx, msg );
+                };
+            } );
+        }
     }
     
     /*
