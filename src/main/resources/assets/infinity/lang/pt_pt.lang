@@ -11,6 +11,13 @@ itemGroup.skulls=Infinity - Cabeças
 itemGroup.fireworks=Infinity - Fogos de artifício
 itemGroup.thief=Infinity - Ladrão
 itemGroup.realm=Infinity - Reino
+imteGroup.void=Infinity - Vazio
+gui.paint=Editar textura
+gui.item.id=ID do item
+gui.item.count=Quantidade
+gui.item.meta=Meta
+gui.item.name=Nome do item
+gui.item.lore=descrição
 
 gui.close=Fechar
 gui.save=Salvar
