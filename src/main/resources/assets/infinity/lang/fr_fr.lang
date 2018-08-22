@@ -11,6 +11,7 @@ itemGroup.skulls=Infini - Tete
 itemGroup.fireworks=Infini - Feux d'artifice
 itemGroup.thief=Infini - Voleur
 itemGroup.realm=Infini - Domaine
+imteGroup.void=Infinity - Vide
 
 gui.close=Fermer
 gui.save=Sauvegarder
@@ -37,6 +38,7 @@ gui.specialbutton=NBT de Specialitie
 gui.headcollection=Collection de têtes
 gui.lore=Éditeur de connaissances
 gui.sign=Editeur de signes
+gui.paint=Peinture de texture
 
 gui.armorstand.pose=Stand de Armor Pose Editeur
 gui.armorstand.pose.reset.1=Ne réinitialise que les rotations!
@@ -106,6 +108,11 @@ gui.item.share=Partager l'article
 gui.item.colorremove.tooltip.1=Supprimer toutes les couleurs
 gui.item.drop.tooltip.1=Maintenez la touche Maj enfoncée pour copier / donner des commandes à votre presse-papiers
 gui.item.drop.tooltip.2=Vous pouvez ensuite le coller ailleurs
+gui.item.id=ID d'objet
+gui.item.count=Compter
+gui.item.meta=Meta
+gui.item.name=Nom d'objets
+gui.item.lore=Lore
 
 gui.nbt.update=Changer le NBT
 
