@@ -10,6 +10,7 @@ itemGroup.banners=Infinity - Флаги
 itemGroup.skulls=Infinity - Головы
 itemGroup.fireworks=Infinity - Феерверки
 itemGroup.thief=Infinity - Область сохранений
+itemGroup.void=Infinity - Void
 
 gui.close=Закрыть
 gui.save=Сохранить

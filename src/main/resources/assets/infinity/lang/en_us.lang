@@ -11,7 +11,7 @@ itemGroup.skulls=Infinity - Heads
 itemGroup.fireworks=Infinity - Fireworks
 itemGroup.thief=Infinity - Thief
 itemGroup.realm=Infinity - Realm
-imteGroup.void=Infinity - Void
+itemGroup.void=Infinity - Void
 
 gui.close=Close
 gui.save=Save

@@ -11,7 +11,7 @@ itemGroup.skulls=Infinity - Cabezas
 itemGroup.fireworks=Infinity - Fuegos Artificiales
 itemGroup.thief=Infinity - Ladrón
 itemGroup.realm=Infinity - Reino
-imteGroup.void=Infinity - Vacio
+itemGroup.void=Infinity - Vacio
 
 gui.close=Cerrar
 gui.save=Guardar

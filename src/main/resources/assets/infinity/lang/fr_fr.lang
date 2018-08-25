@@ -11,7 +11,7 @@ itemGroup.skulls=Infini - Tete
 itemGroup.fireworks=Infini - Feux d'artifice
 itemGroup.thief=Infini - Voleur
 itemGroup.realm=Infini - Domaine
-imteGroup.void=Infinity - Vide
+itemGroup.void=Infinity - Vide
 
 gui.close=Fermer
 gui.save=Sauvegarder
