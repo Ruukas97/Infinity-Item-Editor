@@ -1,7 +1,7 @@
-key.infinity.category=Éditeur d'objets infini
+key.infinity.category=Éditeur d'objets Infinity
 key.infinity.desc=Editeur d'objet actuel
 key.infinitycopy.desc=Copier l'équipement du joueur cible
-key.infinitysave.desc=Enregistrer l'élément actuel dans le royaume
+key.infinitysave.desc=Enregistrer l'élément actuel dans le domaine
 
 warning.notcreative=Vous devez être en mode créatif pour enregistrer des éléments
 
@@ -15,7 +15,7 @@ itemGroup.void=Infinity - Vide
 
 gui.close=Fermer
 gui.save=Sauvegarder
-gui.drop=Baisse
+gui.drop=Jeter
 gui.reset=Réinitialiser
 gui.clear=Retirer
 
@@ -30,7 +30,7 @@ gui.enchanting=Enchante
 gui.potion=Brassage de Potion
 gui.book=Editeur de Livre
 gui.attributes=Editeur des attributs
-gui.chestinventory=Inventaire de la poitrine
+gui.chestinventory=Inventaire de coffre
 gui.hideflags=Masquer les drapeaux
 gui.bannermaker=Créateur de bannière
 gui.fireworks=Aperçu Feux d'artifice
