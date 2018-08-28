@@ -34,10 +34,10 @@ gui.chestinventory=Inventaire de la poitrine
 gui.hideflags=Masquer les drapeaux
 gui.bannermaker=Créateur de bannière
 gui.fireworks=Aperçu Feux d'artifice
-gui.specialbutton=NBT de Specialitie
+gui.specialbutton=NBT spéciaux
 gui.headcollection=Collection de têtes
 gui.lore=Éditeur de connaissances
-gui.sign=Editeur de signes
+gui.sign=Editeur de pancarte
 gui.paint=Peinture de texture
 
 gui.armorstand.pose=Stand de Armor Pose Editeur
