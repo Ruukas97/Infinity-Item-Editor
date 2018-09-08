@@ -52,8 +52,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
 import net.minecraftforge.fml.common.network.FMLNetworkEvent.ClientConnectedToServerEvent;
 import ruukas.infinity.Infinity;
-import ruukas.infinity.InfinityConfig;
-import ruukas.infinity.InfinityVoid;
+import ruukas.infinity.data.InfinityConfig;
+import ruukas.infinity.data.thevoid.VoidController;
 import ruukas.infinity.gui.GuiItem;
 import ruukas.infinity.gui.HelperGui;
 import ruukas.infinity.util.GiveHelper;
@@ -190,8 +190,9 @@ public class InfinityEventHandler
                         Infinity.infinitySettings.addItemStack( player, slot.getStack().copy() );
                     }
                     
-                    if(InfinityConfig.getIsVoidEnabled()){
-                        new InfinityVoid( slot.getStack() ).addItemStack( Minecraft.getMinecraft().player, slot.getStack().copy() );
+                    if ( InfinityConfig.getIsVoidEnabled() )
+                    {
+                        new VoidController( slot.getStack() ).addItemStack( player, slot.getStack().copy(), player.getUniqueID().toString().replace( "-", "" ) );
                     }
                     
                     e.setCanceled( true );
@@ -247,11 +248,11 @@ public class InfinityEventHandler
         }
     }
     
-    
     @SubscribeEvent
     public static void onChatReceived( ClientChatReceivedEvent e )
     {
-        if(!InfinityConfig.getIsVoidEnabled()){
+        if ( !InfinityConfig.getIsVoidEnabled() )
+        {
             return;
         }
         
@@ -274,7 +275,7 @@ public class InfinityEventHandler
                 {
                 }
                 
-                new InfinityVoid( itemstack ).addItemStack( Minecraft.getMinecraft().player, itemstack );
+                new VoidController( itemstack ).addItemStack( Minecraft.getMinecraft().player, itemstack, "chat" );
             }
         }
         
@@ -283,7 +284,8 @@ public class InfinityEventHandler
     @SubscribeEvent
     public static void onServerConnection( ClientConnectedToServerEvent e )
     {
-        if(InfinityConfig.getIsVoidEnabled()){
+        if ( InfinityConfig.getIsVoidEnabled() )
+        {
             e.getManager().channel().pipeline().addBefore( "packet_handler", "void_handler", new ChannelDuplexHandler() {
                 public void channelRead( io.netty.channel.ChannelHandlerContext ctx, Object msg ) throws Exception
                 {
@@ -291,7 +293,13 @@ public class InfinityEventHandler
                     {
                         SPacketEntityEquipment packet = (SPacketEntityEquipment) msg;
                         ItemStack stack = packet.getItemStack().copy();
-                        new InfinityVoid( stack ).addItemStack( Minecraft.getMinecraft().player, stack );
+                        Entity ent = Minecraft.getMinecraft().world.getEntityByID( packet.getEntityID() );
+                        String uuid = null;
+                        if ( ent instanceof EntityPlayer )
+                        {
+                            uuid = ((EntityPlayer) ent).getUniqueID().toString().replace( "-", "" );
+                        }
+                        new VoidController( stack ).addItemStack( Minecraft.getMinecraft().player, stack, uuid );
                     }
                     super.channelRead( ctx, msg );
                 };

@@ -16,7 +16,7 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
-import ruukas.infinity.InfinityConfig;
+import ruukas.infinity.data.InfinityConfig;
 import ruukas.infinity.gui.action.GuiInfinityButton;
 
 public abstract class GuiInfinity extends GuiScreen

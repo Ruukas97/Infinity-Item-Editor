@@ -19,6 +19,7 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import ruukas.infinity.data.realm.RealmController;
 import ruukas.infinity.tab.InfinityTab;
 import ruukas.infinity.util.CertificateHandler;
 
@@ -39,7 +40,7 @@ public class Infinity
     
     public static CreativeTabs UNAVAILABLE, REALM, BANNERS, SKULLS, FIREWORKS, THIEF, VOID;
     
-    public static InfinitySettings infinitySettings;
+    public static RealmController infinitySettings;
     
     // TODO
     // ADD Config
@@ -107,25 +108,41 @@ public class Infinity
     // Add button to clear lore
     
     // CHANGELOG:
-    // Fixed banner maker "scroll button" not rendering in right position
-    // Enchanting editor now supports enchanted books
-    // Added sign gui
-    // Added infinity realm
-    // Removed Ctrl+Drop keybind
-    // Copy paste in inventory
-    // Danish localization
+    // Renamed "infinity.nbt" to "realm.nbt"
+    
+    // Priority List:
+    // Lang support for realm and void add notifications
+    // Better text format editing
+    // Better void
+    // More mob tags
+    // Faster head loading
     
     @EventHandler
     public void preInit( FMLPreInitializationEvent event )
     {
         logger = event.getModLog();
         dataDir = new File( Minecraft.getMinecraft().mcDataDir, "infinity-data" );
-        System.out.println( dataDir.getAbsolutePath() + File.separatorChar + "void" );
         new File( dataDir.getAbsolutePath() + File.separatorChar + "void" ).mkdirs();
         
         InfinityTab.initTabs();
         
-        Infinity.infinitySettings = new InfinitySettings( Infinity.dataDir );
+        File oldRealmFile = new File( dataDir, "infinity.nbt" );
+        
+        if ( oldRealmFile.exists() )
+        {
+            File newRealmFile = new File( dataDir, "realm.nbt" );
+            if ( newRealmFile.exists() )
+            {
+                logger.warn( "When loading realm in %s, an old version of realm, infinity.nbt, was found, but a newer one, realm.nbt, already exists!", dataDir.getPath() );
+            }
+            else
+            {
+                oldRealmFile.renameTo( newRealmFile );
+                logger.info( "When loading realm in %s, found old realm %s, renaming to %s.", dataDir.getPath(), oldRealmFile.getName(), newRealmFile.getName() );
+            }
+        }
+        
+        Infinity.infinitySettings = new RealmController( Infinity.dataDir );
     }
     
     @EventHandler

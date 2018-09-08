@@ -20,7 +20,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatAllowedCharacters;
 import net.minecraft.util.NonNullList;
-import ruukas.infinity.InfinityConfig;
+import ruukas.infinity.data.InfinityConfig;
 import ruukas.infinity.nbt.NBTHelper;
 import ruukas.infinity.nbt.itemstack.tag.InfinitySkullOwnerTag;
 

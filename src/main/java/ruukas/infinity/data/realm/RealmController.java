@@ -1,4 +1,4 @@
-package ruukas.infinity;
+package ruukas.infinity.data.realm;
 
 import java.io.File;
 
@@ -15,16 +15,18 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import ruukas.infinity.Infinity;
 
 @SideOnly( Side.CLIENT )
-public class InfinitySettings
+public class RealmController
 {
+    public static final String VERSION = "0.2";
     private static final Logger LOGGER = Infinity.logger;
     private final File dataFile;
     private final NonNullList<ItemStack> stackList = NonNullList.create();
     
-    public InfinitySettings(File dataDir) {
-        this.dataFile = new File( dataDir, "infinity.nbt" );
+    public RealmController(File dataDir) {
+        this.dataFile = new File( dataDir, "realm.nbt" );
         
         this.read();
     }
@@ -35,7 +37,7 @@ public class InfinitySettings
         {
             NBTTagCompound root = CompressedStreamTools.read( this.dataFile );
             
-            if ( root == null || root.getTagList( "realm", NBT.TAG_COMPOUND ) == null )
+            if ( root == null || root.hasKey( "realm", NBT.TAG_LIST ) )
             {
                 return;
             }
@@ -58,6 +60,7 @@ public class InfinitySettings
         {
             NBTTagCompound root = new NBTTagCompound();
             root.setTag( "realm", new NBTTagList() );
+            root.setString( "realm_version", VERSION );
             NBTTagList realm = root.getTagList( "realm", NBT.TAG_COMPOUND );
             
             for ( int i = 0 ; i < stackList.size() ; ++i )

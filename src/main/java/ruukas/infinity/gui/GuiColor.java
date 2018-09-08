@@ -25,7 +25,7 @@ import net.minecraftforge.fml.client.config.GuiSlider.ISlider;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import ruukas.infinity.Infinity;
-import ruukas.infinity.InfinityConfig;
+import ruukas.infinity.data.InfinityConfig;
 import ruukas.infinity.gui.action.GuiActionTextField;
 import ruukas.infinity.gui.action.GuiInfinityButton;
 import ruukas.infinity.nbt.NBTHelper.ColorNBTHelper;

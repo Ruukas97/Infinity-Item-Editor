@@ -2,7 +2,7 @@ package ruukas.infinity.gui.action;
 
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiTextField;
-import ruukas.infinity.InfinityConfig;
+import ruukas.infinity.data.InfinityConfig;
 
 public class GuiActionTextField extends GuiTextField
 {

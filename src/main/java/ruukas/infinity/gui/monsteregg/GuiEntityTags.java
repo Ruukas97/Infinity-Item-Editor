@@ -7,7 +7,7 @@ import net.minecraft.client.gui.GuiListExtended;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
-import ruukas.infinity.InfinityConfig;
+import ruukas.infinity.data.InfinityConfig;
 
 public class GuiEntityTags extends GuiScreen
 {

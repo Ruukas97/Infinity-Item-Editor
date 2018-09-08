@@ -21,7 +21,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import ruukas.infinity.Infinity;
-import ruukas.infinity.InfinityConfig;
+import ruukas.infinity.data.InfinityConfig;
 import ruukas.infinity.gui.action.ActionButtons;
 import ruukas.infinity.gui.action.GuiActionButton;
 import ruukas.infinity.gui.action.GuiActionTextField;

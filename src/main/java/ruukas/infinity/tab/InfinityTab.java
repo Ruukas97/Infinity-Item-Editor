@@ -6,7 +6,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import ruukas.infinity.Infinity;
-import ruukas.infinity.InfinityVoid;
+import ruukas.infinity.data.thevoid.VoidController;
 
 public abstract class InfinityTab extends CreativeTabs
 {
@@ -79,7 +79,7 @@ public abstract class InfinityTab extends CreativeTabs
             {
                 super.displayAllRelevantItems( stackList );
                 
-                InfinityVoid.loadVoid( stackList );
+                VoidController.loadVoidToList( stackList );
             }
         };
     }

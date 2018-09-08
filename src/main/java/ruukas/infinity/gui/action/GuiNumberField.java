@@ -7,7 +7,7 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import ruukas.infinity.InfinityConfig;
+import ruukas.infinity.data.InfinityConfig;
 
 @SideOnly( Side.CLIENT )
 public class GuiNumberField extends Gui

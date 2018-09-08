@@ -19,7 +19,7 @@ import net.minecraft.item.ItemEnchantedBook;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import ruukas.infinity.InfinityConfig;
+import ruukas.infinity.data.InfinityConfig;
 import ruukas.infinity.gui.action.GuiInfinityButton;
 import ruukas.infinity.gui.action.GuiNumberField;
 import ruukas.infinity.nbt.itemstack.tag.InfinityEnchantmentList;

@@ -36,7 +36,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import ruukas.infinity.InfinityConfig;
+import ruukas.infinity.data.InfinityConfig;
 import ruukas.infinity.gui.action.GuiInfinityButton;
 import ruukas.infinity.gui.monsteregg.GuiEntityTags;
 import ruukas.infinity.gui.monsteregg.MobTag;
