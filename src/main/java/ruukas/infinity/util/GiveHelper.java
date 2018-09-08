@@ -18,6 +18,7 @@ public class GiveHelper
             return ItemStack.EMPTY;
         }
         
+        //Remove "/give <player>" part
         command = command.substring( command.indexOf( ' ' ) + 1 );
         command = command.substring( command.indexOf( ' ' ) + 1 );
         
@@ -58,7 +59,7 @@ public class GiveHelper
         {
             for ( int i = 3 ; i < args.length ; i++ )
             {
-                tagString += args[i];
+                tagString += " " + args[i];
             }
             try
             {
