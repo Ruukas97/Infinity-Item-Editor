@@ -81,6 +81,12 @@ public abstract class InfinityTab extends CreativeTabs
                 
                 VoidController.loadVoidToList( stackList );
             }
+            
+            @Override
+            public boolean hasSearchBar()
+            {
+                return true;
+            }
         };
     }
 }
