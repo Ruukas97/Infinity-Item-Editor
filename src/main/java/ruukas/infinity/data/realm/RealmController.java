@@ -37,7 +37,7 @@ public class RealmController
         {
             NBTTagCompound root = CompressedStreamTools.read( this.dataFile );
             
-            if ( root == null || root.hasKey( "realm", NBT.TAG_LIST ) )
+            if ( root == null || !root.hasKey( "realm", NBT.TAG_LIST ) )
             {
                 return;
             }
