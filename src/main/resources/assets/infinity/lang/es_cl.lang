@@ -260,15 +260,15 @@ tag.villager.profession.0=Granjero
 tag.villager.profession.1=Librario
 tag.villager.profession.2=Sacerdorte 
 tag.villager.profession.3=Armero
-tag.villager.profession.4=Butcher 
-tag.villager.profession.5=Nitwit 
+tag.villager.profession.4=Herrero 
+tag.villager.profession.5=Normal
 
 
 tag.vindicator.johnny.on=Johnny Behaviour
 tag.vindicator.johnny.off=Normal Behavior
 
-tag.zombie.isbaby.on=Baby
-tag.zombie.isbaby.off=Adult
+tag.zombie.isbaby.on=Bebé
+tag.zombie.isbaby.off=Adulto
 tag.zombie.canbreakdoors.on=Puede romper puertas
 tag.zombie.canbreakdoors.off=No puede romper puertas
 
