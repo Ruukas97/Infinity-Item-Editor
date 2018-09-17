@@ -139,7 +139,7 @@ public class InfinityEventHandler
     {
         Minecraft mc = Minecraft.getMinecraft();
         EntityPlayerSP player = mc.player;
-        if ( Keyboard.isKeyDown( Infinity.keybind.getKeyCode() ) && mc.world != null && player != null && e.getGui() instanceof GuiContainer )
+        if ( Infinity.keybind != null && Keyboard.isKeyDown( Infinity.keybind.getKeyCode() ) && mc.world != null && player != null && e.getGui() instanceof GuiContainer )
         {
             ItemStack cursorStack = player.inventory.getItemStack();
             if ( cursorStack == ItemStack.EMPTY || cursorStack.getItem() == Items.AIR )
@@ -205,31 +205,34 @@ public class InfinityEventHandler
             GuiContainer gui = (GuiContainer) e.getGui();
             Slot slot = gui.getSlotUnderMouse();
             
-            if ( GuiScreen.isKeyComboCtrlC( Keyboard.isKeyDown( 46 ) ? 46 : 0 ) && slot.getHasStack() )
+            if ( slot != null )
             {
-                String s = GiveHelper.getStringFromItemStack( slot.getStack() );
-                GuiScreen.setClipboardString( s );
-            }
-            
-            else if ( GuiScreen.isKeyComboCtrlV( Keyboard.isKeyDown( 47 ) ? 47 : 0 ) && slot.inventory == player.inventory )
-            {
-                ItemStack stack = GiveHelper.getItemStackFromString( GuiScreen.getClipboardString() );
-                int i = slot.getSlotIndex();
-                
-                if ( i <= 8 )
+                if ( GuiScreen.isKeyComboCtrlC( Keyboard.isKeyDown( 46 ) ? 46 : 0 ) && slot.getHasStack() )
                 {
-                    i += 36;
-                }
-                else if ( 36 <= i && i <= 39 )
-                {
-                    i = 8 - (i % 4);
-                }
-                else if ( i == 40 )
-                {
-                    i = 45;
+                    String s = GiveHelper.getStringFromItemStack( slot.getStack() );
+                    GuiScreen.setClipboardString( s );
                 }
                 
-                mc.playerController.sendSlotPacket( stack, i );
+                else if ( GuiScreen.isKeyComboCtrlV( Keyboard.isKeyDown( 47 ) ? 47 : 0 ) && slot.inventory == player.inventory )
+                {
+                    ItemStack stack = GiveHelper.getItemStackFromString( GuiScreen.getClipboardString() );
+                    int i = slot.getSlotIndex();
+                    
+                    if ( i <= 8 )
+                    {
+                        i += 36;
+                    }
+                    else if ( 36 <= i && i <= 39 )
+                    {
+                        i = 8 - (i % 4);
+                    }
+                    else if ( i == 40 )
+                    {
+                        i = 45;
+                    }
+                    
+                    mc.playerController.sendSlotPacket( stack, i );
+                }
             }
         }
     }
