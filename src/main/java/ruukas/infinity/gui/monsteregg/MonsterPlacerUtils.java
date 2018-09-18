@@ -6,9 +6,11 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntityEndermite;
 import net.minecraft.entity.monster.EntityShulker;
+import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.monster.EntityVindicator;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.monster.EntityZombieVillager;
+import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityParrot;
 import net.minecraft.entity.passive.EntityPig;
 import net.minecraft.entity.passive.EntitySheep;
@@ -137,23 +139,52 @@ public class MonsterPlacerUtils
     
     public static MobTag[] getSpecificTagsForEntity( EntityLiving ent )
     {
+        if ( ent instanceof EntityChicken )
+        {
+            return MobTag.CHICKEN_SPECIFIC;
+        }
+        
         if ( ent instanceof EntityCreeper )
         {
             return MobTag.CREEPER_SPECIFIC;
         }
-        else if ( ent instanceof EntityParrot )
+        
+        if ( ent instanceof EntityEndermite )
+        {
+            return MobTag.ENDERMITE_SPECIFIC;
+        }
+        
+        if ( ent instanceof EntityParrot )
         {
             return MobTag.PARROT_SPECIFIC;
         }
-        else if ( ent instanceof EntityPig )
+        
+        if ( ent instanceof EntityPig )
         {
             return MobTag.PIG_SPECIFIC;
         }
-        else if ( ent instanceof EntitySheep )
+        
+        if ( ent instanceof EntitySheep )
         {
             return MobTag.SHEEP_SPECIFIC;
         }
-        else if ( ent instanceof EntityZombie )
+        
+        if ( ent instanceof EntityShulker )
+        {
+            return MobTag.SHULKER_SPECIFIC;
+        }
+        
+        if ( ent instanceof EntitySlime )
+        {
+            return MobTag.SLIME_SPECIFIC;
+        }
+        
+        if ( ent instanceof EntityVindicator )
+        {
+            return MobTag.VINDICATOR_SPECIFIC;
+        }
+        
+        if ( ent instanceof EntityZombie )
         {
             if ( !(ent instanceof EntityZombieVillager) )
             {
@@ -162,19 +193,7 @@ public class MonsterPlacerUtils
             else
                 return MobTag.ZOMBIEVILLAGER_SPECIFIC;
         }
-        else if ( ent instanceof EntityShulker )
-        {
-            return MobTag.SHULKER_SPECIFIC;
-        }
-        else if ( ent instanceof EntityVindicator )
-        {
-            return MobTag.VINDICATOR_SPECIFIC;
-        }
-        else if ( ent instanceof EntityEndermite )
-        {
-            return MobTag.ENDERMITE_SPECIFIC;
-        }
-        else
-            return new MobTag[ 0 ];
+        
+        return new MobTag[ 0 ];
     }
 }

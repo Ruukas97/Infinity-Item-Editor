@@ -94,6 +94,7 @@ public class MobTag
     
     public static MobTag[] ENTITY_SPECIFIC = new MobTag[] { fire, noGravity, invulnerable, silent, customNameVisible, customName, glowing };
     public static MobTag[] MOB_SPECIFIC = new MobTag[] { absorption, fallFlying, canPickUpLoot, noAI, persistenceRequired };
+    
     public static MobTag[] CHICKEN_SPECIFIC = new MobTag[] { eggLayTime };
     public static MobTag[] CREEPER_SPECIFIC = new MobTag[] { powered, explosionRadius, fuse, ignited };
     public static MobTag[] ENDERMITE_SPECIFIC = new MobTag[] { lifeTimeEndermite, playerSpawnedEndermite };
