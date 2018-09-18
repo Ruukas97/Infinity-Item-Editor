@@ -70,8 +70,7 @@ public class MobTag
     public static final MobTag colorShulker = new MobTagList( "tag.shulker.color", "Color", 16 );
     
     // SLIME OR MAGMA
-    // Size int slider
-    public static final MobTag sizeSlime = new MobTagSliderInt( "tag.slime.size", "Size", 0f, 100f, 1f, 3f );
+    public static final MobTag sizeSlime = new MobTagSliderInt( "tag.slime.size", "Size", 0f, 50f, 1f, 3f );
     
     // ZOMBIE OR HUSK
     public static final MobTag isBabyZombie = new MobTagToggle( "tag.zombie.isbaby", "IsBaby" );
@@ -85,6 +84,7 @@ public class MobTag
     
     // VILLAGER
     public static final MobTag professionVillager = new MobTagList( "tag.villager.profession", "Profession", 6 );
+    //TODO Villager trades
     
     // VEX
     // LifeTicks int slider (left to live) (probably no reason to add)

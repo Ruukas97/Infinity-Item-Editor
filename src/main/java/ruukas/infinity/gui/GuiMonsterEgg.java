@@ -24,8 +24,8 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.monster.EntityCaveSpider;
 import net.minecraft.entity.monster.EntityElderGuardian;
 import net.minecraft.entity.monster.EntityGhast;
+import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.monster.EntitySpider;
-import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityBat;
 import net.minecraft.entity.passive.EntitySquid;
 import net.minecraft.init.Items;
@@ -51,7 +51,7 @@ public class GuiMonsterEgg extends GuiScreen
     
     private final GuiScreen lastScreen;
     
-    private GuiInfinityButton mobButton, mobSpecificButton, animalSpecificButton;
+    private GuiInfinityButton mobButton, mobSpecificButton, equipmentButton;
     
     protected String title = I18n.format( "gui.spawnegg" );
     
@@ -72,26 +72,26 @@ public class GuiMonsterEgg extends GuiScreen
         
         this.buttonList.add( new GuiInfinityButton( 103, this.width / 2 - 75, 80, 150, 20, I18n.format( "gui.spawnegg.entity" ) ) );
         this.buttonList.add( new GuiInfinityButton( 104, this.width / 2 - 75, 110, 150, 20, I18n.format( "gui.spawnegg.mob" ) ) );
-        mobSpecificButton = new GuiInfinityButton( 105, this.width / 2 - 75, 140, 150, 20, I18n.format( "gui.spawnegg.mobspecific", getEntityName() ) );
-        this.buttonList.add( mobSpecificButton );
         
-        animalSpecificButton = new GuiInfinityButton( 106, this.width / 2 - 75, 140, 150, 20, I18n.format( "gui.spawnegg.animalspecific", getEntityName() ) );
-        this.buttonList.add( animalSpecificButton );
-        animalSpecificButton.enabled = false;
-        animalSpecificButton.visible = false;
+        mobSpecificButton = addButton( new GuiInfinityButton( 105, this.width / 2 - 75, 140, 150, 20, I18n.format( "gui.spawnegg.mobspecific", getEntityName() ) ) );
+        
+        equipmentButton = addButton( new GuiInfinityButton( 106, this.width / 2 - 75, 140, 150, 20, I18n.format( "tag.armorstand.inventory" ) ) );
+        
+        /*
+         * animalSpecificButton = addButton( new GuiInfinityButton( 106, this.width / 2 - 75, 140, 150, 20, I18n.format( "gui.spawnegg.animalspecific" ) ) ); animalSpecificButton.enabled = false; animalSpecificButton.visible = false;
+         */
         
         this.buttonList.add( new GuiInfinityButton( 200, this.width / 2 - 90, this.height - 35, 60, 20, I18n.format( "gui.back" ) ) );
         this.buttonList.add( new GuiInfinityButton( 202, this.width / 2 + 30, this.height - 35, 60, 20, I18n.format( "gui.drop" ) ) );
         
         this.buttonList.add( new GuiInfinityButton( 203, this.width / 2 - 30, this.height - 35, 60, 20, I18n.format( "gui.reset" ) ) );
-        
         updateMob();
     }
     
     @Override
     public void onGuiClosed()
     {
-    
+        
     }
     
     /**
@@ -137,6 +137,11 @@ public class GuiMonsterEgg extends GuiScreen
                 mobSpecificButton.enabled = false;
                 return;
             }
+        }
+        
+        else if ( button.id == equipmentButton.id )
+        {
+            mc.displayGuiScreen( new GuiEquipment( this, getItemStack() ) );
         }
         
         else if ( button.id == 101 )
@@ -251,22 +256,25 @@ public class GuiMonsterEgg extends GuiScreen
             }
         }
         
-        if ( mob instanceof EntityAnimal )
+        if ( mob instanceof EntityLiving )
         {
             mobSpecificButton.y = 170;
-            animalSpecificButton.enabled = false;
-            animalSpecificButton.visible = true;
+            equipmentButton.visible = true;
+            
         }
         else
         {
             mobSpecificButton.y = 140;
-            animalSpecificButton.enabled = false;
-            animalSpecificButton.visible = false;
+            equipmentButton.visible = false;
         }
         
-        mobButton.displayString = getEntityName();
-        mobSpecificButton.displayString = I18n.format( "gui.spawnegg.mobspecific", getEntityName() );
+        /*
+         * if ( mob instanceof EntityAnimal ) { mobSpecificButton.y = 170; animalSpecificButton.enabled = false; animalSpecificButton.visible = true; } else { mobSpecificButton.y = 140; animalSpecificButton.enabled = false; animalSpecificButton.visible = false; }
+         */
         
+        mobButton.displayString = getEntityName();
+        
+        mobSpecificButton.displayString = I18n.format( "gui.spawnegg.mobspecific", getEntityName() );
         mobSpecificButton.enabled = MonsterPlacerUtils.getSpecificTagsForEntity( mob ).length > 0;
         
         String s;
@@ -332,6 +340,11 @@ public class GuiMonsterEgg extends GuiScreen
         {
             scale = 100;
             posY += 30;
+        }
+        else if ( ent instanceof EntitySlime )
+        {
+            scale /= ent.height;
+            scale += (ent.height / 8);
         }
         GlStateManager.enableColorMaterial();
         GlStateManager.pushMatrix();

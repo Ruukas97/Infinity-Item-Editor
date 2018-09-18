@@ -198,6 +198,9 @@ tag.armorstand.marker.1=Marker
 tag.armorstand.inventory=Equipment
 tag.armorstand.pose=Pose
 
+tag.chicken.egglaytime.on=%s ticks for egg
+tag.chicken.egglaytime.off=Ready to lay egg
+
 tag.creeper.powered.on=Powered
 tag.creeper.powered.off=Unpowered
 tag.creeper.explosionradius.on=Explosion Radius: %s
@@ -258,13 +261,15 @@ tag.shulker.color.13=Dark Green
 tag.shulker.color.14=Red
 tag.shulker.color.15=Black
 
+tag.slime.size.on=Size: %s
+tag.slime.size.off=Size: %s
+
 tag.villager.profession.0=Farmer Skin
 tag.villager.profession.1=Librarian Skin
 tag.villager.profession.2=Priest Skin
 tag.villager.profession.3=Smith Skin
 tag.villager.profession.4=Butcher Skin
 tag.villager.profession.5=Nitwit Skin
-
 
 tag.vindicator.johnny.on=Johnny Behavior
 tag.vindicator.johnny.off=Normal Behavior

@@ -97,7 +97,7 @@ public class MonsterPlacerUtils
             
             if ( value <= tagSlider.min )
             {
-                return I18n.format( tag.getName() + ".off" );
+                return I18n.format( tag.getName() + ".off", (int) value );
             }
             return I18n.format( tag.getName() + ".on", (int) value );
         }
