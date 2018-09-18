@@ -13,6 +13,7 @@ public class InfinityConfig
     public static boolean itemGuiSidebar = false;
     public static boolean voidTab = true;
     public static boolean voidAddNotification = false;
+    public static boolean voidTabHideHeads = false;
     
     @Ignore
     public static int MAIN_COLOR = HelperGui.getColorFromRGB( 255, 150, 0, 200 );

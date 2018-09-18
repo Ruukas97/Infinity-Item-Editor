@@ -72,23 +72,24 @@ public class InfinityEventHandler
     @SubscribeEvent
     public static void onKeyPress( KeyInputEvent event )
     {
-        if ( Infinity.keybind.isPressed() && Minecraft.getMinecraft().world != null )
+        Minecraft mc = Minecraft.getMinecraft();
+        
+        if ( Infinity.keybind.isPressed() && mc.world != null )
         {
-            ItemStack currentStack = Minecraft.getMinecraft().player.getHeldItemMainhand();
+            ItemStack currentStack = mc.player.getHeldItemMainhand();
             
-            Minecraft.getMinecraft().displayGuiScreen( new GuiItem( Minecraft.getMinecraft().currentScreen, currentStack.copy(), -1 ) );
+            mc.displayGuiScreen( new GuiItem( Minecraft.getMinecraft().currentScreen, currentStack.copy(), -1 ) );
         }
         
-        if ( Infinity.keybindSave.isPressed() && Minecraft.getMinecraft().world != null )
+        if ( Infinity.keybindSave.isPressed() && mc.world != null )
         {
-            EntityPlayerSP player = Minecraft.getMinecraft().player;
+            EntityPlayerSP player = mc.player;
             ItemStack currentStack = player.getHeldItemMainhand();
             Infinity.infinitySettings.addItemStack( player, currentStack.copy() );
         }
         
-        if ( Infinity.keybindCopy.isPressed() && Minecraft.getMinecraft().world != null )
+        if ( Infinity.keybindCopy.isPressed() && mc.world != null )
         {
-            Minecraft mc = Minecraft.getMinecraft();
             EntityPlayer player = Minecraft.getMinecraft().player;
             
             /*
@@ -101,9 +102,9 @@ public class InfinityEventHandler
              * Minecraft.getMinecraft().player.sendMessage( new TextComponentString( "Copying " + playerHit.getDisplayNameString() ) ); for ( ItemStack s : playerHit.getEquipmentAndArmor() ) { Minecraft.getMinecraft().player.sendMessage( s.getTextComponent() ); } } }
              */
             
-            if ( Minecraft.getMinecraft().pointedEntity != null )
+            if ( mc.pointedEntity != null )
             {
-                Entity entityHit = Minecraft.getMinecraft().pointedEntity;
+                Entity entityHit = mc.pointedEntity;
                 if ( entityHit instanceof EntityPlayer || entityHit instanceof EntityArmorStand || entityHit instanceof EntityLiving )
                 {
                     player.sendMessage( new TextComponentString( "Copying " ).appendSibling( entityHit.getDisplayName() ) );
@@ -116,7 +117,6 @@ public class InfinityEventHandler
                         stacks[i++] = stack;
                     }
                     
-                    // Main hand
                     if ( stacks != null && stacks.length > 0 )
                     {
                         player.inventory.setPickedItemStack( stacks[0] );

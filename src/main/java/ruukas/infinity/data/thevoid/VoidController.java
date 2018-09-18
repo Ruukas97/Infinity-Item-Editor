@@ -6,6 +6,7 @@ import org.apache.logging.log4j.Logger;
 
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.item.ItemMonsterPlacer;
+import net.minecraft.item.ItemSkull;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompressedStreamTools;
 import net.minecraft.nbt.NBTBase;
@@ -149,14 +150,27 @@ public class VoidController
     {
         File dataFile = new File( Infinity.dataDir.getAbsolutePath() + File.separatorChar + "void" );
         
-        for ( File file : dataFile.listFiles() )
+        fileFor: for ( File file : dataFile.listFiles() )
         {
+            VoidController control;
+            
             synchronized ( Infinity.dataDir )
             {
-                VoidController control = new VoidController( file );
-                for ( VoidElement e : control.getElementList() )
+                control = new VoidController( file );
+            }
+            
+            NonNullList<VoidElement> eList = control.getElementList();
+            
+            if ( !eList.isEmpty() )
+            {
+                if ( InfinityConfig.voidTabHideHeads && eList.get( 0 ).getStack().getItem() instanceof ItemSkull )
                 {
-                    list.add( e.getStack() );
+                    continue fileFor;
+                }
+                
+                for ( int i = 0 ; i < eList.size() ; i++ )
+                {
+                    list.add( eList.get( i ).getStack() );
                 }
             }
         }
