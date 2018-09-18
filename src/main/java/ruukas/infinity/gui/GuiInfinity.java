@@ -122,7 +122,7 @@ public abstract class GuiInfinity extends GuiScreen
             
             String id = stack.getItem().getRegistryName().toString();
             
-            String command = "/minecraft:give @p " + id;
+            String command = "/give @p " + id;
             
             boolean shouldAddTag = stack.hasTagCompound();
             boolean shouldAddMeta = shouldAddTag || stack.getMetadata() != 0;
