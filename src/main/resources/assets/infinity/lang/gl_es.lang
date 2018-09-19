@@ -18,8 +18,10 @@ gui.save=Guardar
 gui.drop=Dropear
 gui.reset=Resetear
 gui.clear=Limpiar
+gui.paint=Textura Personalizada
+gui.trade=Intercambio Personalizado
 
-gui.item=Infinity Editor [Traducción "gl_es - NO DISPONIBLE" por Nacho4785] [v0.0.0.0.0.0.0]
+gui.item=Infinity Editor [Traducción "gl_es - NO DISPONIBLE" por Nacho4785] Se utilizará Español, España.
 gui.spawnegg=Editor de huevos de Spawn
 gui.head=Editor de cabezas
 gui.armorstand=Editor De Soporte De Armadura
