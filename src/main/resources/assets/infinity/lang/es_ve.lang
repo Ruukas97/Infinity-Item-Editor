@@ -1,3 +1,8 @@
+#Translated by Nacho4785. Last Update: 19th September, 2018. 13:25
+#Contact me for any problem or recommendation of the translation, my discord is:
+# >> Nacho4785#6794 <<    :)
+
+
 key.infinity.category=Infinity Item Editor
 key.infinity.desc=Editar item
 key.infinitycopy.desc=Copiar items a quien apuntes
@@ -18,8 +23,10 @@ gui.save=Guardar
 gui.drop=Dropear
 gui.reset=Resetear
 gui.clear=Limpiar
+gui.paint=Textura Personalizada
+gui.trade=Intercambio Personalizado
 
-gui.item=Infinity Editor [Traducción Español Venezolano por Nacho4785] [v1.1.5]
+gui.item=Infinity Editor [Traducción Español Venezolano por Nacho4785] [v1.1.6]
 gui.spawnegg=Editor de huevos de Spawn
 gui.head=Editor de cabezas
 gui.armorstand=Editor De Soporte De Armadura
@@ -206,7 +213,7 @@ tag.creeper.ignited.on=Fuego Ecendido
 tag.creeper.ignited.off=Fuego Apagado
 
 tag.endermite.lifetime.off=Tiempo de vida aleatorio
-tag.endermite.lifetime.on=Esperanza de vida: %s
+tag.endermite.lifetime.on=Tiempo de vida: %s
 tag.endermite.playerspawned.off=Spawneado por jugador: 0
 tag.endermite.playerspawned.on=Spawneado por jugador: 1
 
@@ -260,7 +267,7 @@ tag.villager.profession.0=Granjero
 tag.villager.profession.1=Librario
 tag.villager.profession.2=Sacerdorte 
 tag.villager.profession.3=Armero
-tag.villager.profession.4=Herrero
+tag.villager.profession.4=Carnicero
 tag.villager.profession.5=Normal
 
 

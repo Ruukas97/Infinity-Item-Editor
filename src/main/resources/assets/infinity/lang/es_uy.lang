@@ -1,9 +1,18 @@
+#Translated by Nacho4785. Last Update: 19th September, 2018. 13:25
+#Contact me for any problem or recommendation of the translation, my discord is:
+# >> Nacho4785#6794 <<    :)
+
+
+#Principal
+
 key.infinity.category=Infinity Item Editor
 key.infinity.desc=Editar item
 key.infinitycopy.desc=Copiar items a quien apuntes
 key.infinitysave.desc=Guardar el item actual al reino
 
 warning.notcreative=¡Necesitas estar en modo creativo para guardar items!, ¡Presiona Shift+Click para guardarlo como un comando!
+
+#ItemGroups
 
 itemGroup.unavailable=Infinity - Inobtenible
 itemGroup.banners=Infinity - Estandartes
@@ -12,6 +21,8 @@ itemGroup.fireworks=Infinity - Fuegos Artificiales
 itemGroup.thief=Infinity - Ladrón
 itemGroup.realm=Infinity - Reino
 itemGroup.void=Infinity - Vacio
+
+#GUIS
 
 gui.close=Cerrar
 gui.save=Guardar
@@ -45,7 +56,6 @@ gui.paint=Editor de textura
 gui.armorstand.pose.reset.1=Poner por defecto las poses
 gui.armorstand.invisible.note=Nota: ¡Podría ser difícil removerlo sin comandos!
 gui.armorstand.marker.note="Marker" Te quita la habilidad de interactuar con este
-
 gui.attributes.infinity.0=Introducir Datos 
 gui.attributes.infinity.1=Infinito
 gui.attributes.operation.0=Additivo (+)
@@ -59,7 +69,6 @@ gui.attributes.slot.4=Pecho
 gui.attributes.slot.5=Piernas
 gui.attributes.slot.6=Pies
 attribute.name.generic.flyingSpeed=Velocidad de vuelo en mob
-
 gui.book.title=Título
 gui.book.author=Autor
 gui.book.generation=Generación
@@ -68,21 +77,17 @@ gui.book.resolved.tooltip.1=Ha sido resuelto por el servidor
 gui.book.unresolved=No está resuelto
 gui.book.unsign=DesAsignar
 gui.book.resign=ReAsignar
-
 gui.enchanting.enchanttoggle.0=Mostrar Aplicable
 gui.enchanting.enchanttoggle.1=Mostrar Todo
 gui.enchanting.addall=Añadir Todo Visible
-
 gui.spawnegg.entity=Específico de entidad
 gui.spawnegg.mob=Específico de mob
 gui.spawnegg.mobspecific=Específico de %s
 gui.spawnegg.animalspecific=Específico De %s
-
 gui.head.save.tooltip.1=Puede laguearse mientras carga la información del jugador.
 gui.head.save.tooltip.2=Esto es un problema de Minecraft.
 gui.head.list.tooltip.1=Mira la lista de personas en el servidor.
 gui.head.list.tooltip.2=--Próximamente--
-
 gui.headcollection.category.alphabet=Letras
 gui.headcollection.category.animals=Animales
 gui.headcollection.category.blocks=Bloques
@@ -93,7 +98,6 @@ gui.headcollection.category.humanoid=Humanoides
 gui.headcollection.category.miscellaneous=Otros, etc.
 gui.headcollection.category.monsters=Mounstros
 gui.headcollection.category.plants=Plantas
-
 gui.headcollection.clickhead=Click para remplazar este objeto
 gui.headcollection.clickheadshift=Mantené presionado shift para duplicar la cabeza.
 gui.headcollection.typesearch=¡Escribí algo para buscar!
@@ -101,11 +105,9 @@ gui.headcollection.clicksearch=¡Click para buscar!
 gui.headcollection.currentpage=Página %s/%s
 gui.headcollection.changecategory.1=Cambiar categoría de cabezas
 gui.headcollection.changecategory.2=Va a demorar unos segundos para cargar (Problema  de Minecraft Vanilla)
-
 gui.item.toggleside=Cambiar vista
 gui.item.discord=Unirse al servidor de discord!
 gui.item.share=Compartir objeto
-
 gui.item.colorremove.tooltip.1=Sacar todos los colores
 gui.item.drop.tooltip.1=Mantené pulsado Shift para obtenerlo en un comando /give
 gui.item.drop.tooltip.2=Para después copiarlo en otro lado.
@@ -115,9 +117,16 @@ gui.item.meta=Meta
 gui.item.name=Nombre del item
 gui.item.lore=Descripción
 gui.nbt.update=Actualizar NBT
-
 gui.nbt.comp.open=Click para expandir Tag
 gui.nbt.comp.close=Click para cerrar la Tag
+gui.potion.time=Duración (Segundos)
+gui.potion.level=Amplificador
+gui.potion.showparticles.0=Ocultar partículas
+gui.potion.showparticles.1=Mostrar partículas
+gui.equipment.inventoryclone=Esto es una copia de tu inventario. Todo vá a quedar igual, tranqui.
+
+
+ #TAGS
 
 tag.head.0=Calavera de Esqueleto
 tag.head.1=Calavera de Esqueleto Whiter
@@ -126,12 +135,7 @@ tag.head.3=Cabeza de Jugador
 tag.head.4=Cabeza de Creeper
 tag.head.5=Cabeza de Dragón
 
-gui.potion.time=Duración (Segundos)
-gui.potion.level=Amplificador
-gui.potion.showparticles.0=Ocultar partículas
-gui.potion.showparticles.1=Mostrar partículas
-
-gui.equipment.inventoryclone=Esto es una copia de tu inventario. Todo vá a quedar igual, tranqui.
+ #FLAGS
 
 flag.enchantment.0=Encantamientos: Se Ven
 flag.enchantment.1=Encantamientos: No Se Ven
@@ -146,11 +150,14 @@ flag.canplaceon.1=Se Puede Poner En: No Se Ven
 flag.iteminfo.0=Info De Item: Se Ve
 flag.iteminfo.1=Info De Item: No Se Ve
 
+ #More GUIS
+
 gui.editstring=Editar
 
 gui.entitytags=Tags De Entidades
 gui.mobspecific=Especifico De Mobs
 
+#TAGS AND MORE TAGS
 
 tag.skullowner=Nick
 
@@ -208,7 +215,7 @@ tag.creeper.ignited.on=Fuego Ecendido
 tag.creeper.ignited.off=Fuego Apagado
 
 tag.endermite.lifetime.off=Tiempo de vida aleatorio
-tag.endermite.lifetime.on=Esperanza de vida: %s
+tag.endermite.lifetime.on=Tiempo de vida: %s
 tag.endermite.playerspawned.off=Spawneado por jugador: 0
 tag.endermite.playerspawned.on=Spawneado por jugador: 1
 
@@ -262,7 +269,7 @@ tag.villager.profession.0=Granjero
 tag.villager.profession.1=Librario
 tag.villager.profession.2=Sacerdorte 
 tag.villager.profession.3=Armero
-tag.villager.profession.4=Herrero
+tag.villager.profession.4=Carnicero
 tag.villager.profession.5=Normal
 
 
