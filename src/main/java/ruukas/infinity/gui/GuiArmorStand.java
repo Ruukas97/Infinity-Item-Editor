@@ -12,7 +12,6 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.item.ItemArmorStand;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.fml.relauncher.Side;
@@ -30,8 +29,8 @@ public class GuiArmorStand extends GuiInfinity
     
     private GuiInfinityButton entityButton, armsButton, smallButton, invisibleButton, baseButton, markerButton, inventoryButton, poseButton;
     
-    public GuiArmorStand(GuiScreen lastScreen, ItemStack stack) {
-        super( lastScreen, stack );
+    public GuiArmorStand(GuiScreen lastScreen, ItemStackHolder stackHolder) {
+        super( lastScreen, stackHolder );
     }
     
     @Override
@@ -41,11 +40,11 @@ public class GuiArmorStand extends GuiInfinity
         
         int buttons = 0;
         this.entityButton = addButton( new GuiInfinityButton( 100 + buttons, (this.width / 2) - 75, 50 + (30 * buttons++), 150, 20, I18n.format( "gui.spawnegg.entity" ) ) );
-        this.armsButton = addButton( new GuiInfinityButton( 100 + buttons, (this.width / 2) - 75, 50 + (30 * buttons++), 150, 20, I18n.format( "tag.armorstand.arms." + ArmorStandNBTHelper.SHOW_ARMS.getByte( stack ) ) ) );
-        this.smallButton = addButton( new GuiInfinityButton( 100 + buttons, (this.width / 2) - 75, 50 + (30 * buttons++), 150, 20, I18n.format( "tag.armorstand.small." + ArmorStandNBTHelper.SMALL.getByte( stack ) ) ) );
-        this.invisibleButton = addButton( new GuiInfinityButton( 100 + buttons, (this.width / 2) - 75, 50 + (30 * buttons++), 150, 20, I18n.format( "tag.armorstand.invisible." + ArmorStandNBTHelper.INVISIBLE.getByte( stack ) ) ) );
-        this.baseButton = addButton( new GuiInfinityButton( 100 + buttons, (this.width / 2) - 75, 50 + (30 * buttons++), 150, 20, I18n.format( "tag.armorstand.nobase." + ArmorStandNBTHelper.NO_BASE.getByte( stack ) ) ) );
-        this.markerButton = addButton( new GuiInfinityButton( 100 + buttons, (this.width / 2) - 75, 50 + (30 * buttons++), 150, 20, I18n.format( "tag.armorstand.marker." + ArmorStandNBTHelper.SHOW_ARMS.getByte( stack ) ) ) );
+        this.armsButton = addButton( new GuiInfinityButton( 100 + buttons, (this.width / 2) - 75, 50 + (30 * buttons++), 150, 20, I18n.format( "tag.armorstand.arms." + ArmorStandNBTHelper.SHOW_ARMS.getByte( getItemStack() ) ) ) );
+        this.smallButton = addButton( new GuiInfinityButton( 100 + buttons, (this.width / 2) - 75, 50 + (30 * buttons++), 150, 20, I18n.format( "tag.armorstand.small." + ArmorStandNBTHelper.SMALL.getByte( getItemStack() ) ) ) );
+        this.invisibleButton = addButton( new GuiInfinityButton( 100 + buttons, (this.width / 2) - 75, 50 + (30 * buttons++), 150, 20, I18n.format( "tag.armorstand.invisible." + ArmorStandNBTHelper.INVISIBLE.getByte( getItemStack() ) ) ) );
+        this.baseButton = addButton( new GuiInfinityButton( 100 + buttons, (this.width / 2) - 75, 50 + (30 * buttons++), 150, 20, I18n.format( "tag.armorstand.nobase." + ArmorStandNBTHelper.NO_BASE.getByte( getItemStack() ) ) ) );
+        this.markerButton = addButton( new GuiInfinityButton( 100 + buttons, (this.width / 2) - 75, 50 + (30 * buttons++), 150, 20, I18n.format( "tag.armorstand.marker." + ArmorStandNBTHelper.SHOW_ARMS.getByte( getItemStack() ) ) ) );
         this.inventoryButton = addButton( new GuiInfinityButton( 100 + buttons, (this.width / 2) - 75, 50 + (30 * buttons++), 150, 20, I18n.format( "tag.armorstand.inventory" ) ) );
         this.poseButton = addButton( new GuiInfinityButton( 100 + buttons, (this.width / 2) - 75, 50 + (30 * buttons++), 150, 20, I18n.format( "tag.armorstand.pose" ) ) );
         
@@ -57,55 +56,56 @@ public class GuiArmorStand extends GuiInfinity
     {
         if ( button.id == entityButton.id )
         {
-            this.mc.displayGuiScreen( new GuiEntityTags( this, stack, MobTag.ENTITY_SPECIFIC ) );
+            this.mc.displayGuiScreen( new GuiEntityTags( this, getItemStack(), MobTag.ENTITY_SPECIFIC ) );
         }
         
         else if ( button.id == armsButton.id )
         {
-            ArmorStandNBTHelper.SHOW_ARMS.switchValue( stack );
-            armsButton.displayString = I18n.format( "tag.armorstand.arms." + ArmorStandNBTHelper.SHOW_ARMS.getByte( stack ) );
+            ArmorStandNBTHelper.SHOW_ARMS.switchValue( getItemStack() );
+            armsButton.displayString = I18n.format( "tag.armorstand.arms." + ArmorStandNBTHelper.SHOW_ARMS.getByte( getItemStack() ) );
             updateArmorStand();
         }
         
         else if ( button.id == smallButton.id )
         {
-            ArmorStandNBTHelper.SMALL.switchValue( stack );
-            smallButton.displayString = I18n.format( "tag.armorstand.small." + ArmorStandNBTHelper.SMALL.getByte( stack ) );
+            ArmorStandNBTHelper.SMALL.switchValue( getItemStack() );
+            smallButton.displayString = I18n.format( "tag.armorstand.small." + ArmorStandNBTHelper.SMALL.getByte( getItemStack() ) );
             updateArmorStand();
         }
         
         else if ( button.id == invisibleButton.id )
         {
-            ArmorStandNBTHelper.INVISIBLE.switchValue( stack );
-            invisibleButton.displayString = I18n.format( "tag.armorstand.invisible." + ArmorStandNBTHelper.INVISIBLE.getByte( stack ) );
+            ArmorStandNBTHelper.INVISIBLE.switchValue( getItemStack() );
+            invisibleButton.displayString = I18n.format( "tag.armorstand.invisible." + ArmorStandNBTHelper.INVISIBLE.getByte( getItemStack() ) );
             updateArmorStand();
         }
         
         else if ( button.id == baseButton.id )
         {
-            ArmorStandNBTHelper.NO_BASE.switchValue( stack );
-            baseButton.displayString = I18n.format( "tag.armorstand.nobase." + ArmorStandNBTHelper.NO_BASE.getByte( stack ) );
+            ArmorStandNBTHelper.NO_BASE.switchValue( getItemStack() );
+            baseButton.displayString = I18n.format( "tag.armorstand.nobase." + ArmorStandNBTHelper.NO_BASE.getByte( getItemStack() ) );
             updateArmorStand();
         }
         
         else if ( button.id == markerButton.id )
         {
-            ArmorStandNBTHelper.MARKER.switchValue( stack );
-            markerButton.displayString = I18n.format( "tag.armorstand.marker." + ArmorStandNBTHelper.MARKER.getByte( stack ) );
+            ArmorStandNBTHelper.MARKER.switchValue( getItemStack() );
+            markerButton.displayString = I18n.format( "tag.armorstand.marker." + ArmorStandNBTHelper.MARKER.getByte( getItemStack() ) );
             updateArmorStand();
         }
         
         else if ( button.id == inventoryButton.id )
         {
-            mc.displayGuiScreen( new GuiEquipment( this, stack ) );
+            mc.displayGuiScreen( new GuiEquipment( this, getItemStack() ) );
         }
         
         else if ( button.id == poseButton.id )
         {
-            mc.displayGuiScreen( new GuiPose( this, stack ) );
+            mc.displayGuiScreen( new GuiPose( this, getItemStack() ) );
         }
         
-        else {
+        else
+        {
             super.actionPerformed( button );
         }
     }
@@ -113,21 +113,21 @@ public class GuiArmorStand extends GuiInfinity
     @Override
     protected void reset()
     {
-        if ( stack.hasTagCompound() && stack.getTagCompound().hasKey( "EntityTag", NBT.TAG_COMPOUND ) )
+        if ( getItemStack().hasTagCompound() && getItemStack().getTagCompound().hasKey( "EntityTag", NBT.TAG_COMPOUND ) )
         {
             String id = null;
-            if ( stack.getSubCompound( "EntityTag" ).hasKey( "id" ) )
+            if ( getItemStack().getSubCompound( "EntityTag" ).hasKey( "id" ) )
             {
-                id = stack.getSubCompound( "EntityTag" ).getString( "id" );
+                id = getItemStack().getSubCompound( "EntityTag" ).getString( "id" );
             }
-            stack.getTagCompound().removeTag( "EntityTag" );
+            getItemStack().getTagCompound().removeTag( "EntityTag" );
             
             if ( id != null )
             {
                 NBTTagCompound entityTag = new NBTTagCompound();
                 entityTag.setString( "id", id );
                 
-                stack.getTagCompound().setTag( "EntityTag", entityTag );
+                getItemStack().getTagCompound().setTag( "EntityTag", entityTag );
             }
         }
         updateArmorStand();
@@ -138,8 +138,8 @@ public class GuiArmorStand extends GuiInfinity
      */
     public void drawScreen( int mouseX, int mouseY, float partialTicks )
     {
-        super.drawScreen( mouseX, mouseY, partialTicks ); 
-
+        super.drawScreen( mouseX, mouseY, partialTicks );
+        
         if ( armorStand != null )
         {
             drawArmorStand( (int) (this.width / 3 * 2.5), this.height - 20, 70 );
@@ -154,7 +154,7 @@ public class GuiArmorStand extends GuiInfinity
     
     public void updateArmorStand()
     {
-        if ( stack.getItem() instanceof ItemArmorStand )
+        if ( getItemStack().getItem() instanceof ItemArmorStand )
         {
             EntityArmorStand entity = new EntityArmorStand( mc.world );
             
@@ -168,7 +168,7 @@ public class GuiArmorStand extends GuiInfinity
     
     public void applyItemDataToArmorStand()
     {
-        NBTTagCompound tag = stack.getTagCompound();
+        NBTTagCompound tag = getItemStack().getTagCompound();
         
         if ( tag != null && tag.hasKey( "EntityTag", NBT.TAG_COMPOUND ) )
         {

@@ -3,7 +3,6 @@ package ruukas.infinity.gui;
 import java.io.IOException;
 
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import ruukas.infinity.nbt.itemstack.tag.infinity.InfinityTextureTag;
@@ -14,9 +13,9 @@ public class GuiPaint extends GuiInfinity
     private InfinityTextureTag tag;
     private int currentColor;
     
-    public GuiPaint(GuiScreen lastScreen, ItemStack stack) {
-        super( lastScreen, stack );
-        tag = new InfinityTextureTag( stack );
+    public GuiPaint(GuiScreen lastScreen, ItemStackHolder stackHolder) {
+        super( lastScreen, stackHolder );
+        tag = new InfinityTextureTag( getItemStack() );
         currentColor = 255;
     }
     

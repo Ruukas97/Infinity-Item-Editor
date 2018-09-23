@@ -4,15 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.item.ItemStack;
 import ruukas.infinity.gui.action.ActionButtons;
 import ruukas.infinity.gui.action.GuiActionButton;
 
 public class GuiSpecialButtons extends GuiInfinity
 {
     
-    protected GuiSpecialButtons(GuiScreen lastScreen, ItemStack stack) {
-        super( lastScreen, stack );
+    protected GuiSpecialButtons(GuiScreen lastScreen, ItemStackHolder stackHolder) {
+        super( lastScreen, stackHolder );
     }
     
     @Override
@@ -25,7 +24,8 @@ public class GuiSpecialButtons extends GuiInfinity
         GuiActionButton[] array = ActionButtons.getActionButtons();
         List<GuiActionButton> buttons = new ArrayList<>();
         
-        for(GuiActionButton b : array){
+        for ( GuiActionButton b : array )
+        {
             buttons.add( b );
         }
         
@@ -39,7 +39,7 @@ public class GuiSpecialButtons extends GuiInfinity
         for ( GuiActionButton b : buttons )
         {
             
-            b.add( specialID+added, buttonList, stack, (xUnits * (added/maxInColumn)) + xUnits/2 - 50, 30 + (30 * (added%maxInColumn)), 100, 20 );
+            b.add( specialID + added, buttonList, stackHolder, (xUnits * (added / maxInColumn)) + xUnits / 2 - 50, 30 + (30 * (added % maxInColumn)), 100, 20 );
             added++;
         }
     }

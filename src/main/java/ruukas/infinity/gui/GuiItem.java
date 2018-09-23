@@ -39,10 +39,9 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
     private boolean ignoreNextClick = false;
     
     private GuiInfinityButton headCollectionButton;
-    private GuiInfinityButton shareButton; // Share to chat, copy to clipboard etc.
+    private GuiInfinityButton loadButton;
     private GuiInfinityButton specialButton;
     private GuiInfinityButton discordButton;
-    
     private ArrayList<GuiTextField> textFields = new ArrayList<>();
     
     private ArrayList<GuiNumberField> numberFields = new ArrayList<>();
@@ -59,10 +58,15 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
     
     private int slot;
     
-    public GuiItem(GuiScreen lastScreen, ItemStack stack, int slot) {
-        super( lastScreen, stack );
+    public GuiItem(GuiScreen lastScreen, ItemStackHolder stackHolder, int slot) {
+        super( lastScreen, stackHolder );
         hasSave = true;
         this.slot = slot;
+    }
+    
+    public GuiItem(GuiScreen lastScreen, ItemStackHolder itemStackHolder) {
+        super( lastScreen, itemStackHolder );
+        this.slot = -1;
     }
     
     @Override
@@ -83,11 +87,11 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
     {
         if ( slot < 0 )
         {
-            mc.playerController.sendSlotPacket( stack, mc.player.inventory.currentItem + 36 ); // 36 is the index of the action (4 armor, 1 off hand, 5 crafting, and 27 inventory, if I remember correctly).
+            mc.playerController.sendSlotPacket( getItemStack(), mc.player.inventory.currentItem + 36 ); // 36 is the index of the action (4 armor, 1 off hand, 5 crafting, and 27 inventory, if I remember correctly).
         }
         else
         {
-            mc.playerController.sendSlotPacket( stack, slot );
+            mc.playerController.sendSlotPacket( getItemStack(), slot );
         }
     }
     
@@ -139,7 +143,7 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
         
         // ID
         GuiActionTextField itemID = new GuiActionTextField( 250, fontRenderer, midX, 25 + (30 * ++fieldsAmount), 75, 20 );
-        String registryName = stack.getItem().getRegistryName().toString();
+        String registryName = getItemStack().getItem().getRegistryName().toString();
         itemID.setText( registryName.toLowerCase().startsWith( "minecraft:" ) ? registryName.replaceFirst( "minecraft:", "" ) : registryName );
         itemID.setTextColor( InfinityConfig.MAIN_COLOR );
         itemID.setMaxStringLength( 100 );
@@ -147,9 +151,9 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
             Item item = Item.getByNameOrId( itemID.getText() );
             if ( item != null )
             {
-                NBTTagCompound tag = stack.getTagCompound();
-                stack = new ItemStack( item, stack.getCount() == 0 ? 1 : stack.getCount(), stack.getMetadata() );
-                stack.setTagCompound( tag );
+                NBTTagCompound tag = getItemStack().getTagCompound();
+                stackHolder.setStack( new ItemStack( item, getItemStack().getCount() == 0 ? 1 : getItemStack().getCount(), getItemStack().getMetadata() ) );
+                getItemStack().setTagCompound( tag );
                 buttonList.clear();
                 initGui();
             }
@@ -162,21 +166,21 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
         GuiNumberField count = new GuiNumberField( 300 + fieldsAmount, fontRenderer, midX, 25 + (30 * ++fieldsAmount), 20, 20, 2 );
         count.minValue = 1;
         count.maxValue = 64;
-        count.setValue( stack.getCount() );
-        count.action = () -> stack.setCount( count.getIntValue() );
+        count.setValue( getItemStack().getCount() );
+        count.action = () -> getItemStack().setCount( count.getIntValue() );
         numberFields.add( count );
         centerStrings.add( new CenterString( I18n.format( "gui.item.count" ), 31 + (30 * fieldsAmount) ) );
         
         // META/DAMAGE
-        int maxDamage = stack.getItem() instanceof ItemBlock || stack.getMaxDamage() == 0 ? 9999 : stack.getMaxDamage();
+        int maxDamage = getItemStack().getItem() instanceof ItemBlock || getItemStack().getMaxDamage() == 0 ? 9999 : getItemStack().getMaxDamage();
         int digits = ("" + maxDamage).length();
         GuiNumberField damage = new GuiNumberField( 300 + fieldsAmount, fontRenderer, width / 2, 25 + (30 * ++fieldsAmount), Math.max( 10 * digits, 15 ), 20, digits );
         damage.minValue = 0;
         damage.maxValue = maxDamage;
-        if ( stack.getItemDamage() > maxDamage )
-            stack.setItemDamage( maxDamage );
-        damage.setValue( stack.getItemDamage() );
-        damage.action = () -> stack.setItemDamage( damage.getIntValue() );
+        if ( getItemStack().getItemDamage() > maxDamage )
+            getItemStack().setItemDamage( maxDamage );
+        damage.setValue( getItemStack().getItemDamage() );
+        damage.action = () -> getItemStack().setItemDamage( damage.getIntValue() );
         numberFields.add( damage );
         centerStrings.add( new CenterString( I18n.format( "gui.item.meta" ), 31 + (30 * fieldsAmount) ) );
         
@@ -193,9 +197,9 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
         headCollectionButton.enabled = sidebarOn;
         headCollectionButton.visible = sidebarOn;
         
-        shareButton = addButton( new GuiInfinityButton( sidebarButtonID++, width / 8 - 40, midY - 45, 80, 20, I18n.format( "gui.item.share" ) ) );
-        shareButton.enabled = false;
-        shareButton.visible = sidebarOn;
+        loadButton = addButton( new GuiInfinityButton( sidebarButtonID++, width / 8 - 40, midY - 45, 80, 20, I18n.format( "gui.pick" ) ) );
+        loadButton.enabled = sidebarOn;
+        loadButton.visible = sidebarOn;
         
         sidebarButton = addButton( new GuiInfinityButton( sidebarButtonID++, width / 8 - 40, midY - 10, 80, 20, I18n.format( "gui.item.toggleside" ) ) );
         sidebarButton.enabled = sidebarOn;
@@ -213,7 +217,7 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
         int specialID = 500;
         for ( GuiActionButton b : ActionButtons.getActionButtons() )
         {
-            boolean added = b.addOnCondition( specialID, buttonList, stack, (width / 2) - 50, 25 + (30 * (fieldsAmount + (specialID - 499))), 100, 20 );
+            boolean added = b.addOnCondition( specialID, buttonList, stackHolder, (width / 2) - 50, 25 + (30 * (fieldsAmount + (specialID - 499))), 100, 20 );
             if ( added )
                 specialID++;
         }
@@ -237,8 +241,8 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
         
         GuiActionTextField name = new GuiActionTextField( textID++, fontRenderer, width - 180, 50, 130, 20 );
         name.setMaxStringLength( 100 );
-        name.setText( stack.getDisplayName() );
-        name.action = () -> stack.setStackDisplayName( name.getText() );
+        name.setText( getItemStack().getDisplayName() );
+        name.action = () -> getItemStack().setStackDisplayName( name.getText() );
         textFields.add( name );
         addButton( new GuiInfinityButton( 180, width - 45, 50, 40, 20, I18n.format( "gui.clear" ) ) );
         
@@ -269,7 +273,7 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
         int amount = 0;
         for ( int i = 0 ; i < 5 ; i++ )
         {
-            if ( NBTHelper.getLoreLine( stack, i ) != null )
+            if ( NBTHelper.getLoreLine( getItemStack(), i ) != null )
             {
                 addLoreTextField( id++, i, true );
                 amount++;
@@ -291,10 +295,10 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
     {
         GuiActionTextField lore = new GuiActionTextField( id, fontRenderer, width - 180, 100 + (30 * line), 170, 20 );
         lore.setMaxStringLength( 100 );
-        String loreLine = NBTHelper.getLoreLine( stack, line );
-        lore.setText( loreLine != null ? NBTHelper.getLoreLine( stack, line ) : "Lore" + (line + 1) );
+        String loreLine = NBTHelper.getLoreLine( getItemStack(), line );
+        lore.setText( loreLine != null ? NBTHelper.getLoreLine( getItemStack(), line ) : "Lore" + (line + 1) );
         lore.action = () -> {
-            NBTHelper.editLoreLine( stack, line, lore.getText() );
+            NBTHelper.editLoreLine( getItemStack(), line, lore.getText() );
             if ( line < 4 && loreFields.size() - 1 == line )
             {
                 addLoreTextField( id + 1, line + 1, false );
@@ -428,10 +432,10 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
     
     private void clearCustomName()
     {
-        ItemStack copy = stack.copy();
+        ItemStack copy = getItemStack().copy();
         copy.clearCustomName();
         textFields.get( 1 ).setText( copy.getDisplayName() );
-        stack.clearCustomName();
+        getItemStack().clearCustomName();
     }
     
     @Override
@@ -439,12 +443,12 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
     {
         if ( button.id == nbtButton.id )
         {
-            this.mc.displayGuiScreen( new GuiNBT( this, stack ) );
+            this.mc.displayGuiScreen( new GuiNBT( this, getItemStack() ) );
         }
         
         else if ( button.id == nbtAdvButton.id )
         {
-            this.mc.displayGuiScreen( new GuiNBTAdvanced( this, stack ) );
+            this.mc.displayGuiScreen( new GuiNBTAdvanced( this, getItemStack() ) );
         }
         
         else if ( button.id == 180 )
@@ -454,13 +458,13 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
         
         else if ( button.id > 180 && button.id < 187 )
         {
-            NBTHelper.removeLoreLine( stack, button.id - 181 - 1 );
+            NBTHelper.removeLoreLine( getItemStack(), button.id - 181 - 1 );
             addLoreStuff();
         }
         
         else if ( button.id == 260 )
         {
-            this.mc.displayGuiScreen( new GuiLore( this, stack ) );
+            this.mc.displayGuiScreen( new GuiLore( this, stackHolder ) );
         }
         
         else if ( button.id >= 130 && button.id < 130 + colorButtons.length )
@@ -503,9 +507,14 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
             mc.displayGuiScreen( new GuiHeadCollection( this ) );
         }
         
+        else if ( button.id == loadButton.id )
+        {
+            mc.displayGuiScreen( new GuiPick( this, stackHolder ) );
+        }
+        
         else if ( button.id == specialButton.id )
         {
-            mc.displayGuiScreen( new GuiSpecialButtons( this, stack ) );
+            mc.displayGuiScreen( new GuiSpecialButtons( this, stackHolder ) );
         }
         
         else if ( button.id == discordButton.id )
@@ -533,7 +542,7 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
         
         else if ( button.id == hideFlagsButton.id )
         {
-            this.mc.displayGuiScreen( new GuiHideFlags( this, stack ) );
+            this.mc.displayGuiScreen( new GuiHideFlags( this, stackHolder ) );
         }
         
         else
@@ -593,11 +602,6 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
         HelperGui.addTooltipTranslated( this.width / 2 + 30, this.height - 35, 60, 20, mouseX, mouseY, "gui.item.drop.tooltip" );
         
         HelperGui.addTooltipTranslated( colorButtons[1], mouseX, mouseY, "gui.item.colorremove.tooltip" );
-        
-        if ( shareButton != null && shareButton.visible )
-        {
-            HelperGui.addToolTip( shareButton.x, shareButton.y, shareButton.width, shareButton.height, mouseX, mouseY, "Not implemented yet." );
-        }
     }
     
     @Override
@@ -619,16 +623,5 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback
             
             this.mc.displayGuiScreen( this );
         }
-    }
-    
-    @Override
-    public boolean doesGuiPauseGame()
-    {
-        return false;
-    }
-    
-    public ItemStack getItemStack()
-    {
-        return stack;
     }
 }

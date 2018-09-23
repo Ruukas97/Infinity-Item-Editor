@@ -63,7 +63,7 @@ public class ActionButtons
             @Override
             public void action()
             {
-                Minecraft.getMinecraft().displayGuiScreen( new GuiAttributes( Minecraft.getMinecraft().currentScreen, getItemStack() ) );
+                Minecraft.getMinecraft().displayGuiScreen( new GuiAttributes( Minecraft.getMinecraft().currentScreen, getItemStackHolder() ) );
             }
             
             @Override
@@ -81,7 +81,7 @@ public class ActionButtons
             @Override
             public void action()
             {
-                Minecraft.getMinecraft().displayGuiScreen( new GuiMonsterEgg( Minecraft.getMinecraft().currentScreen, getItemStack() ) );
+                Minecraft.getMinecraft().displayGuiScreen( new GuiMonsterEgg( Minecraft.getMinecraft().currentScreen, getItemStackHolder() ) );
             }
             
             @Override
@@ -135,7 +135,7 @@ public class ActionButtons
             @Override
             public void action()
             {
-                Minecraft.getMinecraft().displayGuiScreen( new GuiArmorStand( Minecraft.getMinecraft().currentScreen, getItemStack() ) );
+                Minecraft.getMinecraft().displayGuiScreen( new GuiArmorStand( Minecraft.getMinecraft().currentScreen, getItemStackHolder() ) );
             }
             
             @Override
@@ -171,7 +171,7 @@ public class ActionButtons
             @Override
             public void action()
             {
-                Minecraft.getMinecraft().displayGuiScreen( new GuiEnchanting( Minecraft.getMinecraft().currentScreen, getItemStack() ) );
+                Minecraft.getMinecraft().displayGuiScreen( new GuiEnchanting( Minecraft.getMinecraft().currentScreen, getItemStackHolder() ) );
             }
             
             @Override
@@ -189,7 +189,7 @@ public class ActionButtons
             @Override
             public void action()
             {
-                Minecraft.getMinecraft().displayGuiScreen( new GuiPotion( Minecraft.getMinecraft().currentScreen, getItemStack() ) );
+                Minecraft.getMinecraft().displayGuiScreen( new GuiPotion( Minecraft.getMinecraft().currentScreen, getItemStackHolder() ) );
             }
             
             @Override
@@ -207,7 +207,7 @@ public class ActionButtons
             @Override
             public void action()
             {
-                Minecraft.getMinecraft().displayGuiScreen( new GuiBook( Minecraft.getMinecraft().currentScreen, getItemStack() ) );
+                Minecraft.getMinecraft().displayGuiScreen( new GuiBook( Minecraft.getMinecraft().currentScreen, getItemStackHolder() ) );
             }
             
             @Override
@@ -261,7 +261,7 @@ public class ActionButtons
             @Override
             public void action()
             {
-                Minecraft.getMinecraft().displayGuiScreen( new GuiSign( Minecraft.getMinecraft().currentScreen, getItemStack() ) );
+                Minecraft.getMinecraft().displayGuiScreen( new GuiSign( Minecraft.getMinecraft().currentScreen, getItemStackHolder() ) );
             }
             
             @Override
@@ -279,7 +279,7 @@ public class ActionButtons
             @Override
             public void action()
             {
-                Minecraft.getMinecraft().displayGuiScreen( new GuiPaint( Minecraft.getMinecraft().currentScreen, getItemStack() ) );
+                Minecraft.getMinecraft().displayGuiScreen( new GuiPaint( Minecraft.getMinecraft().currentScreen, getItemStackHolder() ) );
             }
             
             @Override
@@ -287,7 +287,7 @@ public class ActionButtons
             {
                 return I18n.format( "gui.paint" );
             }
-        }  };
+        } };
     }
     
     public static class SorterGuiActionButton implements Comparator<GuiActionButton>

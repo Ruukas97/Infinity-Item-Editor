@@ -5,7 +5,6 @@ import java.io.IOException;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.item.ItemStack;
 import ruukas.infinity.gui.action.GuiInfinityButton;
 import ruukas.infinity.nbt.itemstack.InfinityItemTag;
 
@@ -44,8 +43,8 @@ public class GuiHideFlags extends GuiInfinity
         }
     }
     
-    protected GuiHideFlags(GuiScreen lastScreen, ItemStack stack) {
-        super( lastScreen, stack );
+    protected GuiHideFlags(GuiScreen lastScreen, ItemStackHolder stackHolder) {
+        super( lastScreen, stackHolder );
         
         renderTooltip = true;
     }
@@ -56,11 +55,11 @@ public class GuiHideFlags extends GuiInfinity
         super.initGui();
         setRenderStack( true, midX, 40, 1 );
         
-        InfinityItemTag itemTag = new InfinityItemTag( stack );
+        InfinityItemTag itemTag = new InfinityItemTag( getItemStack() );
         int buttons = 0;
         for ( Flags f : Flags.values() )
         {
-            addButton( new GuiInfinityButton( 300 + buttons, midX - 60, 60 + 30 * buttons++, 120, 20, f.getTranslatedName(itemTag) ) );
+            addButton( new GuiInfinityButton( 300 + buttons, midX - 60, 60 + 30 * buttons++, 120, 20, f.getTranslatedName( itemTag ) ) );
         }
     }
     
@@ -69,7 +68,7 @@ public class GuiHideFlags extends GuiInfinity
     {
         if ( button.id >= 300 && button.id < 300 + Flags.values().length )
         {
-            new InfinityItemTag( stack ).switchFlag( Flags.values()[button.id - 300] );
+            new InfinityItemTag( getItemStack() ).switchFlag( Flags.values()[button.id - 300] );
             initGui();
         }
         

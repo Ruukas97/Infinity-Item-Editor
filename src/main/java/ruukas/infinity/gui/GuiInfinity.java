@@ -23,7 +23,7 @@ public abstract class GuiInfinity extends GuiScreen
 {
     
     protected final GuiScreen lastScreen;
-    protected ItemStack stack = ItemStack.EMPTY;
+    protected ItemStackHolder stackHolder;
     protected String title;
     
     protected GuiInfinityButton backButton, resetButton, dropButton;
@@ -44,11 +44,37 @@ public abstract class GuiInfinity extends GuiScreen
     
     protected boolean renderTag = false;
     
-    protected GuiInfinity(GuiScreen lastScreen, ItemStack stack) {
+    protected GuiInfinity(GuiScreen lastScreen, ItemStackHolder itemStackHolder) {
         this.lastScreen = lastScreen;
-        this.stack = stack;
+        this.stackHolder = itemStackHolder;
         
         title = I18n.format( "gui." + getNameUnlocalized() );
+    }
+    
+    public static class ItemStackHolder
+    {
+        protected ItemStack stack;
+        
+        public ItemStackHolder() {
+            this( ItemStack.EMPTY );
+        }
+        
+        public ItemStackHolder(ItemStack stack) {
+            this.stack = stack;
+        }
+        
+        public void setStack( ItemStack stack )
+        {
+            if ( stack != null )
+            {
+                this.stack = stack;
+            }
+        }
+        
+        public ItemStack getStack()
+        {
+            return this.stack;
+        }
     }
     
     protected abstract String getNameUnlocalized();
@@ -92,7 +118,7 @@ public abstract class GuiInfinity extends GuiScreen
      */
     protected void update()
     {
-    
+        
     }
     
     protected void back()
@@ -107,7 +133,7 @@ public abstract class GuiInfinity extends GuiScreen
     
     protected void save()
     {
-        mc.playerController.sendSlotPacket( stack, mc.player.inventory.currentItem + 36 ); // 36 is the index of the action (4 armor, 1 off hand, 5 crafting, and 27 inventory, if I remember correctly).
+        mc.playerController.sendSlotPacket( getItemStack(), mc.player.inventory.currentItem + 36 ); // 36 is the index of the action (4 armor, 1 off hand, 5 crafting, and 27 inventory, if I remember correctly).
         // back(); - Not sure if it should keep the GUI open or not.
     }
     
@@ -115,47 +141,47 @@ public abstract class GuiInfinity extends GuiScreen
     {
         if ( isShiftKeyDown() )
         {
-            if ( stack == null || stack.isEmpty() )
+            if ( stackHolder == null || getItemStack().isEmpty() )
             {
                 return;
             }
             
-            String id = stack.getItem().getRegistryName().toString();
+            String id = getItemStack().getItem().getRegistryName().toString();
             
             String command = "/give @p " + id;
             
-            boolean shouldAddTag = stack.hasTagCompound();
-            boolean shouldAddMeta = shouldAddTag || stack.getMetadata() != 0;
-            boolean shouldAddCount = shouldAddMeta || stack.getCount() != 1;
+            boolean shouldAddTag = getItemStack().hasTagCompound();
+            boolean shouldAddMeta = shouldAddTag || getItemStack().getMetadata() != 0;
+            boolean shouldAddCount = shouldAddMeta || getItemStack().getCount() != 1;
             
             if ( shouldAddCount )
             {
-                command += " " + stack.getCount();
+                command += " " + getItemStack().getCount();
             }
             
             if ( shouldAddMeta )
             {
-                command += " " + stack.getMetadata();
+                command += " " + getItemStack().getMetadata();
             }
             
             if ( shouldAddTag )
             {
-                command += " " + stack.getTagCompound().toString();
+                command += " " + getItemStack().toString();
             }
             
             setClipboardString( command );
         }
         else
         {
-            HelperGui.dropStack( stack );
+            HelperGui.dropStack( getItemStack() );
         }
     }
     
     protected void reset()
     {
-        if ( stack.hasTagCompound() )
+        if ( getItemStack().hasTagCompound() )
         {
-            stack.setTagCompound( null );
+            getItemStack().setTagCompound( null );
         }
     }
     
@@ -198,10 +224,10 @@ public abstract class GuiInfinity extends GuiScreen
     {
         if ( hasSave && this.saveButton != null )
             this.saveButton.enabled = this.dropButton.enabled = mc.playerController.isInCreativeMode();
-            
+        
         drawDefaultBackground();
         
-        if ( stack.getItem() != Items.AIR && stack != ItemStack.EMPTY )
+        if ( getItemStack().getItem() != Items.AIR && getItemStack() != ItemStack.EMPTY )
         {
             
             if ( renderTooltip || renderTag )
@@ -211,12 +237,12 @@ public abstract class GuiInfinity extends GuiScreen
                 GL11.glScalef( 0.8f, 0.8f, 0.8f );
                 
                 if ( renderTooltip )
-                    renderToolTip( stack, 0, 25 );
-                    
+                    renderToolTip( getItemStack(), 0, 25 );
+                
                 if ( renderTag )
                 {
                     // This shouldn't be done on each draw
-                    String s = new GsonBuilder().setPrettyPrinting().create().toJson( new JsonParser().parse( stack.hasTagCompound() ? stack.getTagCompound().toString() : "{}" ) );
+                    String s = new GsonBuilder().setPrettyPrinting().create().toJson( new JsonParser().parse( getItemStack().hasTagCompound() ? getItemStack().getTagCompound().toString() : "{}" ) );
                     ArrayList<String> prettyNBTList = new ArrayList<>();
                     for ( String str : s.split( "\\n" ) )
                     {
@@ -238,8 +264,8 @@ public abstract class GuiInfinity extends GuiScreen
                 GlStateManager.enableColorMaterial();
                 GlStateManager.enableLighting();
                 itemRender.zLevel = 100.0F;
-                itemRender.renderItemAndEffectIntoGUI( stack, stackX, stackY );
-                itemRender.renderItemOverlays( fontRenderer, stack, stackX, stackY );
+                itemRender.renderItemAndEffectIntoGUI( getItemStack(), stackX, stackY );
+                itemRender.renderItemOverlays( fontRenderer, getItemStack(), stackX, stackY );
                 
                 GlStateManager.enableLighting();
                 GlStateManager.popMatrix();
@@ -261,6 +287,6 @@ public abstract class GuiInfinity extends GuiScreen
     
     public ItemStack getItemStack()
     {
-        return stack;
+        return stackHolder.getStack();
     }
 }

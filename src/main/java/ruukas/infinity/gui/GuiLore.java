@@ -8,8 +8,6 @@ import org.lwjgl.input.Keyboard;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;
-import net.minecraft.client.util.ITooltipFlag.TooltipFlags;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
 import ruukas.infinity.gui.action.GuiActionTextField;
 import ruukas.infinity.gui.action.GuiInfinityButton;
@@ -22,8 +20,8 @@ public class GuiLore extends GuiInfinity
     
     private GuiInfinityButton[] colorButtons;
     
-    public GuiLore(GuiScreen lastScreen, ItemStack stack) {
-        super( lastScreen, stack );
+    public GuiLore(GuiScreen lastScreen, ItemStackHolder stackHolder) {
+        super( lastScreen, stackHolder );
     }
     
     @Override
@@ -119,7 +117,7 @@ public class GuiLore extends GuiInfinity
         
         else if ( button.id >= 750 && button.id <= 771 )
         {
-            NBTHelper.removeLoreLine( stack, button.id - 751 );
+            NBTHelper.removeLoreLine( getItemStack(), button.id - 751 );
             addLoreStuff();
         }
     }
@@ -134,8 +132,9 @@ public class GuiLore extends GuiInfinity
             f.drawTextBox();
         }
         
-        if(HelperGui.isMouseInRegion( mouseX, mouseY, midX-8, 27, 16, 16 )){
-            drawHoveringText( stack.getTooltip( mc.player, TooltipFlags.NORMAL ), mouseX, mouseY );
+        if ( HelperGui.isMouseInRegion( mouseX, mouseY, midX - 8, 27, 16, 16 ) )
+        {
+            renderToolTip( getItemStack(), mouseX, mouseY );
         }
     }
     
@@ -155,7 +154,7 @@ public class GuiLore extends GuiInfinity
         
         for ( int i = 0 ; i < 21 ; i++ )
         {
-            if ( NBTHelper.getLoreLine( stack, i ) != null )
+            if ( NBTHelper.getLoreLine( getItemStack(), i ) != null )
                 addLoreTextField( id++, i, true );
             else
             {
@@ -169,30 +168,31 @@ public class GuiLore extends GuiInfinity
     {
         int sliceW = width / 4;
         int x = sliceW * ((line % 3) + 1) - 60;
-        int y = 50 + (30 * (line/3));
+        int y = 50 + (30 * (line / 3));
         
         GuiActionTextField lore = new GuiActionTextField( id, fontRenderer, x, y, 120, 20 );
         lore.setMaxStringLength( 100 );
-        lore.setText( NBTHelper.getLoreLine( stack, line ) != null ? NBTHelper.getLoreLine( stack, line ) : "Lore" + (line + 1) );
+        lore.setText( NBTHelper.getLoreLine( getItemStack(), line ) != null ? NBTHelper.getLoreLine( getItemStack(), line ) : "Lore" + (line + 1) );
         lore.action = () -> {
-            NBTHelper.editLoreLine( stack, line, lore.getText() );
+            NBTHelper.editLoreLine( getItemStack(), line, lore.getText() );
             if ( line < 20 && loreFields.size() - 1 == line )
             {
                 addLoreTextField( id + 1, line + 1, false );
             }
-            else{
+            else
+            {
                 int xPos = sliceW * (((line) % 3) + 1) - 60;
-                int yPos = 50 + (30 * ((line)/3));
-                addIfNotIn( new GuiInfinityButton( 750 + line + 1, xPos-15, yPos, 14, 20, TextFormatting.DARK_RED + "X" ), loreButtons  );
+                int yPos = 50 + (30 * ((line) / 3));
+                addIfNotIn( new GuiInfinityButton( 750 + line + 1, xPos - 15, yPos, 14, 20, TextFormatting.DARK_RED + "X" ), loreButtons );
             }
         };
         loreFields.add( lore );
         
         if ( loreFields.size() > 1 )
         {
-            x = sliceW * (((line-1) % 3) + 1) - 60;
-            y = 50 + (30 * ((line-1)/3));
-            addIfNotIn( new GuiInfinityButton( 750 + line, x-15, y, 14, 20, TextFormatting.DARK_RED + "X" ), loreButtons ) ;
+            x = sliceW * (((line - 1) % 3) + 1) - 60;
+            y = 50 + (30 * ((line - 1) / 3));
+            addIfNotIn( new GuiInfinityButton( 750 + line, x - 15, y, 14, 20, TextFormatting.DARK_RED + "X" ), loreButtons );
         }
     }
     

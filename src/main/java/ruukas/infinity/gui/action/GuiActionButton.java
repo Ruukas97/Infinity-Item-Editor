@@ -5,12 +5,13 @@ import java.util.List;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.item.ItemStack;
+import ruukas.infinity.gui.GuiInfinity.ItemStackHolder;
 
 public abstract class GuiActionButton extends GuiInfinityButton
 {
     
     private boolean wasIn = false;
-    private ItemStack stack = ItemStack.EMPTY;
+    private ItemStackHolder stackHolder = new ItemStackHolder();
     
     public GuiActionButton() {
         super( 0, 0, 0, "" );
@@ -37,9 +38,9 @@ public abstract class GuiActionButton extends GuiInfinityButton
     
     public abstract String getText();
     
-    public boolean addOnCondition( int id, List<GuiButton> buttonList, ItemStack stack, int x, int y, int width, int heigth )
+    public boolean addOnCondition( int id, List<GuiButton> buttonList, ItemStackHolder stackHolder, int x, int y, int width, int heigth )
     {
-        this.stack = stack;
+        this.stackHolder = stackHolder;
         if ( condition() )
         {
             this.id = id;
@@ -55,9 +56,9 @@ public abstract class GuiActionButton extends GuiInfinityButton
         return false;
     }
     
-    public void add( int id, List<GuiButton> buttonList, ItemStack stack, int x, int y, int width, int heigth )
+    public void add( int id, List<GuiButton> buttonList, ItemStackHolder stackHolder, int x, int y, int width, int heigth )
     {
-        this.stack = stack;
+        this.stackHolder = stackHolder;
         this.id = id;
         this.x = x;
         this.y = y;
@@ -69,6 +70,11 @@ public abstract class GuiActionButton extends GuiInfinityButton
     
     public ItemStack getItemStack()
     {
-        return this.stack;
+        return getItemStackHolder().getStack();
+    }
+    
+    public ItemStackHolder getItemStackHolder()
+    {
+        return this.stackHolder;
     }
 }

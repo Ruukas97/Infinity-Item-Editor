@@ -54,6 +54,7 @@ import net.minecraftforge.fml.common.network.FMLNetworkEvent.ClientConnectedToSe
 import ruukas.infinity.Infinity;
 import ruukas.infinity.data.InfinityConfig;
 import ruukas.infinity.data.thevoid.VoidController;
+import ruukas.infinity.gui.GuiInfinity.ItemStackHolder;
 import ruukas.infinity.gui.GuiItem;
 import ruukas.infinity.gui.HelperGui;
 import ruukas.infinity.util.GiveHelper;
@@ -76,16 +77,14 @@ public class InfinityEventHandler
         
         if ( Infinity.keybind.isPressed() && mc.world != null )
         {
-            ItemStack currentStack = mc.player.getHeldItemMainhand();
-            
-            mc.displayGuiScreen( new GuiItem( Minecraft.getMinecraft().currentScreen, currentStack.copy(), -1 ) );
+            mc.displayGuiScreen( new GuiItem( mc.currentScreen, new ItemStackHolder( mc.player.getHeldItemMainhand().copy() ), -1 ) );
         }
         
         if ( Infinity.keybindSave.isPressed() && mc.world != null )
         {
             EntityPlayerSP player = mc.player;
             ItemStack currentStack = player.getHeldItemMainhand();
-            Infinity.infinitySettings.addItemStack( player, currentStack.copy() );
+            Infinity.realmController.addItemStack( player, currentStack.copy() );
         }
         
         if ( Infinity.keybindCopy.isPressed() && mc.world != null )
@@ -167,7 +166,7 @@ public class InfinityEventHandler
                         i = 45;
                     }
                     
-                    mc.displayGuiScreen( new GuiItem( mc.currentScreen, s.getStack().copy(), i ) );
+                    mc.displayGuiScreen( new GuiItem( mc.currentScreen, new ItemStackHolder( s.getStack().copy() ), i ) );
                     e.setCanceled( true );
                 }
             }
@@ -183,11 +182,11 @@ public class InfinityEventHandler
                 {
                     if ( (gui instanceof GuiContainerCreative && ((GuiContainerCreative) gui).getSelectedTabIndex() == Infinity.REALM.getTabIndex()) && !(slot.inventory instanceof InventoryPlayer) )
                     {
-                        Infinity.infinitySettings.removeItemStack( player, slot.getStack() );
+                        Infinity.realmController.removeItemStack( player, slot.getStack() );
                     }
                     else
                     {
-                        Infinity.infinitySettings.addItemStack( player, slot.getStack().copy() );
+                        Infinity.realmController.addItemStack( player, slot.getStack().copy() );
                     }
                     
                     if ( InfinityConfig.getIsVoidEnabled() )

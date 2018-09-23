@@ -9,7 +9,6 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.util.ITooltipFlag.TooltipFlags;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
 import ruukas.infinity.gui.action.GuiActionTextField;
 import ruukas.infinity.gui.action.GuiInfinityButton;
@@ -21,8 +20,8 @@ public class GuiSign extends GuiInfinity
     
     private GuiInfinityButton[] colorButtons;
     
-    public GuiSign(GuiScreen lastScreen, ItemStack stack) {
-        super( lastScreen, stack );
+    public GuiSign(GuiScreen lastScreen, ItemStackHolder stackHolder) {
+        super( lastScreen, stackHolder );
     }
     
     @Override
@@ -45,7 +44,7 @@ public class GuiSign extends GuiInfinity
             colorButtons[i] = addButton( new GuiInfinityButton( 130 + i, width - 1 - 13 * ((colorAmount + 2) / 2) + (13 * ((i % (colorAmount / 2)) + 1)), height - 30 + (15 * (i / (colorAmount / 2))), 13, 15, f.toString() + f.toString().substring( 1 ) ) );
         }
         
-        InfinitySignTag tag = new InfinitySignTag( stack );
+        InfinitySignTag tag = new InfinitySignTag( getItemStack() );
         
         for ( int i = 0 ; i < 4 ; i++ )
         {
@@ -149,7 +148,7 @@ public class GuiSign extends GuiInfinity
         
         if ( HelperGui.isMouseInRegion( mouseX, mouseY, midX - 8, 27, 16, 16 ) )
         {
-            drawHoveringText( stack.getTooltip( mc.player, TooltipFlags.NORMAL ), mouseX, mouseY );
+            drawHoveringText( getItemStack().getTooltip( mc.player, TooltipFlags.NORMAL ), mouseX, mouseY );
         }
     }
     

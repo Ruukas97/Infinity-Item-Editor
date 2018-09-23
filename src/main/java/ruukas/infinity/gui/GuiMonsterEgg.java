@@ -28,6 +28,7 @@ import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.entity.passive.EntityBat;
 import net.minecraft.entity.passive.EntitySquid;
+import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemMonsterPlacer;
 import net.minecraft.item.ItemStack;
@@ -37,6 +38,7 @@ import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import ruukas.infinity.data.InfinityConfig;
+import ruukas.infinity.gui.GuiInfinity.ItemStackHolder;
 import ruukas.infinity.gui.action.GuiInfinityButton;
 import ruukas.infinity.gui.monsteregg.GuiEntityTags;
 import ruukas.infinity.gui.monsteregg.MobTag;
@@ -46,20 +48,20 @@ import ruukas.infinity.gui.monsteregg.MonsterPlacerUtils;
 public class GuiMonsterEgg extends GuiScreen
 {
     
-    private ItemStack stack = ItemStack.EMPTY;
+    private ItemStackHolder stackHolder;
     private EntityLiving mob = null;
     
     private final GuiScreen lastScreen;
     
-    private GuiInfinityButton mobButton, mobSpecificButton, equipmentButton;
+    private GuiInfinityButton mobButton, mobSpecificButton, equipmentButton, tradeButton;
     
     protected String title = I18n.format( "gui.spawnegg" );
     
     protected ArrayList<String> prettyNBTList = new ArrayList<>();
     
-    public GuiMonsterEgg(GuiScreen lastScreen, ItemStack stack) {
+    public GuiMonsterEgg(GuiScreen lastScreen, ItemStackHolder stack) {
         this.lastScreen = lastScreen;
-        this.stack = stack;
+        this.stackHolder = stack;
     }
     
     @Override
@@ -75,7 +77,9 @@ public class GuiMonsterEgg extends GuiScreen
         
         mobSpecificButton = addButton( new GuiInfinityButton( 105, this.width / 2 - 75, 140, 150, 20, I18n.format( "gui.spawnegg.mobspecific", getEntityName() ) ) );
         
-        equipmentButton = addButton( new GuiInfinityButton( 106, this.width / 2 - 75, 140, 150, 20, I18n.format( "tag.armorstand.inventory" ) ) );
+        equipmentButton = addButton( new GuiInfinityButton( 106, this.width / 2 - 75, 170, 150, 20, I18n.format( "tag.armorstand.inventory" ) ) );
+        
+        tradeButton = addButton( new GuiInfinityButton( 107, this.width / 2 - 75, 200, 150, 20, I18n.format( "gui.villagertrades" ) ) );
         
         /*
          * animalSpecificButton = addButton( new GuiInfinityButton( 106, this.width / 2 - 75, 140, 150, 20, I18n.format( "gui.spawnegg.animalspecific" ) ) ); animalSpecificButton.enabled = false; animalSpecificButton.visible = false;
@@ -83,7 +87,6 @@ public class GuiMonsterEgg extends GuiScreen
         
         this.buttonList.add( new GuiInfinityButton( 200, this.width / 2 - 90, this.height - 35, 60, 20, I18n.format( "gui.back" ) ) );
         this.buttonList.add( new GuiInfinityButton( 202, this.width / 2 + 30, this.height - 35, 60, 20, I18n.format( "gui.drop" ) ) );
-        
         this.buttonList.add( new GuiInfinityButton( 203, this.width / 2 - 30, this.height - 35, 60, 20, I18n.format( "gui.reset" ) ) );
         updateMob();
     }
@@ -116,12 +119,12 @@ public class GuiMonsterEgg extends GuiScreen
         
         if ( button.id == 103 )
         {
-            this.mc.displayGuiScreen( new GuiEntityTags( this, stack, MobTag.ENTITY_SPECIFIC ) );
+            this.mc.displayGuiScreen( new GuiEntityTags( this, getStack(), MobTag.ENTITY_SPECIFIC ) );
         }
         
         else if ( button.id == 104 )
         {
-            this.mc.displayGuiScreen( new GuiEntityTags( this, stack, MobTag.MOB_SPECIFIC ) );
+            this.mc.displayGuiScreen( new GuiEntityTags( this, getStack(), MobTag.MOB_SPECIFIC ) );
         }
         
         else if ( button.id == 105 )
@@ -130,7 +133,7 @@ public class GuiMonsterEgg extends GuiScreen
             
             if ( specificTags.length > 0 )
             {
-                this.mc.displayGuiScreen( new GuiEntityTags( this, stack, specificTags ) );
+                this.mc.displayGuiScreen( new GuiEntityTags( this, getStack(), specificTags ) );
             }
             else
             {
@@ -141,18 +144,23 @@ public class GuiMonsterEgg extends GuiScreen
         
         else if ( button.id == equipmentButton.id )
         {
-            mc.displayGuiScreen( new GuiEquipment( this, getItemStack() ) );
+            mc.displayGuiScreen( new GuiEquipment( this, getStack() ) );
+        }
+        
+        else if ( button.id == tradeButton.id )
+        {
+            mc.displayGuiScreen( new GuiVillagerTrades( this, stackHolder ) );
         }
         
         else if ( button.id == 101 )
         {
-            MonsterPlacerUtils.setEntityID( stack, MonsterPlacerUtils.getPreviousEntityEgg( ItemMonsterPlacer.getNamedIdFrom( stack ) ) );
+            MonsterPlacerUtils.setEntityID( getStack(), MonsterPlacerUtils.getPreviousEntityEgg( ItemMonsterPlacer.getNamedIdFrom( getStack() ) ) );
             updateMob();
         }
         
         else if ( button.id == 102 )
         {
-            MonsterPlacerUtils.setEntityID( stack, MonsterPlacerUtils.getNextEntityEgg( ItemMonsterPlacer.getNamedIdFrom( stack ) ) );
+            MonsterPlacerUtils.setEntityID( getStack(), MonsterPlacerUtils.getNextEntityEgg( ItemMonsterPlacer.getNamedIdFrom( getStack() ) ) );
             updateMob();
         }
         
@@ -163,26 +171,26 @@ public class GuiMonsterEgg extends GuiScreen
         
         else if ( button.id == 202 )
         {
-            HelperGui.dropStack( stack );
+            HelperGui.dropStack( getStack() );
         }
         
         else if ( button.id == 203 )
         {
-            if ( stack.hasTagCompound() && stack.getTagCompound().hasKey( "EntityTag", NBT.TAG_COMPOUND ) )
+            if ( getStack().hasTagCompound() && getStack().getTagCompound().hasKey( "EntityTag", NBT.TAG_COMPOUND ) )
             {
                 String id = null;
-                if ( stack.getSubCompound( "EntityTag" ).hasKey( "id" ) )
+                if ( getStack().getSubCompound( "EntityTag" ).hasKey( "id" ) )
                 {
-                    id = stack.getSubCompound( "EntityTag" ).getString( "id" );
+                    id = getStack().getSubCompound( "EntityTag" ).getString( "id" );
                 }
-                stack.getTagCompound().removeTag( "EntityTag" );
+                getStack().getTagCompound().removeTag( "EntityTag" );
                 
                 if ( id != null )
                 {
                     NBTTagCompound entityTag = new NBTTagCompound();
                     entityTag.setString( "id", id );
                     
-                    stack.getTagCompound().setTag( "EntityTag", entityTag );
+                    getStack().getTagCompound().setTag( "EntityTag", entityTag );
                 }
             }
             updateMob();
@@ -202,7 +210,7 @@ public class GuiMonsterEgg extends GuiScreen
         GlStateManager.enableRescaleNormal();
         GlStateManager.enableColorMaterial();
         GlStateManager.enableLighting();
-        this.itemRender.renderItemAndEffectIntoGUI( stack, (this.width / 2) - 8, 30 );
+        this.itemRender.renderItemAndEffectIntoGUI( getStack(), (this.width / 2) - 8, 30 );
         GlStateManager.popMatrix();
         
         this.drawCenteredString( this.fontRenderer, this.title, this.width / 2, 15, InfinityConfig.MAIN_COLOR );
@@ -211,7 +219,7 @@ public class GuiMonsterEgg extends GuiScreen
         
         GlStateManager.pushMatrix();
         GL11.glScalef( 0.8f, 0.8f, 0.8f );
-        this.renderToolTip( stack, 0, 25 );
+        this.renderToolTip( getStack(), 0, 25 );
         
         drawHoveringText( prettyNBTList, 0, this.height / 2 );
         GlStateManager.popMatrix();
@@ -225,9 +233,9 @@ public class GuiMonsterEgg extends GuiScreen
     
     public String getEntityName()
     {
-        if ( stack.getItem() == Items.SPAWN_EGG )
+        if ( getStack().getItem() == Items.SPAWN_EGG )
         {
-            return I18n.format( "entity." + EntityList.getTranslationName( ItemMonsterPlacer.getNamedIdFrom( stack ) ) + ".name" );
+            return I18n.format( "entity." + EntityList.getTranslationName( ItemMonsterPlacer.getNamedIdFrom( getStack() ) ) + ".name" );
         }
         return "Empty";
     }
@@ -237,17 +245,12 @@ public class GuiMonsterEgg extends GuiScreen
     {
         return false;
     }
-    
-    public ItemStack getItemStack()
-    {
-        return stack;
-    }
-    
+
     public void updateMob()
     {
-        if ( stack.getItem() instanceof ItemMonsterPlacer )
+        if ( getStack().getItem() instanceof ItemMonsterPlacer )
         {
-            ResourceLocation id = ItemMonsterPlacer.getNamedIdFrom( stack );
+            ResourceLocation id = ItemMonsterPlacer.getNamedIdFrom( getStack() );
             Entity entity = EntityList.createEntityByIDFromName( id, mc.world );
             if ( entity != null && entity instanceof EntityLiving )
             {
@@ -256,17 +259,8 @@ public class GuiMonsterEgg extends GuiScreen
             }
         }
         
-        if ( mob instanceof EntityLiving )
-        {
-            mobSpecificButton.y = 170;
-            equipmentButton.visible = true;
-            
-        }
-        else
-        {
-            mobSpecificButton.y = 140;
-            equipmentButton.visible = false;
-        }
+        equipmentButton.visible = mob instanceof EntityLiving;
+        tradeButton.visible = mob instanceof EntityVillager;
         
         /*
          * if ( mob instanceof EntityAnimal ) { mobSpecificButton.y = 170; animalSpecificButton.enabled = false; animalSpecificButton.visible = true; } else { mobSpecificButton.y = 140; animalSpecificButton.enabled = false; animalSpecificButton.visible = false; }
@@ -278,9 +272,9 @@ public class GuiMonsterEgg extends GuiScreen
         mobSpecificButton.enabled = MonsterPlacerUtils.getSpecificTagsForEntity( mob ).length > 0;
         
         String s;
-        if ( stack.hasTagCompound() && stack.getTagCompound().hasKey( "EntityTag", NBT.TAG_COMPOUND ) )
+        if ( getStack().hasTagCompound() && getStack().getTagCompound().hasKey( "EntityTag", NBT.TAG_COMPOUND ) )
         {
-            s = stack.getSubCompound( "EntityTag" ).toString();
+            s = getStack().getSubCompound( "EntityTag" ).toString();
         }
         else
         {
@@ -301,7 +295,7 @@ public class GuiMonsterEgg extends GuiScreen
     
     public void applyItemDataToMob()
     {
-        NBTTagCompound tag = stack.getTagCompound();
+        NBTTagCompound tag = getStack().getTagCompound();
         
         if ( tag != null && tag.hasKey( "EntityTag", 10 ) )
         {
@@ -381,5 +375,9 @@ public class GuiMonsterEgg extends GuiScreen
         GlStateManager.setActiveTexture( OpenGlHelper.lightmapTexUnit );
         GlStateManager.disableTexture2D();
         GlStateManager.setActiveTexture( OpenGlHelper.defaultTexUnit );
+    }
+    
+    public ItemStack getStack() {
+        return stackHolder.getStack();
     }
 }

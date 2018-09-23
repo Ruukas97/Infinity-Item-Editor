@@ -140,22 +140,25 @@ public class GuiHeadCollection extends GuiScreen
             }
         }
         
-        for ( int i = (int) Math.min( filteredSkulls.size() - 1, currentPage * amountInPage ) ; i < (int) Math.min( filteredSkulls.size(), (currentPage + 1) * amountInPage ) ; i++ )
+        if ( filteredSkulls.size() > 0 )
         {
-            int x = space + letterSpace + (16 * (i % maxInRow));
-            int y = 50 + topbar + (16 * ((i % amountInPage) / maxInRow));
-            
-            if ( mouseX > x && mouseX < x + 16 && mouseY > y && mouseY < y + 16 )
+            for ( int i = (int) Math.min( filteredSkulls.size() - 1, currentPage * amountInPage ) ; i < (int) Math.min( filteredSkulls.size(), (currentPage + 1) * amountInPage ) ; i++ )
             {
-                if ( isShiftKeyDown() )
+                int x = space + letterSpace + (16 * (i % maxInRow));
+                int y = 50 + topbar + (16 * ((i % amountInPage) / maxInRow));
+                
+                if ( mouseX > x && mouseX < x + 16 && mouseY > y && mouseY < y + 16 )
                 {
-                    mc.playerController.sendPacketDropItem( filteredSkulls.get( i ) );
+                    if ( isShiftKeyDown() )
+                    {
+                        mc.playerController.sendPacketDropItem( filteredSkulls.get( i ) );
+                    }
+                    else
+                    {
+                        mc.playerController.sendSlotPacket( filteredSkulls.get( i ), mc.player.inventory.currentItem + 36 ); // 36 is the index of the action (4 armor, 1 off hand, 5 crafting, and 27 inventory, if I remember correctly).
+                    }
+                    return;
                 }
-                else
-                {
-                    mc.playerController.sendSlotPacket( filteredSkulls.get( i ), mc.player.inventory.currentItem + 36 ); // 36 is the index of the action (4 armor, 1 off hand, 5 crafting, and 27 inventory, if I remember correctly).
-                }
-                return;
             }
         }
     }
@@ -259,15 +262,18 @@ public class GuiHeadCollection extends GuiScreen
         GlStateManager.enableLighting();
         itemRender.zLevel = 100.0F;
         ItemStack hovered = null;
-        for ( int i = (int) Math.min( filteredSkulls.size() - 1, currentPage * amountInPage ) ; i < (int) Math.min( filteredSkulls.size(), (currentPage + 1) * amountInPage ) ; i++ )
+        if ( filteredSkulls.size() > 0 )
         {
-            int x = space + letterSpace + (16 * (i % maxInRow));
-            int y = 50 + topbar + (16 * ((i % amountInPage) / maxInRow));
-            itemRender.renderItemAndEffectIntoGUI( filteredSkulls.get( i ), x, y );
-            if ( mouseX > x && mouseX < x + 16 && mouseY > y && mouseY < y + 16 )
+            for ( int i = (int) Math.min( filteredSkulls.size() - 1, currentPage * amountInPage ) ; i < (int) Math.min( filteredSkulls.size(), (currentPage + 1) * amountInPage ) ; i++ )
             {
-                drawRect( x, y, x + 16, y + 16, HelperGui.getColorFromRGB( 150, 150, 150, 150 ) );
-                hovered = filteredSkulls.get( i );
+                int x = space + letterSpace + (16 * (i % maxInRow));
+                int y = 50 + topbar + (16 * ((i % amountInPage) / maxInRow));
+                itemRender.renderItemAndEffectIntoGUI( filteredSkulls.get( i ), x, y );
+                if ( mouseX > x && mouseX < x + 16 && mouseY > y && mouseY < y + 16 )
+                {
+                    drawRect( x, y, x + 16, y + 16, HelperGui.getColorFromRGB( 150, 150, 150, 150 ) );
+                    hovered = filteredSkulls.get( i );
+                }
             }
         }
         

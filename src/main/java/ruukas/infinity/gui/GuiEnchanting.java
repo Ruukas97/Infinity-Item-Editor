@@ -48,8 +48,8 @@ public class GuiEnchanting extends GuiInfinity
         
     }
     
-    public GuiEnchanting(GuiScreen lastScreen, ItemStack stack) {
-        super( lastScreen, stack );
+    public GuiEnchanting(GuiScreen lastScreen, ItemStackHolder stackHolder) {
+        super( lastScreen, stackHolder );
     }
     
     @Override
@@ -69,7 +69,7 @@ public class GuiEnchanting extends GuiInfinity
         enchants.clear();
         for ( Enchantment e : Enchantment.REGISTRY )
         {
-            if ( showAll || e.canApply( stack ) )
+            if ( showAll || e.canApply( getItemStack() ) )
             {
                 enchants.add( e );
             }
@@ -128,7 +128,7 @@ public class GuiEnchanting extends GuiInfinity
         
         level.mouseClicked( mouseX, mouseY, mouseButton );
         
-        InfinityEnchantmentList list = new InfinityEnchantmentList( stack );
+        InfinityEnchantmentList list = new InfinityEnchantmentList( getItemStack() );
         InfinityEnchantmentTag[] activeEnchants = list.getAll();
         int start = midY - 5 * activeEnchants.length;
         if ( activeEnchants.length > 0 && HelperGui.isMouseInRegion( mouseX, mouseY, 0, start, 5 + fontRenderer.getStringWidth( "Unbreaking 32767" ), 10 * activeEnchants.length ) )
@@ -167,14 +167,14 @@ public class GuiEnchanting extends GuiInfinity
             
             if ( enchantment != null )
             {
-                new InfinityEnchantmentList( stack ).set( enchantment, (short) (enchantment.getMaxLevel() == 1 ? 1 : level.getIntValue()) );
+                new InfinityEnchantmentList( getItemStack() ).set( enchantment, (short) (enchantment.getMaxLevel() == 1 ? 1 : level.getIntValue()) );
             }
         }
         else if ( mouseX > midX - 15 && mouseX < midX + 15 && mouseY > midY - 15 && mouseY < midY + 15 )
         {
             for ( Enchantment e : enchants )
             {
-                new InfinityEnchantmentList( stack ).set( e, (short) (e.getMaxLevel() == 1 ? 1 : level.getIntValue()) );
+                new InfinityEnchantmentList( getItemStack() ).set( e, (short) (e.getMaxLevel() == 1 ? 1 : level.getIntValue()) );
             }
         }
         
@@ -199,7 +199,7 @@ public class GuiEnchanting extends GuiInfinity
     {
         super.drawScreen( mouseX, mouseY, partialTicks );
         
-        InfinityEnchantmentTag[] enchantmentTags = new InfinityEnchantmentList( stack ).getAll();
+        InfinityEnchantmentTag[] enchantmentTags = new InfinityEnchantmentList( getItemStack() ).getAll();
         for ( int i = 0 ; i < enchantmentTags.length ; i++ )
         {
             InfinityEnchantmentTag e = enchantmentTags[i];
@@ -233,7 +233,7 @@ public class GuiEnchanting extends GuiInfinity
         GlStateManager.scale( 5, 5, 1 );
         GlStateManager.translate( (width / 10), (height / 10), 0 );
         GlStateManager.rotate( rotOff * 3, 0.0f, 0.0f, -1.0f );
-        this.itemRender.renderItemAndEffectIntoGUI( stack, -8, -8 );
+        this.itemRender.renderItemAndEffectIntoGUI( getItemStack(), -8, -8 );
         GlStateManager.rotate( rotOff * 3, 0.0f, 0.0f, 1.0f );
         GlStateManager.translate( -(width / 10), -(height / 10), 0 );
         

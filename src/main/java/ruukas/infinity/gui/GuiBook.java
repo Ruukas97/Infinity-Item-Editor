@@ -29,8 +29,8 @@ public class GuiBook extends GuiInfinity
     @Nullable
     private SignedData data;
     
-    public GuiBook(GuiScreen lastScreen, ItemStack stack) {
-        super( lastScreen, stack );
+    public GuiBook(GuiScreen lastScreen, ItemStackHolder stackHolder) {
+        super( lastScreen, stackHolder );
     }
     
     @Override
@@ -43,8 +43,8 @@ public class GuiBook extends GuiInfinity
         
         Keyboard.enableRepeatEvents( true );
         
-        InfinityBookTags bookTags = new InfinityBookTags( stack );
-        boolean written = stack.getItem() == Items.WRITTEN_BOOK;
+        InfinityBookTags bookTags = new InfinityBookTags( getItemStack() );
+        boolean written = getItemStack().getItem() == Items.WRITTEN_BOOK;
         
         int fields = 0;
         titleField = new GuiActionTextField( 200 + fields, fontRenderer, midX, 55 + (30 * fields++), 75, 20 );
@@ -125,7 +125,7 @@ public class GuiBook extends GuiInfinity
                 {
                     quill.setTagCompound( getItemStack().getTagCompound().copy() );
                     data = new InfinityBookTags( quill ).unsign();
-                    stack = quill;
+                    stackHolder.setStack( quill );
                 }
             }
             else
@@ -135,12 +135,8 @@ public class GuiBook extends GuiInfinity
                 new InfinityBookTags( book ).resign( data );
                 
                 data = null;
-                stack = book;
-            }
-            
-            if ( lastScreen instanceof GuiInfinity )
-            {
-                ((GuiInfinity) lastScreen).stack = stack;
+                stackHolder.setStack( book );
+                ;
             }
             
             initGui();
@@ -148,7 +144,7 @@ public class GuiBook extends GuiInfinity
         
         else if ( button.id == resolvedButton.id )
         {
-            new InfinityBookTags( stack ).toggleResolved();
+            new InfinityBookTags( getItemStack() ).toggleResolved();
             initGui();
         }
         

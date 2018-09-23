@@ -6,21 +6,20 @@ import org.lwjgl.input.Keyboard;
 
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;
-import net.minecraft.item.ItemStack;
 
 public class GuiCommandBlock extends GuiInfinity
 {
     public GuiTextField commandField;
     
-    protected GuiCommandBlock(GuiScreen lastScreen, ItemStack stack) {
-        super( lastScreen, stack );
+    protected GuiCommandBlock(GuiScreen lastScreen, ItemStackHolder stackHolder) {
+        super( lastScreen, stackHolder );
     }
     
     @Override
     public void initGui()
     {
         super.initGui();
-    }   
+    }
     
     @Override
     public void onGuiClosed()
@@ -50,14 +49,12 @@ public class GuiCommandBlock extends GuiInfinity
         commandField.textboxKeyTyped( typedChar, keyCode );
     }
     
-   
-    
     @Override
     public void drawScreen( int mouseX, int mouseY, float partialTicks )
     {
         super.drawScreen( mouseX, mouseY, partialTicks );
     }
-
+    
     @Override
     protected String getNameUnlocalized()
     {

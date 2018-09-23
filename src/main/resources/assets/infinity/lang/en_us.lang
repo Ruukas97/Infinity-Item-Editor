@@ -39,6 +39,9 @@ gui.headcollection=Head Collection
 gui.lore=Lore Editor
 gui.sign=Sign Editor
 gui.paint=Texture Paint
+gui.villagertrades=Villager Trades Editor
+gui.trade=Villager Trade Editor
+gui.pick=Item Picker
 
 gui.armorstand.pose=Armor Stand Pose Editor
 gui.armorstand.pose.reset.1=Only resets rotations!
@@ -129,6 +132,11 @@ gui.potion.time=Time (Seconds)
 gui.potion.level=Amplifier
 gui.potion.showparticles.0=Hide Particles
 gui.potion.showparticles.1=Show Particles
+
+gui.villagertrades.addtrade=Add Trade
+gui.villagertrades.leftclick=Left click to edit
+gui.villagertrades.rightclick=Right click to remove
+gui.villagertrades.reset=Clear trades
 
 gui.equipment.inventoryclone=This is a copy of your inventory. Changes will not be saved.
 

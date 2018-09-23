@@ -31,6 +31,6 @@ public class InfinityTabRealm extends InfinityTab
     {
         super.displayAllRelevantItems( stackList );
         
-        stackList.addAll( Infinity.infinitySettings.getStackList() );
+        stackList.addAll( Infinity.realmController.getStackList() );
     }
 }

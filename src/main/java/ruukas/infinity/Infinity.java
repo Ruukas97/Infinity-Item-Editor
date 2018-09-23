@@ -40,7 +40,7 @@ public class Infinity
     
     public static CreativeTabs UNAVAILABLE, REALM, BANNERS, SKULLS, FIREWORKS, THIEF, VOID;
     
-    public static RealmController infinitySettings;
+    public static RealmController realmController;
     
     // TODO
     // ADD Config
@@ -142,7 +142,7 @@ public class Infinity
             }
         }
         
-        Infinity.infinitySettings = new RealmController( Infinity.dataDir );
+        Infinity.realmController = new RealmController( Infinity.dataDir );
     }
     
     @EventHandler

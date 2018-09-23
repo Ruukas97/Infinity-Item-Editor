@@ -41,8 +41,8 @@ public class GuiPotion extends GuiInfinity
     private int mouseDist = 0;
     private ItemStack potionIcon;
     
-    public GuiPotion(GuiScreen lastScreen, ItemStack stack) {
-        super( lastScreen, stack );
+    public GuiPotion(GuiScreen lastScreen, ItemStackHolder stackHolder) {
+        super( lastScreen, stackHolder );
     }
     
     @Override
@@ -115,7 +115,7 @@ public class GuiPotion extends GuiInfinity
         level.mouseClicked( mouseX, mouseY, mouseButton );
         time.mouseClicked( mouseX, mouseY, mouseButton );
         
-        InfinityCustomPotionEffectList list = new InfinityCustomPotionEffectList( stack );
+        InfinityCustomPotionEffectList list = new InfinityCustomPotionEffectList( getItemStack() );
         InfinityPotionEffectTag[] activeEffects = list.getAll();
         int start = midY - 5 * activeEffects.length;
         if ( activeEffects.length > 0 && HelperGui.isMouseInRegion( mouseX, mouseY, 0, start, 5 + fontRenderer.getStringWidth( "Unbreaking 32767" ), 10 * activeEffects.length ) )
@@ -156,7 +156,7 @@ public class GuiPotion extends GuiInfinity
             
             if ( type != null )
             {
-                new InfinityCustomPotionEffectList( stack ).set( new PotionEffect( type, time.getIntValue() * 20, level.getIntValue() - 1, false, showParticles ) );
+                new InfinityCustomPotionEffectList( getItemStack() ).set( new PotionEffect( type, time.getIntValue() * 20, level.getIntValue() - 1, false, showParticles ) );
             }
         }
         
@@ -166,7 +166,7 @@ public class GuiPotion extends GuiInfinity
             
             for ( ResourceLocation key : keyset )
             {
-                new InfinityCustomPotionEffectList( stack ).set( new PotionEffect( Potion.REGISTRY.getObject( key ), time.getIntValue() * 20, level.getIntValue() - 1 ) );
+                new InfinityCustomPotionEffectList( getItemStack() ).set( new PotionEffect( Potion.REGISTRY.getObject( key ), time.getIntValue() * 20, level.getIntValue() - 1 ) );
             }
         }
     }
@@ -193,7 +193,7 @@ public class GuiPotion extends GuiInfinity
     {
         super.drawScreen( mouseX, mouseY, partialTicks );
         
-        InfinityPotionEffectTag[] potionTags = new InfinityCustomPotionEffectList( stack ).getAll();
+        InfinityPotionEffectTag[] potionTags = new InfinityCustomPotionEffectList( getItemStack() ).getAll();
         for ( int i = 0 ; i < potionTags.length ; i++ )
         {
             InfinityPotionEffectTag e = potionTags[i];
@@ -234,7 +234,7 @@ public class GuiPotion extends GuiInfinity
         GlStateManager.scale( 5, 5, 1 );
         GlStateManager.translate( (width / 10), (height / 10), 0 );
         GlStateManager.rotate( rotOff * 3, 0.0f, 0.0f, -1.0f );
-        this.itemRender.renderItemAndEffectIntoGUI( stack, -8, -8 );
+        this.itemRender.renderItemAndEffectIntoGUI( getItemStack(), -8, -8 );
         GlStateManager.rotate( rotOff * 3, 0.0f, 0.0f, 1.0f );
         GlStateManager.translate( -(width / 10), -(height / 10), 0 );
         

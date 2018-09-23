@@ -47,8 +47,8 @@ public class GuiAttributes extends GuiInfinity
     private int slot = 0, operation = 0;
     private boolean isInfinity = false;
     
-    public GuiAttributes(GuiScreen lastScreen, ItemStack stack) {
-        super( lastScreen, stack );
+    public GuiAttributes(GuiScreen lastScreen, ItemStackHolder stackHolder) {
+        super( lastScreen, stackHolder );
     }
     
     @Override
@@ -136,7 +136,7 @@ public class GuiAttributes extends GuiInfinity
         level.mouseClicked( mouseX, mouseY, mouseButton );
         levelDecimal.mouseClicked( mouseX, mouseY, mouseButton );
         
-        InfinityAttributeModifierList list = new InfinityAttributeModifierList( stack );
+        InfinityAttributeModifierList list = new InfinityAttributeModifierList( getItemStack() );
         InfinityAttributeModifierTag[] activeModifiers = list.getAll();
         
         int start = midY - 5 * activeModifiers.length;
@@ -178,7 +178,7 @@ public class GuiAttributes extends GuiInfinity
             {
                 double amount = isInfinity ? (negativeAmount ? Double.NEGATIVE_INFINITY : Double.POSITIVE_INFINITY) : (negativeAmount ? -1.0d : 1.0d) * (((double) level.getIntValue()) + (((double) levelDecimal.getIntValue()) / 1000));
                 
-                InfinityAttributeModifierTag tag = new InfinityAttributeModifierTag( new InfinityAttributeModifierList( stack ), new AttributeModifier( attribute.getName(), amount, 0 ) );
+                InfinityAttributeModifierTag tag = new InfinityAttributeModifierTag( new InfinityAttributeModifierList( getItemStack() ), new AttributeModifier( attribute.getName(), amount, 0 ) );
                 tag.setOperation( operationButton.enabled ? operation : 0 );
                 tag.setSlot( slot );
             }
@@ -222,7 +222,7 @@ public class GuiAttributes extends GuiInfinity
     {
         super.drawScreen( mouseX, mouseY, partialTicks );
         
-        InfinityAttributeModifierTag[] modifierTags = new InfinityAttributeModifierList( stack ).getAll();
+        InfinityAttributeModifierTag[] modifierTags = new InfinityAttributeModifierList( getItemStack() ).getAll();
         for ( int i = 0 ; i < modifierTags.length ; i++ )
         {
             InfinityAttributeModifierTag m = modifierTags[i];
@@ -251,7 +251,7 @@ public class GuiAttributes extends GuiInfinity
         GlStateManager.scale( 5, 5, 1 );
         GlStateManager.translate( (width / 10), (height / 10), 0 );
         GlStateManager.rotate( rotOff * 3, 0.0f, 0.0f, -1.0f );
-        this.itemRender.renderItemAndEffectIntoGUI( stack, -8, -8 );
+        this.itemRender.renderItemAndEffectIntoGUI( getItemStack(), -8, -8 );
         GlStateManager.rotate( rotOff * 3, 0.0f, 0.0f, 1.0f );
         GlStateManager.translate( -(width / 10), -(height / 10), 0 );
         
