@@ -24,7 +24,7 @@ public class GuiVillagerTrade extends GuiInfinity
         this.currentRecipeHolder = recHolder;
     }
     
-    public static class TradeRecipeStackHolder extends ItemStackHolder
+    public static class TradeRecipeStackHolder extends GuiInfinity.ItemStackHolder
     {
         private final MerchantRecipeHolder recHolder;
         private final Type type;
