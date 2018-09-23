@@ -259,7 +259,7 @@ public class GuiHeadCollection extends GuiScreen
         GlStateManager.enableLighting();
         itemRender.zLevel = 100.0F;
         ItemStack hovered = null;
-        for ( int i = (int) Math.min( filteredSkulls.size() - 1, currentPage * amountInPage ) ; i < (int) Math.min( filteredSkulls.size() - 1, (currentPage + 1) * amountInPage ) ; i++ )
+        for ( int i = (int) Math.min( filteredSkulls.size() - 1, currentPage * amountInPage ) ; i < (int) Math.min( filteredSkulls.size(), (currentPage + 1) * amountInPage ) ; i++ )
         {
             int x = space + letterSpace + (16 * (i % maxInRow));
             int y = 50 + topbar + (16 * ((i % amountInPage) / maxInRow));
