@@ -83,8 +83,7 @@ public class MobTag
     public static final MobTag angerZombiePigman = new MobTagSliderShort( "tag.zombiepigman.anger", "Anger", 0f, 1000f, 10f );
     
     // VILLAGER
-    public static final MobTag professionVillager = new MobTagList( "tag.villager.profession", "Profession", 6 );
-    //TODO Villager trades
+    public static final MobTag professionVillager = new MobTagList( "tag.villager.profession", "Profession", 6, true );
     
     // VEX
     // LifeTicks int slider (left to live) (probably no reason to add)
@@ -103,6 +102,7 @@ public class MobTag
     public static MobTag[] SHEEP_SPECIFIC = new MobTag[] { colorSheep, sheared };
     public static MobTag[] SHULKER_SPECIFIC = new MobTag[] { colorShulker };
     public static MobTag[] SLIME_SPECIFIC = new MobTag[] { sizeSlime };
+    public static MobTag[] VILLAGER_SPECIFIC = new MobTag[] { professionVillager };
     public static MobTag[] VINDICATOR_SPECIFIC = new MobTag[] { johnny };
     public static MobTag[] ZOMBIE_SPECIFIC = new MobTag[] { isBabyZombie, canBreakDoors };
     public static MobTag[] ZOMBIEVILLAGER_SPECIFIC = new MobTag[] { isBabyZombie, canBreakDoors, professionVillager };

@@ -144,7 +144,7 @@ public class Infinity
                 logger.info( "When loading realm in %s, found old realm %s, renaming to %s.", dataDir.getPath(), oldRealmFile.getName(), newRealmFile.getName() );
             }
         }
-        
+
         Infinity.realmController = new RealmController( Infinity.dataDir );
     }
     

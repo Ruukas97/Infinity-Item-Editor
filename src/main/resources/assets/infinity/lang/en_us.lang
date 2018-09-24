@@ -272,6 +272,7 @@ tag.shulker.color.15=Black
 tag.slime.size.on=Size: %s
 tag.slime.size.off=Size: %s
 
+tag.villager.profession.-1=Random Skin
 tag.villager.profession.0=Farmer Skin
 tag.villager.profession.1=Librarian Skin
 tag.villager.profession.2=Priest Skin

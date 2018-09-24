@@ -14,6 +14,7 @@ import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityParrot;
 import net.minecraft.entity.passive.EntityPig;
 import net.minecraft.entity.passive.EntitySheep;
+import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.item.ItemMonsterPlacer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -182,6 +183,11 @@ public class MonsterPlacerUtils
         if ( ent instanceof EntityVindicator )
         {
             return MobTag.VINDICATOR_SPECIFIC;
+        }
+        
+        if ( ent instanceof EntityVillager )
+        {
+            return MobTag.VILLAGER_SPECIFIC;
         }
         
         if ( ent instanceof EntityZombie )
