@@ -279,6 +279,8 @@ tag.villager.profession.2=Priest Skin
 tag.villager.profession.3=Smith Skin
 tag.villager.profession.4=Butcher Skin
 tag.villager.profession.5=Nitwit Skin
+tag.villager.willing.on=Willing
+tag.villager.willing.off=Unwilling
 
 tag.vindicator.johnny.on=Johnny Behavior
 tag.vindicator.johnny.off=Normal Behavior
