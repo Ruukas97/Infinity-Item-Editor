@@ -5,6 +5,7 @@ import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntityEndermite;
+import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.monster.EntityShulker;
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.monster.EntityVindicator;
@@ -191,12 +192,18 @@ public class MonsterPlacerUtils
         
         if ( ent instanceof EntityZombie )
         {
-            if ( !(ent instanceof EntityZombieVillager) )
+            if ( ent instanceof EntityZombieVillager )
+            {
+                return MobTag.ZOMBIEVILLAGER_SPECIFIC;
+            }
+            else if ( ent instanceof EntityPigZombie )
+            {
+                return MobTag.ZOMBIEPIGMAN_SPECIFIC;
+            }
+            else
             {
                 return MobTag.ZOMBIE_SPECIFIC;
             }
-            else
-                return MobTag.ZOMBIEVILLAGER_SPECIFIC;
         }
         
         return new MobTag[ 0 ];
