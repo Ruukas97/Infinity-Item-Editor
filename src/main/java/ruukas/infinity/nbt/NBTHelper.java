@@ -25,15 +25,18 @@ import net.minecraftforge.common.util.Constants.NBT;
 
 public class NBTHelper
 {
-    public static ItemStack generateNote(String noteName, String... lore){
-        ItemStack stack = new ItemStack(Items.PAPER);
-        stack.setStackDisplayName(noteName);
-        if(lore != null){
+    public static ItemStack generateNote( String noteName, String... lore )
+    {
+        ItemStack stack = new ItemStack( Items.PAPER );
+        stack.setStackDisplayName( noteName );
+        if ( lore != null )
+        {
             NBTTagList loreTagList = new NBTTagList();
-            for(String str : lore){
-                loreTagList.appendTag(new NBTTagString(str));
+            for ( String str : lore )
+            {
+                loreTagList.appendTag( new NBTTagString( str ) );
             }
-            stack.getTagCompound().getCompoundTag("display").setTag("Lore", loreTagList);
+            stack.getTagCompound().getCompoundTag( "display" ).setTag( "Lore", loreTagList );
         }
         return stack;
     }
@@ -177,7 +180,7 @@ public class NBTHelper
         
         else
             return stack.getTagCompound().getBoolean( "Unbreakable" );
-            
+        
     }
     
     public static void setUnbreakable( ItemStack stack, boolean b )
@@ -345,9 +348,13 @@ public class NBTHelper
                 return PotionUtils.getColor( stack );
             }
             
+            if ( stack.getItem().isMap() )
+            {
+                return hasDisplayTag( stack ) ? getDisplayTag( stack ).getInteger( "MapColor" ) : 0;
+            }
+            
             if ( hasColor( stack ) )
             {
-                
                 return getDisplayTag( stack ).getInteger( "color" );
             }
             
@@ -365,19 +372,24 @@ public class NBTHelper
             {
                 return stack.hasTagCompound() && stack.getTagCompound().hasKey( "CustomPotionColor", NBT.TAG_INT );
             }
+            else if ( stack.getItem().isMap() )
+            {
+                return hasDisplayTag( stack ) && getDisplayTag( stack ).hasKey( "MapColor", NBT.TAG_INT );
+            }
             return hasDisplayTag( stack ) && getDisplayTag( stack ).hasKey( "color", NBT.TAG_INT );
         }
         
         public static boolean applicableForColor( ItemStack stack )
         {
-            return isPotion( stack ) || stack.getItem() instanceof ItemArmor && ((ItemArmor) stack.getItem()).getArmorMaterial() == ArmorMaterial.LEATHER;
+            return isPotion( stack ) || stack.getItem().isMap() || stack.getItem() instanceof ItemArmor && ((ItemArmor) stack.getItem()).getArmorMaterial() == ArmorMaterial.LEATHER;
         }
         
         public static void setColor( ItemStack stack, int color )
         {
             if ( isPotion( stack ) )
             {
-                if(!stack.hasTagCompound()){
+                if ( !stack.hasTagCompound() )
+                {
                     stack.setTagCompound( new NBTTagCompound() );
                 }
                 
@@ -385,7 +397,7 @@ public class NBTHelper
             }
             else
             {
-                getDisplayTag( stack ).setInteger( "color", color );
+                getDisplayTag( stack ).setInteger( stack.getItem().isMap() ? "MapColor" : "color", color );
                 
             }
         }
