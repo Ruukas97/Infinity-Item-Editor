@@ -262,6 +262,8 @@ tag.villager.profession.5=Idiot
 
 tag.vindicator.johnny.on=Comportement de Johnny
 tag.vindicator.johnny.off=Comportement normal
+tag.villager.willing.on=Prêt
+tag.villager.willing.off=Ne veut pas
 
 tag.zombie.isbaby.on=Bébé
 tag.zombie.isbaby.off=Adulte
