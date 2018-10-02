@@ -6,7 +6,7 @@
 key.infinity.category=Infinity Item Editor
 key.infinity.desc=Editar item
 key.infinitycopy.desc=Copiar items a quien apuntes
-key.infinitysave.desc=Guardar el item actual al reino
+key.infinitysave.desc=Guardar el item actual a Realm
 
 warning.notcreative=¡Necesitas estar en modo creativo para guardar items!, ¡Presiona Shift+Click para guardarlo como un comando!
 
@@ -14,9 +14,9 @@ itemGroup.unavailable=Infinity - Inobtenible
 itemGroup.banners=Infinity - Estandartes
 itemGroup.skulls=Infinity - Cabezas
 itemGroup.fireworks=Infinity - Fuegos Artificiales
-itemGroup.thief=Infinity - Ladrón
-itemGroup.realm=Infinity - Reino
-itemGroup.void=Infinity - Vacio
+itemGroup.thief=Infinity - Items Robados
+itemGroup.realm=Infinity - Realm
+itemGroup.void=Infinity - Void
 
 gui.close=Cerrar
 gui.save=Guardar
@@ -59,7 +59,7 @@ gui.armorstand.marker.note="Marker" Te quita la habilidad de interactuar con est
 
 gui.attributes.infinity.0=Introducir Datos 
 gui.attributes.infinity.1=Infinito
-gui.attributes.operation.0=Additivo (+)
+gui.attributes.operation.0=Aditivo (+)
 gui.attributes.operation.1=Multiplicativo (X)
 gui.attributes.operation.2=Exponental (XX)
 gui.attributes.slot.0=Cualquier Sitio
@@ -359,7 +359,7 @@ potion.potency.64=LXV [65]
 potion.potency.65=LXVI [66]
 potion.potency.66=LXVII [67]
 potion.potency.67=LXVIII [68]
-potion.potency.68=LXIX [69]
+potion.potency.68=LXIX [69 7u7]
 potion.potency.69=LXX [70]
 potion.potency.70=LXXI [71]
 potion.potency.71=LXXII [72]
