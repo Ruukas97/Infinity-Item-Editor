@@ -37,6 +37,9 @@ gui.specialbutton=NBT spéciaux
 gui.headcollection=Collection de têtes
 gui.lore=Éditeur de descriptions
 gui.sign=Editeur de pancartes
+gui.villagertrades=Éditeur de métiers villageois
+gui.trade=Editeur de villageois
+gui.pick=Sélecteur d'objets
 
 gui.armorstand.pose=Éditeur de position de porte-armures
 gui.armorstand.pose.reset.1=Ne réinitialise que les rotations !
@@ -124,6 +127,11 @@ gui.potion.level=Amplificateur
 gui.potion.showparticles.0=Masquer les particules
 gui.potion.showparticles.1=Afficher les particules
 
+gui.villagertrades.addtrade=Ajouter commerce
+gui.villagertrades.leftclick=Clic gauche pour éditer
+gui.villagertrades.rightclick=Clic droit pour supprimer
+gui.villagertrades.reset=Métiers clairs
+
 gui.equipment.inventoryclone=Ceci est une copie de votre inventaire. Les modifications ne seront pas enregistrées.
 
 
@@ -195,6 +203,8 @@ tag.armorstand.pose=Position
 tag.creeper.powered.on=Chargé
 tag.creeper.powered.off=Non chargé
 tag.creeper.explosionradius.on=Rayon d'explosion : %s
+tag.chicken.egglaytime.on=%s tiques pour l'oeuf
+tag.chicken.egglaytime.off=Prêt à pondre l'oeuf
 tag.creeper.explosionradius.off=Pas de rayon d'explosion
 tag.creeper.fuse.on=Temps avant l'explosion : %s
 tag.creeper.fuse.off=Explosion instantanée
@@ -252,6 +262,10 @@ tag.shulker.color.13=Vert foncé
 tag.shulker.color.14=Rouge
 tag.shulker.color.15=Noir
 
+tag.slime.size.on=Taille: %s
+tag.slime.size.off=Taille: %s
+
+tag.villager.profession.-1=Peau aléatoire
 tag.villager.profession.0=Fermier
 tag.villager.profession.1=Bibliothécaire
 tag.villager.profession.2=Prêtre
