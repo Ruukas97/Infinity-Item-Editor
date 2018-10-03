@@ -18,6 +18,12 @@ itemGroup.thief=Infinity - Items Robados
 itemGroup.realm=Infinity - Realm
 itemGroup.void=Infinity - Void
 
+gui.realm.remove=Se ha removido el item a Realm. Si ha sido un error, puedes encontrarlo en la pestaña de Items Robados.
+gui.realm.add=Se ha añadido el item a Realm.
+gui.color.red=Rojo: %s
+gui.color.green=Verde: %s
+gui.color.blue=Azul: %s
+
 gui.close=Cerrar
 gui.save=Guardar
 gui.drop=Dropear
