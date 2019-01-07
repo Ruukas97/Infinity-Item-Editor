@@ -1,7 +1,7 @@
-key.infinity.category=Éditeur d'objets Infinity
+﻿key.infinity.category=Éditeur d'objets Infinity
 key.infinity.desc=Éditer l'objet actuel
 key.infinitycopy.desc=Copier l'équipement du joueur cible
-key.infinitysave.desc=Enregistrer l'élément actuel dans le domaine
+key.infinitysave.desc=Enregistrer l'élément actuel dans le realm
 
 warning.notcreative=Vous devez être en mode créatif pour enregistrer des objets
 
@@ -10,7 +10,8 @@ itemGroup.banners=Infinity - Bannières
 itemGroup.skulls=Infinity - Tête
 itemGroup.fireworks=Infinity - Feux d'artifice
 itemGroup.thief=Infinity - Voleur
-itemGroup.realm=Infinity - Domaine
+itemGroup.realm=Infinity - Realm
+itemGroup.void=Infinity - Vide
 
 gui.close=Fermer
 gui.save=Sauvegarder
@@ -28,8 +29,8 @@ gui.nbtadv=Navigateur de NBT
 gui.enchanting=Enchantements
 gui.potion=Brassage de Potion
 gui.book=Éditeur de Livre
-gui.attributes=Editeur des attributs
-gui.chestinventory=Inventaire de coffre
+gui.attributes=Éditeur des attributs
+gui.chestinventory=Contenu de coffre
 gui.hideflags=Masquer les informations
 gui.bannermaker=Créateur de bannière
 gui.fireworks=Aperçu Feux d'artifice
@@ -37,11 +38,12 @@ gui.specialbutton=NBT spéciaux
 gui.headcollection=Collection de têtes
 gui.lore=Éditeur de descriptions
 gui.sign=Editeur de pancartes
-gui.villagertrades=Éditeur de métiers villageois
-gui.trade=Editeur de villageois
-gui.pick=Sélecteur d'objets
+gui.paint=Peinture de texture
+gui.villagertrades=Éditeur d'échanges villageois
+gui.trade=Éditeur d'échange villageois
+gui.pick=Copieur d'item
 
-gui.armorstand.pose=Éditeur de position de porte-armures
+gui.armorstand.pose=Éditeur de position de porte-armure
 gui.armorstand.pose.reset.1=Ne réinitialise que les rotations !
 gui.armorstand.invisible.note=Remarque : Il peut être difficile de retirer le porte-armure sans commandes.
 gui.armorstand.marker.note=Le marqueur désactive l'interaction et rend la hitbox petite.
@@ -105,10 +107,14 @@ gui.headcollection.changecategory.2=Prend quelques secondes à charger
 gui.item.toggleside=Changer de vue
 gui.item.discord=Rejoindre Discord
 gui.item.share=Partager l'objet
-
 gui.item.colorremove.tooltip.1=Supprimer toutes les couleurs
 gui.item.drop.tooltip.1=Maintenez la touche Maj enfoncée pour copier la commande /give à votre presse-papier
 gui.item.drop.tooltip.2=Vous pouvez ensuite le coller ailleurs
+gui.item.id=ID de l'objet
+gui.item.count=Quantité
+gui.item.meta=Méta
+gui.item.name=Nom de l'objet
+gui.item.lore=Description
 
 gui.nbt.update=Changer le NBT
 
@@ -127,10 +133,10 @@ gui.potion.level=Amplificateur
 gui.potion.showparticles.0=Masquer les particules
 gui.potion.showparticles.1=Afficher les particules
 
-gui.villagertrades.addtrade=Ajouter commerce
+gui.villagertrades.addtrade=Ajouter un échange
 gui.villagertrades.leftclick=Clic gauche pour éditer
 gui.villagertrades.rightclick=Clic droit pour supprimer
-gui.villagertrades.reset=Métiers clairs
+gui.villagertrades.reset=Effacer les échanges
 
 gui.equipment.inventoryclone=Ceci est une copie de votre inventaire. Les modifications ne seront pas enregistrées.
 
@@ -200,11 +206,12 @@ tag.armorstand.marker.1=Marqueur
 tag.armorstand.inventory=Équipement
 tag.armorstand.pose=Position
 
+tag.chicken.egglaytime.on=%s ticks pour pondre un œuf
+tag.chicken.egglaytime.off=Prêt pour pondre un œuf
+
 tag.creeper.powered.on=Chargé
 tag.creeper.powered.off=Non chargé
 tag.creeper.explosionradius.on=Rayon d'explosion : %s
-tag.chicken.egglaytime.on=%s tiques pour l'oeuf
-tag.chicken.egglaytime.off=Prêt à pondre l'oeuf
 tag.creeper.explosionradius.off=Pas de rayon d'explosion
 tag.creeper.fuse.on=Temps avant l'explosion : %s
 tag.creeper.fuse.off=Explosion instantanée
@@ -262,10 +269,10 @@ tag.shulker.color.13=Vert foncé
 tag.shulker.color.14=Rouge
 tag.shulker.color.15=Noir
 
+
 tag.slime.size.on=Taille: %s
 tag.slime.size.off=Taille: %s
 
-tag.villager.profession.-1=Peau aléatoire
 tag.villager.profession.0=Fermier
 tag.villager.profession.1=Bibliothécaire
 tag.villager.profession.2=Prêtre
@@ -274,10 +281,8 @@ tag.villager.profession.4=Boucher
 tag.villager.profession.5=Idiot
 
 
-tag.vindicator.johnny.on=Comportement de Johnny
+tag.vindicator.johnny.on=Comportement "Johnny"
 tag.vindicator.johnny.off=Comportement normal
-tag.villager.willing.on=Prêt
-tag.villager.willing.off=Ne veut pas
 
 tag.zombie.isbaby.on=Bébé
 tag.zombie.isbaby.off=Adulte
