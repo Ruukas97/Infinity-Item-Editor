@@ -320,8 +320,8 @@ public class GuiHeadCollection extends GuiScreen
         {
             ItemStack skull = new ItemStack( Items.SKULL, 1, 3 );
             JsonObject ob = e.getAsJsonObject();
-            NBTHelper.getDisplayTag( skull ).setString( "Name", ob.get( "Name" ).getAsString() );
-            new InfinitySkullOwnerTag( skull ).setId( ob.get( "UUID" ).getAsString() ).setValue( ob.get( "Value" ).getAsString() );
+            NBTHelper.getDisplayTag( skull ).setString( "Name", ob.get( "name" ).getAsString() );
+            new InfinitySkullOwnerTag( skull ).setId( ob.get( "uuid" ).getAsString() ).setValue( ob.get( "value" ).getAsString() );
             
             allSkulls.add( skull );
         }
