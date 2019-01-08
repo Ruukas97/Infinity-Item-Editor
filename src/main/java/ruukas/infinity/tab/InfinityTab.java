@@ -21,7 +21,19 @@ public abstract class InfinityTab extends CreativeTabs
     
     public static void initTabs()
     {
-        int tabs = 7;
+        int tabs = 7
+                - (InfinityConfig.getIsVoidEnabled() ? 0 : 1)
+                - (InfinityConfig.getIsUnavailableTabEnabled() ? 0 : 1)
+                - (InfinityConfig.getIsBannerTabEnabled() ? 0 : 1)
+                - (InfinityConfig.getIsHeadTabEnabled() ? 0 : 1)
+                - (InfinityConfig.getIsThiefTabEnabled() ? 0 : 1)
+                - (InfinityConfig.getIsFireworkTabEnabled() ? 0 : 1);
+        
+        public static boolean unavailableTab = true;
+        public static boolean bannerTab = true;
+        public static boolean headTab = true;
+        public static boolean thiefTab = true;
+        public static boolean fireworkTab = true;
         int id = getNextID();
         
         boolean successRealm = false;
