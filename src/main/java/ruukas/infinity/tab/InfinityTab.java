@@ -6,6 +6,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import ruukas.infinity.Infinity;
+import ruukas.infinity.data.InfinityConfig;
 import ruukas.infinity.data.thevoid.VoidController;
 
 public abstract class InfinityTab extends CreativeTabs
@@ -67,26 +68,29 @@ public abstract class InfinityTab extends CreativeTabs
         
         Infinity.FIREWORKS = new InfinityTabFireworks( id >= foundId ? 1 + id++ : id++ );
         
-        Infinity.VOID = new InfinityTab( id >= foundId ? 1 + id++ : id++, "void" ) {
-            @Override
-            public ItemStack getTabIconItem()
-            {
-                return new ItemStack( Blocks.STAINED_GLASS, 1, 15 );
-            }
-            
-            @Override
-            public void displayAllRelevantItems( NonNullList<ItemStack> stackList )
-            {
-                super.displayAllRelevantItems( stackList );
+        if ( InfinityConfig.getIsVoidEnabled() )
+        {
+            Infinity.VOID = new InfinityTab( id >= foundId ? 1 + id++ : id++, "void" ) {
+                @Override
+                public ItemStack getTabIconItem()
+                {
+                    return new ItemStack( Blocks.STAINED_GLASS, 1, 15 );
+                }
                 
-                VoidController.loadVoidToList( stackList );
-            }
-            
-            @Override
-            public boolean hasSearchBar()
-            {
-                return true;
-            }
-        };
+                @Override
+                public void displayAllRelevantItems( NonNullList<ItemStack> stackList )
+                {
+                    super.displayAllRelevantItems( stackList );
+                    
+                    VoidController.loadVoidToList( stackList );
+                }
+                
+                @Override
+                public boolean hasSearchBar()
+                {
+                    return true;
+                }
+            };
+        }
     }
 }

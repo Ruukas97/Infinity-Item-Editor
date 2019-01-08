@@ -47,6 +47,7 @@ public class Infinity
     
     // TODO
     // ADD Config
+    // Make each tab configurable
     // - Chose between different preset interface colors or vanilla style
     // Allow in-game disabling and reloading
     // Implement code for displaying armor stands items as models (I've already done the code for this on laptop)
