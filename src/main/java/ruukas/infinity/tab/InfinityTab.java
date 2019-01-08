@@ -39,34 +39,49 @@ public abstract class InfinityTab extends CreativeTabs
         
         Infinity.REALM = new InfinityTabRealm( successRealm ? foundId : id++, "realm", successRealm );
         
-        Infinity.UNAVAILABLE = new InfinityTab( id >= foundId ? 1 + id++ : id++, "unavailable" ) {
-            @Override
-            public ItemStack getTabIconItem()
-            {
-                return new ItemStack( Blocks.BARRIER );
-            }
-            
-            @Override
-            public void displayAllRelevantItems( NonNullList<ItemStack> stackList )
-            {
-                super.displayAllRelevantItems( stackList );
+        if ( InfinityConfig.getIsUnavailableTabEnabled() )
+        {
+            Infinity.UNAVAILABLE = new InfinityTab( id >= foundId ? 1 + id++ : id++, "unavailable" ) {
+                @Override
+                public ItemStack getTabIconItem()
+                {
+                    return new ItemStack( Blocks.BARRIER );
+                }
                 
-                stackList.add( new ItemStack( Items.SPAWN_EGG ) );
-                stackList.add( new ItemStack( Items.POTIONITEM ) );
-                stackList.add( new ItemStack( Items.SPLASH_POTION ) );
-                stackList.add( new ItemStack( Items.LINGERING_POTION ) );
-                stackList.add( new ItemStack( Items.TIPPED_ARROW ) );
-                stackList.add( new ItemStack( Items.ENCHANTED_BOOK ) );
-            }
-        };
+                @Override
+                public void displayAllRelevantItems( NonNullList<ItemStack> stackList )
+                {
+                    super.displayAllRelevantItems( stackList );
+                    
+                    stackList.add( new ItemStack( Items.SPAWN_EGG ) );
+                    stackList.add( new ItemStack( Items.POTIONITEM ) );
+                    stackList.add( new ItemStack( Items.SPLASH_POTION ) );
+                    stackList.add( new ItemStack( Items.LINGERING_POTION ) );
+                    stackList.add( new ItemStack( Items.TIPPED_ARROW ) );
+                    stackList.add( new ItemStack( Items.ENCHANTED_BOOK ) );
+                }
+            };
+        }
         
-        Infinity.BANNERS = new InfinityTabBanners( id >= foundId ? 1 + id++ : id++ );
+        if ( InfinityConfig.getIsBannerTabEnabled() )
+        {
+            Infinity.BANNERS = new InfinityTabBanners( id >= foundId ? 1 + id++ : id++ );
+        }
         
-        Infinity.SKULLS = new InfinityTabSkulls( id >= foundId ? 1 + id++ : id++ );
+        if ( InfinityConfig.getIsHeadTabEnabled() )
+        {
+            Infinity.SKULLS = new InfinityTabSkulls( id >= foundId ? 1 + id++ : id++ );
+        }
         
-        Infinity.THIEF = new InfinityTabThief( id >= foundId ? 1 + id++ : id++ );
+        if ( InfinityConfig.getIsThiefTabEnabled() )
+        {
+            Infinity.THIEF = new InfinityTabThief( id >= foundId ? 1 + id++ : id++ );
+        }
         
-        Infinity.FIREWORKS = new InfinityTabFireworks( id >= foundId ? 1 + id++ : id++ );
+        if ( InfinityConfig.getIsFireworkTabEnabled() )
+        {
+            Infinity.FIREWORKS = new InfinityTabFireworks( id >= foundId ? 1 + id++ : id++ );
+        }
         
         if ( InfinityConfig.getIsVoidEnabled() )
         {
