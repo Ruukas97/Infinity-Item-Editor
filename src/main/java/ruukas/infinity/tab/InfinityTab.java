@@ -29,11 +29,6 @@ public abstract class InfinityTab extends CreativeTabs
                 - (InfinityConfig.getIsThiefTabEnabled() ? 0 : 1)
                 - (InfinityConfig.getIsFireworkTabEnabled() ? 0 : 1);
         
-        public static boolean unavailableTab = true;
-        public static boolean bannerTab = true;
-        public static boolean headTab = true;
-        public static boolean thiefTab = true;
-        public static boolean fireworkTab = true;
         int id = getNextID();
         
         boolean successRealm = false;

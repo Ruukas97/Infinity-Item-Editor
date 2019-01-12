@@ -31,7 +31,7 @@ public class Infinity
 {
     public static final String MODID = "infinity";
     public static final String NAME = "Infinity Item Editor";
-    public static final String VERSION = "0.13";
+    public static final String VERSION = "0.13.1";
     
     public static Logger logger;
     public static File dataDir;
@@ -47,7 +47,6 @@ public class Infinity
     
     // TODO
     // ADD Config
-    // Make each tab configurable
     // - Chose between different preset interface colors or vanilla style
     // Allow in-game disabling and reloading
     // Implement code for displaying armor stands items as models (I've already done the code for this on laptop)
