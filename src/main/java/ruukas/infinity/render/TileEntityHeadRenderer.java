@@ -16,6 +16,7 @@ import net.minecraft.client.model.ModelHumanoidHead;
 import net.minecraft.client.model.ModelSkeletonHead;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
+import net.minecraft.client.renderer.tileentity.TileEntitySkullRenderer;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.client.resources.DefaultPlayerSkin;
 import net.minecraft.client.resources.SkinManager.SkinAvailableCallback;
@@ -53,6 +54,12 @@ public class TileEntityHeadRenderer extends TileEntitySpecialRenderer<TileEntity
     
     public void renderSkull( float x, float y, float z, EnumFacing facing, float rotationIn, int skullType, @Nullable GameProfile profile, int destroyStage, float animateTicks )
     {
+        if(skullType != 3)
+        {
+            TileEntitySkullRenderer.instance.renderSkull( x, y, z, facing, rotationIn, skullType, profile, destroyStage, animateTicks );
+            return;
+        }
+        
         ModelBase modelbase = this.skeletonHead;
         
         if ( destroyStage >= 0 )
@@ -64,8 +71,7 @@ public class TileEntityHeadRenderer extends TileEntitySpecialRenderer<TileEntity
             GlStateManager.translate( 0.0625F, 0.0625F, 0.0625F );
             GlStateManager.matrixMode( 5888 );
         }
-        else
-        {
+        else {
             modelbase = this.humanoidHead;
             ResourceLocation resourcelocation = DefaultPlayerSkin.getDefaultSkinLegacy();
             

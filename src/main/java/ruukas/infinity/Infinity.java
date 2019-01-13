@@ -109,16 +109,12 @@ public class Infinity
     
     // Hide flags gui:
     // Add button to clear lore
-    
-    // CHANGELOG:
-    // Renamed "infinity.nbt" to "realm.nbt"
-    
+
     // Priority List:
     // Lang support for realm and void add notifications
     // Better text format editing
     // Better void
     // More mob tags
-    // Faster head loading
     
     @EventHandler
     public void preInit( FMLPreInitializationEvent event )
