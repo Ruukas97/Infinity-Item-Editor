@@ -282,8 +282,11 @@ tag.villager.profession.3=铁匠皮肤
 tag.villager.profession.4=屠夫皮肤
 tag.villager.profession.5=傻子皮肤
 
+tag.villager.willing.on=情愿
+tag.villager.willing.off=不情愿
+
 tag.vindicator.johnny.on=卫道士行为
-tag.vindicator.johnny.off=正常
+tag.vindicator.johnny.off=正常行为
 
 tag.zombie.isbaby.on=幼体
 tag.zombie.isbaby.off=成年体
@@ -415,4 +418,3 @@ potion.potency.124=CXXV
 potion.potency.125=CXXVI
 potion.potency.126=CXXVII
 potion.potency.127=CXXVIII
-
