@@ -275,6 +275,7 @@ tag.shulker.color.15=黑色
 tag.slime.size.on=尺寸: %s
 tag.slime.size.off=尺寸: %s
 
+tag.villager.profession.-1=随机皮肤
 tag.villager.profession.0=农民皮肤
 tag.villager.profession.1=图书管理员皮肤
 tag.villager.profession.2=牧师皮肤
