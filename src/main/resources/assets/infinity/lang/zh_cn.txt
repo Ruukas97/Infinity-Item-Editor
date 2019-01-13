@@ -125,7 +125,7 @@ gui.nbt.comp.open=单击以展开复合标签
 gui.nbt.comp.close=单击以折叠复合标签
 
 tag.head.0=骷髅头颅
-tag.head.1=凋零骷髅头颅
+tag.head.1=凋灵骷髅头颅
 tag.head.2=僵尸头颅
 tag.head.3=玩家头颅
 tag.head.4=爬行者头颅
@@ -141,7 +141,7 @@ gui.villagertrades.leftclick=左键单击编辑
 gui.villagertrades.rightclick=右键单击删除
 gui.villagertrades.reset=清除交易
 
-gui.equipment.inventoryclone=这是库存的副本.将不保存更改.
+gui.equipment.inventoryclone=这是临时的库存副本.将不保存更改.
 
 
 flag.enchantment.0=附魔:显示
