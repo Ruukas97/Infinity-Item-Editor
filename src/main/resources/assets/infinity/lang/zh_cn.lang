@@ -115,7 +115,7 @@ gui.item.drop.tooltip.1=按住shift以复制/向剪贴板发出命令
 gui.item.drop.tooltip.2=然后你可以将其粘贴到其他地方
 gui.item.id=物品ID
 gui.item.count=数量
-gui.item.meta=数据
+gui.item.meta=元数据
 gui.item.name=物品名称
 gui.item.lore=描述
 
@@ -126,9 +126,9 @@ gui.nbt.comp.close=单击以折叠复合标签
 
 tag.head.0=骷髅头颅
 tag.head.1=凋灵骷髅头颅
-tag.head.2=僵尸头颅
-tag.head.3=玩家头颅
-tag.head.4=爬行者头颅
+tag.head.2=僵尸的头
+tag.head.3=玩家的头
+tag.head.4=爬行者的头
 tag.head.5=龙首
 
 gui.potion.time=时间(秒)
