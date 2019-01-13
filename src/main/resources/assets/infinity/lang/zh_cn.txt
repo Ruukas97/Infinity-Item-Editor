@@ -10,7 +10,7 @@ warning.notcreative=您必须处于创造模式才能保存物品
 
 itemGroup.unavailable=无限-不可用
 itemGroup.banners=无限-旗帜
-itemGroup.skulls=无限-头部
+itemGroup.skulls=无限-头颅
 itemGroup.fireworks=无限-烟花火箭
 itemGroup.thief=无限-窃贼
 itemGroup.realm=无限-领域
