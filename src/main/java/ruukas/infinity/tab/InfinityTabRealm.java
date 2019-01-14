@@ -6,24 +6,15 @@ import net.minecraft.util.NonNullList;
 import ruukas.infinity.Infinity;
 
 public class InfinityTabRealm extends InfinityTab
-{
-    private final boolean allignedRight;
-    
-    public InfinityTabRealm(int index, String label, boolean allignedRight) {
+{    
+    public InfinityTabRealm(int index, String label) {
         super( index, label );
-        this.allignedRight = allignedRight;
     }
     
     @Override
     public ItemStack getTabIconItem()
     {
         return new ItemStack( Blocks.ENDER_CHEST );
-    }
-    
-    @Override
-    public boolean isAlignedRight()
-    {
-        return this.allignedRight;
     }
     
     @Override

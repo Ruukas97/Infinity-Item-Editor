@@ -18,7 +18,7 @@ public class GuiInfinityButton extends GuiButton
     }
     
     @Override
-    public void drawButton( Minecraft mc, int mouseX, int mouseY, float partialTicks )
+    public void func_146112_a( Minecraft mc, int mouseX, int mouseY )
     {
         if ( this.visible )
         {

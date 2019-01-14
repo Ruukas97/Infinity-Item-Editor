@@ -21,34 +21,11 @@ public abstract class InfinityTab extends CreativeTabs
     
     public static void initTabs()
     {
-        int tabs = 7
-                - (InfinityConfig.getIsVoidEnabled() ? 0 : 1)
-                - (InfinityConfig.getIsUnavailableTabEnabled() ? 0 : 1)
-                - (InfinityConfig.getIsBannerTabEnabled() ? 0 : 1)
-                - (InfinityConfig.getIsHeadTabEnabled() ? 0 : 1)
-                - (InfinityConfig.getIsThiefTabEnabled() ? 0 : 1)
-                - (InfinityConfig.getIsFireworkTabEnabled() ? 0 : 1);
-        
-        int id = getNextID();
-        
-        boolean successRealm = false;
-        int foundId = id;
-        
-        for ( int i = foundId ; i < foundId + tabs ; i++ )
-        {
-            if ( (i - 16) % 5 == 0 )
-            {
-                foundId = i;
-                successRealm = true;
-                break;
-            }
-        }
-        
-        Infinity.REALM = new InfinityTabRealm( successRealm ? foundId : id++, "realm", successRealm );
+        Infinity.REALM = new InfinityTabRealm( getNextID(), "realm" );
         
         if ( InfinityConfig.getIsUnavailableTabEnabled() )
         {
-            Infinity.UNAVAILABLE = new InfinityTab( id >= foundId ? 1 + id++ : id++, "unavailable" ) {
+            Infinity.UNAVAILABLE = new InfinityTab( getNextID(), "unavailable" ) {
                 @Override
                 public ItemStack getTabIconItem()
                 {
@@ -72,27 +49,27 @@ public abstract class InfinityTab extends CreativeTabs
         
         if ( InfinityConfig.getIsBannerTabEnabled() )
         {
-            Infinity.BANNERS = new InfinityTabBanners( id >= foundId ? 1 + id++ : id++ );
+            Infinity.BANNERS = new InfinityTabBanners( getNextID() );
         }
         
         if ( InfinityConfig.getIsHeadTabEnabled() )
         {
-            Infinity.SKULLS = new InfinityTabSkulls( id >= foundId ? 1 + id++ : id++ );
+            Infinity.SKULLS = new InfinityTabSkulls( getNextID() );
         }
         
         if ( InfinityConfig.getIsThiefTabEnabled() )
         {
-            Infinity.THIEF = new InfinityTabThief( id >= foundId ? 1 + id++ : id++ );
+            Infinity.THIEF = new InfinityTabThief( getNextID() );
         }
         
         if ( InfinityConfig.getIsFireworkTabEnabled() )
         {
-            Infinity.FIREWORKS = new InfinityTabFireworks( id >= foundId ? 1 + id++ : id++ );
+            Infinity.FIREWORKS = new InfinityTabFireworks( getNextID() );
         }
         
         if ( InfinityConfig.getIsVoidEnabled() )
         {
-            Infinity.VOID = new InfinityTab( id >= foundId ? 1 + id++ : id++, "void" ) {
+            Infinity.VOID = new InfinityTab( getNextID(), "void" ) {
                 @Override
                 public ItemStack getTabIconItem()
                 {

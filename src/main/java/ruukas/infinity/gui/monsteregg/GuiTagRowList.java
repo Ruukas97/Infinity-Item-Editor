@@ -104,18 +104,18 @@ public class GuiTagRowList extends GuiListExtended
             this.listOn = list;
         }
         
-        public void drawEntry( int slotIndex, int x, int y, int listWidth, int slotHeight, int mouseX, int mouseY, boolean isSelected, float partialTicks )
+        public void func_180790_a( int slotIndex, int x, int y, int listWidth, int slotHeight, int mouseX, int mouseY, boolean isSelected )
         {
             if ( this.buttonA != null )
             {
                 this.buttonA.y = y;
-                this.buttonA.drawButton( this.client, mouseX, mouseY, partialTicks );
+                this.buttonA.func_146112_a( this.client, mouseX, mouseY );
             }
             
             if ( this.buttonB != null )
             {
                 this.buttonB.y = y;
-                this.buttonB.drawButton( this.client, mouseX, mouseY, partialTicks );
+                this.buttonB.func_146112_a( this.client, mouseX, mouseY );
             }
         }
         
@@ -181,6 +181,13 @@ public class GuiTagRowList extends GuiListExtended
         
         public void updatePosition( int p_192633_1_, int p_192633_2_, int p_192633_3_, float p_192633_4_ )
         {
+        }
+
+        @Override
+        public void func_178011_a( int p_178011_1_, int p_178011_2_, int p_178011_3_ )
+        {
+            // TODO Auto-generated method stub
+            
         }
     }
 }

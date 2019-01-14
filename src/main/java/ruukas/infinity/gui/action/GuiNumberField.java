@@ -1,6 +1,5 @@
 package ruukas.infinity.gui.action;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiScreen;
@@ -467,11 +466,6 @@ public class GuiNumberField extends Gui
         }
         
         this.isFocused = isFocusedIn;
-        
-        if ( Minecraft.getMinecraft().currentScreen != null )
-        {
-            Minecraft.getMinecraft().currentScreen.setFocused( isFocusedIn );
-        }
     }
     
     /**

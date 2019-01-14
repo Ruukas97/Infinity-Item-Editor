@@ -56,9 +56,6 @@ public class MobTag
      */
     // Variants and markings
     
-    // PARROT
-    public static final MobTag variantParrot = new MobTagList( "tag.parrot.variant", "Variant", 5, true );
-    
     // PIG
     public static final MobTag pigSaddled = new MobTagToggle( "tag.pig.saddled", "Saddle" );
     
@@ -99,7 +96,6 @@ public class MobTag
     public static MobTag[] CHICKEN_SPECIFIC = new MobTag[] { eggLayTime };
     public static MobTag[] CREEPER_SPECIFIC = new MobTag[] { powered, explosionRadius, fuse, ignited };
     public static MobTag[] ENDERMITE_SPECIFIC = new MobTag[] { lifeTimeEndermite, playerSpawnedEndermite };
-    public static MobTag[] PARROT_SPECIFIC = new MobTag[] { variantParrot };
     public static MobTag[] PIG_SPECIFIC = new MobTag[] { pigSaddled };
     public static MobTag[] SHEEP_SPECIFIC = new MobTag[] { colorSheep, sheared };
     public static MobTag[] SHULKER_SPECIFIC = new MobTag[] { colorShulker };

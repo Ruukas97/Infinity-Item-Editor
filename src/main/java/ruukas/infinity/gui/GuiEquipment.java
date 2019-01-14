@@ -77,7 +77,7 @@ public class GuiEquipment extends GuiContainer
         
         super.drawScreen( mouseX, mouseY, partialTicks );
         
-        this.renderHoveredToolTip( mouseX, mouseY );
+        //this.renderHoveredToolTip( mouseX, mouseY );
         this.oldMouseX = (float) mouseX;
         this.oldMouseY = (float) mouseY;
     }

@@ -13,7 +13,6 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.tileentity.TileEntitySkull;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -21,8 +20,6 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import ruukas.infinity.data.realm.RealmController;
-import ruukas.infinity.render.PlayerHeadStackRenderer;
-import ruukas.infinity.render.TileEntityHeadRenderer;
 import ruukas.infinity.tab.InfinityTab;
 import ruukas.infinity.util.CertificateHandler;
 
@@ -160,8 +157,8 @@ public class Infinity
         keybindSave = new KeyBinding( "key.infinitysave.desc", Keyboard.KEY_G, "key.infinity.category" );
         ClientRegistry.registerKeyBinding( keybindSave );
         
-        Items.SKULL.setTileEntityItemStackRenderer( new PlayerHeadStackRenderer() );
-        ClientRegistry.bindTileEntitySpecialRenderer( TileEntitySkull.class, new TileEntityHeadRenderer() );
+        //Items.SKULL.setTileEntityItemStackRenderer( new PlayerHeadStackRenderer() );
+        //ClientRegistry.bindTileEntitySpecialRenderer( TileEntitySkull.class, new TileEntityHeadRenderer() );
     }
     
     @EventHandler

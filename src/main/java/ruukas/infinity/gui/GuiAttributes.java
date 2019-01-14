@@ -12,7 +12,6 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.IAttribute;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
@@ -28,12 +27,12 @@ public class GuiAttributes extends GuiInfinity
 {
     private static final ItemStack note = new ItemStack( Items.PAPER );
     
-    private static final IAttribute playerReach = EntityPlayer.REACH_DISTANCE;
-    private static final IAttribute parrotFlying = SharedMonsterAttributes.FLYING_SPEED;
+    // private static final IAttribute playerReach = EntityPlayer.REACH_DISTANCE;
+    // private static final IAttribute parrotFlying = SharedMonsterAttributes.FLYING_SPEED;
     // private IAttribute horseJump = EntityHorse.JUMP_STRENGTH (It's protected)
     // private static final IAttribute zombieReinforcements = EntityZombie.SPAWN_REINFORCEMENTS_CHANCE; (protected)
     
-    private static final IAttribute[] sharedAttributes = { SharedMonsterAttributes.MAX_HEALTH, SharedMonsterAttributes.FOLLOW_RANGE, SharedMonsterAttributes.KNOCKBACK_RESISTANCE, SharedMonsterAttributes.MOVEMENT_SPEED, SharedMonsterAttributes.ATTACK_DAMAGE, SharedMonsterAttributes.ATTACK_SPEED, SharedMonsterAttributes.ARMOR, SharedMonsterAttributes.ARMOR_TOUGHNESS, SharedMonsterAttributes.LUCK, playerReach, parrotFlying };
+    private static final IAttribute[] sharedAttributes = { SharedMonsterAttributes.MAX_HEALTH, SharedMonsterAttributes.FOLLOW_RANGE, SharedMonsterAttributes.KNOCKBACK_RESISTANCE, SharedMonsterAttributes.MOVEMENT_SPEED, SharedMonsterAttributes.ATTACK_DAMAGE, SharedMonsterAttributes.ATTACK_SPEED, SharedMonsterAttributes.ARMOR, SharedMonsterAttributes.ARMOR_TOUGHNESS, SharedMonsterAttributes.LUCK };
     
     private GuiNumberField level;
     private GuiNumberField levelDecimal;

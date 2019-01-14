@@ -31,7 +31,7 @@ public class InfinityTabBanners extends InfinityTab
         
         int i = 0;
         NonNullList<ItemStack> banners = NonNullList.<ItemStack>create();
-        Items.BANNER.getSubItems( CreativeTabs.DECORATIONS, banners );
+        Items.BANNER.getSubItems( Items.BANNER, CreativeTabs.DECORATIONS, banners );
         ItemStack currentBanner = null;
         
         for ( ItemStack stack : player.inventory.mainInventory )
@@ -49,7 +49,7 @@ public class InfinityTabBanners extends InfinityTab
         if ( currentBanner == null )
         {
             iconBanner = generateIconBanner();
-            Items.BANNER.getSubItems( CreativeTabs.DECORATIONS, stackList );
+            Items.BANNER.getSubItems( Items.BANNER, CreativeTabs.DECORATIONS, stackList );
             ItemStack baseShield = new ItemStack( Items.SHIELD );
             
             for ( ItemStack banner : banners )

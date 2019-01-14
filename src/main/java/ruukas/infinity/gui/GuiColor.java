@@ -288,7 +288,7 @@ public class GuiColor extends GuiScreen
             int i = 0;
             for ( EnumDyeColor c : EnumDyeColor.values() )
             {
-                drawRect( blueSlider.x + size * (i % 8), blueSlider.y + blueSlider.height + 10 + size * (i / 8), blueSlider.x + size * ((i % 8) + 1), blueSlider.y + blueSlider.height + 10 + size + size * (i / 8), 0x9f000000 + c.getColorValue() );
+                drawRect( blueSlider.x + size * (i % 8), blueSlider.y + blueSlider.height + 10 + size * (i / 8), blueSlider.x + size * ((i % 8) + 1), blueSlider.y + blueSlider.height + 10 + size + size * (i / 8), 0x9f000000 + c.func_176768_e().colorValue );
                 i++;
             }
         }

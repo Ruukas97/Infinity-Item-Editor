@@ -88,11 +88,6 @@ public class HelperGui
     {
         if ( isMouseInRegion( mouseX, mouseY, xPos, yPos, width, height ) )
         {
-            if ( str.length == 1 )
-            {
-                getCurrentScreen().drawHoveringText( str[0], mouseX, mouseY );
-            }
-            else
             {
                 List<String> strings = new ArrayList<>();
                 
@@ -101,7 +96,7 @@ public class HelperGui
                     strings.add( s );
                 }
                 
-                getCurrentScreen().drawHoveringText( strings, mouseX, mouseY );
+                net.minecraftforge.fml.client.config.GuiUtils.drawHoveringText(strings, mouseX, mouseY, width, height, -1, Minecraft.getMinecraft().fontRenderer);
             }
         }
     }

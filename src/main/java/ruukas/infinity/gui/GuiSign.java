@@ -8,7 +8,6 @@ import org.lwjgl.input.Keyboard;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;
-import net.minecraft.client.util.ITooltipFlag.TooltipFlags;
 import net.minecraft.util.text.TextFormatting;
 import ruukas.infinity.gui.action.GuiActionTextField;
 import ruukas.infinity.gui.action.GuiInfinityButton;
@@ -148,7 +147,7 @@ public class GuiSign extends GuiInfinity
         
         if ( HelperGui.isMouseInRegion( mouseX, mouseY, midX - 8, 27, 16, 16 ) )
         {
-            drawHoveringText( getItemStack().getTooltip( mc.player, TooltipFlags.NORMAL ), mouseX, mouseY );
+            drawHoveringText( getItemStack().getTooltip( mc.player, this.mc.gameSettings.advancedItemTooltips ), mouseX, mouseY );
         }
     }
     

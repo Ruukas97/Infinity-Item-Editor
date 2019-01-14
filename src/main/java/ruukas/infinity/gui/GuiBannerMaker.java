@@ -320,10 +320,9 @@ public class GuiBannerMaker extends InventoryEffectRenderer
         type = slotId == -999 && type == ClickType.PICKUP ? ClickType.THROW : type;
         
         // Drop item mouse is holding if no slot
-        if ( slotIn == null
-        /*
-         * && selectedTabIndex != CreativeTabs.INVENTORY.getTabIndex()
-         */ && type != ClickType.QUICK_CRAFT )
+        if ( slotIn == null/*
+                            * && selectedTabIndex != CreativeTabs.INVENTORY.getTabIndex()
+                            */ && type != ClickType.QUICK_CRAFT )
         {
             InventoryPlayer inventoryplayer1 = this.mc.player.inventory;
             
@@ -517,7 +516,7 @@ public class GuiBannerMaker extends InventoryEffectRenderer
             this.mc.player.inventoryContainer.addListener( this.listener );
             
             NonNullList<ItemStack> dyes = NonNullList.<ItemStack>create();
-            Items.DYE.getSubItems( Items.DYE.getCreativeTab(), dyes );
+            Items.DYE.getSubItems( Items.DYE, Items.DYE.getCreativeTab(), dyes );
             int i = 1;
             for ( ItemStack dye : dyes )
             {

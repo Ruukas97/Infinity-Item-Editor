@@ -1,7 +1,6 @@
 package ruukas.infinity.data;
 
 import net.minecraftforge.common.config.Config;
-import net.minecraftforge.common.config.Config.Ignore;
 import net.minecraftforge.common.config.Config.Type;
 import net.minecraftforge.common.config.ConfigManager;
 import ruukas.infinity.Infinity;
@@ -21,11 +20,8 @@ public class InfinityConfig
     public static boolean thiefTab = true;
     public static boolean fireworkTab = true;
     
-    @Ignore
     public static int MAIN_COLOR = HelperGui.getColorFromRGB( 255, 150, 0, 200 );
-    @Ignore
     public static int ALT_COLOR = HelperGui.getColorFromRGB( 255, 50, 20, 75 );
-    @Ignore
     public static int CONTRAST_COLOR = HelperGui.getColorFromRGB( 255, 0, 100, 255 );
     
     public static void setItemSidebar( boolean value )

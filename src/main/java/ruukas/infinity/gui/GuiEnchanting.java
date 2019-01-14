@@ -15,7 +15,6 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentData;
 import net.minecraft.init.Items;
-import net.minecraft.item.ItemEnchantedBook;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -82,7 +81,7 @@ public class GuiEnchanting extends GuiInfinity
         if ( !enchants.isEmpty() )
         {
             EnchantmentData dat = new EnchantmentData( enchants.get( 0 ), 1 );
-            ItemEnchantedBook.addEnchantment( enchantBook, dat );
+            Items.ENCHANTED_BOOK.addEnchantment( enchantBook, dat );
         }
     }
     

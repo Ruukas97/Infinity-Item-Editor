@@ -12,7 +12,6 @@ import net.minecraft.entity.monster.EntityVindicator;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.monster.EntityZombieVillager;
 import net.minecraft.entity.passive.EntityChicken;
-import net.minecraft.entity.passive.EntityParrot;
 import net.minecraft.entity.passive.EntityPig;
 import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.entity.passive.EntityVillager;
@@ -153,11 +152,6 @@ public class MonsterPlacerUtils
         if ( ent instanceof EntityEndermite )
         {
             return MobTag.ENDERMITE_SPECIFIC;
-        }
-        
-        if ( ent instanceof EntityParrot )
-        {
-            return MobTag.PARROT_SPECIFIC;
         }
         
         if ( ent instanceof EntityPig )

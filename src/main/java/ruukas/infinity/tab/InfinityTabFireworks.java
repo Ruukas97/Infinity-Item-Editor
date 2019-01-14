@@ -79,7 +79,7 @@ public class InfinityTabFireworks extends InfinityTab
                 currentStar.setTagCompound( new NBTTagCompound() );
             
             NonNullList<ItemStack> dyes = NonNullList.<ItemStack>create();
-            Items.DYE.getSubItems( Items.DYE.getCreativeTab(), dyes );
+            Items.DYE.getSubItems( Items.DYE, Items.DYE.getCreativeTab(), dyes );
             
             for ( i = 0 ; i < 5 ; i++ )
             {
