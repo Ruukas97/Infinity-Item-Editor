@@ -108,7 +108,7 @@ gui.headcollection.changecategory.1=更改类型
 gui.headcollection.changecategory.2=加载需要几秒钟
 
 gui.item.toggleside=切换视图
-gui.item.discord=加入噪音
+gui.item.discord=加入Discord聊天群组
 gui.item.share=共享物品
 gui.item.colorremove.tooltip.1=移除所有颜色
 gui.item.drop.tooltip.1=按住shift以复制/向剪贴板发出命令
@@ -286,8 +286,8 @@ tag.villager.profession.5=傻子皮肤
 tag.villager.willing.on=情愿
 tag.villager.willing.off=不情愿
 
-tag.vindicator.johnny.on=卫道士行为
-tag.vindicator.johnny.off=正常行为
+tag.vindicator.johnny.on=卫道士行为-开
+tag.vindicator.johnny.off=卫道士行为-关
 
 tag.zombie.isbaby.on=幼体
 tag.zombie.isbaby.off=成年体
