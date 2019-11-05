@@ -1,0 +1,417 @@
+key.infinity.category=Infinity Item Editor
+key.infinity.desc=Pas Huidig Item Aan
+key.infinitycopy.desc=Kopieer Doelspeler Uitrusting
+key.infinitysave.desc=Save current item to the realm
+
+warning.notcreative=Je moet in creative mode zijn om items op te slaan
+
+itemGroup.unavailable=Infinity - Onbeschikbaar
+itemGroup.banners=Infinity - Banieren
+itemGroup.skulls=Infinity - Hoofden
+itemGroup.fireworks=Infinity - Vuurwerk
+itemGroup.thief=Infinity - Dief
+itemGroup.realm=Infinity - Realm
+itemGroup.void=Infinity - Void
+
+gui.close=Sluit
+gui.save=Sla op
+gui.drop=Laat vallen
+gui.reset=Reset
+gui.clear=Reset
+
+gui.item=Infinity Editor
+gui.spawnegg=Spawn Ei Editor
+gui.head=Hoofd Editor
+gui.armorstand=Harnashouder Editor
+gui.color=Kleur Editor
+gui.nbt=NBT Aanpassen
+gui.nbtadv=NBT Doorzoeken
+gui.enchanting=Betoveringen
+gui.potion=Dranken Brouwen
+gui.book=Boek Editor
+gui.attributes=Attributen Editor
+gui.chestinventory=Kist Inventaris
+gui.hideflags=Verberg Flags
+gui.bannermaker=Banier Maker
+gui.fireworks=Laat Raket Zien
+gui.specialbutton=Speciale NBT
+gui.headcollection=Hoofd Collectie
+gui.lore=Lore Editor
+gui.sign=Bord Editor
+gui.paint=Texture Tekenen
+gui.villagertrades=Dorpeling Aanbiedingen Editor
+gui.trade=Dorpeling Aanbieding Editor
+gui.pick=Item Pakken
+
+gui.armorstand.pose=Bewerk Harnashouder Positie
+gui.armorstand.pose.reset.1=Reset alleen draaiingen!
+gui.armorstand.invisible.note=Let op: Het kan moeilijk zijn om de harnashouder te verwijderen zonder commands.
+gui.armorstand.marker.note=Zet interactie uit and maakt hitbox klein.
+
+gui.attributes.infinity.0=Invoerwaarde
+gui.attributes.infinity.1=Oneindig ∞
+gui.attributes.operation.0=Optellend +
+gui.attributes.operation.1=Multiplicatief *
+gui.attributes.operation.2=Exponentieel **
+gui.attributes.slot.0=Welke Plek Ook
+gui.attributes.slot.1=Primaire hand
+gui.attributes.slot.2=Andere hand
+gui.attributes.slot.3=Hoofd
+gui.attributes.slot.4=Borst
+gui.attributes.slot.5=Benen
+gui.attributes.slot.6=Voeten
+attribute.name.generic.flyingSpeed=Monster Vliegsnelheid
+
+gui.book.title=Titel
+gui.book.author=Auteur
+gui.book.generation=Generatie
+gui.book.resolved=Gecontroleerd
+gui.book.resolved.tooltip.1=Is gecontroleerd door server (check wiki voor "resolved" bij "Written Book")
+gui.book.unresolved=Ongecontroleerd
+gui.book.unsign=Signeren Ongedaan Maken
+gui.book.resign=Opnieuw Signeren
+
+gui.enchanting.enchanttoggle.0=Laat Toepasbare Zien
+gui.enchanting.enchanttoggle.1=Laat Alles Zien
+gui.enchanting.addall=Voeg Alle Zichtbare Toe
+
+gui.spawnegg.entity=Wezen Specifiek
+gui.spawnegg.mob=Monster Specifiek
+gui.spawnegg.mobspecific=%s Specifiek
+gui.spawnegg.animalspecific=Dier Specifiek
+
+gui.head.save.tooltip.1=Kan laggen, wanneer speler info wordt geladen.
+gui.head.save.tooltip.2=Dit is een vanilla probleem.
+gui.head.list.tooltip.1=Maak lijst van huidige spelers op de server.
+gui.head.list.tooltip.2=--Nog niet geïmplementeerd--
+
+gui.headcollection.category.alphabet=Alfabet
+gui.headcollection.category.animals=Dieren
+gui.headcollection.category.blocks=Blokken
+gui.headcollection.category.decoration=Decoratie
+gui.headcollection.category.food-drinks=Eten/Drinken
+gui.headcollection.category.humans=Mens
+gui.headcollection.category.humanoid=Humanoïde
+gui.headcollection.category.miscellaneous=Overig
+gui.headcollection.category.monsters=Monsters
+gui.headcollection.category.plants=Planten
+
+gui.headcollection.clickhead=Klik om huidig item te vervangen
+gui.headcollection.clickheadshift=Houd shift ingedrukt om te laten vallen
+gui.headcollection.typesearch=Typ om te zoeken
+gui.headcollection.clicksearch=Klik om te zoeken!
+gui.headcollection.currentpage=Pagina %s/%s
+gui.headcollection.changecategory.1=Verander Categorie
+gui.headcollection.changecategory.2=Duurt een paar seconden om te laden
+
+gui.item.toggleside=Wissel Beeld
+gui.item.discord=Join Discord
+gui.item.share=Deel Item
+gui.item.colorremove.tooltip.1=Verwijder alle kleuren
+gui.item.drop.tooltip.1=Houd shift ingedrukt om /give command te kopiëren naar je klembord
+gui.item.drop.tooltip.2=Je kan het dan ergens anders plakken
+gui.item.id=Item ID
+gui.item.count=Aantal
+gui.item.meta=Meta
+gui.item.name=Item Naam
+gui.item.lore=Lore
+
+gui.nbt.update=Update NBT
+
+gui.nbt.comp.open=Klik om Samengestelde Tag uit te breiden
+gui.nbt.comp.close=Klik om Samengestelde Tag samen te voegen
+
+tag.head.0=Skelettenschedel
+tag.head.1=Witherschedel
+tag.head.2=Zombiehoofd
+tag.head.3=Spelerhoofd
+tag.head.4=Creeperhoofd
+tag.head.5=Drakenhoofd
+
+gui.potion.time=Tijd (Seconden)
+gui.potion.level=Versterker
+gui.potion.showparticles.0=Verberg Particles
+gui.potion.showparticles.1=Laat Particles Zien
+
+gui.villagertrades.addtrade=Aanbiedingen toevoegen
+gui.villagertrades.leftclick=Linkermuisknop om aan te passen
+gui.villagertrades.rightclick=Rechtermuisknop om te verwijderen
+gui.villagertrades.reset=Verwijder Aanbiedingen
+
+gui.equipment.inventoryclone=Dit is een kopie van je inventaris. Vernaderingen worden niet opgeslagen.
+
+
+flag.enchantment.0=Enchantment: getoond
+flag.enchantment.1=Enchantment: verborgen
+flag.attributemod.0=Attribute Mod: getoond
+flag.attributemod.1=Attribute Mod: verborgen
+flag.unbreakable.0=Unbreakable: getoond
+flag.unbreakable.1=Unbreakable: verborgen
+flag.candestroy.0=Can Destroy: getoond
+flag.candestroy.1=Can Destroy: verborgen
+flag.canplaceon.0=Can Place On: getoond
+flag.canplaceon.1=Can Place On: verborgen
+flag.iteminfo.0=Item Info: getoond
+flag.iteminfo.1=Item Info: verborgen
+
+gui.editstring=Pas Reeks Aan
+
+gui.entitytags=Wezenstags
+gui.mobspecific=Monster Specifiek
+
+
+tag.skullowner=HoofdEigenaar
+
+tag.unbreakable.0=Breekbaar
+tag.unbreakable.1=Onbreekbaar
+
+tag.fire.on=In brand voor %s ticks
+tag.fire.off=Niet in brand
+
+tag.customname=Verander Aangepaste Naam
+tag.nogravity.on=Geen Zwaartekracht
+tag.nogravity.off=Zwaartekracht
+tag.invulnerable.on=Onkwetsbaar
+tag.invulnerable.off=Kwetsbaar
+tag.customnamevisible.on=Aangepaste Naam Zichtbaar
+tag.customnamevisible.off=Aangepaste Naam Verborgen
+tag.silent.on=Stil
+tag.silent.off=Niet Stil
+tag.glowing.on=Gloed
+tag.glowing.off=Geen Gloed
+
+tag.health.on=%s Leven
+tag.health.off=Dood
+tag.absorption.on=%s Absorption
+tag.absorption.off=Geen Absorpsie
+tag.fallflying.on=Dekschild Zweven
+tag.fallflying.off=Normaal Vallen
+tag.noai.on=AI Uit
+tag.noai.off=AI Aan
+tag.persistencerequired.on=Despawnt Niet Normaal
+tag.persistencerequired.off=Despawnt Als Normaal
+tag.canpickuploot.on=Pakt Items Op
+tag.canpickuploot.off=Negeert Items
+
+tag.armorstand.arms.0=Geen Armen
+tag.armorstand.arms.1=Heeft Armen
+tag.armorstand.small.0=Normaal
+tag.armorstand.small.1=Klein
+tag.armorstand.invisible.0=Zichtbaar
+tag.armorstand.invisible.1=Onzichtbaar
+tag.armorstand.nobase.0=Heeft Grondplaat
+tag.armorstand.nobase.1=Geen Grondplaat
+tag.armorstand.marker.0=Normale Hitbox
+tag.armorstand.marker.1=Kleine Hitbox
+tag.armorstand.inventory=Uitrusting
+tag.armorstand.pose=Pose
+
+tag.chicken.egglaytime.on=%s ticks voor ei
+tag.chicken.egglaytime.off=Klaar om ei te leggen
+
+tag.creeper.powered.on=Versterkt
+tag.creeper.powered.off=Onversterkt
+tag.creeper.explosionradius.on=Explosiestraal: %s
+tag.creeper.explosionradius.off=Geen Explosiestraal
+tag.creeper.fuse.on=Tijd tot exploderen: %s
+tag.creeper.fuse.off=Directe Explosie
+tag.creeper.ignited.on=Aangestoken
+tag.creeper.ignited.off=Onaangestoken
+
+tag.endermite.lifetime.off=Ongedefinieerde Levenstijd
+tag.endermite.lifetime.on=Lifetime: %s
+tag.endermite.playerspawned.off=SpelerGespawnd: 0
+tag.endermite.playerspawned.on=SpelerGespawnd: 1
+
+tag.parrot.variant.-1=Willekeurige Variant
+tag.parrot.variant.0=Rode Variant
+tag.parrot.variant.1=Blauwe Variant
+tag.parrot.variant.2=Green Variant
+tag.parrot.variant.3=Turquoise Variant
+tag.parrot.variant.4=Zilvere Variant
+
+tag.pig.saddled.on=Bezadeld
+tag.pig.saddled.off=Onbezadeld
+
+tag.sheep.color.0=Witte Wol
+tag.sheep.color.1=Oranje Wol
+tag.sheep.color.2=Magenta Wol
+tag.sheep.color.3=Lichtblauwe Wol
+tag.sheep.color.4=Gele Wol
+tag.sheep.color.5=Lichtgroene Wol
+tag.sheep.color.6=Roze Wol
+tag.sheep.color.7=Grijze Wol
+tag.sheep.color.8=Lichtgrijze Wol
+tag.sheep.color.9=Turquoise Wol
+tag.sheep.color.10=Paarse Wol
+tag.sheep.color.11=Blauwe Wol
+tag.sheep.color.12=Bruine Wol
+tag.sheep.color.13=Donkergroene Wol
+tag.sheep.color.14=Rode Wol
+tag.sheep.color.15=Zwarte Wol
+tag.sheep.sheared.on=Geschoren
+tag.sheep.sheared.off=Heeft Wol
+
+tag.shulker.color.0=Wit
+tag.shulker.color.1=Oranje
+tag.shulker.color.2=Magenta
+tag.shulker.color.3=Lichtblauw
+tag.shulker.color.4=Geel
+tag.shulker.color.5=Lichtgroen
+tag.shulker.color.6=Roze
+tag.shulker.color.7=Grijs
+tag.shulker.color.8=Lightgrijs
+tag.shulker.color.9=Turquoise
+tag.shulker.color.10=Paars
+tag.shulker.color.11=Blauw
+tag.shulker.color.12=Bruin
+tag.shulker.color.13=Donkergroen
+tag.shulker.color.14=Rood
+tag.shulker.color.15=Zwart
+
+tag.slime.size.on=Grootte: %s
+tag.slime.size.off=Grootte: %s
+
+tag.villager.profession.-1=Willekeurige Skin
+tag.villager.profession.0=Boer Skin
+tag.villager.profession.1=Bibliothecaris Skin
+tag.villager.profession.2=Geestelijke Skin
+tag.villager.profession.3=Smid Skin
+tag.villager.profession.4=Slager Skin
+tag.villager.profession.5=Onbenul Skin
+tag.villager.willing.on=Wil
+tag.villager.willing.off=Wil niet
+
+tag.vindicator.johnny.on=Johnny Gedrag
+tag.vindicator.johnny.off=Normal Gedrag
+
+tag.zombie.isbaby.on=Baby
+tag.zombie.isbaby.off=Volwassen
+tag.zombie.canbreakdoors.on=Kan Deuren Slopen
+tag.zombie.canbreakdoors.off=Kan Geen Deuren Slopen
+
+potion.potency.3=IV
+potion.potency.4=V
+potion.potency.5=VI
+potion.potency.6=VII
+potion.potency.7=VIII
+potion.potency.8=IX
+potion.potency.9=X
+potion.potency.10=XI
+potion.potency.11=XII
+potion.potency.12=XIII
+potion.potency.13=XIV
+potion.potency.14=XV
+potion.potency.15=XVI
+potion.potency.16=XVII
+potion.potency.17=XVIII
+potion.potency.18=XIX
+potion.potency.19=XX
+potion.potency.20=XXI
+potion.potency.21=XXII
+potion.potency.22=XXIII
+potion.potency.23=XXIV
+potion.potency.24=XXV
+potion.potency.25=XXVI
+potion.potency.26=XXVII
+potion.potency.27=XXVIII
+potion.potency.28=XXIX
+potion.potency.29=XXX
+potion.potency.30=XXXI
+potion.potency.31=XXXII
+potion.potency.32=XXXIII
+potion.potency.33=XXXIV
+potion.potency.34=XXXV
+potion.potency.35=XXXVI
+potion.potency.36=XXXVII
+potion.potency.37=XXXVIII
+potion.potency.38=XXXIX
+potion.potency.39=XL
+potion.potency.40=XLI
+potion.potency.41=XLII
+potion.potency.42=XLIII
+potion.potency.43=XLIV
+potion.potency.44=XLV
+potion.potency.45=XLVI
+potion.potency.46=XLVII
+potion.potency.47=XLVIII
+potion.potency.48=XLIX
+potion.potency.49=L
+potion.potency.50=LI
+potion.potency.51=LII
+potion.potency.52=LIII
+potion.potency.53=LIV
+potion.potency.54=LV
+potion.potency.55=LVI
+potion.potency.56=LVII
+potion.potency.57=LVIII
+potion.potency.58=LIX
+potion.potency.59=LX
+potion.potency.60=LXI
+potion.potency.61=LXII
+potion.potency.62=LXIII
+potion.potency.63=LXIV
+potion.potency.64=LXV
+potion.potency.65=LXVI
+potion.potency.66=LXVII
+potion.potency.67=LXVIII
+potion.potency.68=LXIX
+potion.potency.69=LXX
+potion.potency.70=LXXI
+potion.potency.71=LXXII
+potion.potency.72=LXXIII
+potion.potency.73=LXXIV
+potion.potency.74=LXXV
+potion.potency.75=LXXVI
+potion.potency.76=LXXVII
+potion.potency.77=LXXVIII
+potion.potency.78=LXXIX
+potion.potency.79=LXXX
+potion.potency.80=LXXXI
+potion.potency.81=LXXXII
+potion.potency.82=LXXXIII
+potion.potency.83=LXXXIV
+potion.potency.84=LXXXV
+potion.potency.85=LXXXVI
+potion.potency.86=LXXXVII
+potion.potency.87=LXXXVIII
+potion.potency.88=LXXXIX
+potion.potency.89=XC
+potion.potency.90=XCI
+potion.potency.91=XCII
+potion.potency.92=XCIII
+potion.potency.93=XCIV
+potion.potency.94=XCV
+potion.potency.95=XCVI
+potion.potency.96=XCVII
+potion.potency.97=XCVIII
+potion.potency.98=XCIX
+potion.potency.99=C
+potion.potency.100=CI
+potion.potency.101=CII
+potion.potency.102=CIII
+potion.potency.103=CIV
+potion.potency.104=CV
+potion.potency.105=CVI
+potion.potency.106=CVII
+potion.potency.107=CVIII
+potion.potency.108=CIX
+potion.potency.109=CX
+potion.potency.110=CXI
+potion.potency.111=CXII
+potion.potency.112=CXIII
+potion.potency.113=CXIV
+potion.potency.114=CXV
+potion.potency.115=CXVI
+potion.potency.116=CXVII
+potion.potency.117=CXVIII
+potion.potency.118=CXIX
+potion.potency.119=CXX
+potion.potency.120=CXXI
+potion.potency.121=CXXII
+potion.potency.122=CXXIII
+potion.potency.123=CXXIV
+potion.potency.124=CXXV
+potion.potency.125=CXXVI
+potion.potency.126=CXXVII
+potion.potency.127=CXXVIII
