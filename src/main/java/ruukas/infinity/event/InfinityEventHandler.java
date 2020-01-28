@@ -291,7 +291,7 @@ public class InfinityEventHandler
             e.getManager().channel().pipeline().addBefore( "packet_handler", "void_handler", new ChannelDuplexHandler() {
                 public void channelRead( io.netty.channel.ChannelHandlerContext ctx, Object msg ) throws Exception
                 {
-                    if ( msg instanceof SPacketEntityEquipment )
+                    if ( msg instanceof SPacketEntityEquipment && Minecraft.getMinecraft().world != null )
                     {
                         SPacketEntityEquipment packet = (SPacketEntityEquipment) msg;
                         ItemStack stack = packet.getItemStack().copy();
