@@ -10,10 +10,13 @@ import ruukas.infinity.gui.HelperGui;
 @Config( modid = Infinity.MODID, name = "InfinityItemEditor", category = "general" )
 public class InfinityConfig
 {
+	@Ignore
     public static boolean itemGuiSidebar = false;
     public static boolean voidTab = true;
     public static boolean voidAddNotification = false;
     public static boolean voidTabHideHeads = false;
+    
+    public static boolean antiFreezeHeadLoading = true;
     
     public static boolean unavailableTab = true;
     public static boolean bannerTab = true;
@@ -68,4 +71,8 @@ public class InfinityConfig
     {
         return fireworkTab;
     }
+
+	public static boolean getIsAntiFreezeHeadLoadingEnabled() {
+		return antiFreezeHeadLoading;
+	}
 }

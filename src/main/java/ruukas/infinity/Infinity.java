@@ -20,6 +20,7 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import ruukas.infinity.data.InfinityConfig;
 import ruukas.infinity.data.realm.RealmController;
 import ruukas.infinity.render.PlayerHeadStackRenderer;
 import ruukas.infinity.render.TileEntityHeadRenderer;
@@ -160,8 +161,10 @@ public class Infinity
         keybindSave = new KeyBinding( "key.infinitysave.desc", Keyboard.KEY_G, "key.infinity.category" );
         ClientRegistry.registerKeyBinding( keybindSave );
         
-        Items.SKULL.setTileEntityItemStackRenderer( new PlayerHeadStackRenderer() );
-        ClientRegistry.bindTileEntitySpecialRenderer( TileEntitySkull.class, new TileEntityHeadRenderer() );
+        if(InfinityConfig.getIsAntiFreezeHeadLoadingEnabled()) {
+            Items.SKULL.setTileEntityItemStackRenderer( new PlayerHeadStackRenderer() );
+            ClientRegistry.bindTileEntitySpecialRenderer( TileEntitySkull.class, new TileEntityHeadRenderer() );
+        }
     }
     
     @EventHandler
