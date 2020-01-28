@@ -18,6 +18,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
 import ruukas.infinity.data.InfinityConfig;
 import ruukas.infinity.gui.action.GuiInfinityButton;
+import ruukas.infinity.util.GiveHelper;
 
 public abstract class GuiInfinity extends GuiScreen
 {
@@ -141,35 +142,8 @@ public abstract class GuiInfinity extends GuiScreen
     {
         if ( isShiftKeyDown() )
         {
-            if ( stackHolder == null || getItemStack().isEmpty() )
-            {
-                return;
-            }
-            
-            String id = getItemStack().getItem().getRegistryName().toString();
-            
-            String command = "/give @p " + id;
-            
-            boolean shouldAddTag = getItemStack().hasTagCompound();
-            boolean shouldAddMeta = shouldAddTag || getItemStack().getMetadata() != 0;
-            boolean shouldAddCount = shouldAddMeta || getItemStack().getCount() != 1;
-            
-            if ( shouldAddCount )
-            {
-                command += " " + getItemStack().getCount();
-            }
-            
-            if ( shouldAddMeta )
-            {
-                command += " " + getItemStack().getMetadata();
-            }
-            
-            if ( shouldAddTag )
-            {
-                command += " " + getItemStack().toString();
-            }
-            
-            setClipboardString( command );
+            String s = GiveHelper.getStringFromItemStack( getItemStack() );
+            GuiScreen.setClipboardString( s );
         }
         else
         {
