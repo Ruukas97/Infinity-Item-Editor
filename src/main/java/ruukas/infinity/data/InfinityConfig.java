@@ -15,9 +15,7 @@ public class InfinityConfig
     public static boolean voidTab = true;
     public static boolean voidAddNotification = false;
     public static boolean voidTabHideHeads = false;
-    
-    public static boolean antiFreezeHeadLoading = true;
-    
+        
     public static boolean unavailableTab = true;
     public static boolean bannerTab = true;
     public static boolean headTab = true;
@@ -71,8 +69,4 @@ public class InfinityConfig
     {
         return fireworkTab;
     }
-
-	public static boolean getIsAntiFreezeHeadLoadingEnabled() {
-		return antiFreezeHeadLoading;
-	}
 }
