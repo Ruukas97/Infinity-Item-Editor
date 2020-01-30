@@ -96,7 +96,7 @@ gui.headcollection.category.miscellaneous=Misc
 gui.headcollection.category.monsters=Monsters
 gui.headcollection.category.plants=Plants
 
-gui.headcollection.clickhead=Click to replace current item
+gui.headcollection.clickhead=Click to put head in empty slot
 gui.headcollection.clickheadshift=Hold shift to drop head
 gui.headcollection.typesearch=Type to search
 gui.headcollection.clicksearch=Click to search!

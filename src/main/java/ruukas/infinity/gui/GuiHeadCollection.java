@@ -21,6 +21,7 @@ import ruukas.infinity.data.InfinityConfig;
 import ruukas.infinity.json.MinecraftHead;
 import ruukas.infinity.nbt.NBTHelper;
 import ruukas.infinity.nbt.itemstack.tag.InfinitySkullOwnerTag;
+import ruukas.infinity.util.InventoryUtils;
 
 public class GuiHeadCollection extends GuiScreen {
 	public static final String[] CATEGORIES = { "alphabet", "animals", "blocks", "decoration", "food-drinks", "humans",
@@ -134,27 +135,11 @@ public class GuiHeadCollection extends GuiScreen {
 					if (isShiftKeyDown()) {
 						mc.playerController.sendPacketDropItem(filteredSkulls.get(i));
 					} else {
-						mc.playerController.sendSlotPacket(filteredSkulls.get(i), mc.player.inventory.currentItem + 36); // 36
-																															// is
-																															// the
-																															// index
-																															// of
-																															// the
-																															// action
-																															// (4
-																															// armor,
-																															// 1
-																															// off
-																															// hand,
-																															// 5
-																															// crafting,
-																															// and
-																															// 27
-																															// inventory,
-																															// if
-																															// I
-																															// remember
-																															// correctly).
+						int slot = InventoryUtils.getEmptySlot(mc.player.inventory);
+						if (slot < 0)
+							mc.playerController.sendPacketDropItem(filteredSkulls.get(i));
+						else
+							mc.playerController.sendSlotPacket(filteredSkulls.get(i), slot);
 					}
 					return;
 				}
@@ -294,6 +279,13 @@ public class GuiHeadCollection extends GuiScreen {
 			HelperGui.addTooltipTranslated(space + 2, 50 + topbar, letterSpace - 4, 161, mouseX, mouseY,
 					"gui.headcollection.changecategory");
 		}
+
+		drawCenteredString(fontRenderer, "Free slots: " + InventoryUtils.getEmptySlots(mc.player.inventory), width / 2,
+				height - 45, blandColor);
+		drawCenteredString(fontRenderer,
+				"Heads in inventory: " + InventoryUtils.countItem(mc.player.inventory, Items.SKULL, 3), width / 2,
+				height - 35, blandColor);
+
 	}
 
 	public void loadSkulls() throws IOException {
