@@ -1,0 +1,18 @@
+Improve Lore editing
+Reorder realm
+Clear void
+Change color
+Better color picker
+
+Hey, Ruukas, I've found some sliders in mob editor which cannot be translated directly in the ru_ru.lang file because there are no such tags like that. Example:
+Size (of slime)
+Random Skin, Unwilling/Willing
+Ready to lay egg, %s ticks to lay egg
+The whole Villager Trades Editor
+
+Some simple missing tags like CanDestroy, CanPlaceOn
+Chest tags (CustomName, Lock)
+
+Less rotating wheel
+
+Tab to navigate text boxes

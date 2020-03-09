@@ -58,6 +58,7 @@ import ruukas.infinity.gui.GuiInfinity.ItemStackHolder;
 import ruukas.infinity.gui.GuiItem;
 import ruukas.infinity.gui.HelperGui;
 import ruukas.infinity.util.GiveHelper;
+import ruukas.infinity.util.InventoryUtils;
 
 @Mod.EventBusSubscriber( modid = Infinity.MODID )
 public class InfinityEventHandler
@@ -89,7 +90,7 @@ public class InfinityEventHandler
         
         if ( Infinity.keybindCopy.isPressed() && mc.world != null )
         {
-            EntityPlayer player = Minecraft.getMinecraft().player;
+            EntityPlayerSP player = Minecraft.getMinecraft().player;
             
             /*
              * RayTraceResult res = Minecraft.getMinecraft().player.rayTrace( 15, Minecraft.getMinecraft().getRenderPartialTicks() );
@@ -129,6 +130,11 @@ public class InfinityEventHandler
                         mc.playerController.sendSlotPacket( stacks[5], 5 ); // 36 is the index of the actionbar (5 crafting, 4 armor, and 27 inventory, if I remember correctly).
                     }
                 }
+            }
+            
+            else if (mc.objectMouseOver != null && mc.objectMouseOver.typeOfHit != RayTraceResult.Type.MISS)
+            {
+                InventoryUtils.onPickBlock(mc.objectMouseOver, player, mc.world);
             }
         }
     }
@@ -242,15 +248,16 @@ public class InfinityEventHandler
         if ( Minecraft.getMinecraft().currentScreen != null && Minecraft.getMinecraft().currentScreen instanceof GuiContainerCreative && (e.getStack().getItem() == Items.BANNER || e.getStack().getItem() == Items.SHIELD || e.getStack().getItem() == Items.FIREWORK_CHARGE || e.getStack().getItem() == Items.FIREWORKS) )
         {
             GuiContainerCreative gui = (GuiContainerCreative) Minecraft.getMinecraft().currentScreen;
+            boolean banners = InfinityConfig.bannerTab && gui.getSelectedTabIndex() == Infinity.BANNERS.getTabIndex();
+            boolean fireworks = InfinityConfig.fireworkTab && gui.getSelectedTabIndex() == Infinity.FIREWORKS.getTabIndex();
             
-            if ( (gui.getSelectedTabIndex() == Infinity.BANNERS.getTabIndex() || gui.getSelectedTabIndex() == Infinity.FIREWORKS.getTabIndex()) && gui.getSlotUnderMouse() != null && gui.getSlotUnderMouse().inventory == Minecraft.getMinecraft().player.inventory )
+            if ( (banners || fireworks) && gui.getSlotUnderMouse() != null && gui.getSlotUnderMouse().inventory == Minecraft.getMinecraft().player.inventory )
             {
                 gui.initGui();
             }
         }
     }
     
-    @SubscribeEvent
     public static void onChatReceived( ClientChatReceivedEvent e )
     {
         if ( !InfinityConfig.getIsVoidEnabled() )
