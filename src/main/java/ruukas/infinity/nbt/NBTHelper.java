@@ -81,7 +81,6 @@ public class NBTHelper
         else
         {
             lore.set( index, new NBTTagString( line ) );
-            ;
         }
     }
     

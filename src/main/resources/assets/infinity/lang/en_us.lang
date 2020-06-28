@@ -42,6 +42,7 @@ gui.paint=Texture Paint
 gui.villagertrades=Villager Trades Editor
 gui.trade=Villager Trade Editor
 gui.pick=Item Picker
+gui.lorepainter=Lore Painter
 
 gui.armorstand.pose=Armor Stand Pose Editor
 gui.armorstand.pose.reset.1=Only resets rotations!
@@ -140,6 +141,13 @@ gui.villagertrades.reset=Clear trades
 
 gui.equipment.inventoryclone=This is a copy of your inventory. Changes will not be saved.
 
+gui.lorepainter.insert=Insert
+gui.lorepainter.preview=Preview
+gui.lorepainter.scale=Scale
+gui.lorepainter.symbol.fullblock=Full Block
+gui.lorepainter.symbol.mediumshade=Medium Shade
+gui.lorepainter.symbol.darkshade=Dark Shade
+gui.lorepainter.symbol.fullspace=Empty Space
 
 flag.enchantment.0=Enchantment: shown
 flag.enchantment.1=Enchantment: hidden

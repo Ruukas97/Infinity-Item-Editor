@@ -21,9 +21,10 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntityBanner;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.client.config.GuiUtils;
 import ruukas.infinity.Infinity;
 
-public class HelperGui
+public class HelperGui extends GuiUtils
 {
     public static final ResourceLocation EMPTY_ARMOR_SLOT_SWORD = new ResourceLocation( Infinity.MODID, "items/empty_armor_slot_sword" );
     
