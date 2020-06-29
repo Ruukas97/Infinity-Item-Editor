@@ -141,6 +141,11 @@ gui.villagertrades.reset=Clear trades
 
 gui.equipment.inventoryclone=This is a copy of your inventory. Changes will not be saved.
 
+gui.lore.addline=Add line
+gui.lore.copylore=Copy lore
+gui.lore.copyall=Copy tooltip
+gui.lore.paste=Paste
+
 gui.lorepainter.insert=Insert
 gui.lorepainter.preview=Preview
 gui.lorepainter.scale=Scale
