@@ -9,45 +9,45 @@ itemGroup.unavailable=Infinity - Недоступные вещи
 itemGroup.banners=Infinity - Флаги
 itemGroup.skulls=Infinity - Головы
 itemGroup.fireworks=Infinity - Феерверки
-itemGroup.thief=Infinity - Область сохранений
-itemGroup.void=Infinity - Void
+itemGroup.thief=Infinity - Чужие вещи
+itemGroup.void=Infinity - Черная дыра
 
 gui.close=Закрыть
 gui.save=Сохранить
-gui.drop=Выкинуть
-gui.reset=Исходное положение
-gui.clear=Удалить вещь
+gui.drop=Кинуть
+gui.reset=Сброс
+gui.clear=Очистить
 
-gui.item=Infinity Редактор
+gui.item=Infinity Editor
 gui.spawnegg=Редактор яиц призыва
 gui.head=Редактор голов
 gui.armorstand=Редактор стоек для брони
 gui.color=Редактор цветов
-gui.nbt=NBT Редактор
+gui.nbt=NBT
 gui.nbtadv=NBT Браузер
 gui.enchanting=Зачарования
 gui.potion=Зельеварение
-gui.book=Редактор Книг
-gui.attributes=Редактор Атрибутов
+gui.book=Книжные настройки
+gui.attributes=Атрибуты
 gui.chestinventory=Инвентарь сундука
-gui.hideflags=Спрятать Пометки
-gui.bannermaker=Создатель Баннеров
-gui.fireworks=Предварительный Просмотр Ракеты
-gui.specialbutton=Специальный NBT
-gui.headcollection=Коллекция Голов
-gui.lore=Редактор Описаний
-gui.sign=Редактор Табличек
+gui.hideflags=Спрятать флаги
+gui.bannermaker=Баннер
+gui.fireworks=Предпросмотр фейерверка
+gui.specialbutton=Другое
+gui.headcollection=Головы
+gui.lore=Описание
+gui.sign=Настройки таблички
 
 gui.armorstand.pose=Редактор позиции стойки для брони
 gui.armorstand.pose.reset.1=Лишь вращает стойку
-gui.armorstand.invisible.note=Заметка: Ломание стойки для брони может оказаться затруднительным без команд
+gui.armorstand.invisible.note=Внимание: Невидимую стойку для брони сложно сломать без команд
 gui.armorstand.marker.note=Маркер останавливает взаймодействие со стойкой и делает хитбокс маленьким
 
 gui.attributes.infinity.0=Число по умолчанию
 gui.attributes.infinity.1=Бесконечность
 gui.attributes.operation.0=Добавление в цифрах +
-gui.attributes.operation.1=Добавление в процентах *
-gui.attributes.operation.2=Умножение в процентах **
+gui.attributes.operation.1=Умножение *
+gui.attributes.operation.2=Возведение в степень **
 gui.attributes.slot.0=Любой слот
 gui.attributes.slot.1=Правая рука
 gui.attributes.slot.2=Левая рука
@@ -55,7 +55,7 @@ gui.attributes.slot.3=Голова
 gui.attributes.slot.4=Тело
 gui.attributes.slot.5=Ноги
 gui.attributes.slot.6=Ступни
-attribute.name.generic.flyingSpeed=Скорость полета моба
+attribute.name.generic.flyingSpeed=Скорость полета
 
 gui.book.title=Название
 gui.book.author=Автор
@@ -63,22 +63,22 @@ gui.book.generation=Генерация
 gui.book.resolved=Решено
 gui.book.resolved.tooltip.1=Книга должна быть решена сервером
 gui.book.unresolved=Не решено
-gui.book.unsign=Не подписанно
-gui.book.resign=Подписанно
+gui.book.unsign=Не подписано
+gui.book.resign=Подписано
 
 gui.enchanting.enchanttoggle.0=Показать применимые
 gui.enchanting.enchanttoggle.1=Показать все
 gui.enchanting.addall=Добавить все
 
-gui.spawnegg.entity=Специальные настройки сущности
-gui.spawnegg.mob=Специальные настройки моба
+gui.spawnegg.entity=Особые настройки сущности
+gui.spawnegg.mob=Особые настройки моба
 gui.spawnegg.mobspecific=%s 
-gui.spawnegg.animalspecific=Специальные настройки животного
+gui.spawnegg.animalspecific=Особые настройки животного
 
-gui.head.save.tooltip.1=Может виснуть, когда игрок загружает информацию
-gui.head.save.tooltip.2=Это проблема ванильной версии Minecraft'а.
+gui.head.save.tooltip.1=Игра может зависнуть при загрузке информации
+gui.head.save.tooltip.2=Это проблема с ванильным Minecraft.
 gui.head.list.tooltip.1=Список людей на сервере
-gui.head.list.tooltip.2=--Пока не сделано--
+gui.head.list.tooltip.2=--Пока не реализовано--
 
 gui.headcollection.category.alphabet=Алфавит
 gui.headcollection.category.animals=Животные
@@ -96,20 +96,20 @@ gui.headcollection.typesearch=Напишите для поиска
 gui.headcollection.clicksearch=Нажмите для поиска!
 gui.headcollection.currentpage=Страница %s/%s
 gui.headcollection.changecategory.1=Изменить категорию
-gui.headcollection.changecategory.2=Требует несколько секунд для загрузки
+gui.headcollection.changecategory.2=Необходимо несколько секунд для загрузки
 
 gui.item.toggleside=Изменить просмотр
-gui.item.discord=Войти на наш Discord сервер
-gui.item.share=Поделиться предметом
+gui.item.discord=Discord сервер мода
+gui.item.share=Поделиться
 
 gui.item.colorremove.tooltip.1=Удалить все цвета
-gui.item.drop.tooltip.1=Зажмите shift чтобы скопировать команду /give в ваш буфер обмена
-gui.item.drop.tooltip.2=Затем можно вставить куда-то в другое место
+gui.item.drop.tooltip.1=Зажмите Shift, чтобы скопировать команду /give
+gui.item.drop.tooltip.2=Затем можно её вставить куда-нибудь
 
 gui.nbt.update=Обновить NBT
 
-gui.nbt.comp.open=Нажмите чтобы увеличить Compound Tag
-gui.nbt.comp.close=Нажмите чтобы убрать Compound Tag
+gui.nbt.comp.open=Нажмите, чтобы увеличить Compound Tag
+gui.nbt.comp.close=Нажмите, чтобы убрать Compound Tag
 
 tag.head.0=Череп скелета
 tag.head.1=Череп визер-скелета
@@ -118,7 +118,7 @@ tag.head.3=Голова игрока
 tag.head.4=Голова крипера
 tag.head.5=Голова дракона
 
-gui.potion.time=Время(В секундах)
+gui.potion.time=Время (В секундах)
 gui.potion.level=Уровень
 gui.potion.showparticles.0=Спрятать частицы
 gui.potion.showparticles.1=Показать частицы
@@ -152,21 +152,21 @@ tag.unbreakable.1=Неразрушаемый
 tag.fire.on=Горит %s тиков
 tag.fire.off=Не горит
 
-tag.customname=Изменить пользовательское имя
+tag.customname=Изменить название
 tag.nogravity.on=Без гравитации
 tag.nogravity.off=С гравитацией
 tag.invulnerable.on=Неуязвимый
 tag.invulnerable.off=Уязвимый
-tag.customnamevisible.on=Пользовательское имя видно
-tag.customnamevisible.off=Пользовательское имя спрятано
+tag.customnamevisible.on=Название видно
+tag.customnamevisible.off=Название спрятано
 tag.silent.on=Бесшумный
 tag.silent.off=Не бесшумный
 tag.glowing.on=Светящийся
 tag.glowing.off=Не светящийся
 
-tag.health.on=%s Здоровья
+tag.health.on=%s здоровья
 tag.health.off=Мертв
-tag.absorption.on=%s Дополнительных сердец (Эффект поглощения)
+tag.absorption.on=%s дополнительных сердец (Эффект поглощения)
 tag.absorption.off=Без дополнительных сердец (Эффект поглощения)
 tag.fallflying.on=Приземление, как на элитре
 tag.fallflying.off=Нормальное падение
@@ -179,37 +179,37 @@ tag.canpickuploot.off=Игнорирует дроп
 
 tag.armorstand.arms.0=Без рук
 tag.armorstand.arms.1=С руками
-tag.armorstand.small.0=Обычный
-tag.armorstand.small.1=Маленький
-tag.armorstand.invisible.0=Видимый
-tag.armorstand.invisible.1=Невидимый
+tag.armorstand.small.0=Обычная
+tag.armorstand.small.1=Маленькая
+tag.armorstand.invisible.0=Видимая
+tag.armorstand.invisible.1=Невидимая
 tag.armorstand.nobase.0=С плитой
 tag.armorstand.nobase.1=Без плиты
 tag.armorstand.marker.0=Не маркировать
 tag.armorstand.marker.1=Маркировать
-tag.armorstand.inventory=Вооружение
-tag.armorstand.pose=Позиция
+tag.armorstand.inventory=Инвентарь
+tag.armorstand.pose=Поза
 
 tag.creeper.powered.on=Заряженный
 tag.creeper.powered.off=Не заряженный
 tag.creeper.explosionradius.on=Радиус взрыва: %s
 tag.creeper.explosionradius.off=Не повреждает блоки
-tag.creeper.fuse.on=Время взрывания: %s
-tag.creeper.fuse.off=Мгновенное взрывание
-tag.creeper.ignited.on=Подожённый
-tag.creeper.ignited.off=Неподожённый
+tag.creeper.fuse.on=Время взрыва: %s
+tag.creeper.fuse.off=Мгновенный взрыв
+tag.creeper.ignited.on=Подожжён
+tag.creeper.ignited.off=Не подожжён
 
-tag.endermite.lifetime.off=Неопределённое время жизни
-tag.endermite.lifetime.on=Время жизни: %s
-tag.endermite.playerspawned.off=Игрок призвал: 0
-tag.endermite.playerspawned.on=:Игрок призвал: 1
+tag.endermite.lifetime.off=Проживёт: Неопределенно
+tag.endermite.lifetime.on=Проживёт: %s
+tag.endermite.playerspawned.off=Призван игроком: Нет
+tag.endermite.playerspawned.on=:Призван игроком: Да
 
-tag.parrot.variant.-1=Случайный вариант
-tag.parrot.variant.0=Красный вариант
-tag.parrot.variant.1=Синий вариант
-tag.parrot.variant.2=Зелёный вариант
-tag.parrot.variant.3=Бирюзовый вариант
-tag.parrot.variant.4=Серебряный вариант
+tag.parrot.variant.-1=Случайно
+tag.parrot.variant.0=Красный
+tag.parrot.variant.1=Синий
+tag.parrot.variant.2=Зелёный
+tag.parrot.variant.3=Бирюзовый
+tag.parrot.variant.4=Серебряный
 
 tag.pig.saddled.on=С седлом
 tag.pig.saddled.off=Без седла
@@ -231,7 +231,7 @@ tag.sheep.color.13=Тёмно-зелёная шерсть
 tag.sheep.color.14=Красная шерсть
 tag.sheep.color.15=Чёрная шерсть
 tag.sheep.sheared.on=Пострижена
-tag.sheep.sheared.off=Имеет шерсть
+tag.sheep.sheared.off=Шерсть есть
 
 tag.shulker.color.0=Белый
 tag.shulker.color.1=Оранжевый
@@ -258,8 +258,8 @@ tag.villager.profession.4=Мясник
 tag.villager.profession.5=Житель
 
 
-tag.vindicator.johnny.on=Убийца мобов
-tag.vindicator.johnny.off=Нормальное поведение
+tag.vindicator.johnny.on=Убивает мобов
+tag.vindicator.johnny.off=Обычное поведение
 
 tag.zombie.isbaby.on=Ребёнок
 tag.zombie.isbaby.off=Взрослый
