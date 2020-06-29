@@ -344,10 +344,10 @@ public class GuiLore extends GuiInfinity {
                 gui.getLore().set( id, new NBTTagString( field.getText() ) );
             };
 
-            remove = new GuiInfinityButton( 500 + id, gui.width, 0, 20, 20, "✕" );
-            up = new GuiInfinityButton( 600 + id, 100, 0, 20, 20, "⬆" );
+            remove = new GuiInfinityButton( 500 + id, gui.width, 0, 20, 20, "\u2715" );
+            up = new GuiInfinityButton( 600 + id, 100, 0, 20, 20, "\u2B06" );
             up.enabled = id > 0;
-            down = new GuiInfinityButton( 700 + id, 100, 0, 20, 20, "⬇" );
+            down = new GuiInfinityButton( 700 + id, 100, 0, 20, 20, "\u2B07" );
         }
 
 
