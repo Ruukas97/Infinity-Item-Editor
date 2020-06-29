@@ -284,7 +284,6 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback {
         
 
         loreButton = (GuiInfinityButton) addIfNotIn( new GuiInfinityButton( 260, width - 180, 0, 170, 20, I18n.format( "gui.lore" ) ), buttonList );
-        loreButton.y = 130 + 30 * amount;
     }
 
 
@@ -300,10 +299,6 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback {
             }
             else {
                 addIfNotIn( new GuiInfinityButton( 182 + line, width - 195, 100 + 30 * line, 14, 20, TextFormatting.DARK_RED + "X" ), loreButtons );
-            }
-
-            if (line != 4) {
-                loreButton.y = 160 + 30 * line;
             }
         };
 
@@ -510,6 +505,7 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback {
 
         //loreButton.drawButton( mc, mouseX, mouseY, partialTicks );
         loreButton.enabled = !getItemStack().isEmpty();
+        loreButton.y = 100 + 30 * loreFields.size();
 
         if (mc.playerController.isNotCreative()) {
             drawCenteredString( fontRenderer, I18n.format( "warning.notcreative" ), width / 2, height - 60, InfinityConfig.CONTRAST_COLOR );
