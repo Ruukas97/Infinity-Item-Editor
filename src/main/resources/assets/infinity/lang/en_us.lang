@@ -104,6 +104,9 @@ gui.headcollection.clicksearch=Click to search!
 gui.headcollection.currentpage=Page %s/%s
 gui.headcollection.changecategory.1=Change Category
 gui.headcollection.changecategory.2=Takes a few seconds to load
+gui.headcollection.freeslots=Free slots: %s
+gui.headcollection.ininventory=In inventory: %s
+gui.headcollection.notworking=If no heads are loading, install LetsEncryptCraft mod or set your launcher to a newer Java version!
 
 gui.item.toggleside=Switch View
 gui.item.discord=Join Discord
