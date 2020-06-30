@@ -401,10 +401,10 @@ gui.lorepainter.symbol.mediumshade=Полупрозрачный
 gui.lorepainter.symbol.darkshade=Немного прозрачный
 gui.lorepainter.symbol.fullspace=Удалить
 
-gui.lorepainter.addline=Добавить линию
-gui.lorepainter.copylore=Скопировать описание
-gui.lorepainter.copyall=Скопировать всё
-gui.lorepainter.paste=Вставить
+gui.lore.addline=Добавить линию
+gui.lore.copylore=Скопировать описание
+gui.lore.copyall=Скопировать всё
+gui.lore.paste=Вставить
 
 gui.item.count=Количество
 gui.item.id=ID предмета
