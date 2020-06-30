@@ -293,7 +293,7 @@ public class InfinityEventHandler
     @SubscribeEvent
     public static void onServerConnection( ClientConnectedToServerEvent e )
     {
-        if ( InfinityConfig.getIsVoidEnabled() )
+        if ( InfinityConfig.getIsVoidEnabled() && e.getManager().channel().pipeline().get( "void_handler" ) == null )
         {
             e.getManager().channel().pipeline().addBefore( "packet_handler", "void_handler", new ChannelDuplexHandler() {
                 public void channelRead( io.netty.channel.ChannelHandlerContext ctx, Object msg ) throws Exception
