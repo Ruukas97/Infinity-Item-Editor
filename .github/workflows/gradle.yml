@@ -1,5 +1,5 @@
 # This workflow will build a Java project with Gradle
-# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-gradle
+# For more information see: https://help.github.com/actions/language-and-framew ork-guides/building-and-testing-java-with-gradle
 
 name: Java CI with Gradle
 
@@ -24,3 +24,7 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
+    - uses: actions/upload-artifact@v2
+    with:
+      name: Package
+      path: build/libs
