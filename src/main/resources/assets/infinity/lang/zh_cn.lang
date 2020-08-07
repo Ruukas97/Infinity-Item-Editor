@@ -45,6 +45,7 @@ gui.paint=纹理涂料
 gui.villagertrades=村民职业编辑
 gui.trade=村民交易编辑
 gui.pick=物品选择器
+gui.lorepainter=纹理描述
 
 gui.armorstand.pose=盔甲架姿势编辑
 gui.armorstand.pose.reset.1=仅重置姿势旋转!
@@ -143,6 +144,18 @@ gui.villagertrades.reset=清除交易
 
 gui.equipment.inventoryclone=这是临时的库存副本.将不保存更改.
 
+gui.lore.addline=增加行列
+gui.lore.copylore=复制描述
+gui.lore.copyall=复制工具提示文字
+gui.lore.paste=粘贴
+
+gui.lorepainter.insert=插入
+gui.lorepainter.preview=预览
+gui.lorepainter.scale=比例
+gui.lorepainter.symbol.fullblock=完全占据
+gui.lorepainter.symbol.mediumshade=半色调
+gui.lorepainter.symbol.darkshade=深色调
+gui.lorepainter.symbol.fullspace=空白
 
 flag.enchantment.0=附魔:显示
 flag.enchantment.1=附魔:隐藏
@@ -160,7 +173,7 @@ flag.iteminfo.1=物品信息:隐藏
 gui.editstring=编辑字符串
 
 gui.entitytags=实体标签
-gui.mobspecific=特定生物
+gui.mobspecific=自定义生物
 
 
 tag.skullowner=头颅主人
