@@ -32,7 +32,7 @@ gui.nbtadv=NBT浏览器
 gui.enchanting=附魔
 gui.potion=药水酿造
 gui.book=书本编辑
-gui.attributes=属性编辑
+gui.attributes=自定义属性设定
 gui.chestinventory=箱子清单
 gui.hideflags=隐藏标签
 gui.bannermaker=旗帜制作器
@@ -47,7 +47,7 @@ gui.trade=村民交易编辑
 gui.pick=物品选择器
 
 gui.armorstand.pose=盔甲架姿势编辑
-gui.armorstand.pose.reset.1=仅重置旋转!
+gui.armorstand.pose.reset.1=仅重置姿势旋转!
 gui.armorstand.invisible.note=注意:在没有命令的情况下,可能会很难拆卸盔甲和武器.
 gui.armorstand.marker.note=标记会禁用互动并使碰撞箱变小.
 
@@ -60,7 +60,7 @@ gui.attributes.slot.0=任何位置
 gui.attributes.slot.1=主手
 gui.attributes.slot.2=副手
 gui.attributes.slot.3=头部
-gui.attributes.slot.4=胸部
+gui.attributes.slot.4=身上
 gui.attributes.slot.5=腿部
 gui.attributes.slot.6=脚部
 attribute.name.generic.flyingSpeed=生物飞行速度
@@ -78,10 +78,10 @@ gui.enchanting.enchanttoggle.0=显示可用
 gui.enchanting.enchanttoggle.1=显示所有
 gui.enchanting.addall=添加所有可用项
 
-gui.spawnegg.entity=特定实体
-gui.spawnegg.mob=特定生物
-gui.spawnegg.mobspecific=%s 特定
-gui.spawnegg.animalspecific=特定动物
+gui.spawnegg.entity=自定义实体
+gui.spawnegg.mob=自定义生物
+gui.spawnegg.mobspecific=%s 自定义
+gui.spawnegg.animalspecific=自定义动物
 
 gui.head.save.tooltip.1=加载玩家信息时可能会延迟.
 gui.head.save.tooltip.2=这是个常见的问题.
@@ -115,7 +115,7 @@ gui.item.drop.tooltip.1=按住shift以复制/向剪贴板发出命令
 gui.item.drop.tooltip.2=然后你可以将其粘贴到其他地方
 gui.item.id=物品ID
 gui.item.count=数量
-gui.item.meta=元数据
+gui.item.meta=附加值
 gui.item.name=物品名称
 gui.item.lore=描述
 
@@ -127,8 +127,8 @@ gui.nbt.comp.close=单击以折叠复合标签
 tag.head.0=骷髅头颅
 tag.head.1=凋灵骷髅头颅
 tag.head.2=僵尸的头
-tag.head.3=玩家的头
-tag.head.4=爬行者的头
+tag.head.3=玩家头颅
+tag.head.4=苦力怕的头
 tag.head.5=龙首
 
 gui.potion.time=时间(秒)
@@ -146,8 +146,8 @@ gui.equipment.inventoryclone=这是临时的库存副本.将不保存更改.
 
 flag.enchantment.0=附魔:显示
 flag.enchantment.1=附魔:隐藏
-flag.attributemod.0=属性Mod:显示
-flag.attributemod.1=属性Mod:隐藏
+flag.attributemod.0=自定义属性:显示
+flag.attributemod.1=自定义属性:隐藏
 flag.unbreakable.0=无法破坏:显示
 flag.unbreakable.1=无法破坏:隐藏
 flag.candestroy.0=可以摧毁:显示
@@ -165,17 +165,17 @@ gui.mobspecific=特定生物
 
 tag.skullowner=头颅主人
 
-tag.unbreakable.0=可破坏
-tag.unbreakable.1=无法破坏
+tag.unbreakable.0=当前会被破坏
+tag.unbreakable.1=现在无法破坏
 
-tag.fire.on=燃烧%s次
+tag.fire.on=燃烧状态%s秒
 tag.fire.off=不燃烧
 
 tag.customname=更改自定义名称
 tag.nogravity.on=无重力
-tag.nogravity.off=重力
-tag.invulnerable.on=不易受伤
-tag.invulnerable.off=易受伤
+tag.nogravity.off=有重力
+tag.invulnerable.on=可受到伤害
+tag.invulnerable.off=无敌(可被创造模式攻击)
 tag.customnamevisible.on=自定义名称可见
 tag.customnamevisible.off=自定义名称不可见
 tag.silent.on=静音
@@ -184,15 +184,15 @@ tag.glowing.on=发光
 tag.glowing.off=不发光
 
 tag.health.on=%s 生命值
-tag.health.off=死亡
-tag.absorption.on=%s 可拾取物品
-tag.absorption.off=不可拾取物品
-tag.fallflying.on=鞘翅滑翔
+tag.health.off=已死亡
+tag.absorption.on=允许捡起%s个掉落的物品
+tag.absorption.off=禁止捡起掉落的物品
+tag.fallflying.on=允许实体滑翔
 tag.fallflying.off=正常摔落
-tag.noai.on=人工智能禁用
-tag.noai.off=人工智能启用
-tag.persistencerequired.on=非正常生成
-tag.persistencerequired.off=正常生成
+tag.noai.on=AI已禁用
+tag.noai.off=AI已启用
+tag.persistencerequired.on=不被自然刷新
+tag.persistencerequired.off=会被自然刷新
 tag.canpickuploot.on=拾取战利品
 tag.canpickuploot.off=忽略战利品
 
