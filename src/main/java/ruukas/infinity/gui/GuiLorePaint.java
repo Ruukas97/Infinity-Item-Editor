@@ -296,9 +296,13 @@ public class GuiLorePaint extends GuiInfinity {
 
 
     private static enum LoreSymbol {
-        fullblock( "fullblock", "\u2588" ), mediumshade( "mediumshade", "\u2592" ), darkshade( "darkshade", "\u2593" ), fullspace( "fullspace", TextFormatting.BOLD.toString() + ' ' + TextFormatting.RESET.toString() + ' ', true );
-        // lightshade( "lightshade", String.valueOf( '░' ) )
-
+        // @formatter:off
+        fullblock( "fullblock", "\u2588" ),
+        mediumshade( "mediumshade", "\u2592" ),
+        darkshade( "darkshade", "\u2593" ),
+        fullspace( "fullspace", TextFormatting.BOLD.toString() + ' ' + TextFormatting.RESET.toString() + ' ', true );
+        // @formatter:on
+ 
 
         private String symbol;
         private String name;

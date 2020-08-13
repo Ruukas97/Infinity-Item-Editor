@@ -1,7 +1,6 @@
 package ruukas.infinity;
 
 import java.io.File;
-import java.io.IOException;
 
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.input.Keyboard;
@@ -21,7 +20,6 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import ruukas.infinity.data.realm.RealmController;
 import ruukas.infinity.tab.InfinityTab;
-import ruukas.infinity.util.CertificateHandler;
 
 @Mod( modid = Infinity.MODID, name = Infinity.NAME, version = Infinity.VERSION, clientSideOnly = true )
 public class Infinity
@@ -182,15 +180,6 @@ public class Infinity
                 block.setCreativeTab( UNAVAILABLE );
                 logger.info( "Block: " + block.getUnlocalizedName() + " was not added to a tab. Adding it to Unavailable." );
             }
-        }
-        
-        try
-        {
-            CertificateHandler.testIfNeedsCert();
-        }
-        catch ( IOException e )
-        {
-            logger.warn( "Failed to connect to API for head collection. Check your internet connection." );
         }
     }
 }
