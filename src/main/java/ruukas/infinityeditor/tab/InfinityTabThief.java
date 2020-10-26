@@ -1,4 +1,4 @@
-package ruukas.infinity.tab;
+package ruukas.infinityeditor.tab;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -22,7 +22,7 @@ import net.minecraft.util.text.Style;
 import net.minecraft.util.text.event.HoverEvent.Action;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.minecraftforge.fml.relauncher.ReflectionHelper.UnableToFindFieldException;
-import ruukas.infinity.nbt.NBTHelper;
+import ruukas.infinityeditor.nbt.NBTHelper;
 
 public class InfinityTabThief extends InfinityTab
 {

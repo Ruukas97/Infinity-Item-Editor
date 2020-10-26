@@ -1,4 +1,4 @@
-package ruukas.infinity;
+package ruukas.infinityeditor;
 
 import java.io.File;
 
@@ -18,13 +18,13 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import ruukas.infinity.data.realm.RealmController;
-import ruukas.infinity.tab.InfinityTab;
+import ruukas.infinityeditor.data.realm.RealmController;
+import ruukas.infinityeditor.tab.InfinityTab;
 
 @Mod( modid = Infinity.MODID, name = Infinity.NAME, version = Infinity.VERSION, clientSideOnly = true )
 public class Infinity
 {
-    public static final String MODID = "infinity";
+    public static final String MODID = "infinityeditor";
     public static final String NAME = "Infinity Item Editor";
     public static final String VERSION = "0.14.2";
     

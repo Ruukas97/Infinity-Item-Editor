@@ -1,4 +1,4 @@
-package ruukas.infinity.nbt;
+package ruukas.infinityeditor.nbt;
 
 import java.util.UUID;
 

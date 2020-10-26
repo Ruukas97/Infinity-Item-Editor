@@ -1,6 +1,6 @@
 [
 {
-  "modid": "infinity",
+  "modid": "infinityeditor",
   "name": "Infinity Item Editor",
   "description": "Striving to be the best in-game item editor!",
   "version": "${version}",

@@ -1,4 +1,4 @@
-package ruukas.infinity.tab;
+package ruukas.infinityeditor.tab;
 
 import java.util.List;
 

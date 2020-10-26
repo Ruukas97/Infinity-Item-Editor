@@ -1,9 +1,9 @@
-package ruukas.infinity.tab;
+package ruukas.infinityeditor.tab;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
-import ruukas.infinity.Infinity;
+import ruukas.infinityeditor.Infinity;
 
 public class InfinityTabRealm extends InfinityTab
 {

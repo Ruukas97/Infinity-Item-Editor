@@ -1,4 +1,4 @@
-package ruukas.infinity.util;
+package ruukas.infinityeditor.util;
 
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.NumberInvalidException;
@@ -7,7 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.JsonToNBT;
 import net.minecraft.nbt.NBTException;
 import net.minecraft.nbt.NBTTagCompound;
-import ruukas.infinity.Infinity;
+import ruukas.infinityeditor.Infinity;
 
 public class GiveHelper
 {

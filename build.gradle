@@ -14,8 +14,8 @@ apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
 version = '0.14.2'
-group = 'ruukas.infinity'
-archivesBaseName = 'infinity'
+group = 'ruukas.infinityeditor'
+archivesBaseName = 'infinityeditor'
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
 

@@ -1,4 +1,4 @@
-package ruukas.infinity.json;
+package ruukas.infinityeditor.json;
 
 public class MinecraftHead {
 	private String name;

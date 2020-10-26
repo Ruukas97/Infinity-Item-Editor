@@ -1,4 +1,4 @@
-package ruukas.infinity.util;
+package ruukas.infinityeditor.util;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
-import ruukas.infinity.Infinity;
+import ruukas.infinityeditor.Infinity;
 
 public class InventoryUtils {
 	public static int countItem(InventoryPlayer inventory, Item item) {

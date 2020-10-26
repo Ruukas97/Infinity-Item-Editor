@@ -1,4 +1,4 @@
-package ruukas.infinity.tab;
+package ruukas.infinityeditor.tab;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityOtherPlayerMP;

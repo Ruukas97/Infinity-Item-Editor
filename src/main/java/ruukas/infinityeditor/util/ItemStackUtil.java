@@ -1,4 +1,4 @@
-package ruukas.infinity.util;
+package ruukas.infinityeditor.util;
 
 import net.minecraft.item.ItemStack;
 
