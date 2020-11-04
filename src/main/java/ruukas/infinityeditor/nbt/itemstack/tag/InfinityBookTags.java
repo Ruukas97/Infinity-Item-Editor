@@ -1,4 +1,4 @@
-package ruukas.infinity.nbt.itemstack.tag;
+package ruukas.infinityeditor.nbt.itemstack.tag;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -6,7 +6,7 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagString;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.common.util.Constants.NBT;
-import ruukas.infinity.nbt.itemstack.InfinityItemTag;
+import ruukas.infinityeditor.nbt.itemstack.InfinityItemTag;
 
 public class InfinityBookTags
 {

@@ -1,4 +1,4 @@
-package ruukas.infinity.gui.monsteregg;
+package ruukas.infinityeditor.gui.monsteregg;
 
 import java.io.IOException;
 
@@ -7,7 +7,7 @@ import net.minecraft.client.gui.GuiListExtended;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
-import ruukas.infinity.data.InfinityConfig;
+import ruukas.infinityeditor.data.InfinityConfig;
 
 public class GuiEntityTags extends GuiScreen
 {

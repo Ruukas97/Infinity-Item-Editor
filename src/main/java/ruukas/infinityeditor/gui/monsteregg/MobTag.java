@@ -1,4 +1,4 @@
-package ruukas.infinity.gui.monsteregg;
+package ruukas.infinityeditor.gui.monsteregg;
 
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.passive.EntityHorse;

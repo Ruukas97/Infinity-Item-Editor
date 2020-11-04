@@ -1,4 +1,4 @@
-package ruukas.infinity.gui.nbt;
+package ruukas.infinityeditor.gui.nbt;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ import net.minecraft.client.gui.Gui;
 import net.minecraft.client.renderer.RenderItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTBase;
-import ruukas.infinity.gui.HelperGui;
+import ruukas.infinityeditor.gui.HelperGui;
 
 public class NBTListElement extends Gui
 {

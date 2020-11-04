@@ -1,11 +1,11 @@
-package ruukas.infinity.gui.action;
+package ruukas.infinityeditor.gui.action;
 
 import java.util.List;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.item.ItemStack;
-import ruukas.infinity.gui.GuiInfinity.ItemStackHolder;
+import ruukas.infinityeditor.gui.GuiInfinity.ItemStackHolder;
 
 public abstract class GuiActionButton extends GuiInfinityButton
 {

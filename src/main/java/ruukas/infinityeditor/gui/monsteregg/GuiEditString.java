@@ -1,4 +1,4 @@
-package ruukas.infinity.gui.monsteregg;
+package ruukas.infinityeditor.gui.monsteregg;
 
 import java.io.IOException;
 
@@ -11,7 +11,7 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import ruukas.infinity.data.InfinityConfig;
+import ruukas.infinityeditor.data.InfinityConfig;
 
 @SideOnly( Side.CLIENT )
 public class GuiEditString extends GuiScreen

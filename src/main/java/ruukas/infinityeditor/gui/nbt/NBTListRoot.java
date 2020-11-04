@@ -1,11 +1,11 @@
-package ruukas.infinity.gui.nbt;
+package ruukas.infinityeditor.gui.nbt;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import ruukas.infinity.gui.HelperGui;
-import ruukas.infinity.gui.GuiNBTAdvanced;
+import ruukas.infinityeditor.gui.GuiNBTAdvanced;
+import ruukas.infinityeditor.gui.HelperGui;
 
 public class NBTListRoot extends NBTListCompound
 {

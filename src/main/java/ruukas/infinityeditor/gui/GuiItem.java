@@ -1,4 +1,4 @@
-package ruukas.infinity.gui;
+package ruukas.infinityeditor.gui;
 
 import java.io.IOException;
 import java.net.URI;
@@ -21,14 +21,14 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import ruukas.infinity.Infinity;
-import ruukas.infinity.data.InfinityConfig;
-import ruukas.infinity.gui.action.ActionButtons;
-import ruukas.infinity.gui.action.GuiActionButton;
-import ruukas.infinity.gui.action.GuiActionTextField;
-import ruukas.infinity.gui.action.GuiInfinityButton;
-import ruukas.infinity.gui.action.GuiNumberField;
-import ruukas.infinity.nbt.NBTHelper;
+import ruukas.infinityeditor.Infinity;
+import ruukas.infinityeditor.data.InfinityConfig;
+import ruukas.infinityeditor.gui.action.ActionButtons;
+import ruukas.infinityeditor.gui.action.GuiActionButton;
+import ruukas.infinityeditor.gui.action.GuiActionTextField;
+import ruukas.infinityeditor.gui.action.GuiInfinityButton;
+import ruukas.infinityeditor.gui.action.GuiNumberField;
+import ruukas.infinityeditor.nbt.NBTHelper;
 
 @SideOnly( Side.CLIENT )
 public class GuiItem extends GuiInfinity implements GuiYesNoCallback {
@@ -175,7 +175,7 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback {
         centerStrings.add( new CenterString( I18n.format( "gui.item.count" ), 31 + (30 * fieldsAmount) ) );
 
         // META/DAMAGE
-        int maxDamage = getItemStack().getItem() instanceof ItemBlock || getItemStack().getMaxDamage() == 0 ? 9999 : getItemStack().getMaxDamage();
+        int maxDamage = getItemStack().getItem() instanceof ItemBlock || getItemStack().getMaxDamage() == 0 ? 99999 : getItemStack().getMaxDamage();
         int digits = ("" + maxDamage).length();
         GuiNumberField damage = new GuiNumberField( 300 + fieldsAmount, fontRenderer, width / 2, 25 + (30 * ++fieldsAmount), Math.max( 10 * digits, 15 ), 20, digits );
         damage.minValue = 0;

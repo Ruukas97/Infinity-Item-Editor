@@ -1,4 +1,4 @@
-package ruukas.infinity.gui;
+package ruukas.infinityeditor.gui;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,9 +16,9 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
-import ruukas.infinity.data.InfinityConfig;
-import ruukas.infinity.gui.action.GuiInfinityButton;
-import ruukas.infinity.util.GiveHelper;
+import ruukas.infinityeditor.data.InfinityConfig;
+import ruukas.infinityeditor.gui.action.GuiInfinityButton;
+import ruukas.infinityeditor.util.GiveHelper;
 
 public abstract class GuiInfinity extends GuiScreen
 {

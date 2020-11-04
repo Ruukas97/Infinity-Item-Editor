@@ -1,4 +1,4 @@
-package ruukas.infinity.gui.action;
+package ruukas.infinityeditor.gui.action;
 
 import java.util.Comparator;
 
@@ -13,21 +13,21 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemMonsterPlacer;
 import net.minecraft.item.ItemSkull;
 import net.minecraft.item.ItemStack;
-import ruukas.infinity.gui.GuiArmorStand;
-import ruukas.infinity.gui.GuiAttributes;
-import ruukas.infinity.gui.GuiBannerMaker;
-import ruukas.infinity.gui.GuiBook;
-import ruukas.infinity.gui.GuiChestItem;
-import ruukas.infinity.gui.GuiColor;
-import ruukas.infinity.gui.GuiEnchanting;
-import ruukas.infinity.gui.GuiFireworksMaker;
-import ruukas.infinity.gui.GuiHead;
-import ruukas.infinity.gui.GuiMonsterEgg;
-import ruukas.infinity.gui.GuiPotion;
-import ruukas.infinity.gui.GuiSign;
-import ruukas.infinity.gui.HelperGui;
-import ruukas.infinity.gui.chest.InventoryChestItem;
-import ruukas.infinity.nbt.NBTHelper;
+import ruukas.infinityeditor.gui.GuiArmorStand;
+import ruukas.infinityeditor.gui.GuiAttributes;
+import ruukas.infinityeditor.gui.GuiBannerMaker;
+import ruukas.infinityeditor.gui.GuiBook;
+import ruukas.infinityeditor.gui.GuiChestItem;
+import ruukas.infinityeditor.gui.GuiColor;
+import ruukas.infinityeditor.gui.GuiEnchanting;
+import ruukas.infinityeditor.gui.GuiFireworksMaker;
+import ruukas.infinityeditor.gui.GuiHead;
+import ruukas.infinityeditor.gui.GuiMonsterEgg;
+import ruukas.infinityeditor.gui.GuiPotion;
+import ruukas.infinityeditor.gui.GuiSign;
+import ruukas.infinityeditor.gui.HelperGui;
+import ruukas.infinityeditor.gui.chest.InventoryChestItem;
+import ruukas.infinityeditor.nbt.NBTHelper;
 
 public class ActionButtons {
     public static GuiActionButton[] getActionButtons() {

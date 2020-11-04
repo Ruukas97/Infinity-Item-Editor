@@ -1,4 +1,4 @@
-package ruukas.infinity.gui;
+package ruukas.infinityeditor.gui;
 
 import java.io.IOException;
 
@@ -10,9 +10,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.village.MerchantRecipe;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import ruukas.infinity.data.InfinityConfig;
-import ruukas.infinity.gui.GuiVillagerTrade.TradeRecipeStackHolder.Type;
-import ruukas.infinity.gui.GuiVillagerTrades.MerchantRecipeHolder;
+import ruukas.infinityeditor.data.InfinityConfig;
+import ruukas.infinityeditor.gui.GuiVillagerTrade.TradeRecipeStackHolder.Type;
+import ruukas.infinityeditor.gui.GuiVillagerTrades.MerchantRecipeHolder;
 
 @SideOnly( Side.CLIENT )
 public class GuiVillagerTrade extends GuiInfinity

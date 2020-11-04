@@ -1,4 +1,4 @@
-package ruukas.infinity.nbt.itemstack.tag;
+package ruukas.infinityeditor.nbt.itemstack.tag;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTBase;
@@ -6,8 +6,8 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.common.util.Constants.NBT;
-import ruukas.infinity.nbt.itemstack.InfinityItemTag;
-import ruukas.infinity.nbt.itemstack.tag.custompotioneffects.InfinityPotionEffectTag;
+import ruukas.infinityeditor.nbt.itemstack.InfinityItemTag;
+import ruukas.infinityeditor.nbt.itemstack.tag.custompotioneffects.InfinityPotionEffectTag;
 
 public class InfinityCustomPotionEffectList
 {

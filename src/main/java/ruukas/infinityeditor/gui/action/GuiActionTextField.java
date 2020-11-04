@@ -1,9 +1,9 @@
-package ruukas.infinity.gui.action;
+package ruukas.infinityeditor.gui.action;
 
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.util.ChatAllowedCharacters;
-import ruukas.infinity.data.InfinityConfig;
+import ruukas.infinityeditor.data.InfinityConfig;
 
 public class GuiActionTextField extends GuiTextField {
     public Runnable action;

@@ -1,4 +1,4 @@
-package ruukas.infinity.gui;
+package ruukas.infinityeditor.gui;
 
 import java.io.IOException;
 
@@ -14,10 +14,10 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import ruukas.infinity.Infinity;
-import ruukas.infinity.gui.action.GuiInfinityButton;
-import ruukas.infinity.gui.nbt.NBTListElement;
-import ruukas.infinity.gui.nbt.NBTListRoot;
+import ruukas.infinityeditor.Infinity;
+import ruukas.infinityeditor.gui.action.GuiInfinityButton;
+import ruukas.infinityeditor.gui.nbt.NBTListElement;
+import ruukas.infinityeditor.gui.nbt.NBTListRoot;
 
 @SideOnly( Side.CLIENT )
 public class GuiNBTAdvanced extends GuiScreen

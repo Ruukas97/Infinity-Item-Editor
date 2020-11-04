@@ -1,4 +1,4 @@
-package ruukas.infinity.gui;
+package ruukas.infinityeditor.gui;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,9 +10,9 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.util.ITooltipFlag.TooltipFlags;
 import net.minecraft.util.text.TextFormatting;
-import ruukas.infinity.gui.action.GuiActionTextField;
-import ruukas.infinity.gui.action.GuiInfinityButton;
-import ruukas.infinity.nbt.itemstack.tag.blockentitytag.InfinitySignTag;
+import ruukas.infinityeditor.gui.action.GuiActionTextField;
+import ruukas.infinityeditor.gui.action.GuiInfinityButton;
+import ruukas.infinityeditor.nbt.itemstack.tag.blockentitytag.InfinitySignTag;
 
 public class GuiSign extends GuiInfinity
 {

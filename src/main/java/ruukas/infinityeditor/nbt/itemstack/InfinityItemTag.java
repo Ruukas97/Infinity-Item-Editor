@@ -1,10 +1,10 @@
-package ruukas.infinity.nbt.itemstack;
+package ruukas.infinityeditor.nbt.itemstack;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.util.Constants.NBT;
-import ruukas.infinity.gui.GuiHideFlags.Flags;
-import ruukas.infinity.nbt.itemstack.tag.InfinityEnchantmentList;
+import ruukas.infinityeditor.gui.GuiHideFlags.Flags;
+import ruukas.infinityeditor.nbt.itemstack.tag.InfinityEnchantmentList;
 
 public class InfinityItemTag
 {

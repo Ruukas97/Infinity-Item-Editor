@@ -1,4 +1,4 @@
-package ruukas.infinity.gui;
+package ruukas.infinityeditor.gui;
 
 import java.io.IOException;
 import java.util.Set;
@@ -21,11 +21,11 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import ruukas.infinity.data.InfinityConfig;
-import ruukas.infinity.gui.action.GuiInfinityButton;
-import ruukas.infinity.gui.action.GuiNumberField;
-import ruukas.infinity.nbt.itemstack.tag.InfinityCustomPotionEffectList;
-import ruukas.infinity.nbt.itemstack.tag.custompotioneffects.InfinityPotionEffectTag;
+import ruukas.infinityeditor.data.InfinityConfig;
+import ruukas.infinityeditor.gui.action.GuiInfinityButton;
+import ruukas.infinityeditor.gui.action.GuiNumberField;
+import ruukas.infinityeditor.nbt.itemstack.tag.InfinityCustomPotionEffectList;
+import ruukas.infinityeditor.nbt.itemstack.tag.custompotioneffects.InfinityPotionEffectTag;
 
 @SideOnly( Side.CLIENT )
 public class GuiPotion extends GuiInfinity

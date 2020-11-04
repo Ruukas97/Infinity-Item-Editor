@@ -1,4 +1,4 @@
-package ruukas.infinity.gui;
+package ruukas.infinityeditor.gui;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,9 +13,9 @@ import net.minecraft.item.EnumDyeColor;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagString;
 import net.minecraft.util.text.TextFormatting;
-import ruukas.infinity.data.InfinityConfig;
-import ruukas.infinity.gui.action.GuiInfinityButton;
-import ruukas.infinity.nbt.NBTHelper;
+import ruukas.infinityeditor.data.InfinityConfig;
+import ruukas.infinityeditor.gui.action.GuiInfinityButton;
+import ruukas.infinityeditor.nbt.NBTHelper;
 
 public class GuiLorePaint extends GuiInfinity {
     private boolean dragging = false, preview = false;

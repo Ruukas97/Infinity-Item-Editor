@@ -1,4 +1,4 @@
-package ruukas.infinity.gui.monsteregg;
+package ruukas.infinityeditor.gui.monsteregg;
 
 import java.util.List;
 

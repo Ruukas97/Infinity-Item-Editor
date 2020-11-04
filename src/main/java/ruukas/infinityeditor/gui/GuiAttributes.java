@@ -1,4 +1,4 @@
-package ruukas.infinity.gui;
+package ruukas.infinityeditor.gui;
 
 import java.io.IOException;
 
@@ -17,11 +17,11 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import ruukas.infinity.data.InfinityConfig;
-import ruukas.infinity.gui.action.GuiInfinityButton;
-import ruukas.infinity.gui.action.GuiNumberField;
-import ruukas.infinity.nbt.itemstack.tag.InfinityAttributeModifierList;
-import ruukas.infinity.nbt.itemstack.tag.attributemodifiers.InfinityAttributeModifierTag;
+import ruukas.infinityeditor.data.InfinityConfig;
+import ruukas.infinityeditor.gui.action.GuiInfinityButton;
+import ruukas.infinityeditor.gui.action.GuiNumberField;
+import ruukas.infinityeditor.nbt.itemstack.tag.InfinityAttributeModifierList;
+import ruukas.infinityeditor.nbt.itemstack.tag.attributemodifiers.InfinityAttributeModifierTag;
 
 @SideOnly( Side.CLIENT )
 public class GuiAttributes extends GuiInfinity

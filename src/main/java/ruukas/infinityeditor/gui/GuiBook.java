@@ -1,4 +1,4 @@
-package ruukas.infinity.gui;
+package ruukas.infinityeditor.gui;
 
 import java.io.IOException;
 
@@ -13,11 +13,11 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import ruukas.infinity.data.InfinityConfig;
-import ruukas.infinity.gui.action.GuiActionTextField;
-import ruukas.infinity.gui.action.GuiInfinityButton;
-import ruukas.infinity.nbt.itemstack.tag.InfinityBookTags;
-import ruukas.infinity.nbt.itemstack.tag.InfinityBookTags.SignedData;
+import ruukas.infinityeditor.data.InfinityConfig;
+import ruukas.infinityeditor.gui.action.GuiActionTextField;
+import ruukas.infinityeditor.gui.action.GuiInfinityButton;
+import ruukas.infinityeditor.nbt.itemstack.tag.InfinityBookTags;
+import ruukas.infinityeditor.nbt.itemstack.tag.InfinityBookTags.SignedData;
 
 @SideOnly( Side.CLIENT )
 public class GuiBook extends GuiInfinity

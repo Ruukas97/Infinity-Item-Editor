@@ -1,4 +1,4 @@
-package ruukas.infinity.gui;
+package ruukas.infinityeditor.gui;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -37,12 +37,12 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import ruukas.infinity.data.InfinityConfig;
-import ruukas.infinity.gui.GuiInfinity.ItemStackHolder;
-import ruukas.infinity.gui.action.GuiInfinityButton;
-import ruukas.infinity.gui.monsteregg.GuiEntityTags;
-import ruukas.infinity.gui.monsteregg.MobTag;
-import ruukas.infinity.gui.monsteregg.MonsterPlacerUtils;
+import ruukas.infinityeditor.data.InfinityConfig;
+import ruukas.infinityeditor.gui.GuiInfinity.ItemStackHolder;
+import ruukas.infinityeditor.gui.action.GuiInfinityButton;
+import ruukas.infinityeditor.gui.monsteregg.GuiEntityTags;
+import ruukas.infinityeditor.gui.monsteregg.MobTag;
+import ruukas.infinityeditor.gui.monsteregg.MonsterPlacerUtils;
 
 @SideOnly( Side.CLIENT )
 public class GuiMonsterEgg extends GuiScreen

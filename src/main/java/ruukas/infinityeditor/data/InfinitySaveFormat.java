@@ -1,4 +1,4 @@
-package ruukas.infinity.data;
+package ruukas.infinityeditor.data;
 
 public class InfinitySaveFormat
 {

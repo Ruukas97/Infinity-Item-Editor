@@ -1,4 +1,4 @@
-package ruukas.infinity.gui;
+package ruukas.infinityeditor.gui;
 
 import java.io.IOException;
 import java.util.UUID;
@@ -16,10 +16,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import ruukas.infinity.gui.action.GuiInfinityButton;
-import ruukas.infinity.gui.monsteregg.GuiEntityTags;
-import ruukas.infinity.gui.monsteregg.MobTag;
-import ruukas.infinity.nbt.NBTHelper.ArmorStandNBTHelper;
+import ruukas.infinityeditor.gui.action.GuiInfinityButton;
+import ruukas.infinityeditor.gui.monsteregg.GuiEntityTags;
+import ruukas.infinityeditor.gui.monsteregg.MobTag;
+import ruukas.infinityeditor.nbt.NBTHelper.ArmorStandNBTHelper;
 
 @SideOnly( Side.CLIENT )
 public class GuiArmorStand extends GuiInfinity

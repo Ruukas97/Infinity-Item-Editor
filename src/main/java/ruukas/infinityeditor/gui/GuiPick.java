@@ -1,4 +1,4 @@
-package ruukas.infinity.gui;
+package ruukas.infinityeditor.gui;
 
 import java.io.IOException;
 
@@ -13,9 +13,9 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatAllowedCharacters;
 import net.minecraft.util.NonNullList;
-import ruukas.infinity.Infinity;
-import ruukas.infinity.data.InfinityConfig;
-import ruukas.infinity.data.thevoid.VoidController;
+import ruukas.infinityeditor.Infinity;
+import ruukas.infinityeditor.data.InfinityConfig;
+import ruukas.infinityeditor.data.thevoid.VoidController;
 
 public class GuiPick extends GuiInfinity
 {

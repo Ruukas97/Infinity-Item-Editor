@@ -1,8 +1,8 @@
-package ruukas.infinity.nbt.itemstack.tag.infinity;
+package ruukas.infinityeditor.nbt.itemstack.tag.infinity;
 
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.Constants.NBT;
-import ruukas.infinity.nbt.itemstack.tag.InfinityInfinityTag;
+import ruukas.infinityeditor.nbt.itemstack.tag.InfinityInfinityTag;
 
 public class InfinityTextureTag
 {

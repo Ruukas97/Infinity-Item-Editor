@@ -1,10 +1,10 @@
-package ruukas.infinity.nbt.itemstack.tag.attributemodifiers;
+package ruukas.infinityeditor.nbt.itemstack.tag.attributemodifiers;
 
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.nbt.NBTTagCompound;
-import ruukas.infinity.nbt.itemstack.tag.InfinityAttributeModifierList;
+import ruukas.infinityeditor.nbt.itemstack.tag.InfinityAttributeModifierList;
 
 public class InfinityAttributeModifierTag
 {

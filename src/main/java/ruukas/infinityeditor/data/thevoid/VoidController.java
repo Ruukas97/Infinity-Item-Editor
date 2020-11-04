@@ -1,4 +1,4 @@
-package ruukas.infinity.data.thevoid;
+package ruukas.infinityeditor.data.thevoid;
 
 import java.io.File;
 
@@ -17,9 +17,9 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import ruukas.infinity.Infinity;
-import ruukas.infinity.data.InfinityConfig;
-import ruukas.infinity.util.ItemStackUtil;
+import ruukas.infinityeditor.Infinity;
+import ruukas.infinityeditor.data.InfinityConfig;
+import ruukas.infinityeditor.util.ItemStackUtil;
 
 @SideOnly( Side.CLIENT )
 public class VoidController

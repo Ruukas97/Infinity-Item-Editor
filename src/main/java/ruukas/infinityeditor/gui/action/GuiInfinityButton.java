@@ -1,10 +1,10 @@
-package ruukas.infinity.gui.action;
+package ruukas.infinityeditor.gui.action;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
-import ruukas.infinity.data.InfinityConfig;
-import ruukas.infinity.gui.HelperGui;
+import ruukas.infinityeditor.data.InfinityConfig;
+import ruukas.infinityeditor.gui.HelperGui;
 
 public class GuiInfinityButton extends GuiButton
 {

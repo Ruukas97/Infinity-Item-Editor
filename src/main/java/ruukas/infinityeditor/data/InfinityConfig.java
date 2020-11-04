@@ -1,11 +1,11 @@
-package ruukas.infinity.data;
+package ruukas.infinityeditor.data;
 
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.Config.Ignore;
 import net.minecraftforge.common.config.Config.Type;
+import ruukas.infinityeditor.Infinity;
+import ruukas.infinityeditor.gui.HelperGui;
 import net.minecraftforge.common.config.ConfigManager;
-import ruukas.infinity.Infinity;
-import ruukas.infinity.gui.HelperGui;
 
 @Config( modid = Infinity.MODID, name = "InfinityItemEditor", category = "general" )
 public class InfinityConfig

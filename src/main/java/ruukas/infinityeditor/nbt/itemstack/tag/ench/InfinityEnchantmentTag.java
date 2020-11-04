@@ -1,8 +1,8 @@
-package ruukas.infinity.nbt.itemstack.tag.ench;
+package ruukas.infinityeditor.nbt.itemstack.tag.ench;
 
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.nbt.NBTTagCompound;
-import ruukas.infinity.nbt.itemstack.tag.InfinityEnchantmentList;
+import ruukas.infinityeditor.nbt.itemstack.tag.InfinityEnchantmentList;
 
 public class InfinityEnchantmentTag
 {

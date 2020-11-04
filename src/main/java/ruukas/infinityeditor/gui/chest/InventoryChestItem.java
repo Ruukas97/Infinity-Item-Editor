@@ -1,4 +1,4 @@
-package ruukas.infinity.gui.chest;
+package ruukas.infinityeditor.gui.chest;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;

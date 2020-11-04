@@ -1,4 +1,4 @@
-package ruukas.infinity.data.thevoid;
+package ruukas.infinityeditor.data.thevoid;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTBase;

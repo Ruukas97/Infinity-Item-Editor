@@ -1,4 +1,4 @@
-package ruukas.infinity.nbt.itemstack.tag.blockentitytag;
+package ruukas.infinityeditor.nbt.itemstack.tag.blockentitytag;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
@@ -7,7 +7,7 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.event.ClickEvent;
 import net.minecraft.util.text.event.ClickEvent.Action;
 import net.minecraftforge.common.util.Constants.NBT;
-import ruukas.infinity.nbt.itemstack.tag.InfinityBlockEntityTag;
+import ruukas.infinityeditor.nbt.itemstack.tag.InfinityBlockEntityTag;
 
 public class InfinitySignTag
 {

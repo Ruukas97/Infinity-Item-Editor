@@ -1,4 +1,4 @@
-package ruukas.infinity.gui;
+package ruukas.infinityeditor.gui;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,8 +14,8 @@ import net.minecraft.village.MerchantRecipe;
 import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import ruukas.infinity.data.InfinityConfig;
-import ruukas.infinity.util.MerchantRecipeUtil;
+import ruukas.infinityeditor.data.InfinityConfig;
+import ruukas.infinityeditor.util.MerchantRecipeUtil;
 
 @SideOnly( Side.CLIENT )
 public class GuiVillagerTrades extends GuiInfinity

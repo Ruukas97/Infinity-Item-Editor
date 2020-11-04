@@ -1,4 +1,4 @@
-package ruukas.infinity.data.realm;
+package ruukas.infinityeditor.data.realm;
 
 import java.io.File;
 
@@ -15,7 +15,7 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import ruukas.infinity.Infinity;
+import ruukas.infinityeditor.Infinity;
 
 @SideOnly( Side.CLIENT )
 public class RealmController

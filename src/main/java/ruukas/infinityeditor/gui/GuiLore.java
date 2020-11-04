@@ -1,4 +1,4 @@
-package ruukas.infinity.gui;
+package ruukas.infinityeditor.gui;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,10 +16,10 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagString;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextFormatting;
-import ruukas.infinity.gui.action.GuiActionLoreField;
-import ruukas.infinity.gui.action.GuiActionTextField;
-import ruukas.infinity.gui.action.GuiInfinityButton;
-import ruukas.infinity.nbt.NBTHelper;
+import ruukas.infinityeditor.gui.action.GuiActionLoreField;
+import ruukas.infinityeditor.gui.action.GuiActionTextField;
+import ruukas.infinityeditor.gui.action.GuiInfinityButton;
+import ruukas.infinityeditor.nbt.NBTHelper;
 
 public class GuiLore extends GuiInfinity {
     private int offset = 0;

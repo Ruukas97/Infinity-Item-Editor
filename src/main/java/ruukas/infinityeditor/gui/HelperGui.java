@@ -1,4 +1,4 @@
-package ruukas.infinity.gui;
+package ruukas.infinityeditor.gui;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntityBanner;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.config.GuiUtils;
-import ruukas.infinity.Infinity;
+import ruukas.infinityeditor.Infinity;
 
 public class HelperGui extends GuiUtils
 {

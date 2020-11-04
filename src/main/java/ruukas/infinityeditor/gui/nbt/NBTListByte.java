@@ -1,4 +1,4 @@
-package ruukas.infinity.gui.nbt;
+package ruukas.infinityeditor.gui.nbt;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;

@@ -1,12 +1,12 @@
-package ruukas.infinity.gui;
+package ruukas.infinityeditor.gui;
 
 import java.io.IOException;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
-import ruukas.infinity.gui.action.GuiInfinityButton;
-import ruukas.infinity.nbt.itemstack.InfinityItemTag;
+import ruukas.infinityeditor.gui.action.GuiInfinityButton;
+import ruukas.infinityeditor.nbt.itemstack.InfinityItemTag;
 
 public class GuiHideFlags extends GuiInfinity
 {

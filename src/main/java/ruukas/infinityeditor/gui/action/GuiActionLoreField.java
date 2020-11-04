@@ -1,8 +1,8 @@
-package ruukas.infinity.gui.action;
+package ruukas.infinityeditor.gui.action;
 
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.util.text.TextFormatting;
-import ruukas.infinity.data.InfinityConfig;
+import ruukas.infinityeditor.data.InfinityConfig;
 
 public class GuiActionLoreField extends GuiActionTextField {
     public GuiActionLoreField(int componentId, FontRenderer fontrendererObj, int x, int y, int par5Width, int par6Height) {

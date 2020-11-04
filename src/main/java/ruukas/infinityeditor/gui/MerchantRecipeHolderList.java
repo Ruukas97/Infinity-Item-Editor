@@ -1,4 +1,4 @@
-package ruukas.infinity.gui;
+package ruukas.infinityeditor.gui;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ import net.minecraft.network.PacketBuffer;
 import net.minecraft.village.MerchantRecipe;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import ruukas.infinity.gui.GuiVillagerTrades.MerchantRecipeHolder;
+import ruukas.infinityeditor.gui.GuiVillagerTrades.MerchantRecipeHolder;
 
 @SuppressWarnings( "serial" )
 public class MerchantRecipeHolderList extends ArrayList<MerchantRecipeHolder>

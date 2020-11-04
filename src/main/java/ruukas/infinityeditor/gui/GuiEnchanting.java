@@ -1,4 +1,4 @@
-package ruukas.infinity.gui;
+package ruukas.infinityeditor.gui;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,11 +19,11 @@ import net.minecraft.item.ItemEnchantedBook;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import ruukas.infinity.data.InfinityConfig;
-import ruukas.infinity.gui.action.GuiInfinityButton;
-import ruukas.infinity.gui.action.GuiNumberField;
-import ruukas.infinity.nbt.itemstack.tag.InfinityEnchantmentList;
-import ruukas.infinity.nbt.itemstack.tag.ench.InfinityEnchantmentTag;
+import ruukas.infinityeditor.data.InfinityConfig;
+import ruukas.infinityeditor.gui.action.GuiInfinityButton;
+import ruukas.infinityeditor.gui.action.GuiNumberField;
+import ruukas.infinityeditor.nbt.itemstack.tag.InfinityEnchantmentList;
+import ruukas.infinityeditor.nbt.itemstack.tag.ench.InfinityEnchantmentTag;
 
 @SideOnly( Side.CLIENT )
 public class GuiEnchanting extends GuiInfinity

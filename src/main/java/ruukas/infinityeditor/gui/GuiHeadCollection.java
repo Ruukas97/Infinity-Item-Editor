@@ -1,4 +1,4 @@
-package ruukas.infinity.gui;
+package ruukas.infinityeditor.gui;
 
 import java.io.IOException;
 import java.net.URL;
@@ -17,11 +17,11 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatAllowedCharacters;
-import ruukas.infinity.data.InfinityConfig;
-import ruukas.infinity.json.MinecraftHead;
-import ruukas.infinity.nbt.NBTHelper;
-import ruukas.infinity.nbt.itemstack.tag.InfinitySkullOwnerTag;
-import ruukas.infinity.util.InventoryUtils;
+import ruukas.infinityeditor.data.InfinityConfig;
+import ruukas.infinityeditor.json.MinecraftHead;
+import ruukas.infinityeditor.nbt.NBTHelper;
+import ruukas.infinityeditor.nbt.itemstack.tag.InfinitySkullOwnerTag;
+import ruukas.infinityeditor.util.InventoryUtils;
 
 public class GuiHeadCollection extends GuiScreen {
     public static final String[] CATEGORIES = { "alphabet", "animals", "blocks", "decoration", "food-drinks", "humans", "humanoid", "miscellaneous", "monsters", "plants" };

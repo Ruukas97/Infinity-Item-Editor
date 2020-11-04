@@ -1,11 +1,11 @@
-package ruukas.infinity.gui;
+package ruukas.infinityeditor.gui;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.client.gui.GuiScreen;
-import ruukas.infinity.gui.action.ActionButtons;
-import ruukas.infinity.gui.action.GuiActionButton;
+import ruukas.infinityeditor.gui.action.ActionButtons;
+import ruukas.infinityeditor.gui.action.GuiActionButton;
 
 public class GuiSpecialButtons extends GuiInfinity
 {

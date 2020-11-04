@@ -1,4 +1,4 @@
-package ruukas.infinity.gui;
+package ruukas.infinityeditor.gui;
 
 import java.io.IOException;
 
@@ -21,9 +21,9 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.Rotations;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import ruukas.infinity.gui.armorstand.ContainerEquipment;
-import ruukas.infinity.gui.armorstand.InventoryArmorStandEquipment;
-import ruukas.infinity.nbt.NBTHelper;
+import ruukas.infinityeditor.gui.armorstand.ContainerEquipment;
+import ruukas.infinityeditor.gui.armorstand.InventoryArmorStandEquipment;
+import ruukas.infinityeditor.nbt.NBTHelper;
 
 @SideOnly( Side.CLIENT )
 public class GuiEquipment extends GuiContainer

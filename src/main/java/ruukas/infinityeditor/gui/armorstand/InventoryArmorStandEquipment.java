@@ -1,4 +1,4 @@
-package ruukas.infinity.gui.armorstand;
+package ruukas.infinityeditor.gui.armorstand;
 
 import java.util.UUID;
 
@@ -15,7 +15,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.common.util.Constants.NBT;
-import ruukas.infinity.nbt.NBTHelper;
+import ruukas.infinityeditor.nbt.NBTHelper;
 
 public class InventoryArmorStandEquipment implements IInventory
 {
