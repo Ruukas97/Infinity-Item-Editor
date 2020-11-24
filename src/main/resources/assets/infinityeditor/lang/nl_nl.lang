@@ -31,7 +31,7 @@ gui.potion=Dranken Brouwen
 gui.book=Boek Editor
 gui.attributes=Attributen Editor
 gui.chestinventory=Kist Inventaris
-gui.hideflags=Verberg Flags
+gui.hideflags=Verberg Labels
 gui.bannermaker=Banier Maker
 gui.fireworks=Laat Raket Zien
 gui.specialbutton=Speciale NBT
@@ -42,6 +42,7 @@ gui.paint=Texture Tekenen
 gui.villagertrades=Dorpeling Aanbiedingen Editor
 gui.trade=Dorpeling Aanbieding Editor
 gui.pick=Item Pakken
+gui.lorepainter=Lore Tekenen
 
 gui.armorstand.pose=Bewerk Harnashouder Positie
 gui.armorstand.pose.reset.1=Reset alleen draaiingen!
@@ -103,6 +104,9 @@ gui.headcollection.clicksearch=Klik om te zoeken!
 gui.headcollection.currentpage=Pagina %s/%s
 gui.headcollection.changecategory.1=Verander Categorie
 gui.headcollection.changecategory.2=Duurt een paar seconden om te laden
+gui.headcollection.freeslots=Lege plekken: %s
+gui.headcollection.ininventory=In inventaris: %s
+gui.headcollection.notworking=Als er geen hoofden worden geladen, installeer dan LetsEncryptCraft (mod) of gebruik een nieuwere versie van Java!
 
 gui.item.toggleside=Wissel Beeld
 gui.item.discord=Join Discord
@@ -140,6 +144,18 @@ gui.villagertrades.reset=Verwijder Aanbiedingen
 
 gui.equipment.inventoryclone=Dit is een kopie van je inventaris. Vernaderingen worden niet opgeslagen.
 
+gui.lore.addline=Regel toevoegen
+gui.lore.copylore=Kopiëer lore
+gui.lore.copyall=Kopiëer tooltip
+gui.lore.paste=Plakken
+
+gui.lorepainter.insert=Invoegen
+gui.lorepainter.preview=Voorbeeld
+gui.lorepainter.scale=Schaal
+gui.lorepainter.symbol.fullblock=Volledig Blok
+gui.lorepainter.symbol.mediumshade=Halfschaduw
+gui.lorepainter.symbol.darkshade=Donkere Schaduw
+gui.lorepainter.symbol.fullspace=Lege Ruimte
 
 flag.enchantment.0=Enchantment: getoond
 flag.enchantment.1=Enchantment: verborgen
