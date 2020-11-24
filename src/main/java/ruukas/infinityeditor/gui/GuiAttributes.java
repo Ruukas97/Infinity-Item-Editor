@@ -14,6 +14,9 @@ import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.IAttribute;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemShield;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -24,33 +27,43 @@ import ruukas.infinityeditor.nbt.itemstack.tag.InfinityAttributeModifierList;
 import ruukas.infinityeditor.nbt.itemstack.tag.attributemodifiers.InfinityAttributeModifierTag;
 
 @SideOnly( Side.CLIENT )
-public class GuiAttributes extends GuiInfinity
-{
+public class GuiAttributes extends GuiInfinity {
     private static final ItemStack note = new ItemStack( Items.PAPER );
-    
+
     private static final IAttribute playerReach = EntityPlayer.REACH_DISTANCE;
     private static final IAttribute parrotFlying = SharedMonsterAttributes.FLYING_SPEED;
     // private IAttribute horseJump = EntityHorse.JUMP_STRENGTH (It's protected)
-    // private static final IAttribute zombieReinforcements = EntityZombie.SPAWN_REINFORCEMENTS_CHANCE; (protected)
-    
+    // private static final IAttribute zombieReinforcements =
+    // EntityZombie.SPAWN_REINFORCEMENTS_CHANCE; (protected)
+
     private static final IAttribute[] sharedAttributes = { SharedMonsterAttributes.MAX_HEALTH, SharedMonsterAttributes.FOLLOW_RANGE, SharedMonsterAttributes.KNOCKBACK_RESISTANCE, SharedMonsterAttributes.MOVEMENT_SPEED, SharedMonsterAttributes.ATTACK_DAMAGE, SharedMonsterAttributes.ATTACK_SPEED, SharedMonsterAttributes.ARMOR, SharedMonsterAttributes.ARMOR_TOUGHNESS, SharedMonsterAttributes.LUCK, playerReach, parrotFlying };
-    
+
     private GuiNumberField level;
     private GuiNumberField levelDecimal;
     private GuiInfinityButton slotButton, operationButton, infinityButton;
-    
+
     private GuiInfinityButton negativeButton;
     private boolean negativeAmount = false;
     
     private int rotOff = 0;
     private int mouseDist = 0;
-    private int slot = 0, operation = 0;
+    private int slot = 1, operation = 0;
     private boolean isInfinity = false;
-    
+
+
     public GuiAttributes(GuiScreen lastScreen, ItemStackHolder stackHolder) {
         super( lastScreen, stackHolder );
+        Item item = stackHolder.getStack().getItem();
+        if (item instanceof ItemArmor) {
+            ItemArmor armor = (ItemArmor) item;
+            slot = 6 - armor.armorType.getIndex();
+        }
+        else if (item instanceof ItemShield || item == Items.TOTEM_OF_UNDYING) {
+            slot = 2;
+        }
     }
-    
+
+
     @Override
     public void initGui()
     {
