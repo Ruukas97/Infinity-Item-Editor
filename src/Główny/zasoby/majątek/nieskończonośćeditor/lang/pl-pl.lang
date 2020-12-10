@@ -1,0 +1,397 @@
+key.infinity.category=Nieskończona edycja itemów
+key.infinity.desc=Edytuj następujący Item
+key.infinitycopy.desc=skopiowano przedmiot gracz (przedmiot który ma w łapce)
+key.infinitysave.desc=dodaj aktualny item do "realm"
+
+warning.notcreative=Muszisz mieć trub kreatywny aby zapisać ten item!
+
+itemGroup.unavailable=Infinity - Nie dostępne
+itemGroup.banners=Infinity - Flagi/Banery
+itemGroup.skulls=Infinity - Głowy graczy
+itemGroup.fireworks=Infinity - Fajerwerki
+itemGroup.thief=Infinity - Skopiowane od graczy
+itemGroup.realm=Infinity - Realm
+itemGroup.void=Infinity - Wszystkie itemy z NBT
+
+gui.close=Zamknij
+gui.save=Zapisz
+gui.drop=Wyrzuć kopie
+gui.reset=Resetuj
+gui.clear=Wyczyść
+
+gui.item=Nieskończony edytor
+gui.spawnegg=Edytor jajek spawnujących 
+gui.head=Edytor główek
+gui.armorstand=Edytor arrmor standa
+gui.color=edytor kolorów
+gui.nbt=Edytor NBT
+gui.nbtadv=Przeglądarka NBT
+gui.enchanting=Zenchantuj 
+gui.potion=Niestandardowe potki
+gui.book=Edytor książek
+gui.attributes=Edytor adrybótów 
+gui.chestinventory=Edytor skrzynek
+gui.hideflags=Ukryj Flage
+gui.bannermakerTworzenie banerów 
+gui.fireworks=Zobacz woją fajerwerke! 
+gui.specialbutton=Specialne NBT
+gui.headcollection=Twoja kolekcja główek
+gui.lore=Edytor Opisu
+gui.sign=Edytor tabliczek
+
+gui.armorstand.pose=Edytor pozy Armorstanda
+gui.armorstand.pose.reset.1=Resetuje tylko Rotacje! 
+gui.armorstand.invisible.note=Note: Usunięcie stojaka na zbroję bez poleceń może być trudne!
+gui.armorstand.marker.note=Znacznik wyłącz interakcje i zmniejsza hitbox
+
+gui.attributes.infinity.0=Wprowadź siłe atrybuty 
+gui.attributes.infinity.1=Nieskończoność
+gui.attributes.operation.0=Dodatkowa  +
+gui.attributes.operation.1=wielkrotny "mnożnik" *
+gui.attributes.operation.2=Wykładniczy **
+gui.attributes.slot.0=AKażdy slot
+gui.attributes.slot.1=Główna ręka 
+gui.attributes.slot.2=Poza ręką
+gui.attributes.slot.3=na głowie (hełmy)
+gui.attributes.slot.4=na Napierśniku (klaty)
+gui.attributes.slot.5=na nogach (spodnie)
+gui.attributes.slot.6=na nogach (buty)
+attribute.name.generic.flyingSpeed=Szybkość latania mobów 
+
+gui.book.title=Tytuł
+gui.book.author=Autor
+gui.book.generation=Generacja (kopia itd)
+gui.book.resolved=Rozwązane
+gui.book.resolved.tooltip.1=Zostało rozwiązane przez serwer (tylko na servery nie przejmój się tym)
+gui.book.unresolved=Nie rozwiązane
+gui.book.unsign=Od zapisz kiążke
+gui.book.resign=Zapisz książke
+
+gui.enchanting.enchanttoggle.0=Pokaż enchanty dla tego itemu
+gui.enchanting.enchanttoggle.1=Pokaż wszystkie enchanty
+gui.enchanting.addall=Pokaż wszystkie
+
+gui.spawnegg.entity=Specialne dla tej jednostki 
+gui.spawnegg.mob=Specilane dla tego Moda
+gui.spawnegg.mobspecific=Specialne dla %s 
+gui.spawnegg.animalspecific=Specialne dla tego zwierzęcia 
+
+gui.head.save.tooltip.1=Może wystąpic mały lag podczas wczytywania informacji o graczu.
+gui.head.save.tooltip.2=To problem Vanilli.
+gui.head.list.tooltip.1=Lista graczy obecnych na serwerze
+gui.head.list.tooltip.2=--Jeszcze niezaimplementowane--
+
+gui.headcollection.category.alphabet=Alfabet
+gui.headcollection.category.animals=Zwierzęta
+gui.headcollection.category.blocks=Bloki
+gui.headcollection.category.decoration=Dekoracje
+gui.headcollection.category.food-drinks=Jedzeni i napoje
+gui.headcollection.category.humans=Ludzie
+gui.headcollection.category.humanoid=Podobne do ludzi?
+gui.headcollection.category.miscellaneous=Różne
+gui.headcollection.category.monsters=Potwory
+gui.headcollection.category.plants=Rośliny
+
+gui.headcollection.clickhead=Kliknij, aby zastąpić bieżący Item
+gui.headcollection.clickheadshift=Przytszymaj Shift aby wyrzucić głlowe z eq
+gui.headcollection.typesearch=napisz tu coś aby wyszukać
+gui.headcollection.clicksearch=Kliknij aby wyszukać
+gui.headcollection.currentpage=Strona %s/%s
+gui.headcollection.changecategory.1=Zmień kategorie
+gui.headcollection.changecategory.2=Ładowanie potrwa 5 sekud =)
+
+gui.item.toggleside=Zmień widok
+gui.item.discord=Dołącz do discorda!
+gui.item.share=Udostępnij Item
+
+gui.item.colorremove.tooltip.1=Usuń wszystkie kolory
+gui.item.drop.tooltip.1=Przytszymaj Shift aby uzyskać komende /give 
+gui.item.drop.tooltip.2=Następnie możesz wkleić go w innym miejscu
+
+gui.nbt.update=Aktualizuj NBT 
+
+gui.nbt.comp.open=Kliknij, aby zobaczyć złożone informacje
+gui.nbt.comp.close=Kliknij, aby zwinąć złożone informacje
+
+tag.head.0=Caszka szkieleta
+tag.head.1=Whiterowa czaszka
+tag.head.2=Głowa zombi
+tag.head.3=Głowa gracza
+tag.head.4=Głowa creepera
+tag.head.5=Głowa smoka
+
+gui.potion.time=Czas (sekundy)
+gui.potion.level=Moc/siła 
+gui.potion.showparticles.0=Ukryj partikle/cząsteczki
+gui.potion.showparticles.1=Pokaż partikle/cząsteczki
+
+
+gui.equipment.inventoryclone=To jest kopia twojego ekwipunku. Zmiany nie zostaną zapisane.
+
+
+flag.enchantment.0=Enchantment: Pokaż
+flag.enchantment.1=Enchantment: Ukryj
+flag.attributemod.0=Attribute Mod: Pokaż
+flag.attributemod.1=Attribute Mod: Ukryj
+flag.unbreakable.0=Unbreakable: Pokaż
+flag.unbreakable.1=Unbreakable: Ukryj
+flag.candestroy.0=Can Destroy: Pokaż
+flag.candestroy.1=Can Destroy: Ukryj
+flag.canplaceon.0=Can Place On: Pokaż
+flag.canplaceon.1=Can Place On: Ukryj
+flag.iteminfo.0=Item Info: Pokaż
+flag.iteminfo.1=Item Info: Ukryj
+
+gui.editstring=Edytuj Nić
+
+gui.entitytags=Tagi Jednostki
+gui.mobspecific=Specialne dla Moda
+
+
+tag.skullowner=Właścicelgłowy
+
+tag.unbreakable.0=Zniszczalny
+tag.unbreakable.1=Niezniszczalny
+
+tag.fire.on=Włącz ogień %s Tików (jednostka w minecraft)
+tag.fire.off=Nie włączaj ognia
+
+tag.customname=Zmień Kastomową nazwe 
+tag.nogravity.on=wyłącz grawitacje
+tag.nogravity.off=Grawitacja
+tag.invulnerable.on=nie wrażliwy na atak
+tag.invulnerable.off=wrażliwy na atak
+tag.customnamevisible.on=Kastomowe imę widoczne
+tag.customnamevisible.off=Kastomowe imę niewidoczne
+tag.silent.on=Ciche
+tag.silent.off=Głośne
+tag.glowing.on=śWIECĄCE
+tag.glowing.off=Nie świecące
+
+tag.health.on=%s Punkty zdrowia
+tag.health.off=Martwe
+tag.absorption.on=%s Zmniejszanie ataku (Efekt Absorwacji)
+tag.absorption.off=Normalna
+tag.fallflying.on=padania tak jak na elytsze 
+tag.fallflying.off=Normalne spadanie
+tag.noai.on=Ruszanie się wyłączone
+tag.noai.off=Rusznie się włączone
+tag.persistencerequired.on=Nie despałnuje się
+tag.persistencerequired.off=Despałnuje się
+tag.canpickuploot.on=Podnosi itemy z ziemi
+tag.canpickuploot.off=Nie podnozi itemów z ziemi
+
+tag.armorstand.arms.0=Bez rąk
+tag.armorstand.arms.1=Ma ręce
+tag.armorstand.small.0=Normalny
+tag.armorstand.small.1=Mały
+tag.armorstand.invisible.0=Widoczny
+tag.armorstand.invisible.1=Niew widoczny
+tag.armorstand.nobase.0=Ma tą płytke
+tag.armorstand.nobase.1=Nie ma tej płytki
+tag.armorstand.marker.0=Nie oznaczony
+tag.armorstand.marker.1=Oznaczony
+tag.armorstand.inventory=Eqwipunek (armorstanda)
+tag.armorstand.pose=Poza
+
+tag.creeper.powered.on=Naładowany
+tag.creeper.powered.off=Normalny
+tag.creeper.explosionradius.on=Moc wybuchu: %s
+tag.creeper.explosionradius.off=Normalny wybuch
+tag.creeper.fuse.on=Czas do eksplozji: %s
+tag.creeper.fuse.off=Natychmiastowy wybuch
+tag.creeper.ignited.on=Podpalony
+tag.creeper.ignited.off=Nie podpalony
+
+tag.endermite.lifetime.off=Nieokreślony czas życia
+tag.endermite.lifetime.on=Czas życia: %s
+tag.endermite.playerspawned.off=Gracz nie odrodzony: 0
+tag.endermite.playerspawned.on=Gracz odrodzony: 1
+
+tag.parrot.variant.-1=Randomowy wariant 
+tag.parrot.variant.0=Czerwony wariant 
+tag.parrot.variant.1=Niebieski wariant 
+tag.parrot.variant.2=Zielony wariant 
+tag.parrot.variant.3=Morski wariant 
+tag.parrot.variant.4=srebny/szary wariant
+
+tag.pig.saddled.on=Ma siodło
+tag.pig.saddled.off=Nie ma siodła
+
+tag.sheep.color.0=Biała wełna
+tag.sheep.color.1=Pomarańczowa wełna
+tag.sheep.color.2=Jasno Fioletowa wełna
+tag.sheep.color.3=Jasno niebieska wełna
+tag.sheep.color.4=Zółta wełna
+tag.sheep.color.5=Limonkowa wełna
+tag.sheep.color.6=Różowa wełna
+tag.sheep.color.7=szara wełna
+tag.sheep.color.8=Jasno szara wełma
+tag.sheep.color.9=Morska wełna
+tag.sheep.color.10=Wioletowa  wełna
+tag.sheep.color.11=Niebieska wełna
+tag.sheep.color.12=Bronzowa wełna
+tag.sheep.color.13=Ciemno zielona wełna
+tag.sheep.color.14=Czerwona wełna
+tag.sheep.color.15=Czarna wełna
+tag.sheep.sheared.on=Obcięta (nie ma wełny)
+tag.sheep.sheared.off=Nie obciąta (ma wełne)
+
+tag.shulker.color.0=Biały
+tag.shulker.color.1=Pomarańczowy
+tag.shulker.color.2=Jasno wieoletowy
+tag.shulker.color.3=Jasno niebieski
+tag.shulker.color.4=Zółty
+tag.shulker.color.5=Limonkowy
+tag.shulker.color.6=Różowy
+tag.shulker.color.7=Szary
+tag.shulker.color.8=Jasno szary
+tag.shulker.color.9=Morski
+tag.shulker.color.10=Fioletowy
+tag.shulker.color.11=Niebieski
+tag.shulker.color.12=Brązowy
+tag.shulker.color.13=Ciemno zielony
+tag.shulker.color.14=Czerwony
+tag.shulker.color.15=Czarny
+
+tag.villager.profession.0=Farmer
+tag.villager.profession.1=Bibliotekasz
+tag.villager.profession.2=Kapłan
+tag.villager.profession.3=Kowal
+tag.villager.profession.4=Łucznik
+tag.villager.profession.5=Leń (nic ine może sprzedać)
+
+
+tag.vindicator.johnny.on=Obrońca Jonny (zabija owce)
+tag.vindicator.johnny.off=Normalny obrońca
+
+tag.zombie.isbaby.on=mały
+tag.zombie.isbaby.off=Dorosły
+tag.zombie.canbreakdoors.on=Może niszczyć dzwi
+tag.zombie.canbreakdoors.off=Nie może niszczyć dzwi
+
+mikstura. potencja. 3 = IV
+mikstura. potencja. 4 = V.
+potion.potency.5 = VI
+eliksir.potencja.6 = VII
+eliksir.potencja.7 = VIII
+eliksir.potencja.8 = IX
+potion.potency.9 = X
+eliksir.potencja.10 = XI
+eliksir.potencja.11 = XII
+eliksir.potencja.12 = XIII
+eliksir.potencja.13 = XIV
+mikstura. potencja.14 = XV
+eliksir.potencja.15 = XVI
+eliksir.potencja.16 = XVII
+eliksir. potencja.17 = XVIII
+eliksir. moc.18 = XIX
+mikstura. moc.19 = XX
+mikstura. moc. 20 = XXI
+eliksir.potencja.21 = XXII
+eliksir.potencja.22 = XXIII
+eliksir.potencja.23 = XXIV
+mikstura. moc. 24 = XXV
+potion.potency.25 = XXVI
+eliksir.potencja.26 = XXVII
+eliksir.potencja.27 = XXVIII
+potion.potency.28 = XXIX
+potion.potency.29 = XXX
+potion.potency.30 = XXXI
+eliksir.potencja.31 = XXXII
+eliksir.potencja.32 = XXXIII
+eliksir.potencja.33 = XXXIV
+potion.potency.34 = XXXV
+potion.potency.35 = XXXVI
+potion.potency.36 = XXXVII
+eliksir.potencja.37 = XXXVIII
+potion.potency.38 = XXXIX
+potion.potency.39 = XL
+potion.potency.40 = XLI
+eliksir.potencja.41 = XLII
+eliksir.potencja.42 = XLIII
+potion.potency.43 = XLIV
+potion.potency.44 = XLV
+potion.potency.45 = XLVI
+potion.potency.46 = XLVII
+potion.potency.47 = XLVIII
+potion.potency.48 = XLIX
+potion.potency.49 = L.
+potion.potency.50 = LI
+eliksir.potencja.51 = LII
+potion.potency.52 = LIII
+potion.potency.53 = LIV
+potion.potency.54 = LV
+potion.potency.55 = LVI
+potion.potency.56 = LVII
+eliksir.potencja.57 = LVIII
+potion.potency.58 = LIX
+potion.potency.59 = LX
+potion.potency.60 = LXI
+mikstura.potencja.61 = LXII
+potion.potency.62 = LXIII
+potion.potency.63 = LXIV
+potion.potency.64 = LXV
+potion.potency.65 = LXVI
+potion.potency.66 = LXVII
+potion.potency.67 = LXVIII
+potion.potency.68 = LXIX
+potion.potency.69 = LXX
+potion.potency.70 = LXXI
+mikstura.potencja.71 = LXXII
+potion.potency.72 = LXXIII
+potion.potency.73 = LXXIV
+potion.potency.74 = LXXV
+potion.potency.75 = LXXVI
+potion.potency.76 = LXXVII
+potion.potency.77 = LXXVIII
+potion.potency.78 = LXXIX
+potion.potency.79 = LXXX
+potion.potency.80 = LXXXI
+potion.potency.81 = LXXXII
+eliksir.potencja.82 = LXXXIII
+potion.potency.83 = LXXXIV
+potion.potency.84 = LXXXV
+potion.potency.85 = LXXXVI
+potion.potency.86 = LXXXVII
+potion.potency.87 = LXXXVIII
+potion.potency.88 = LXXXIX
+potion.potency.89 = XC
+potion.potency.90 = XCI
+eliksir.potencja.91 = XCII
+mikstura. moc. 92 = XCIII
+eliksir.potencja.93 = XCIV
+potion.potency.94 = XCV
+potion.potency.95 = XCVI
+eliksir.potencja.96 = XCVII
+mikstura. moc. 97 = XCVIII
+potion.potency.98 = XCIX
+potion.potency.99 = C
+potion.potency.100 = CI
+eliksir.potencja.101 = CII
+potion.potency.102 = CIII
+potion.potency.103 = CIV
+potion.potency.104 = CV
+potion.potency.105 = CVI
+potion.potency.106 = CVII
+potion.potency.107 = CVIII
+potion.potency.108 = CIX
+potion.potency.109 = CX
+potion.potency.110 = CXI
+potion.potency.111 = CXII
+potion.potency.112 = CXIII
+potion.potency.113 = CXIV
+potion.potency.114 = CXV
+potion.potency.115 = CXVI
+potion.potency.116 = CXVII
+potion.potency.117 = CXVIII
+potion.potency.118 = CXIX
+potion.potency.119 = CXX
+potion.potency.120 = CXXI
+mikstura.potencja.121 = CXXII
+eliksir.potencja.122 = CXXIII
+potion.potency.123 = CXXIV
+potion.potency.124 = CXXV
+potion.potency.125 = CXXVI
+potion.potency.126 = CXXVII
+eliksir.potencja.127 = CXXVIII
