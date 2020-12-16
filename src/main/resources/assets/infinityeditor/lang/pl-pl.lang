@@ -5,7 +5,7 @@ key.infinitysave.desc=dodaj aktualny item do "realm"
 
 warning.notcreative=Muszisz mieć trub kreatywny aby zapisać ten item!
 
-itemGroup.unavailable=Infinity - Nie dostępne
+itemGroup.unavailable=Infinity - Niedostępne
 itemGroup.banners=Infinity - Flagi/Banery
 itemGroup.skulls=Infinity - Głowy graczy
 itemGroup.fireworks=Infinity - Fajerwerki
@@ -26,7 +26,7 @@ gui.armorstand=Edytor arrmor standa
 gui.color=edytor kolorów
 gui.nbt=Edytor NBT
 gui.nbtadv=Przeglądarka NBT
-gui.enchanting=Zenchantuj 
+gui.enchanting=Zaklnij 
 gui.potion=Niestandardowe potki
 gui.book=Edytor książek
 gui.attributes=Edytor adrybótów 
@@ -44,11 +44,11 @@ gui.armorstand.pose.reset.1=Resetuje tylko Rotacje!
 gui.armorstand.invisible.note=Note: Usunięcie stojaka na zbroję bez poleceń może być trudne!
 gui.armorstand.marker.note=Znacznik wyłącz interakcje i zmniejsza hitbox
 
-gui.attributes.infinity.0=Wprowadź siłe atrybuty 
+gui.attributes.infinity.0=Wprowadź atrybuty 
 gui.attributes.infinity.1=Nieskończoność
 gui.attributes.operation.0=Dodatkowa  +
 gui.attributes.operation.1=wielkrotny "mnożnik" *
-gui.attributes.operation.2=Wykładniczy **
+gui.attributes.operation.2=Wykładnik **
 gui.attributes.slot.0=AKażdy slot
 gui.attributes.slot.1=Główna ręka 
 gui.attributes.slot.2=Poza ręką
@@ -67,9 +67,9 @@ gui.book.unresolved=Nie rozwiązane
 gui.book.unsign=Od zapisz kiążke
 gui.book.resign=Zapisz książke
 
-gui.enchanting.enchanttoggle.0=Pokaż enchanty dla tego itemu
-gui.enchanting.enchanttoggle.1=Pokaż wszystkie enchanty
-gui.enchanting.addall=Pokaż wszystkie
+gui.enchanting.enchanttoggle.0=Pokaż zaklęcia dla tego itemu
+gui.enchanting.enchanttoggle.1=Pokaż wszystkie zaklęcia
+gui.enchanting.addall=Dodaj wszystkie widoczne zaklęcia
 
 gui.spawnegg.entity=Specialne dla tej jednostki 
 gui.spawnegg.mob=Specilane dla tego Moda
@@ -148,7 +148,7 @@ gui.entitytags=Tagi Jednostki
 gui.mobspecific=Specialne dla Moda
 
 
-tag.skullowner=Właścicelgłowy
+tag.skullowner=Właścicel głowy
 
 tag.unbreakable.0=Zniszczalny
 tag.unbreakable.1=Niezniszczalny
@@ -186,7 +186,7 @@ tag.armorstand.arms.1=Ma ręce
 tag.armorstand.small.0=Normalny
 tag.armorstand.small.1=Mały
 tag.armorstand.invisible.0=Widoczny
-tag.armorstand.invisible.1=Niew widoczny
+tag.armorstand.invisible.1=Nie widoczny
 tag.armorstand.nobase.0=Ma tą płytke
 tag.armorstand.nobase.1=Nie ma tej płytki
 tag.armorstand.marker.0=Nie oznaczony
@@ -208,7 +208,7 @@ tag.endermite.lifetime.on=Czas życia: %s
 tag.endermite.playerspawned.off=Gracz nie odrodzony: 0
 tag.endermite.playerspawned.on=Gracz odrodzony: 1
 
-tag.parrot.variant.-1=Randomowy wariant 
+tag.parrot.variant.-1=Losowy wariant 
 tag.parrot.variant.0=Czerwony wariant 
 tag.parrot.variant.1=Niebieski wariant 
 tag.parrot.variant.2=Zielony wariant 
@@ -259,7 +259,7 @@ tag.villager.profession.1=Bibliotekasz
 tag.villager.profession.2=Kapłan
 tag.villager.profession.3=Kowal
 tag.villager.profession.4=Łucznik
-tag.villager.profession.5=Leń (nic ine może sprzedać)
+tag.villager.profession.5=Leń (nic nie może sprzedać)
 
 
 tag.vindicator.johnny.on=Obrońca Jonny (zabija owce)
@@ -270,21 +270,21 @@ tag.zombie.isbaby.off=Dorosły
 tag.zombie.canbreakdoors.on=Może niszczyć dzwi
 tag.zombie.canbreakdoors.off=Nie może niszczyć dzwi
 
-mikstura. potencja. 3 = IV
-mikstura. potencja. 4 = V.
-potion.potency.5 = VI
-eliksir.potencja.6 = VII
-eliksir.potencja.7 = VIII
-eliksir.potencja.8 = IX
-potion.potency.9 = X
-eliksir.potencja.10 = XI
-eliksir.potencja.11 = XII
-eliksir.potencja.12 = XIII
-eliksir.potencja.13 = XIV
-mikstura. potencja.14 = XV
-eliksir.potencja.15 = XVI
-eliksir.potencja.16 = XVII
-eliksir. potencja.17 = XVIII
+mikstura. potencja. 3 = III
+mikstura. potencja. 4 = IV.
+potion.potency.5 = V
+eliksir.potencja.6 = VI
+eliksir.potencja.7 = VII
+eliksir.potencja.8 = VIII
+potion.potency.9 = IX
+eliksir.potencja.10 = X
+eliksir.potencja.11 = XI
+eliksir.potencja.12 = XII
+eliksir.potencja.13 = XIII
+mikstura. potencja.14 = XIV
+eliksir.potencja.15 = XV
+eliksir.potencja.16 = XVI
+eliksir. potencja.17 = XVII
 eliksir. moc.18 = XIX
 mikstura. moc.19 = XX
 mikstura. moc. 20 = XXI
