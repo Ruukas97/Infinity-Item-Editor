@@ -243,7 +243,7 @@ public class GuiPotion extends GuiInfinity
         int i = 0;
         for ( ResourceLocation key : keyset )
         {
-            double angleI = (((double) (rotOff + (double) (Math.abs( mouseDist - r ) >= 16 ? partialTicks : 0d)) / 60d)) + (angle * i++);
+            double angleI = (((rotOff + (Math.abs( mouseDist - r ) >= 16 ? partialTicks : 0d)) / 60d)) + (angle * i++);
             int x = (int) (midX + (r * Math.cos( angleI )));
             int y = (int) (midY + (r * Math.sin( angleI )));
             

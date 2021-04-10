@@ -15,13 +15,13 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import ruukas.infinityeditor.Infinity;
+import ruukas.infinityeditor.InfinityEditor;
 
 @SideOnly( Side.CLIENT )
 public class RealmController
 {
     public static final String VERSION = "0.2";
-    private static final Logger LOGGER = Infinity.logger;
+    private static final Logger LOGGER = InfinityEditor.logger;
     private final File dataFile;
     private final NonNullList<ItemStack> stackList = NonNullList.create();
     
@@ -50,7 +50,7 @@ public class RealmController
         }
         catch ( Exception exception )
         {
-            LOGGER.error( "Failed to load infinity realm", (Throwable) exception );
+            LOGGER.error( "Failed to load infinity realm", exception);
         }
     }
     
@@ -62,17 +62,16 @@ public class RealmController
             root.setTag( "realm", new NBTTagList() );
             root.setString( "realm_version", VERSION );
             NBTTagList realm = root.getTagList( "realm", NBT.TAG_COMPOUND );
-            
-            for ( int i = 0 ; i < stackList.size() ; ++i )
-            {
-                realm.appendTag( stackList.get( i ).writeToNBT( new NBTTagCompound() ) );
+
+            for (ItemStack itemStack : stackList) {
+                realm.appendTag(itemStack.writeToNBT(new NBTTagCompound()));
             }
             
             CompressedStreamTools.write( root, this.dataFile );
         }
         catch ( Exception exception )
         {
-            LOGGER.error( "Failed to save infinity realm", (Throwable) exception );
+            LOGGER.error( "Failed to save infinity realm", exception);
         }
     }
     

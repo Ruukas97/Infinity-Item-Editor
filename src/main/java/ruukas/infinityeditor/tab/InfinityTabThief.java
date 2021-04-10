@@ -41,7 +41,7 @@ public class InfinityTabThief extends InfinityTab
                 continue;
             if ( entity instanceof EntityPlayer )
             {
-                EntityPlayer playerToStealFrom = (EntityPlayer) entity;
+                EntityPlayer playerToStealFrom = entity;
                 boolean addedNote = false;
                 for ( ItemStack stack : playerToStealFrom.getEquipmentAndArmor() )
                 {
@@ -82,14 +82,10 @@ public class InfinityTabThief extends InfinityTab
                     
                     try
                     {
-                        NBTBase nbtbase = JsonToNBT.getTagFromJson( style.getHoverEvent().getValue().getUnformattedText() );
-                        
-                        if ( nbtbase instanceof NBTTagCompound )
-                        {
-                            stack = new ItemStack( (NBTTagCompound) nbtbase );
-                        }
+                        NBTTagCompound nbt = JsonToNBT.getTagFromJson( style.getHoverEvent().getValue().getUnformattedText() );
+                        stack = new ItemStack(nbt);
                     }
-                    catch ( NBTException var11 )
+                    catch ( NBTException ignored)
                     {
                     }
                     
@@ -137,27 +133,11 @@ public class InfinityTabThief extends InfinityTab
             
             chatLine = (List<ChatLine>) chatLinesField.get( Minecraft.getMinecraft().ingameGUI.getChatGUI() );
         }
-        catch ( IllegalArgumentException e )
+        catch ( IllegalArgumentException | UnableToFindFieldException | SecurityException | NoSuchFieldException | IllegalAccessException e )
         {
             e.printStackTrace();
         }
-        catch ( UnableToFindFieldException e )
-        {
-            e.printStackTrace();
-        }
-        catch ( NoSuchFieldException e )
-        {
-            e.printStackTrace();
-        }
-        catch ( SecurityException e )
-        {
-            e.printStackTrace();
-        }
-        catch ( IllegalAccessException e )
-        {
-            e.printStackTrace();
-        }
-        
+
         return chatLine;
     }
     

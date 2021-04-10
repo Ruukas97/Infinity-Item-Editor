@@ -3,11 +3,11 @@ package ruukas.infinityeditor.data;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.Config.Ignore;
 import net.minecraftforge.common.config.Config.Type;
-import ruukas.infinityeditor.Infinity;
+import ruukas.infinityeditor.InfinityEditor;
 import ruukas.infinityeditor.gui.HelperGui;
 import net.minecraftforge.common.config.ConfigManager;
 
-@Config( modid = Infinity.MODID, name = "InfinityItemEditor", category = "general" )
+@Config( modid = InfinityEditor.MODID, name = "InfinityItemEditor" )
 public class InfinityConfig
 {
 	@Ignore
@@ -32,7 +32,7 @@ public class InfinityConfig
     public static void setItemSidebar( boolean value )
     {
         itemGuiSidebar = value;
-        ConfigManager.sync( Infinity.MODID, Type.INSTANCE );
+        ConfigManager.sync( InfinityEditor.MODID, Type.INSTANCE );
     }
     
     public static boolean getItemSidebar()

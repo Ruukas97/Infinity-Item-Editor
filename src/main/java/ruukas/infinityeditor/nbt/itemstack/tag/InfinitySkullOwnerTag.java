@@ -8,7 +8,7 @@ import ruukas.infinityeditor.nbt.itemstack.InfinityItemTag;
 
 public class InfinitySkullOwnerTag
 {
-    private static String key = "SkullOwner";
+    private static final String key = "SkullOwner";
     private final InfinityItemTag itemTag;
     
     public InfinitySkullOwnerTag(InfinityItemTag itemTag) {

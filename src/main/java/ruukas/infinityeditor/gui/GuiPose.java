@@ -30,7 +30,7 @@ import ruukas.infinityeditor.nbt.NBTHelper.EnumPosePart;
 public class GuiPose extends GuiScreen
 {
     
-    private ItemStack stack = ItemStack.EMPTY;
+    private final ItemStack stack;
     private EntityArmorStand armorStand = null;
     
     private final GuiScreen lastScreen;
@@ -55,32 +55,20 @@ public class GuiPose extends GuiScreen
         int vertical = 1;
         for ( EnumPosePart part : EnumPosePart.values() )
         {
-            addButton( new GuiSlider( 300 + sliders++, 10, 5 + 25 * (vertical), 120, 20, part.getKey() + "-x ", "", 0d, 359d, NBTHelper.ArmorStandNBTHelper.getX( stack, part ), false, true, new ISlider() {
-                @Override
-                public void onChangeSliderValue( GuiSlider slider )
-                {
-                    NBTHelper.ArmorStandNBTHelper.setX( stack, part, (float) Math.floor( slider.getValue() ) );
-                    updateArmorStand();
-                }
-            } ) );
+            addButton( new GuiSlider( 300 + sliders++, 10, 5 + 25 * (vertical), 120, 20, part.getKey() + "-x ", "", 0d, 359d, NBTHelper.ArmorStandNBTHelper.getX( stack, part ), false, true, slider -> {
+                NBTHelper.ArmorStandNBTHelper.setX( stack, part, (float) Math.floor( slider.getValue() ) );
+                updateArmorStand();
+            }) );
             
-            addButton( new GuiSlider( 300 + sliders++, 135, 5 + 25 * (vertical), 120, 20, part.getKey() + "-y ", "", 0d, 359d, NBTHelper.ArmorStandNBTHelper.getY( stack, part ), false, true, new ISlider() {
-                @Override
-                public void onChangeSliderValue( GuiSlider slider )
-                {
-                    NBTHelper.ArmorStandNBTHelper.setY( stack, part, (float) Math.floor( slider.getValue() ) );
-                    updateArmorStand();
-                }
-            } ) );
+            addButton( new GuiSlider( 300 + sliders++, 135, 5 + 25 * (vertical), 120, 20, part.getKey() + "-y ", "", 0d, 359d, NBTHelper.ArmorStandNBTHelper.getY( stack, part ), false, true, slider -> {
+                NBTHelper.ArmorStandNBTHelper.setY( stack, part, (float) Math.floor( slider.getValue() ) );
+                updateArmorStand();
+            }) );
             
-            addButton( new GuiSlider( 300 + sliders++, 260, 5 + 25 * (vertical), 120, 20, part.getKey() + "-z ", "", 0d, 359d, NBTHelper.ArmorStandNBTHelper.getZ( stack, part ), false, true, new ISlider() {
-                @Override
-                public void onChangeSliderValue( GuiSlider slider )
-                {
-                    NBTHelper.ArmorStandNBTHelper.setZ( stack, part, (float) Math.floor( slider.getValue() ) );
-                    updateArmorStand();
-                }
-            } ) );
+            addButton( new GuiSlider( 300 + sliders++, 260, 5 + 25 * (vertical), 120, 20, part.getKey() + "-z ", "", 0d, 359d, NBTHelper.ArmorStandNBTHelper.getZ( stack, part ), false, true, slider -> {
+                NBTHelper.ArmorStandNBTHelper.setZ( stack, part, (float) Math.floor( slider.getValue() ) );
+                updateArmorStand();
+            }) );
             
             vertical++;
         }
@@ -106,7 +94,7 @@ public class GuiPose extends GuiScreen
     }
     
     @Override
-    protected void actionPerformed( GuiButton button ) throws IOException
+    protected void actionPerformed( GuiButton button )
     {
         
         if ( button.id == backButton.id )
@@ -165,7 +153,7 @@ public class GuiPose extends GuiScreen
             
             if ( entity != null && entity instanceof EntityArmorStand )
             {
-                armorStand = (EntityArmorStand) entity;
+                armorStand = entity;
                 applyItemDataToMob();
             }
         }

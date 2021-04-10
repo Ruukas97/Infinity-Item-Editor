@@ -38,15 +38,15 @@ public class GuiArmorStand extends GuiInfinity
     {
         super.initGui();
         
-        int buttons = 0;
-        this.entityButton = addButton( new GuiInfinityButton( 100 + buttons, (this.width / 2) - 75, 50 + (30 * buttons++), 150, 20, I18n.format( "gui.spawnegg.entity" ) ) );
+        int buttons = 1;
+        this.entityButton = addButton( new GuiInfinityButton( 100 + buttons, (this.width / 2) - 75, 50, 150, 20, I18n.format( "gui.spawnegg.entity" ) ) );
         this.armsButton = addButton( new GuiInfinityButton( 100 + buttons, (this.width / 2) - 75, 50 + (30 * buttons++), 150, 20, I18n.format( "tag.armorstand.arms." + ArmorStandNBTHelper.SHOW_ARMS.getByte( getItemStack() ) ) ) );
         this.smallButton = addButton( new GuiInfinityButton( 100 + buttons, (this.width / 2) - 75, 50 + (30 * buttons++), 150, 20, I18n.format( "tag.armorstand.small." + ArmorStandNBTHelper.SMALL.getByte( getItemStack() ) ) ) );
         this.invisibleButton = addButton( new GuiInfinityButton( 100 + buttons, (this.width / 2) - 75, 50 + (30 * buttons++), 150, 20, I18n.format( "tag.armorstand.invisible." + ArmorStandNBTHelper.INVISIBLE.getByte( getItemStack() ) ) ) );
         this.baseButton = addButton( new GuiInfinityButton( 100 + buttons, (this.width / 2) - 75, 50 + (30 * buttons++), 150, 20, I18n.format( "tag.armorstand.nobase." + ArmorStandNBTHelper.NO_BASE.getByte( getItemStack() ) ) ) );
         this.markerButton = addButton( new GuiInfinityButton( 100 + buttons, (this.width / 2) - 75, 50 + (30 * buttons++), 150, 20, I18n.format( "tag.armorstand.marker." + ArmorStandNBTHelper.SHOW_ARMS.getByte( getItemStack() ) ) ) );
         this.inventoryButton = addButton( new GuiInfinityButton( 100 + buttons, (this.width / 2) - 75, 50 + (30 * buttons++), 150, 20, I18n.format( "tag.armorstand.inventory" ) ) );
-        this.poseButton = addButton( new GuiInfinityButton( 100 + buttons, (this.width / 2) - 75, 50 + (30 * buttons++), 150, 20, I18n.format( "tag.armorstand.pose" ) ) );
+        this.poseButton = addButton( new GuiInfinityButton( 100 + buttons, (this.width / 2) - 75, 50 + (30 * buttons), 150, 20, I18n.format( "tag.armorstand.pose" ) ) );
         
         updateArmorStand();
     }
@@ -156,13 +156,8 @@ public class GuiArmorStand extends GuiInfinity
     {
         if ( getItemStack().getItem() instanceof ItemArmorStand )
         {
-            EntityArmorStand entity = new EntityArmorStand( mc.world );
-            
-            if ( entity != null && entity instanceof EntityArmorStand )
-            {
-                armorStand = (EntityArmorStand) entity;
-                applyItemDataToArmorStand();
-            }
+            armorStand = new EntityArmorStand( mc.world );
+            applyItemDataToArmorStand();
         }
     }
     

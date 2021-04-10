@@ -22,7 +22,7 @@ public class GuiLorePaint extends GuiInfinity {
     private int x = 3, y = 3;
     private List<List<LorePixel>> pixelRows;
     private GuiInfinityButton insert, scale, addRow, removeRow, addColumn, removeColumn, previewToggle;
-    private LorePixel currentPixel = new LorePixel();
+    private final LorePixel currentPixel = new LorePixel();
 
 
     public GuiLorePaint(GuiScreen lastScreen, ItemStackHolder stackHolder) {
@@ -61,11 +61,11 @@ public class GuiLorePaint extends GuiInfinity {
         if (button.id == 500) {
             NBTTagList lore = getLore();
             for (List<LorePixel> row : pixelRows) {
-                String s = "";
+                StringBuilder s = new StringBuilder();
                 for (LorePixel pixel : row) {
-                    s += pixel;
+                    s.append(pixel);
                 }
-                lore.appendTag( new NBTTagString( s ) );
+                lore.appendTag( new NBTTagString(s.toString()) );
             }
             return;
         }
@@ -80,9 +80,9 @@ public class GuiLorePaint extends GuiInfinity {
         }
 
         if (button.id == 502) {
-            List<LorePixel> row = new ArrayList<LorePixel>();
+            List<LorePixel> row = new ArrayList<>();
             for (int i = 0; i < x; i++) {
-                row.add( currentPixel.clone() );
+                row.add( currentPixel.copy() );
             }
             pixelRows.add( row );
             y++;
@@ -100,7 +100,7 @@ public class GuiLorePaint extends GuiInfinity {
 
         if (button.id == 504) {
             for (List<LorePixel> row : pixelRows) {
-                row.add( currentPixel.clone() );
+                row.add( currentPixel.copy() );
             }
             x++;
             return;
@@ -119,18 +119,17 @@ public class GuiLorePaint extends GuiInfinity {
 
         if (button.id == 506) {
             preview = !preview;
-            return;
         }
     }
 
 
     @Override
     protected void reset() {
-        pixelRows = new ArrayList<List<LorePixel>>();
+        pixelRows = new ArrayList<>();
         for (int i = 0; i < y; i++) {
-            List<LorePixel> row = new ArrayList<LorePixel>();
+            List<LorePixel> row = new ArrayList<>();
             for (int j = 0; j < x; j++) {
-                row.add( currentPixel.clone() );
+                row.add( currentPixel.copy() );
             }
             pixelRows.add( row );
         }
@@ -177,11 +176,11 @@ public class GuiLorePaint extends GuiInfinity {
 
 
         for (List<LorePixel> row : pixelRows) {
-            String s = "";
+            StringBuilder s = new StringBuilder();
             for (LorePixel pixel : row) {
-                s += pixel;
+                s.append(pixel);
             }
-            fontRenderer.drawString( s, (float) (midX - getSizeX() / 2), (float) (midY - getSizeY() / 2 + yPos), 0xFFFFFFFF, false );
+            fontRenderer.drawString(s.toString(), (float) (midX - getSizeX() / 2), (float) (midY - getSizeY() / 2 + yPos), 0xFFFFFFFF, false );
 
             yPos += 9;
         }
@@ -197,22 +196,22 @@ public class GuiLorePaint extends GuiInfinity {
         removeColumn.x = xPos;
         removeColumn.enabled = x > 1;
 
-        String symbols = "";
+        StringBuilder symbols = new StringBuilder();
         for (LoreSymbol symbol : LoreSymbol.values()) {
             if (symbol != LoreSymbol.fullspace)
-                symbols += new LorePixel( currentPixel.color, symbol );
+                symbols.append(new LorePixel(currentPixel.color, symbol));
             else
-                symbols += TextFormatting.ITALIC.toString() + TextFormatting.BOLD + "E";
+                symbols.append(TextFormatting.ITALIC).append(TextFormatting.BOLD).append("E");
         }
-        drawString( fontRenderer, symbols, 0, 0, 0xFFFFFFFF );
+        drawString( fontRenderer, symbols.toString(), 0, 0, 0xFFFFFFFF );
         drawString( fontRenderer, TextFormatting.fromColorIndex( currentPixel.color.getDyeDamage() ) + currentPixel.symbol.getTranslatedName(), 2, 10, 0xFFFFFFFF );
 
-        String colors = "";
+        StringBuilder colors = new StringBuilder();
         for (EnumDyeColor color : EnumDyeColor.values()) {
-            colors += new LorePixel( color, currentPixel.symbol );
+            colors.append(new LorePixel(color, currentPixel.symbol));
         }
-        int colorX = width - fontRenderer.getStringWidth( colors );
-        drawString( fontRenderer, colors, colorX, 0, 0xFFFFFFFF );
+        int colorX = width - fontRenderer.getStringWidth(colors.toString());
+        drawString( fontRenderer, colors.toString(), colorX, 0, 0xFFFFFFFF );
         String colorS = TextFormatting.fromColorIndex( currentPixel.color.getDyeDamage() ) + TextFormatting.fromColorIndex( currentPixel.color.getDyeDamage() ).getFriendlyName();
         drawString( fontRenderer, colorS, width - fontRenderer.getStringWidth( colorS ) - 2, 10, 0xFFFFFFFF );
 
@@ -220,7 +219,7 @@ public class GuiLorePaint extends GuiInfinity {
         if (dragging && HelperGui.isMouseInRegion( mouseX, mouseY, midX - getSizeX() / 2, midY - getSizeY() / 2, getSizeX() - 1, getSizeY() - 1 )) {
             int xi = (mouseX - (midX - getSizeX() / 2)) / 9;
             int yi = (mouseY - (midY - getSizeY() / 2)) / 9;
-            pixelRows.get( yi ).set( xi, currentPixel.clone() );
+            pixelRows.get( yi ).set( xi, currentPixel.copy() );
         }
         else if (dragging && HelperGui.isMouseInRegion( mouseX, mouseY, 0, 0, LoreSymbol.values().length * 9, 9 )) {
             int xi = mouseX / 9;
@@ -238,14 +237,14 @@ public class GuiLorePaint extends GuiInfinity {
         HelperGui.addTooltip( scale, mouseX, mouseY, String.valueOf( mc.gameSettings.guiScale ) );
 
         if (preview || HelperGui.isMouseInRegion( mouseX, mouseY, previewToggle.x, previewToggle.y, previewToggle.width, previewToggle.height )) {
-            List<String> lines = new ArrayList<String>();
+            List<String> lines = new ArrayList<>();
             lines.add( title );
             for (List<LorePixel> row : pixelRows) {
-                String s = "";
+                StringBuilder s = new StringBuilder();
                 for (LorePixel pixel : row) {
-                    s += pixel;
+                    s.append(pixel);
                 }
-                lines.add( s );
+                lines.add(s.toString());
             }
             drawHoveringText( lines, mouseX, mouseY );
         }
@@ -279,8 +278,7 @@ public class GuiLorePaint extends GuiInfinity {
         }
 
 
-        @Override
-        protected LorePixel clone() {
+        protected LorePixel copy() {
             return new LorePixel( color, symbol );
         }
 

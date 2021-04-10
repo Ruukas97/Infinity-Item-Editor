@@ -2,6 +2,7 @@ package ruukas.infinityeditor.gui;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
@@ -24,7 +25,7 @@ import net.minecraftforge.fml.client.config.GuiSlider;
 import net.minecraftforge.fml.client.config.GuiSlider.ISlider;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import ruukas.infinityeditor.Infinity;
+import ruukas.infinityeditor.InfinityEditor;
 import ruukas.infinityeditor.data.InfinityConfig;
 import ruukas.infinityeditor.gui.action.GuiActionTextField;
 import ruukas.infinityeditor.gui.action.GuiInfinityButton;
@@ -34,7 +35,7 @@ import ruukas.infinityeditor.nbt.NBTHelper.ColorNBTHelper;
 public class GuiColor extends GuiScreen
 {
     
-    private ItemStack stack = ItemStack.EMPTY;
+    private final ItemStack stack;
     
     private final GuiScreen lastScreen;
     
@@ -61,10 +62,10 @@ public class GuiColor extends GuiScreen
         hexText = new GuiActionTextField( 100, this.fontRenderer, (this.width / 2) - 25, this.height / 2 - 85, 50, 20 );
         hexText.setMaxStringLength( 7 );
         String hexS = Integer.toHexString( ColorNBTHelper.getColorAsInt( stack ) );
-        String zeroes = "";
+        StringBuilder zeroes = new StringBuilder();
         for ( int i = 0 ; i < 6 - hexS.length() ; i++ )
         {
-            zeroes += "0";
+            zeroes.append("0");
         }
         hexText.setText( "#" + zeroes + hexS );
         hexText.action = () -> {
@@ -78,20 +79,17 @@ public class GuiColor extends GuiScreen
                 else if ( length == 7 )
                 {
                     text = text.substring( 1 );
-                    length = 6;
                 }
-                
-                if ( hexText.getText().length() == 7 )
+                else return;
+
+                try
                 {
-                    try
-                    {
-                        ColorNBTHelper.setColor( stack, (int) Long.parseLong( text, 16 ) );
-                        redSlider.sliderValue = ColorNBTHelper.getRed( stack );
-                    }
-                    catch ( NumberFormatException e )
-                    {
-                        Infinity.logger.error( "Could not parse " + text + " as a hex color." );
-                    }
+                    ColorNBTHelper.setColor( stack, (int) Long.parseLong( text, 16 ) );
+                    redSlider.sliderValue = ColorNBTHelper.getRed( stack );
+                }
+                catch ( NumberFormatException e )
+                {
+                    InfinityEditor.logger.error( "Could not parse " + text + " as a hex color." );
                 }
             }
         };
@@ -100,50 +98,38 @@ public class GuiColor extends GuiScreen
         resetButton = addButton( new GuiInfinityButton( 201, this.width / 2 - 30, this.height - 25, 60, 20, I18n.format( "gui.reset" ) ) );
         dropButton = addButton( new GuiInfinityButton( 202, this.width / 2 + 30, this.height - 25, 60, 20, I18n.format( "gui.drop" ) ) );
         
-        redSlider = this.addButton( new GuiSlider( 300, this.width / 2 - 80, this.height / 2 - 50, 160, 20, "Red: ", "", 0d, 255d, ColorNBTHelper.getRed( stack ), false, true, new ISlider() {
-            @Override
-            public void onChangeSliderValue( GuiSlider slider )
+        redSlider = this.addButton( new GuiSlider( 300, this.width / 2 - 80, this.height / 2 - 50, 160, 20, "Red: ", "", 0d, 255d, ColorNBTHelper.getRed( stack ), false, true, slider -> {
+            ColorNBTHelper.setRed( stack, slider.getValueInt() );
+            String hexS1 = Integer.toHexString( ColorNBTHelper.getColorAsInt( stack ) );
+            StringBuilder zeroes1 = new StringBuilder();
+            for (int i = 0; i < 6 - hexS1.length() ; i++ )
             {
-                ColorNBTHelper.setRed( stack, slider.getValueInt() );
-                String hexS = Integer.toHexString( ColorNBTHelper.getColorAsInt( stack ) );
-                String zeroes = "";
-                for ( int i = 0 ; i < 6 - hexS.length() ; i++ )
-                {
-                    zeroes += "0";
-                }
-                hexText.setText( "#" + zeroes + hexS );
+                zeroes1.append("0");
             }
-        } ) );
+            hexText.setText( "#" + zeroes1 + hexS1);
+        }) );
         
-        greenSlider = this.addButton( new GuiSlider( 301, this.width / 2 - 80, this.height / 2 - 10, 160, 20, "Green: ", "", 0d, 255d, ColorNBTHelper.getGreen( stack ), false, true, new ISlider() {
-            @Override
-            public void onChangeSliderValue( GuiSlider slider )
+        greenSlider = this.addButton( new GuiSlider( 301, this.width / 2 - 80, this.height / 2 - 10, 160, 20, "Green: ", "", 0d, 255d, ColorNBTHelper.getGreen( stack ), false, true, slider -> {
+            ColorNBTHelper.setGreen( stack, slider.getValueInt() );
+            String hexS12 = Integer.toHexString( ColorNBTHelper.getColorAsInt( stack ) );
+            StringBuilder zeroes12 = new StringBuilder();
+            for (int i = 0; i < 6 - hexS12.length() ; i++ )
             {
-                ColorNBTHelper.setGreen( stack, slider.getValueInt() );
-                String hexS = Integer.toHexString( ColorNBTHelper.getColorAsInt( stack ) );
-                String zeroes = "";
-                for ( int i = 0 ; i < 6 - hexS.length() ; i++ )
-                {
-                    zeroes += "0";
-                }
-                hexText.setText( "#" + zeroes + hexS );
+                zeroes12.append("0");
             }
-        } ) );
+            hexText.setText( "#" + zeroes12 + hexS12);
+        }) );
         
-        blueSlider = this.addButton( new GuiSlider( 302, this.width / 2 - 80, this.height / 2 + 30, 160, 20, "Blue: ", "", 0d, 255d, ColorNBTHelper.getBlue( stack ), false, true, new ISlider() {
-            @Override
-            public void onChangeSliderValue( GuiSlider slider )
+        blueSlider = this.addButton( new GuiSlider( 302, this.width / 2 - 80, this.height / 2 + 30, 160, 20, "Blue: ", "", 0d, 255d, ColorNBTHelper.getBlue( stack ), false, true, slider -> {
+            ColorNBTHelper.setBlue( stack, slider.getValueInt() );
+            String hexS13 = Integer.toHexString( ColorNBTHelper.getColorAsInt( stack ) );
+            StringBuilder zeroes13 = new StringBuilder();
+            for (int i = 0; i < 6 - hexS13.length() ; i++ )
             {
-                ColorNBTHelper.setBlue( stack, slider.getValueInt() );
-                String hexS = Integer.toHexString( ColorNBTHelper.getColorAsInt( stack ) );
-                String zeroes = "";
-                for ( int i = 0 ; i < 6 - hexS.length() ; i++ )
-                {
-                    zeroes += "0";
-                }
-                hexText.setText( "#" + zeroes + hexS );
+                zeroes13.append("0");
             }
-        } ) );
+            hexText.setText( "#" + zeroes13 + hexS13);
+        }) );
     }
     
     @Override
@@ -196,7 +182,7 @@ public class GuiColor extends GuiScreen
     }
     
     @Override
-    protected void actionPerformed( GuiButton button ) throws IOException
+    protected void actionPerformed( GuiButton button )
     {
         if ( button.id == backButton.id )
         {
@@ -233,8 +219,8 @@ public class GuiColor extends GuiScreen
         GL11.glScalef( 0.8f, 0.8f, 0.8f );
         this.renderToolTip( stack, 0, 25 );
         
-        String s = stack.hasTagCompound() ? stack.getTagCompound().toString() : "{}";
-        
+        String s = stack.hasTagCompound() ? Objects.requireNonNull(stack.getTagCompound()).toString() : "{}";
+
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         JsonParser jp = new JsonParser();
         JsonElement je = jp.parse( s );

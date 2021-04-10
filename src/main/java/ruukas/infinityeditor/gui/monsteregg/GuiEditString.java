@@ -21,9 +21,9 @@ public class GuiEditString extends GuiScreen
     private GuiButton doneBtn;
     private GuiButton cancelBtn;
     
-    private MobTagString tag;
-    private GuiScreen parentScreen;
-    private ItemStack stack;
+    private final MobTagString tag;
+    private final GuiScreen parentScreen;
+    private final ItemStack stack;
     
     public GuiEditString(GuiScreen parentScreen, MobTagString tag, ItemStack stack) {
         this.parentScreen = parentScreen;
@@ -66,7 +66,7 @@ public class GuiEditString extends GuiScreen
     /**
      * Called by the controls from the buttonList when activated. (Mouse pressed for buttons)
      */
-    protected void actionPerformed( GuiButton button ) throws IOException
+    protected void actionPerformed( GuiButton button )
     {
         if ( button.enabled )
         {

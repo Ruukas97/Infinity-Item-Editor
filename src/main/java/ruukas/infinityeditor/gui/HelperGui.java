@@ -2,6 +2,7 @@ package ruukas.infinityeditor.gui;
 
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.annotation.Nullable;
@@ -20,13 +21,12 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntityBanner;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.config.GuiUtils;
-import ruukas.infinityeditor.Infinity;
+import ruukas.infinityeditor.InfinityEditor;
 
 public class HelperGui extends GuiUtils
 {
-    public static final ResourceLocation EMPTY_ARMOR_SLOT_SWORD = new ResourceLocation( Infinity.MODID, "items/empty_armor_slot_sword" );
+    //public static final ResourceLocation EMPTY_ARMOR_SLOT_SWORD = new ResourceLocation( InfinityEditor.MODID, "items/empty_armor_slot_sword" );
     
     public static final int GOOD_GREEN = 0x52b738;
     public static final int BAD_RED = 0xf44262;
@@ -77,7 +77,7 @@ public class HelperGui extends GuiUtils
         
         if ( !strings.isEmpty() )
         {
-            addToolTip( xPos, yPos, width, height, mouseX, mouseY, strings.toArray( new String[ strings.size() ] ) );
+            addToolTip( xPos, yPos, width, height, mouseX, mouseY, strings.toArray(new String[0]) );
         }
         else
         {
@@ -89,6 +89,7 @@ public class HelperGui extends GuiUtils
     {
         if ( isMouseInRegion( mouseX, mouseY, xPos, yPos, width, height ) )
         {
+            assert getCurrentScreen() != null;
             if ( str.length == 1 )
             {
                 getCurrentScreen().drawHoveringText( str[0], mouseX, mouseY );
@@ -96,12 +97,9 @@ public class HelperGui extends GuiUtils
             else
             {
                 List<String> strings = new ArrayList<>();
-                
-                for ( String s : str )
-                {
-                    strings.add( s );
-                }
-                
+
+                Collections.addAll(strings, str);
+
                 getCurrentScreen().drawHoveringText( strings, mouseX, mouseY );
             }
         }
@@ -144,13 +142,13 @@ public class HelperGui extends GuiUtils
         try
         {
             Class<?> oclass = Class.forName( "java.awt.Desktop" );
-            Object object = oclass.getMethod( "getDesktop" ).invoke( (Object) null );
+            Object object = oclass.getMethod( "getDesktop" ).invoke(null);
             oclass.getMethod( "browse", URI.class ).invoke( object, url );
         }
         catch ( Throwable throwable1 )
         {
             Throwable throwable = throwable1.getCause();
-            Infinity.logger.error( "Couldn't open link: {}", (Object) (throwable == null ? "<UNKNOWN>" : throwable.getMessage()) );
+            InfinityEditor.logger.error( "Couldn't open link: {}", throwable == null ? "<UNKNOWN>" : throwable.getMessage());
         }
     }
     
@@ -169,7 +167,7 @@ public class HelperGui extends GuiUtils
         GlStateManager.rotate(-135.0F, 0.0F, 1.0F, 0.0F);
         // GlStateManager.rotate(-((float)Math.atan((double)(mouseY / 40.0F))) *
         // 20.0F, 1.0F, 0.0F, 0.0F);
-        ent.rotationYaw = (float) Math.atan((double) (mouseX / 40.0F)) * 25.0F;
+        ent.rotationYaw = (float) Math.atan(mouseX / 40.0F) * 25.0F;
         // ent.rotationPitch = -((float)Math.atan((double)(mouseY / 40.0F))) *
         // 20.0F;
         GlStateManager.translate(0.0F, 0.0F, 0.0F);
@@ -214,8 +212,8 @@ public class HelperGui extends GuiUtils
         GlStateManager.rotate(-135.0F, 0.0F, 1.0F, 0.0F);
         // GlStateManager.rotate(-((float)Math.atan((double)(mouseY / 40.0F))) *
         // 20.0F, 1.0F, 0.0F, 0.0F);
-        ent.renderYawOffset = (float) Math.atan((double) (mouseX / 40.0F)) * 25.0F;
-        ent.rotationYaw = (float) Math.atan((double) (mouseX / 40.0F)) * 25.0F;
+        ent.renderYawOffset = (float) Math.atan(mouseX / 40.0F) * 25.0F;
+        ent.rotationYaw = (float) Math.atan(mouseX / 40.0F) * 25.0F;
         // ent.rotationPitch = -((float)Math.atan((double)(mouseY / 40.0F))) *
         // 20.0F;
         GlStateManager.translate(0.0F, 0.0F, 0.0F);
@@ -259,8 +257,8 @@ public class HelperGui extends GuiUtils
         GlStateManager.rotate(135.0F, 0.0F, 1.0F, 0.0F);
         RenderHelper.enableStandardItemLighting();
         GlStateManager.rotate(-135.0F, 0.0F, 1.0F, 0.0F);
-        GlStateManager.rotate(-((float) Math.atan((double) (mouseX / 40.0F))) * 20.5F, 0.0F, 1.0F, 0.0F);
-        GlStateManager.rotate(-((float) Math.atan((double) (mouseY / 40.0F))) * 2.0F, 1.0F, 0.0F, 0.0F);
+        GlStateManager.rotate(-((float) Math.atan(mouseX / 40.0F)) * 20.5F, 0.0F, 1.0F, 0.0F);
+        GlStateManager.rotate(-((float) Math.atan(mouseY / 40.0F)) * 2.0F, 1.0F, 0.0F, 0.0F);
         // ent.renderYawOffset = (float)Math.atan((double)(mouseX / 40.0F)) *
         // 20.0F;
         // ent.rotationYaw = (float)Math.atan((double)(mouseX / 40.0F)) * 40.0F;

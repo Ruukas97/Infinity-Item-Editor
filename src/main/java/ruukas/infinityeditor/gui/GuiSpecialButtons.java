@@ -1,6 +1,7 @@
 package ruukas.infinityeditor.gui;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import net.minecraft.client.gui.GuiScreen;
@@ -23,11 +24,8 @@ public class GuiSpecialButtons extends GuiInfinity
         int added = 0;
         GuiActionButton[] array = ActionButtons.getActionButtons();
         List<GuiActionButton> buttons = new ArrayList<>();
-        
-        for ( GuiActionButton b : array )
-        {
-            buttons.add( b );
-        }
+
+        Collections.addAll(buttons, array);
         
         buttons.sort( new ActionButtons.SorterGuiActionButton() );
         

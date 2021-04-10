@@ -30,7 +30,7 @@ public class InfinityTabBanners extends InfinityTab
         EntityPlayer player = Minecraft.getMinecraft().player;
         
         int i = 0;
-        NonNullList<ItemStack> banners = NonNullList.<ItemStack>create();
+        NonNullList<ItemStack> banners = NonNullList.create();
         Items.BANNER.getSubItems( CreativeTabs.DECORATIONS, banners );
         ItemStack currentBanner = null;
         
@@ -128,7 +128,7 @@ public class InfinityTabBanners extends InfinityTab
         }
     }
     
-    private static final ItemStack generateIconBanner()
+    private static ItemStack generateIconBanner()
     {
         ItemStack icon = new ItemStack( Items.BANNER, 1, 14 );
         

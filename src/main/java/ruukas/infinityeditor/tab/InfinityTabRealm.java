@@ -3,7 +3,7 @@ package ruukas.infinityeditor.tab;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
-import ruukas.infinityeditor.Infinity;
+import ruukas.infinityeditor.InfinityEditor;
 
 public class InfinityTabRealm extends InfinityTab
 {
@@ -31,6 +31,6 @@ public class InfinityTabRealm extends InfinityTab
     {
         super.displayAllRelevantItems( stackList );
         
-        stackList.addAll( Infinity.realmController.getStackList() );
+        stackList.addAll( InfinityEditor.realmController.getStackList() );
     }
 }

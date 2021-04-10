@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
-import ruukas.infinityeditor.Infinity;
+import ruukas.infinityeditor.InfinityEditor;
 
 public class InventoryUtils {
 	public static int countItem(InventoryPlayer inventory, Item item) {
@@ -106,7 +106,7 @@ public class InventoryUtils {
         GuiScreen.setClipboardString( s );
         
         if(GuiScreen.isCtrlKeyDown()) {
-            Infinity.realmController.addItemStack( player, result );
+            InfinityEditor.realmController.addItemStack( player, result );
         }
     }
 }

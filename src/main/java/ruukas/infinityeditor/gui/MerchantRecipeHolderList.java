@@ -33,14 +33,14 @@ public class MerchantRecipeHolderList extends ArrayList<MerchantRecipeHolder>
     {
         if ( index > 0 && index < this.size() )
         {
-            MerchantRecipe merchantrecipe1 = ((MerchantRecipeHolder) this.get( index )).getMerchantRecipe();
+            MerchantRecipe merchantrecipe1 = this.get( index ).getMerchantRecipe();
             return !this.areItemStacksExactlyEqual( stack0, merchantrecipe1.getItemToBuy() ) || (!stack1.isEmpty() || merchantrecipe1.hasSecondItemToBuy()) && (!merchantrecipe1.hasSecondItemToBuy() || !this.areItemStacksExactlyEqual( stack1, merchantrecipe1.getSecondItemToBuy() )) || stack0.getCount() < merchantrecipe1.getItemToBuy().getCount() || merchantrecipe1.hasSecondItemToBuy() && stack1.getCount() < merchantrecipe1.getSecondItemToBuy().getCount() ? null : merchantrecipe1;
         }
         else
         {
             for ( int i = 0 ; i < this.size() ; ++i )
             {
-                MerchantRecipe merchantrecipe = ((MerchantRecipeHolder) this.get( i )).getMerchantRecipe();
+                MerchantRecipe merchantrecipe = this.get( i ).getMerchantRecipe();
                 
                 if ( this.areItemStacksExactlyEqual( stack0, merchantrecipe.getItemToBuy() ) && stack0.getCount() >= merchantrecipe.getItemToBuy().getCount() && (!merchantrecipe.hasSecondItemToBuy() && stack1.isEmpty() || merchantrecipe.hasSecondItemToBuy() && this.areItemStacksExactlyEqual( stack1, merchantrecipe.getSecondItemToBuy() ) && stack1.getCount() >= merchantrecipe.getSecondItemToBuy().getCount()) )
                 {
@@ -60,23 +60,21 @@ public class MerchantRecipeHolderList extends ArrayList<MerchantRecipeHolder>
     public void writeToBuf( PacketBuffer buffer )
     {
         buffer.writeByte( (byte) (this.size() & 255) );
-        
-        for ( int i = 0 ; i < this.size() ; ++i )
-        {
-            MerchantRecipe merchantrecipe = ((MerchantRecipeHolder) this.get( i )).getMerchantRecipe();
-            buffer.writeItemStack( merchantrecipe.getItemToBuy() );
-            buffer.writeItemStack( merchantrecipe.getItemToSell() );
+
+        for (MerchantRecipeHolder merchantRecipeHolder : this) {
+            MerchantRecipe merchantrecipe = merchantRecipeHolder.getMerchantRecipe();
+            buffer.writeItemStack(merchantrecipe.getItemToBuy());
+            buffer.writeItemStack(merchantrecipe.getItemToSell());
             ItemStack itemstack = merchantrecipe.getSecondItemToBuy();
-            buffer.writeBoolean( !itemstack.isEmpty() );
-            
-            if ( !itemstack.isEmpty() )
-            {
-                buffer.writeItemStack( itemstack );
+            buffer.writeBoolean(!itemstack.isEmpty());
+
+            if (!itemstack.isEmpty()) {
+                buffer.writeItemStack(itemstack);
             }
-            
-            buffer.writeBoolean( merchantrecipe.isRecipeDisabled() );
-            buffer.writeInt( merchantrecipe.getToolUses() );
-            buffer.writeInt( merchantrecipe.getMaxTradeUses() );
+
+            buffer.writeBoolean(merchantrecipe.isRecipeDisabled());
+            buffer.writeInt(merchantrecipe.getToolUses());
+            buffer.writeInt(merchantrecipe.getMaxTradeUses());
         }
     }
     
@@ -95,11 +93,10 @@ public class MerchantRecipeHolderList extends ArrayList<MerchantRecipeHolder>
     {
         NBTTagCompound nbttagcompound = new NBTTagCompound();
         NBTTagList nbttaglist = new NBTTagList();
-        
-        for ( int i = 0 ; i < this.size() ; ++i )
-        {
-            MerchantRecipe merchantrecipe = ((MerchantRecipeHolder) this.get( i )).getMerchantRecipe();
-            nbttaglist.appendTag( merchantrecipe.writeToTags() );
+
+        for (MerchantRecipeHolder merchantRecipeHolder : this) {
+            MerchantRecipe merchantrecipe = merchantRecipeHolder.getMerchantRecipe();
+            nbttaglist.appendTag(merchantrecipe.writeToTags());
         }
         
         nbttagcompound.setTag( "Recipes", nbttaglist );

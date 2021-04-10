@@ -40,15 +40,10 @@ public class GuiVillagerTrade extends GuiInfinity
         {
             switch ( type )
             {
-                case BUY:
-                    return recHolder.getMerchantRecipe().getItemToBuy();
-                
                 case SECONDBUY:
                     return recHolder.getMerchantRecipe().getSecondItemToBuy();
-                
                 case SELL:
                     return recHolder.getMerchantRecipe().getItemToSell();
-                
                 default:
                     return recHolder.getMerchantRecipe().getItemToBuy();
             }

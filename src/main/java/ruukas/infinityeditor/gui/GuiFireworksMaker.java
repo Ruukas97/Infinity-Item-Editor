@@ -50,8 +50,8 @@ public class GuiFireworksMaker extends InventoryEffectRenderer
     {
         
         super.initGui();
-        this.guiLeft = (int) (this.width - this.xSize) / 2;
-        this.guiTop = (int) (this.height - this.ySize - 5);
+        this.guiLeft = (this.width - this.xSize) / 2;
+        this.guiTop = this.height - this.ySize - 5;
         
         this.listener = new CreativeCrafting( this.mc );
         this.mc.player.inventoryContainer.addListener( this.listener );
@@ -118,7 +118,7 @@ public class GuiFireworksMaker extends InventoryEffectRenderer
     protected void drawGuiContainerBackgroundLayer( float partialTicks, int mouseX, int mouseY )
     {
         GlStateManager.disableBlend();
-        this.fontRenderer.drawString( I18n.format( "This GUI is work in progress. Currently, it only previews your firework. More features will be added later.", new Object[ 0 ] ), 8, 6, 0xffffff );
+        this.fontRenderer.drawString( I18n.format( "This GUI is work in progress. Currently, it only previews your firework. More features will be added later."), 8, 6, 0xffffff );
         GlStateManager.color( 1.0F, 1.0F, 1.0F, 1.0F );
         this.mc.getTextureManager().bindTexture( background );
         this.drawTexturedModalRect( this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize );
@@ -207,7 +207,8 @@ public class GuiFireworksMaker extends InventoryEffectRenderer
                 // Mouse wheel
                 if ( type == ClickType.CLONE )
                 {
-                    if ( (inventoryplayer.getItemStack() == null || inventoryplayer.getItemStack() == ItemStack.EMPTY) && slotIn.getHasStack() )
+                    inventoryplayer.getItemStack();
+                    if (inventoryplayer.getItemStack() == ItemStack.EMPTY && slotIn.getHasStack())
                     {
                         ItemStack itemstack6 = slotIn.getStack().copy();
                         itemstack6.setCount( itemstack6.getMaxStackSize() );
@@ -220,7 +221,7 @@ public class GuiFireworksMaker extends InventoryEffectRenderer
                 // Pressing Q - Mouse button is 1 if Ctrl is down
                 if ( type == ClickType.THROW )
                 {
-                    if ( slotStack != null && slotStack != ItemStack.EMPTY )
+                    if (slotStack != ItemStack.EMPTY)
                     {
                         this.mc.player.dropItem( slotStack, true );
                         this.mc.playerController.sendPacketDropItem( slotStack );
@@ -228,7 +229,7 @@ public class GuiFireworksMaker extends InventoryEffectRenderer
                     return;
                 }
                 
-                if ( slotStack != null && slotStack != ItemStack.EMPTY && (handStack == null || handStack == ItemStack.EMPTY) )
+                if (slotStack != ItemStack.EMPTY && handStack == ItemStack.EMPTY)
                 {
                     inventoryplayer.setItemStack( slotStack );
                     handStack = inventoryplayer.getItemStack();
@@ -239,17 +240,14 @@ public class GuiFireworksMaker extends InventoryEffectRenderer
                     }
                     
                     setCurrentRocket( ItemStack.EMPTY );
-                    return;
                 }
-                else if ( (handStack != null && handStack != ItemStack.EMPTY) && (handStack.getItem() == Items.FIREWORKS) )
+                else if (handStack != ItemStack.EMPTY && handStack.getItem() == Items.FIREWORKS)
                 {
-                    ItemStack old2 = (slotStack != null && slotStack != ItemStack.EMPTY) ? slotStack.copy() : ItemStack.EMPTY;
+                    ItemStack old2 = slotStack != ItemStack.EMPTY ? slotStack.copy() : ItemStack.EMPTY;
                     setCurrentRocket( handStack );
                     inventoryplayer.setItemStack( old2 );
-                    return;
                 }
             }
-            return;
         }
         else
         {
@@ -282,7 +280,7 @@ public class GuiFireworksMaker extends InventoryEffectRenderer
     @SideOnly( Side.CLIENT )
     static class ContainerFirework extends Container
     {
-        public List<ItemStack> itemList = Lists.<ItemStack>newArrayList();
+        public List<ItemStack> itemList = Lists.newArrayList();
         
         public ContainerFirework(EntityPlayer player) {
             InventoryPlayer inventoryplayer = player.inventory;
@@ -312,7 +310,7 @@ public class GuiFireworksMaker extends InventoryEffectRenderer
         {
             if ( index >= this.inventorySlots.size() - 9 && index < this.inventorySlots.size() )
             {
-                Slot slot = (Slot) this.inventorySlots.get( index );
+                Slot slot = this.inventorySlots.get( index );
                 
                 if ( slot != null && slot.getHasStack() )
                 {

@@ -70,9 +70,6 @@ public class GuiNumberField extends Gui
     
     public String getValueAsString()
     {
-        for ( int i = 0 ; i < digits.length ; i++ )
-        {
-        }
         return (isNegative ? '-' : "") + new String( digits );
     }
     
@@ -114,13 +111,13 @@ public class GuiNumberField extends Gui
         {
             String minStr = (minValue + "");
             
-            String zeroes = "";
+            StringBuilder zeroes = new StringBuilder();
             
             int neededZeroes = digits.length - minStr.length();
             
             for ( int z = 0 ; z < neededZeroes ; z++ )
             {
-                zeroes += "0";
+                zeroes.append("0");
             }
             
             minStr = zeroes + minStr;
@@ -185,7 +182,7 @@ public class GuiNumberField extends Gui
      */
     public int getIntValue()
     {
-        return Integer.valueOf( this.getValueAsString() );
+        return Integer.parseInt( this.getValueAsString() );
     }
     
     public boolean isAllowed( char c )
@@ -255,11 +252,11 @@ public class GuiNumberField extends Gui
         }
         else if ( GuiScreen.isKeyComboCtrlV( keyCode ) )
         {
-            if ( this.isEnabled )
+            /*if ( this.isEnabled )
             {
                 // TODO pasting
-            }
-            
+            }*/
+
             return true;
         }
         else if ( GuiScreen.isKeyComboCtrlX( keyCode ) )
@@ -278,7 +275,8 @@ public class GuiNumberField extends Gui
             switch ( keyCode )
             {
                 case 14:
-                    
+                case 211:
+
                     if ( this.isEnabled )
                     {
                         setDigit( '0' );
@@ -305,14 +303,7 @@ public class GuiNumberField extends Gui
                     this.setCursorPositionEnd();
                     
                     return true;
-                case 211:
-                    
-                    if ( this.isEnabled )
-                    {
-                        setDigit( '0' );
-                    }
-                    
-                    return true;
+
                 default:
                     if ( this.isEnabled )
                     {

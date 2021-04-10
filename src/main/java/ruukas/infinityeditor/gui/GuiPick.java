@@ -13,7 +13,7 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatAllowedCharacters;
 import net.minecraft.util.NonNullList;
-import ruukas.infinityeditor.Infinity;
+import ruukas.infinityeditor.InfinityEditor;
 import ruukas.infinityeditor.data.InfinityConfig;
 import ruukas.infinityeditor.data.thevoid.VoidController;
 
@@ -34,7 +34,7 @@ public class GuiPick extends GuiInfinity
         @Override
         public NonNullList<ItemStack> getStackList()
         {
-            return Infinity.realmController.getStackList();
+            return InfinityEditor.realmController.getStackList();
         }
         
         @Override
@@ -141,7 +141,7 @@ public class GuiPick extends GuiInfinity
     }
     
     @Override
-    protected void keyTyped( char typedChar, int keyCode ) throws IOException
+    protected void keyTyped( char typedChar, int keyCode )
     {
         if ( keyCode == 1 )
         {
@@ -237,7 +237,7 @@ public class GuiPick extends GuiInfinity
         
         if ( filteredList.size() > 0 )
         {
-            for ( int i = (int) Math.min( filteredList.size() - 1, currentPage * amountInPage ) ; i < (int) Math.min( filteredList.size(), (currentPage + 1) * amountInPage ) ; i++ )
+            for (int i = Math.min( filteredList.size() - 1, currentPage * amountInPage ); i < Math.min( filteredList.size(), (currentPage + 1) * amountInPage ); i++ )
             {
                 int x = space + (16 * (i % maxInRow));
                 int y = 70 + topbar + (16 * ((i % amountInPage) / maxInRow));
@@ -295,7 +295,7 @@ public class GuiPick extends GuiInfinity
         {
             GlStateManager.enableLighting();
             itemRender.zLevel = 100.0F;
-            for ( int i = (int) Math.min( filteredList.size() - 1, currentPage * amountInPage ) ; i < (int) Math.min( filteredList.size(), (currentPage + 1) * amountInPage ) ; i++ )
+            for (int i = Math.min( filteredList.size() - 1, currentPage * amountInPage ); i < Math.min( filteredList.size(), (currentPage + 1) * amountInPage ); i++ )
             {
                 int x = space + (16 * (i % maxInRow));
                 int y = 70 + topbar + (16 * ((i % amountInPage) / maxInRow));

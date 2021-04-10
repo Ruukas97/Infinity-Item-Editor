@@ -29,8 +29,7 @@ import ruukas.infinityeditor.nbt.NBTHelper;
 @SideOnly( Side.CLIENT )
 public class GuiHead extends GuiScreen
 {
-    
-    private ItemStack stack = ItemStack.EMPTY;
+    private final ItemStack stack;
     
     private final GuiScreen lastScreen;
     
@@ -145,7 +144,7 @@ public class GuiHead extends GuiScreen
     }
     
     @Override
-    protected void actionPerformed( GuiButton button ) throws IOException
+    protected void actionPerformed( GuiButton button )
     {
         if ( button.id == 101 )
         {

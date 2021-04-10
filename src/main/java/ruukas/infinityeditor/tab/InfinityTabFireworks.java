@@ -1,6 +1,7 @@
 package ruukas.infinityeditor.tab;
 
 import java.util.List;
+import java.util.Objects;
 
 import com.google.common.collect.Lists;
 
@@ -78,8 +79,8 @@ public class InfinityTabFireworks extends InfinityTab
             if ( !currentStar.hasTagCompound() )
                 currentStar.setTagCompound( new NBTTagCompound() );
             
-            NonNullList<ItemStack> dyes = NonNullList.<ItemStack>create();
-            Items.DYE.getSubItems( Items.DYE.getCreativeTab(), dyes );
+            NonNullList<ItemStack> dyes = NonNullList.create();
+            Items.DYE.getSubItems(Objects.requireNonNull(Items.DYE.getCreativeTab()), dyes );
             
             for ( i = 0 ; i < 5 ; i++ )
             {
@@ -129,18 +130,19 @@ public class InfinityTabFireworks extends InfinityTab
                     
                     nbtTag.setByte( "Type", (byte) i );
                     
-                    List<Integer> list = Lists.<Integer>newArrayList();
-                    list.add( Integer.valueOf( ItemDye.DYE_COLORS[dye.getMetadata() & 15] ) );
+                    List<Integer> list = Lists.newArrayList();
+                    list.add(ItemDye.DYE_COLORS[dye.getMetadata() & 15]);
                     
                     int[] colorTag = new int[ list.size() ];
                     
                     for ( int l2 = 0 ; l2 < colorTag.length ; ++l2 )
                     {
-                        colorTag[l2] = ((Integer) list.get( l2 )).intValue();
+                        colorTag[l2] = list.get(l2);
                     }
                     
                     nbtTag.setIntArray( "Colors", colorTag );
-                    
+
+                    assert newStar.getTagCompound() != null;
                     newStar.getTagCompound().setTag( "Explosion", nbtTag );
                     stackList.add( newStar );
                 }

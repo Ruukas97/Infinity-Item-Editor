@@ -34,7 +34,7 @@ public class GuiEnchanting extends GuiInfinity
     
     private int rotOff = 0;
     private int mouseDist = 0;
-    private List<Enchantment> enchants = new ArrayList<>();
+    private final List<Enchantment> enchants = new ArrayList<>();
     private ItemStack enchantBook;
     
     public static class EnchantComparator implements Comparator<Enchantment>
@@ -241,7 +241,7 @@ public class GuiEnchanting extends GuiInfinity
         
         for ( int i = 0 ; i < enchants.size() ; i++ )
         {
-            double angleI = (((double) (rotOff + (double) (Math.abs( mouseDist - r ) >= 16 ? partialTicks : 0d)) / 60d)) + (angle * i);
+            double angleI = (((rotOff + (Math.abs( mouseDist - r ) >= 16 ? partialTicks : 0d)) / 60d)) + (angle * i);
             int x = (int) (midX + (r * Math.cos( angleI )));
             int y = (int) (midY + (r * Math.sin( angleI )));
             GlStateManager.translate( 0, 0, 300 );

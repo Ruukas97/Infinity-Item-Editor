@@ -38,8 +38,8 @@ public class GuiHeadCollection extends GuiScreen {
     private int loaded = -1;
 
     private final GuiScreen lastScreen;
-    private List<ItemStack> allSkulls = new LinkedList<ItemStack>();
-    private List<ItemStack> filteredSkulls = new LinkedList<ItemStack>();
+    private final List<ItemStack> allSkulls = new LinkedList<>();
+    private final List<ItemStack> filteredSkulls = new LinkedList<>();
 
 
     public GuiHeadCollection(GuiScreen lastScreen) {
@@ -128,7 +128,7 @@ public class GuiHeadCollection extends GuiScreen {
         }
 
         if (filteredSkulls.size() > 0) {
-            for (int i = (int) Math.min( filteredSkulls.size() - 1, currentPage * amountInPage ); i < (int) Math.min( filteredSkulls.size(), (currentPage + 1) * amountInPage ); i++) {
+            for (int i = Math.min( filteredSkulls.size() - 1, currentPage * amountInPage ); i < Math.min( filteredSkulls.size(), (currentPage + 1) * amountInPage ); i++) {
                 int x = space + letterSpace + (16 * (i % maxInRow));
                 int y = 50 + topbar + (16 * ((i % amountInPage) / maxInRow));
 
@@ -151,7 +151,8 @@ public class GuiHeadCollection extends GuiScreen {
 
 
     @Override
-    protected void keyTyped( char typedChar, int keyCode ) throws IOException {
+    protected void keyTyped( char typedChar, int keyCode )
+    {
         if (keyCode == 1) {
             this.mc.displayGuiScreen( lastScreen );
 
@@ -239,7 +240,7 @@ public class GuiHeadCollection extends GuiScreen {
         itemRender.zLevel = 100.0F;
         ItemStack hovered = null;
         if (filteredSkulls.size() > 0) {
-            for (int i = (int) Math.min( filteredSkulls.size() - 1, currentPage * amountInPage ); i < (int) Math.min( filteredSkulls.size(), (currentPage + 1) * amountInPage ); i++) {
+            for (int i = Math.min( filteredSkulls.size() - 1, currentPage * amountInPage ); i < Math.min( filteredSkulls.size(), (currentPage + 1) * amountInPage ); i++) {
                 int x = space + letterSpace + (16 * (i % maxInRow));
                 int y = 50 + topbar + (16 * ((i % amountInPage) / maxInRow));
                 itemRender.renderItemAndEffectIntoGUI( filteredSkulls.get( i ), x, y );

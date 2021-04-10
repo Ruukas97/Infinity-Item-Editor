@@ -12,9 +12,9 @@ import ruukas.infinityeditor.gui.HelperGui;
 
 public class NBTListElement extends Gui
 {
-    protected String key = null;
+    protected String key;
     protected NBTBase tag;
-    protected ItemStack icon = ItemStack.EMPTY;
+    protected ItemStack icon;
     protected NBTListCompound parent = null;
     
     private int x, y;
@@ -139,7 +139,7 @@ public class NBTListElement extends Gui
     public NBTListRoot getRootAsRoot()
     {
         NBTListElement root = getRoot();
-        return root != null && root instanceof NBTListRoot ? (NBTListRoot) root : null;
+        return root instanceof NBTListRoot ? (NBTListRoot) root : null;
     }
     
     public NBTOption[] getOptions()
@@ -208,10 +208,7 @@ public class NBTListElement extends Gui
         }
         
         NBTListElement other = (NBTListElement) obj;
-        
-        if ( !icon.isItemEqual( other.icon ) || !getKey().equals( other.getKey() ) || !getTag().equals( other.getTag() ) || !parent.equals( other.parent ) )
-            return false;
-        
-        return true;
+
+        return icon.isItemEqual(other.icon) && getKey().equals(other.getKey()) && getTag().equals(other.getTag()) && parent.equals(other.parent);
     }
 }

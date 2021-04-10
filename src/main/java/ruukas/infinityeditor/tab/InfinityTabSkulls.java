@@ -29,7 +29,7 @@ public class InfinityTabSkulls extends InfinityTab
         {
             if ( Minecraft.getMinecraft().world.playerEntities.get( i ) instanceof EntityOtherPlayerMP )
             {
-                String owner = ((EntityOtherPlayerMP) Minecraft.getMinecraft().world.playerEntities.get( i )).getDisplayNameString();
+                String owner = Minecraft.getMinecraft().world.playerEntities.get( i ).getDisplayNameString();
                 ItemStack nearbySkull = new ItemStack( Items.SKULL, 1, 3 );
                 nearbySkull.setTagCompound( new NBTTagCompound() );
                 nearbySkull.getTagCompound().setTag( "SkullOwner", new NBTTagString( owner ) );
@@ -67,7 +67,7 @@ public class InfinityTabSkulls extends InfinityTab
          */
     }
     
-    private static final ItemStack clientSkull()
+    private static ItemStack clientSkull()
     {
         ItemStack skull = new ItemStack( Items.SKULL, 1, 3 );
         skull.setTagCompound( new NBTTagCompound() );

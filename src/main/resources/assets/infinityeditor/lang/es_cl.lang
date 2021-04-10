@@ -37,7 +37,6 @@ gui.villagertrades.addtrade=Añadir Intercambio
 gui.villagertrades.leftclick=Click izquierdo para editar
 gui.villagertrades.rightclick=Click derecho para quitar
 gui.villagertrades.reset=Eliminar intercambios
-
 gui.item=Infinity Editor [Traducción Español Chileno por Nacho4785] [v1.1.7]
 gui.spawnegg=Editor de huevos de Spawn
 gui.head=Editor de cabezas
@@ -58,7 +57,6 @@ gui.headcollection=Colección De Cabezas
 gui.lore=Editor de descripción (Lore)
 gui.sign=Editor de carteles
 gui.armorstand.pose=Editor de Poses
-gui.paint=Editor de textura
 gui.armorstand.pose.reset.1=Poner por defecto las poses
 gui.armorstand.invisible.note=Nota: ¡Podría ser difícil removerlo sin comandos!
 gui.armorstand.marker.note="Marker" Te quita la habilidad de interactuar con este

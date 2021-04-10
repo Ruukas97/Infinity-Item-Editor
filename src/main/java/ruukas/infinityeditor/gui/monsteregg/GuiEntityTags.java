@@ -18,7 +18,7 @@ public class GuiEntityTags extends GuiScreen
     
     private GuiListExtended optionsRowList;
     
-    private ItemStack stack;
+    private final ItemStack stack;
     
     private final MobTag[] tags;
     
@@ -62,7 +62,7 @@ public class GuiEntityTags extends GuiScreen
     /**
      * Called by the controls from the buttonList when activated. (Mouse pressed for buttons)
      */
-    protected void actionPerformed( GuiButton button ) throws IOException
+    protected void actionPerformed( GuiButton button )
     {
         if ( button.enabled )
         {

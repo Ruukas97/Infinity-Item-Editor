@@ -3,6 +3,7 @@ package ruukas.infinityeditor.gui;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
@@ -46,7 +47,7 @@ public class GuiLore extends GuiInfinity {
         TextFormatting[] formats = TextFormatting.values();
         int colorAmount = 2 + formats.length;
         colorButtons = new GuiInfinityButton[colorAmount];
-        colorButtons[0] = addButton( new GuiInfinityButton( 130, width - 1 - 13 * ((colorAmount + 2) / 2) + (13 * 1), height - 30, 13, 15, formats[0].toString().substring( 0, 1 ) ) );
+        colorButtons[0] = addButton( new GuiInfinityButton( 130, width - 1 - 13 * ((colorAmount + 2) / 2) + (13), height - 30, 13, 15, formats[0].toString().substring( 0, 1 ) ) );
         colorButtons[1] = addButton( new GuiInfinityButton( 131, width - 1 - 13 * ((colorAmount + 2) / 2) + (13 * 2), height - 30, 13, 15, TextFormatting.DARK_RED + "%" ) );
         for (int i = 2; i < colorAmount; i++) {
             TextFormatting f = formats[i - 2];
@@ -105,8 +106,8 @@ public class GuiLore extends GuiInfinity {
     @Override
     public void updateScreen() {
         super.updateScreen();
-        for (int i = 0; i < lines.size(); i++) {
-            lines.get( i ).field.updateCursorCounter();
+        for (GuiLoreLine line : lines) {
+            line.field.updateCursorCounter();
         }
     }
 
@@ -115,7 +116,7 @@ public class GuiLore extends GuiInfinity {
     public void handleMouseInput() throws IOException {
         super.handleMouseInput();
         int delta = Mouse.getEventDWheel();
-        int change = delta == 0 ? 0 : (delta > 0 ? -1 : 1);
+        int change = Integer.compare(0, delta);
         if (change != 0)
             offset = MathHelper.clamp( offset + change, 0, Math.max( 0, lines.size() - lineSpaces() ) );
     }
@@ -124,26 +125,26 @@ public class GuiLore extends GuiInfinity {
     @Override
     protected void mouseClicked( int mouseX, int mouseY, int mouseButton ) throws IOException {
         super.mouseClicked( mouseX, mouseY, mouseButton );
-        for (int i = 0; i < lines.size(); i++) {
-            lines.get( i ).field.mouseClicked( mouseX, mouseY, mouseButton );
+        for (GuiLoreLine guiLoreLine : lines) {
+            guiLoreLine.field.mouseClicked(mouseX, mouseY, mouseButton);
         }
 
         if (mouseButton == 0) {
             for (int i = offset; i < offset + lineSpaces() && i < lines.size(); i++) {
                 GuiLoreLine line = lines.get( i );
                 GuiButton[] guiButtons = new GuiButton[] { line.remove, line.up, line.down };
-                for (int j = 0; j < guiButtons.length; j++) {
-                    GuiButton guibutton = guiButtons[j];
-                    if (guibutton.mousePressed( this.mc, mouseX, mouseY )) {
-                        net.minecraftforge.client.event.GuiScreenEvent.ActionPerformedEvent.Pre event = new net.minecraftforge.client.event.GuiScreenEvent.ActionPerformedEvent.Pre( this, guibutton, this.buttonList );
-                        if (net.minecraftforge.common.MinecraftForge.EVENT_BUS.post( event ))
+                for (GuiButton guiButton : guiButtons) {
+                    GuiButton guibutton = guiButton;
+                    if (guibutton.mousePressed(this.mc, mouseX, mouseY)) {
+                        net.minecraftforge.client.event.GuiScreenEvent.ActionPerformedEvent.Pre event = new net.minecraftforge.client.event.GuiScreenEvent.ActionPerformedEvent.Pre(this, guibutton, this.buttonList);
+                        if (net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(event))
                             break;
                         guibutton = event.getButton();
                         this.selectedButton = guibutton;
-                        guibutton.playPressSound( this.mc.getSoundHandler() );
-                        boolean res = line.actionPerformed( guibutton );
-                        if (this.equals( this.mc.currentScreen ))
-                            net.minecraftforge.common.MinecraftForge.EVENT_BUS.post( new net.minecraftforge.client.event.GuiScreenEvent.ActionPerformedEvent.Post( this, event.getButton(), this.buttonList ) );
+                        guibutton.playPressSound(this.mc.getSoundHandler());
+                        boolean res = line.actionPerformed(guibutton);
+                        if (this.equals(this.mc.currentScreen))
+                            net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(new net.minecraftforge.client.event.GuiScreenEvent.ActionPerformedEvent.Post(this, event.getButton(), this.buttonList));
                         if (res) {
                             return;
                         }
@@ -208,7 +209,7 @@ public class GuiLore extends GuiInfinity {
         }
         if (button.id == 93) {
             String clipboard = getClipboardString();
-            String lines[] = clipboard.split( "\\r?\\n" );
+            String[] lines = clipboard.split( "\\r?\\n" );
 
             NBTTagList list = getLore();
             for (String l : lines) {
@@ -232,15 +233,15 @@ public class GuiLore extends GuiInfinity {
                 GuiActionTextField f = line.field;
                 if (f.isFocused()) {
                     if (button.id == 130) {
-                        f.setText( f.getText().substring( 0, f.getCursorPosition() ) + TextFormatting.values()[0].toString().substring( 0, 1 ) + f.getText().substring( f.getCursorPosition(), f.getText().length() ) );
+                        f.setText( f.getText().substring( 0, f.getCursorPosition() ) + TextFormatting.values()[0].toString().charAt( 0) + f.getText().substring( f.getCursorPosition()) );
                     }
 
                     else if (button.id == 131) {
-                        f.setText( TextFormatting.getTextWithoutFormattingCodes( f.getText() ) );
+                        f.setText(Objects.requireNonNull(TextFormatting.getTextWithoutFormattingCodes(f.getText())));
                     }
 
                     else {
-                        f.setText( f.getText().substring( 0, f.getCursorPosition() ) + TextFormatting.values()[button.id - 132] + f.getText().substring( f.getCursorPosition(), f.getText().length() ) );
+                        f.setText( f.getText().substring( 0, f.getCursorPosition() ) + TextFormatting.values()[button.id - 132] + f.getText().substring( f.getCursorPosition()) );
                     }
 
                     return;
@@ -248,8 +249,8 @@ public class GuiLore extends GuiInfinity {
             }
         }
         else
-            for (int i = 0; i < lines.size(); i++) {
-                if (lines.get( i ).actionPerformed( button )) {
+            for (GuiLoreLine line : lines) {
+                if (line.actionPerformed(button)) {
                     return;
                 }
             }
@@ -289,14 +290,14 @@ public class GuiLore extends GuiInfinity {
             // float half = coveredHeight/2;
             float perc = (mouseY - 50) / ((float) (height - 99));
             int max = size - space;
-            offset = (int) MathHelper.clamp( Math.round( max * perc ), 0, max );
+            offset = MathHelper.clamp( Math.round( max * perc ), 0, max );
         }
 
         float div = size - space;
         float perc = div <= 0f ? 0 : offset / div;
         int scrollY = (int) (52 + ((scrollHeight - coveredHeight) * perc));
 
-        drawRect( width - 14, scrollY, width - 5, (int) (scrollY + coveredHeight), 0xFF666666 );
+        drawRect( width - 14, scrollY, width - 5, scrollY + coveredHeight, 0xFF666666 );
 
         // drawString( fontRenderer, "Offset: " + offset + ", Lines: " + size + ",
         // Space: " + space + ", Covered: " + covered + ", Perc: " + perc, 10, 10,

@@ -5,6 +5,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import org.lwjgl.input.Keyboard;
 
@@ -21,7 +22,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import ruukas.infinityeditor.Infinity;
+import ruukas.infinityeditor.InfinityEditor;
 import ruukas.infinityeditor.data.InfinityConfig;
 import ruukas.infinityeditor.gui.action.ActionButtons;
 import ruukas.infinityeditor.gui.action.GuiActionButton;
@@ -42,22 +43,22 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback {
     private GuiInfinityButton loadButton;
     private GuiInfinityButton specialButton;
     private GuiInfinityButton discordButton;
-    private ArrayList<GuiTextField> textFields = new ArrayList<>();
+    private final ArrayList<GuiTextField> textFields = new ArrayList<>();
 
-    private ArrayList<GuiNumberField> numberFields = new ArrayList<>();
+    private final ArrayList<GuiNumberField> numberFields = new ArrayList<>();
 
-    private ArrayList<GuiTextField> loreFields = new ArrayList<>();
+    private final ArrayList<GuiTextField> loreFields = new ArrayList<>();
     private GuiInfinityButton loreButton;
-    private ArrayList<GuiButton> loreButtons = new ArrayList<>();
+    private final ArrayList<GuiButton> loreButtons = new ArrayList<>();
 
-    private ArrayList<CenterString> centerStrings = new ArrayList<>();
-    private ArrayList<DrawString> drawStrings = new ArrayList<>();
+    private final ArrayList<CenterString> centerStrings = new ArrayList<>();
+    private final ArrayList<DrawString> drawStrings = new ArrayList<>();
 
     private GuiInfinityButton[] colorButtons;
 
-    private ArrayList<GuiButton> specialButtons = new ArrayList<>();
+    private final ArrayList<GuiButton> specialButtons = new ArrayList<>();
 
-    private int slot;
+    private final int slot;
 
 
     public GuiItem(GuiScreen lastScreen, ItemStackHolder stackHolder, int slot) {
@@ -212,7 +213,7 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback {
         specialButton.enabled = sidebarOn;
         specialButton.visible = sidebarOn;
 
-        discordButton = addButton( new GuiInfinityButton( sidebarButtonID++, width / 8 - 40, midY + 60, 80, 20, I18n.format( "gui.item.discord" ) ) );
+        discordButton = addButton( new GuiInfinityButton( sidebarButtonID, width / 8 - 40, midY + 60, 80, 20, I18n.format( "gui.item.discord" ) ) );
         discordButton.enabled = sidebarOn;
         discordButton.visible = sidebarOn;
 
@@ -228,7 +229,7 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback {
         TextFormatting[] formats = TextFormatting.values();
         int colorAmount = 2 + formats.length;
         colorButtons = new GuiInfinityButton[colorAmount];
-        colorButtons[0] = addButton( new GuiInfinityButton( 130, width - 1 - 13 * ((colorAmount + 2) / 2) + (13 * 1), height - 30, 13, 15, formats[0].toString().substring( 0, 1 ) ) );
+        colorButtons[0] = addButton( new GuiInfinityButton( 130, width - 1 - 13 * ((colorAmount + 2) / 2) + (13), height - 30, 13, 15, formats[0].toString().substring( 0, 1 ) ) );
         colorButtons[1] = addButton( new GuiInfinityButton( 131, width - 1 - 13 * ((colorAmount + 2) / 2) + (13 * 2), height - 30, 13, 15, TextFormatting.DARK_RED + "%" ) );
 
         for (int i = 2; i < colorAmount; i++) {
@@ -240,7 +241,7 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback {
         int textID = 251;
         drawStrings.add( new DrawString( I18n.format( "gui.item.name" ), width - 110, 35 ) );
 
-        GuiActionTextField name = new GuiActionTextField( textID++, fontRenderer, width - 180, 50, 130, 20 );
+        GuiActionTextField name = new GuiActionTextField( textID, fontRenderer, width - 180, 50, 130, 20 );
         name.setMaxStringLength( 100 );
         name.setText( getItemStack().getDisplayName() );
         name.action = () -> getItemStack().setStackDisplayName( name.getText() );
@@ -276,7 +277,7 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback {
                 amount++;
             }
             else {
-                addLoreTextField( id++, i, false ); // Adds one extra line before breaking so there's a field to potentially add an
+                addLoreTextField( id, i, false ); // Adds one extra line before breaking so there's a field to potentially add an
                                                     // extra line.
                 break;
             }
@@ -348,24 +349,21 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback {
     protected void keyTyped( char typedChar, int keyCode ) throws IOException {
         super.keyTyped( typedChar, keyCode );
 
-        for (int i = 0; i < numberFields.size(); i++) {
-            GuiNumberField f = numberFields.get( i );
+        for (GuiNumberField f : numberFields) {
             if (f != null) {
-                f.textboxKeyTyped( typedChar, keyCode );
+                f.textboxKeyTyped(typedChar, keyCode);
             }
         }
 
-        for (int i = 0; i < textFields.size(); i++) {
-            GuiTextField f = textFields.get( i );
+        for (GuiTextField f : textFields) {
             if (f != null) {
-                f.textboxKeyTyped( typedChar, keyCode );
+                f.textboxKeyTyped(typedChar, keyCode);
             }
         }
 
-        for (int i = 0; i < loreFields.size(); i++) {
-            GuiTextField f = loreFields.get( i );
+        for (GuiTextField f : loreFields) {
             if (f != null) {
-                f.textboxKeyTyped( typedChar, keyCode );
+                f.textboxKeyTyped(typedChar, keyCode);
             }
         }
     }
@@ -436,15 +434,15 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback {
 
                 if (f.isFocused()) {
                     if (button.id == 130) {
-                        f.setText( f.getText().substring( 0, f.getCursorPosition() ) + TextFormatting.values()[0].toString().substring( 0, 1 ) + f.getText().substring( f.getCursorPosition(), f.getText().length() ) );
+                        f.setText( f.getText().substring( 0, f.getCursorPosition() ) + TextFormatting.values()[0].toString().charAt( 0) + f.getText().substring( f.getCursorPosition()) );
                     }
 
                     else if (button.id == 131) {
-                        f.setText( TextFormatting.getTextWithoutFormattingCodes( f.getText() ) );
+                        f.setText(Objects.requireNonNull(TextFormatting.getTextWithoutFormattingCodes(f.getText())));
                     }
 
                     else {
-                        f.setText( f.getText().substring( 0, f.getCursorPosition() ) + TextFormatting.values()[button.id - 132] + f.getText().substring( f.getCursorPosition(), f.getText().length() ) );
+                        f.setText( f.getText().substring( 0, f.getCursorPosition() ) + TextFormatting.values()[button.id - 132] + f.getText().substring( f.getCursorPosition()) );
                     }
 
                     break;
@@ -484,7 +482,7 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback {
                 }
             }
             catch (URISyntaxException urisyntaxexception) {
-                Infinity.logger.error( "Can't open url for {}", discordButton, urisyntaxexception );
+                InfinityEditor.logger.error( "Can't open url for {}", discordButton, urisyntaxexception );
             }
         }
 

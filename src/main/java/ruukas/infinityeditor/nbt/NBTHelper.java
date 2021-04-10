@@ -320,7 +320,7 @@ public class NBTHelper
                 }
                 else if ( nbttagcompound.hasKey( "SkullOwner", 8 ) && !StringUtils.isBlank( nbttagcompound.getString( "SkullOwner" ) ) )
                 {
-                    profile = new GameProfile( (UUID) null, nbttagcompound.getString( "SkullOwner" ) );
+                    profile = new GameProfile(null, nbttagcompound.getString( "SkullOwner" ) );
                 }
             }
             
@@ -503,25 +503,19 @@ public class NBTHelper
                     }
                 }
             }
-            
-            if ( itemarmor == null )
-            {
-                return;
-            }
-            else
-            {
+
+            if (itemarmor != null) {
                 int i1 = aint[0] / j;
                 int j1 = aint[1] / j;
                 int k1 = aint[2] / j;
                 float f3 = (float) i / (float) j;
-                float f4 = (float) Math.max( i1, Math.max( j1, k1 ) );
+                float f4 = (float) Math.max(i1, Math.max(j1, k1));
                 i1 = (int) ((float) i1 * f3 / f4);
                 j1 = (int) ((float) j1 * f3 / f4);
                 k1 = (int) ((float) k1 * f3 / f4);
                 int k2 = (i1 << 8) + j1;
                 k2 = (k2 << 8) + k1;
-                itemarmor.setColor( itemstack, k2 );
-                return;
+                itemarmor.setColor(itemstack, k2);
             }
         }
     }

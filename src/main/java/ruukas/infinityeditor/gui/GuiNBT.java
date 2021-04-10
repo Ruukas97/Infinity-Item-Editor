@@ -2,6 +2,8 @@ package ruukas.infinityeditor.gui;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Objects;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
@@ -31,7 +33,7 @@ import ruukas.infinityeditor.gui.action.GuiInfinityButton;
 public class GuiNBT extends GuiScreen
 {
     
-    private ItemStack stack = ItemStack.EMPTY;
+    private final ItemStack stack;
     
     private final GuiScreen lastScreen;
     
@@ -59,7 +61,7 @@ public class GuiNBT extends GuiScreen
         Keyboard.enableRepeatEvents( true );
         nbtTextField = new GuiTextField( 100, this.fontRenderer, this.width / 4, 80, this.width / 2, 16 );
         nbtTextField.setMaxStringLength( 20000 );
-        nbtTextField.setText( stack.hasTagCompound() ? stack.getTagCompound().toString() : "{}" );
+        nbtTextField.setText( stack.hasTagCompound() ? Objects.requireNonNull(stack.getTagCompound()).toString() : "{}" );
         
         updateNbtButton = this.addButton( new GuiInfinityButton( 105, 3 * width / 7, 100, width / 7, 20, I18n.format( "gui.nbt.update" ) ) );
         
@@ -70,7 +72,7 @@ public class GuiNBT extends GuiScreen
         TextFormatting[] formats = TextFormatting.values();
         int colorAmount = 2 + formats.length;
         colorButtons = new GuiInfinityButton[ colorAmount ];
-        colorButtons[0] = addButton( new GuiInfinityButton( 130, width - 1 - 13 * ((colorAmount + 2) / 2) + (13 * 1), height - 30, 13, 15, formats[0].toString().substring( 0, 1 ) ) );
+        colorButtons[0] = addButton( new GuiInfinityButton( 130, width - 1 - 13 * ((colorAmount + 2) / 2) + (13), height - 30, 13, 15, formats[0].toString().substring( 0, 1 ) ) );
         colorButtons[1] = addButton( new GuiInfinityButton( 131, width - 1 - 13 * ((colorAmount + 2) / 2) + (13 * 2), height - 30, 13, 15, TextFormatting.DARK_RED + "%" ) );
         
         for ( int i = 2 ; i < colorAmount ; i++ )
@@ -124,7 +126,7 @@ public class GuiNBT extends GuiScreen
     }
     
     @Override
-    protected void actionPerformed( GuiButton button ) throws IOException
+    protected void actionPerformed( GuiButton button )
     {
         if ( button.id == updateNbtButton.id )
         {
@@ -158,17 +160,17 @@ public class GuiNBT extends GuiScreen
             {
                 if ( button.id == 130 )
                 {
-                    f.setText( f.getText().substring( 0, f.getCursorPosition() ) + TextFormatting.values()[0].toString().substring( 0, 1 ) + f.getText().substring( f.getCursorPosition(), f.getText().length() ) );
+                    f.setText( f.getText().substring( 0, f.getCursorPosition() ) + TextFormatting.values()[0].toString().charAt( 0) + f.getText().substring( f.getCursorPosition()) );
                 }
                 
                 else if ( button.id == 131 )
                 {
-                    f.setText( TextFormatting.getTextWithoutFormattingCodes( f.getText() ) );
+                    f.setText(Objects.requireNonNull(TextFormatting.getTextWithoutFormattingCodes(f.getText())));
                 }
                 
                 else
                 {
-                    f.setText( f.getText().substring( 0, f.getCursorPosition() ) + TextFormatting.values()[button.id - 132] + f.getText().substring( f.getCursorPosition(), f.getText().length() ) );
+                    f.setText( f.getText().substring( 0, f.getCursorPosition() ) + TextFormatting.values()[button.id - 132] + f.getText().substring( f.getCursorPosition()) );
                 }
             }
         }
@@ -193,7 +195,7 @@ public class GuiNBT extends GuiScreen
         GL11.glScalef( 0.8f, 0.8f, 0.8f );
         this.renderToolTip( stack, 0, 25 );
         
-        String s = stack.hasTagCompound() ? stack.getTagCompound().toString() : "{}";
+        String s = stack.hasTagCompound() ? Objects.requireNonNull(stack.getTagCompound()).toString() : "{}";
         
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         JsonParser jp = new JsonParser();
@@ -201,10 +203,7 @@ public class GuiNBT extends GuiScreen
         s = gson.toJson( je );
         
         prettyNBTList.clear();
-        for ( String str : s.split( "\\n" ) )
-        {
-            prettyNBTList.add( str );
-        }
+        Collections.addAll(prettyNBTList, s.split("\\n"));
         
         drawHoveringText( prettyNBTList, 0, this.height );
         

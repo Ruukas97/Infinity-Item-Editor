@@ -2,6 +2,7 @@ package ruukas.infinityeditor;
 
 import java.io.File;
 
+import net.minecraftforge.fml.common.Mod;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.input.Keyboard;
 
@@ -13,16 +14,14 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import ruukas.infinityeditor.data.realm.RealmController;
 import ruukas.infinityeditor.tab.InfinityTab;
 
-@Mod( modid = Infinity.MODID, name = Infinity.NAME, version = Infinity.VERSION, clientSideOnly = true )
-public class Infinity
+@Mod( modid = InfinityEditor.MODID, name = InfinityEditor.NAME, version = InfinityEditor.VERSION, clientSideOnly = true )
+public class InfinityEditor
 {
     public static final String MODID = "infinityeditor";
     public static final String NAME = "Infinity Item Editor";
@@ -111,7 +110,7 @@ public class Infinity
     // Better void
     // More mob tags
     
-    @EventHandler
+    @Mod.EventHandler
     public void preInit( FMLPreInitializationEvent event )
     {
         logger = event.getModLog();
@@ -127,19 +126,19 @@ public class Infinity
             File newRealmFile = new File( dataDir, "realm.nbt" );
             if ( newRealmFile.exists() )
             {
-                logger.warn( "When loading realm in %s, an old version of realm, infinity.nbt, was found, but a newer one, realm.nbt, already exists!", dataDir.getPath() );
+                logger.warn( "When loading realm in {}, an old version of realm, infinity.nbt, was found, but a newer one, realm.nbt, already exists!", dataDir.getPath() );
             }
             else
             {
                 oldRealmFile.renameTo( newRealmFile );
-                logger.info( "When loading realm in %s, found old realm %s, renaming to %s.", dataDir.getPath(), oldRealmFile.getName(), newRealmFile.getName() );
+                logger.info( "When loading realm in {}, found old realm {}, renaming to {}.", dataDir.getPath(), oldRealmFile.getName(), newRealmFile.getName() );
             }
         }
 
-        Infinity.realmController = new RealmController( Infinity.dataDir );
+        InfinityEditor.realmController = new RealmController( InfinityEditor.dataDir );
     }
     
-    @EventHandler
+    @Mod.EventHandler
     public void init( FMLInitializationEvent event )
     {
         // At the moment, it's alright to keep this part here, as the mod won't be loaded on serverside.
@@ -156,7 +155,7 @@ public class Infinity
         ClientRegistry.registerKeyBinding( keybindSave );
     }
     
-    @EventHandler
+    @Mod.EventHandler
     public void postInit( FMLPostInitializationEvent event )
     {
         /*

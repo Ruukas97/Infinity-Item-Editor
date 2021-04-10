@@ -63,13 +63,13 @@ public class GuiBook extends GuiInfinity
             bookTags.setAuthor( authorField.getText() );
         };
         
-        int buttons = 0;
-        generationButton = addButton( new GuiInfinityButton( 100 + buttons, midX - 75, 55 + (30 * fields) + (30 * buttons++), 150, 20, I18n.format( "gui.book.generation" ) ) );
+        int buttons = 1;
+        generationButton = addButton( new GuiInfinityButton( 100 + buttons, midX - 75, 55 + (30 * fields), 150, 20, I18n.format( "gui.book.generation" ) ) );
         generationButton.enabled = written;
         resolvedButton = addButton( new GuiInfinityButton( 100 + buttons, midX - 75, 55 + (30 * fields) + (30 * buttons++), 150, 20, bookTags.getResolved() ? I18n.format( "gui.book.resolved" ) : I18n.format( "gui.book.unresolved" ) ) );
         resolvedButton.enabled = written;
         
-        unsignButton = addButton( new GuiInfinityButton( 100 + buttons, midX - 75, 55 + (30 * fields) + (30 * buttons++), 150, 20, data != null ? I18n.format( "gui.book.resign" ) : I18n.format( "gui.book.unsign" ) ) );
+        unsignButton = addButton( new GuiInfinityButton( 100 + buttons, midX - 75, 55 + (30 * fields) + (30 * buttons), 150, 20, data != null ? I18n.format( "gui.book.resign" ) : I18n.format( "gui.book.unsign" ) ) );
         
         // addButton( new GuiInfinityButton( 100 + buttons, midX - 75, 55 + (30 * buttons++), 150, 20, I18n.format( "gui.book.test" ) ) );
     }

@@ -1,14 +1,7 @@
 package ruukas.infinityeditor.event;
 
-import java.util.List;
-
-import javax.annotation.Nullable;
-
-import org.lwjgl.input.Keyboard;
-
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
-
 import io.netty.channel.ChannelDuplexHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
@@ -43,37 +36,39 @@ import net.minecraft.util.text.event.HoverEvent;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.client.event.RenderTooltipEvent;
-import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
 import net.minecraftforge.fml.common.network.FMLNetworkEvent.ClientConnectedToServerEvent;
-import ruukas.infinityeditor.Infinity;
+import org.lwjgl.input.Keyboard;
+import ruukas.infinityeditor.InfinityEditor;
 import ruukas.infinityeditor.data.InfinityConfig;
 import ruukas.infinityeditor.data.thevoid.VoidController;
 import ruukas.infinityeditor.gui.GuiInfinity.ItemStackHolder;
 import ruukas.infinityeditor.gui.GuiItem;
-import ruukas.infinityeditor.gui.HelperGui;
 import ruukas.infinityeditor.util.GiveHelper;
 import ruukas.infinityeditor.util.InventoryUtils;
 
-@Mod.EventBusSubscriber( modid = Infinity.MODID )
+import javax.annotation.Nullable;
+import java.util.List;
+
+@Mod.EventBusSubscriber( modid = InfinityEditor.MODID )
 public class InfinityEventHandler {
     @SubscribeEvent
     public static void onKeyPress( KeyInputEvent event ) {
         Minecraft mc = Minecraft.getMinecraft();
 
-        if (Infinity.keybind.isPressed() && mc.world != null) {
+        if (InfinityEditor.keybind.isPressed() && mc.world != null) {
             mc.displayGuiScreen( new GuiItem( mc.currentScreen, new ItemStackHolder( mc.player.getHeldItemMainhand().copy() ), -1 ) );
         }
 
-        if (Infinity.keybindSave.isPressed() && mc.world != null) {
+        if (InfinityEditor.keybindSave.isPressed() && mc.world != null) {
             EntityPlayerSP player = mc.player;
             ItemStack currentStack = player.getHeldItemMainhand();
-            Infinity.realmController.addItemStack( player, currentStack.copy() );
+            InfinityEditor.realmController.addItemStack( player, currentStack.copy() );
         }
 
-        if (Infinity.keybindCopy.isPressed() && mc.world != null) {
+        if (InfinityEditor.keybindCopy.isPressed() && mc.world != null) {
             EntityPlayerSP player = Minecraft.getMinecraft().player;
 
             /*
@@ -136,7 +131,7 @@ public class InfinityEventHandler {
     public static void onKeyboardInput( GuiScreenEvent.KeyboardInputEvent.Pre e ) {
         Minecraft mc = Minecraft.getMinecraft();
         EntityPlayerSP player = mc.player;
-        if (Infinity.keybind != null && Keyboard.isKeyDown( Infinity.keybind.getKeyCode() ) && mc.world != null && player != null && e.getGui() instanceof GuiContainer) {
+        if (InfinityEditor.keybind != null && Keyboard.isKeyDown( InfinityEditor.keybind.getKeyCode() ) && mc.world != null && player != null && e.getGui() instanceof GuiContainer) {
             ItemStack cursorStack = player.inventory.getItemStack();
             if (cursorStack == ItemStack.EMPTY || cursorStack.getItem() == Items.AIR) {
                 GuiContainer gui = (GuiContainer) e.getGui();
@@ -164,16 +159,16 @@ public class InfinityEventHandler {
             }
         }
 
-        if (GameSettings.isKeyDown( Infinity.keybindSave ) && player != null) {
+        if (GameSettings.isKeyDown( InfinityEditor.keybindSave ) && player != null) {
             if (e.getGui() != null && e.getGui() instanceof GuiContainer) {
                 GuiContainer gui = (GuiContainer) e.getGui();
                 Slot slot = gui.getSlotUnderMouse();
                 if (slot != null) {
-                    if ((gui instanceof GuiContainerCreative && ((GuiContainerCreative) gui).getSelectedTabIndex() == Infinity.REALM.getTabIndex()) && !(slot.inventory instanceof InventoryPlayer)) {
-                        Infinity.realmController.removeItemStack( player, slot.getStack() );
+                    if ((gui instanceof GuiContainerCreative && ((GuiContainerCreative) gui).getSelectedTabIndex() == InfinityEditor.REALM.getTabIndex()) && !(slot.inventory instanceof InventoryPlayer)) {
+                        InfinityEditor.realmController.removeItemStack( player, slot.getStack() );
                     }
                     else {
-                        Infinity.realmController.addItemStack( player, slot.getStack().copy() );
+                        InfinityEditor.realmController.addItemStack( player, slot.getStack().copy() );
                     }
 
                     if (InfinityConfig.getIsVoidEnabled()) {
@@ -220,8 +215,8 @@ public class InfinityEventHandler {
     public static void onRenderTooltip( RenderTooltipEvent.Pre e ) {
         if (Minecraft.getMinecraft().currentScreen != null && Minecraft.getMinecraft().currentScreen instanceof GuiContainerCreative && (e.getStack().getItem() == Items.BANNER || e.getStack().getItem() == Items.SHIELD || e.getStack().getItem() == Items.FIREWORK_CHARGE || e.getStack().getItem() == Items.FIREWORKS)) {
             GuiContainerCreative gui = (GuiContainerCreative) Minecraft.getMinecraft().currentScreen;
-            boolean banners = InfinityConfig.bannerTab && gui.getSelectedTabIndex() == Infinity.BANNERS.getTabIndex();
-            boolean fireworks = InfinityConfig.fireworkTab && gui.getSelectedTabIndex() == Infinity.FIREWORKS.getTabIndex();
+            boolean banners = InfinityConfig.bannerTab && gui.getSelectedTabIndex() == InfinityEditor.BANNERS.getTabIndex();
+            boolean fireworks = InfinityConfig.fireworkTab && gui.getSelectedTabIndex() == InfinityEditor.FIREWORKS.getTabIndex();
 
             if ((banners || fireworks) && gui.getSlotUnderMouse() != null && gui.getSlotUnderMouse().inventory == Minecraft.getMinecraft().player.inventory) {
                 gui.initGui();
@@ -240,13 +235,10 @@ public class InfinityEventHandler {
                 ItemStack itemstack = ItemStack.EMPTY;
 
                 try {
-                    NBTBase nbtbase = JsonToNBT.getTagFromJson( comp.getStyle().getHoverEvent().getValue().getUnformattedText() );
-
-                    if (nbtbase instanceof NBTTagCompound) {
-                        itemstack = new ItemStack( (NBTTagCompound) nbtbase );
-                    }
+                    NBTTagCompound nbt = JsonToNBT.getTagFromJson( comp.getStyle().getHoverEvent().getValue().getUnformattedText() );
+                    itemstack = new ItemStack(nbt);
                 }
-                catch (NBTException var9) {
+                catch (NBTException ignored) {
                 }
 
                 new VoidController( itemstack ).addItemStack( Minecraft.getMinecraft().player, itemstack, "chat" );
@@ -267,7 +259,7 @@ public class InfinityEventHandler {
                         Entity ent = Minecraft.getMinecraft().world.getEntityByID( packet.getEntityID() );
                         String uuid = null;
                         if (ent instanceof EntityPlayer) {
-                            uuid = ((EntityPlayer) ent).getUniqueID().toString().replace( "-", "" );
+                            uuid = ent.getUniqueID().toString().replace( "-", "" );
                         }
                         new VoidController( stack ).addItemStack( Minecraft.getMinecraft().player, stack, uuid );
                     }
@@ -359,13 +351,13 @@ public class InfinityEventHandler {
     private void getRayTraceResult( int range, float partialTicks ) {
         Entity entity = Minecraft.getMinecraft().player;
         Minecraft mc = Minecraft.getMinecraft();
-        Entity pointedEntity = null;
+        Entity pointedEntity;
 
         if (entity != null) {
             if (mc.world != null) {
                 mc.mcProfiler.startSection( "pick" );
                 mc.pointedEntity = null;
-                double d0 = (double) mc.playerController.getBlockReachDistance();
+                double d0 = mc.playerController.getBlockReachDistance();
                 mc.objectMouseOver = entity.rayTrace( d0, partialTicks );
                 Vec3d vec3d = entity.getPositionEyes( partialTicks );
                 boolean flag = false;
@@ -391,28 +383,21 @@ public class InfinityEventHandler {
                 pointedEntity = null;
                 Vec3d vec3d3 = null;
                 // float f = 1.0F;
-                List<Entity> list = mc.world.getEntitiesInAABBexcluding( entity, entity.getEntityBoundingBox().expand( vec3d1.x * d0, vec3d1.y * d0, vec3d1.z * d0 ).grow( 1.0D, 1.0D, 1.0D ), Predicates.and( EntitySelectors.NOT_SPECTATING, new Predicate<Entity>() {
-                    public boolean apply( @Nullable
-                    Entity p_apply_1_ ) {
-                        return p_apply_1_ != null && p_apply_1_.canBeCollidedWith();
-                    }
-                } ) );
+                List<Entity> list = mc.world.getEntitiesInAABBexcluding( entity, entity.getEntityBoundingBox().expand( vec3d1.x * d0, vec3d1.y * d0, vec3d1.z * d0 ).grow( 1.0D, 1.0D, 1.0D ), Predicates.and(EntitySelectors.NOT_SPECTATING, p_apply_1_ -> p_apply_1_ != null && p_apply_1_.canBeCollidedWith()) );
                 double d2 = d1;
 
-                for (int j = 0; j < list.size(); ++j) {
-                    Entity entity1 = list.get( j );
-                    AxisAlignedBB axisalignedbb = entity1.getEntityBoundingBox().grow( (double) entity1.getCollisionBorderSize() );
-                    RayTraceResult raytraceresult = axisalignedbb.calculateIntercept( vec3d, vec3d2 );
+                for (Entity entity1 : list) {
+                    AxisAlignedBB axisalignedbb = entity1.getEntityBoundingBox().grow(entity1.getCollisionBorderSize());
+                    RayTraceResult raytraceresult = axisalignedbb.calculateIntercept(vec3d, vec3d2);
 
-                    if (axisalignedbb.contains( vec3d )) {
+                    if (axisalignedbb.contains(vec3d)) {
                         if (d2 >= 0.0D) {
                             pointedEntity = entity1;
                             vec3d3 = raytraceresult == null ? vec3d : raytraceresult.hitVec;
                             d2 = 0.0D;
                         }
-                    }
-                    else if (raytraceresult != null) {
-                        double d3 = vec3d.distanceTo( raytraceresult.hitVec );
+                    } else if (raytraceresult != null) {
+                        double d3 = vec3d.distanceTo(raytraceresult.hitVec);
 
                         if (d3 < d2 || d2 == 0.0D) {
                             if (entity1.getLowestRidingEntity() == entity.getLowestRidingEntity() && !entity1.canRiderInteract()) {
@@ -420,8 +405,7 @@ public class InfinityEventHandler {
                                     pointedEntity = entity1;
                                     vec3d3 = raytraceresult.hitVec;
                                 }
-                            }
-                            else {
+                            } else {
                                 pointedEntity = entity1;
                                 vec3d3 = raytraceresult.hitVec;
                                 d2 = d3;
@@ -432,7 +416,7 @@ public class InfinityEventHandler {
 
                 if (pointedEntity != null && flag && vec3d.distanceTo( vec3d3 ) > 3.0D) {
                     pointedEntity = null;
-                    mc.objectMouseOver = new RayTraceResult( RayTraceResult.Type.MISS, vec3d3, (EnumFacing) null, new BlockPos( vec3d3 ) );
+                    mc.objectMouseOver = new RayTraceResult( RayTraceResult.Type.MISS, vec3d3, null, new BlockPos( vec3d3 ) );
                 }
 
                 if (pointedEntity != null && (d2 < d1 || mc.objectMouseOver == null)) {
@@ -455,8 +439,8 @@ public class InfinityEventHandler {
      * 
      * @param event
      */
-    @SubscribeEvent
+    /*@SubscribeEvent
     public static void textureStich( TextureStitchEvent.Pre event ) {
         event.getMap().registerSprite( HelperGui.EMPTY_ARMOR_SLOT_SWORD );
-    }
+    }*/
 }

@@ -79,14 +79,14 @@ public class QualityHelper {
 	 * 
 	 * @return
 	 */
-	public static final Item getMostDurablePickaxe() {
+	public static Item getMostDurablePickaxe() {
 		Item bestPickaxe = null;
 		for (Item item : Item.REGISTRY) {
 			if (item == null) {
 				continue;
 			}
 			if (item instanceof ItemPickaxe) {
-				if (bestPickaxe == null || !(bestPickaxe instanceof ItemPickaxe)) {
+				if (bestPickaxe == null) {
 					bestPickaxe = item;
 					continue;
 				}
@@ -98,14 +98,14 @@ public class QualityHelper {
 		return bestPickaxe;
 	}
 
-	public static final Item getBestFood() {
+	public static Item getBestFood() {
 		Item bestFood = null;
 		for (Item item : Item.REGISTRY) {
 			if (item == null) {
 				continue;
 			}
 			if (item instanceof ItemFood) {
-				if (bestFood == null || !(bestFood instanceof ItemFood)) {
+				if (bestFood == null) {
 					bestFood = item;
 					continue;
 				}
@@ -123,16 +123,15 @@ public class QualityHelper {
 	 * 
 	 * @return
 	 */
-	public static final Item getStrongestSword() {
+	public static Item getStrongestSword() {
 		Item bestSword = null;
 		for (Item item : Item.REGISTRY) {
 			if (item == null) {
 				continue;
 			}
 			if (item instanceof ItemSword) {
-				if (bestSword == null || !(bestSword instanceof ItemSword)) {
+				if (bestSword == null) {
 					bestSword = item;
-					continue;
 				}
 				else if (((ItemSword) item).getAttackDamage() > ((ItemSword) bestSword).getAttackDamage()) {
 					bestSword = item;
@@ -186,7 +185,7 @@ public class QualityHelper {
 
 	public static boolean hasItem(Item item) {
 		InventoryPlayer inventory = Minecraft.getMinecraft().player.inventory;
-		NonNullList<NonNullList<ItemStack>> allInventories = NonNullList.<NonNullList<ItemStack>> create();
+		NonNullList<NonNullList<ItemStack>> allInventories = NonNullList.create();
 		allInventories.add(inventory.mainInventory);
 		allInventories.add(inventory.armorInventory);
 		allInventories.add(inventory.offHandInventory);

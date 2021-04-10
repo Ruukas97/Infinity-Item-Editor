@@ -21,6 +21,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.Rotations;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import ruukas.infinityeditor.InfinityEditor;
 import ruukas.infinityeditor.gui.armorstand.ContainerEquipment;
 import ruukas.infinityeditor.gui.armorstand.InventoryArmorStandEquipment;
 import ruukas.infinityeditor.nbt.NBTHelper;
@@ -33,11 +34,11 @@ public class GuiEquipment extends GuiContainer
     /** The old y position of the mouse pointer */
     private float oldMouseY;
     
-    private ItemStack stack;
+    private final ItemStack stack;
     // private EntityArmorStand armorStand;
     private final GuiScreen lastScreen;
     
-    private static final ResourceLocation EQUIPMENT_BACKGROUND = new ResourceLocation( "infinity:textures/gui/equipment.png" );
+    private static final ResourceLocation EQUIPMENT_BACKGROUND = new ResourceLocation(InfinityEditor.MODID, "textures/gui/equipment.png" );
     
     public GuiEquipment(GuiScreen lastScreen, ItemStack stack) {
         super( new ContainerEquipment( new InventoryArmorStandEquipment( stack ) ) );
@@ -56,7 +57,7 @@ public class GuiEquipment extends GuiContainer
     @Nullable
     public EntityArmorStand getEntity()
     {
-        return ((InventoryArmorStandEquipment) ((ContainerEquipment) this.inventorySlots).inventory).entityStand;
+        return ((ContainerEquipment) this.inventorySlots).inventory.entityStand;
     }
     
     /**
@@ -99,11 +100,7 @@ public class GuiEquipment extends GuiContainer
     @Override
     protected void handleMouseClick( Slot slotIn, int slotId, int mouseButton, ClickType type )
     {
-        if ( slotIn != null )
-        {
-            slotId = slotIn.slotNumber;
-        }
-        
+        slotId = slotIn.slotNumber;
         this.inventorySlots.slotClick( slotId, mouseButton, type, mc.player );
     }
     
@@ -143,10 +140,10 @@ public class GuiEquipment extends GuiContainer
         GlStateManager.rotate( 135.0F, 0.0F, 1.0F, 0.0F );
         RenderHelper.enableStandardItemLighting();
         GlStateManager.rotate( -135.0F, 0.0F, 1.0F, 0.0F );
-        GlStateManager.rotate( -((float) Math.atan( (double) (mouseY / 40.0F) )) * 20.0F, 1.0F, 0.0F, 0.0F );
-        ent.renderYawOffset = (float) Math.atan( (double) (mouseX / 40.0F) ) * 20.0F;
-        ent.rotationYaw = (float) Math.atan( (double) (mouseX / 40.0F) ) * 40.0F;
-        ent.rotationPitch = -((float) Math.atan( (double) (mouseY / 40.0F) )) * 20.0F;
+        GlStateManager.rotate( -((float) Math.atan(mouseY / 40.0F)) * 20.0F, 1.0F, 0.0F, 0.0F );
+        ent.renderYawOffset = (float) Math.atan(mouseX / 40.0F) * 20.0F;
+        ent.rotationYaw = (float) Math.atan(mouseX / 40.0F) * 40.0F;
+        ent.rotationPitch = -((float) Math.atan(mouseY / 40.0F)) * 20.0F;
         ent.rotationYawHead = ent.rotationYaw;
         ent.prevRotationYawHead = ent.rotationYaw;
         GlStateManager.translate( 0.0F, 0.0F, 0.0F );
@@ -187,12 +184,12 @@ public class GuiEquipment extends GuiContainer
         GlStateManager.rotate( 135.0F, 0.0F, 1.0F, 0.0F );
         RenderHelper.enableStandardItemLighting();
         GlStateManager.rotate( -135.0F, 0.0F, 1.0F, 0.0F );
-        GlStateManager.rotate( -((float) Math.atan( (double) (mouseY / 40.0F) )) * 20.0F, 1.0F, 0.0F, 0.0F );
-        ent.renderYawOffset = (float) Math.atan( (double) (mouseX / 40.0F) ) * 20.0F;
-        ent.rotationYaw = (float) Math.atan( (double) (mouseX / 40.0F) ) * 40.0F;
-        ent.rotationPitch = -((float) Math.atan( (double) (mouseY / 40.0F) )) * 20.0F;
+        GlStateManager.rotate( -((float) Math.atan(mouseY / 40.0F)) * 20.0F, 1.0F, 0.0F, 0.0F );
+        ent.renderYawOffset = (float) Math.atan(mouseX / 40.0F) * 20.0F;
+        ent.rotationYaw = (float) Math.atan(mouseX / 40.0F) * 40.0F;
+        ent.rotationPitch = -((float) Math.atan(mouseY / 40.0F)) * 20.0F;
         ent.rotationYawHead = ent.rotationYaw;
-        stand.setHeadRotation( new Rotations( -((float) Math.atan( (double) (mouseY / 40.0F) )) * 20.0F, (float) Math.atan( (double) (mouseX / 40.0F) ) * 40.0F, 0f ) );
+        stand.setHeadRotation( new Rotations( -((float) Math.atan(mouseY / 40.0F)) * 20.0F, (float) Math.atan(mouseX / 40.0F) * 40.0F, 0f ) );
         ent.prevRotationYawHead = ent.rotationYaw;
         GlStateManager.translate( 0.0F, 0.0F, 0.0F );
         RenderManager rendermanager = Minecraft.getMinecraft().getRenderManager();

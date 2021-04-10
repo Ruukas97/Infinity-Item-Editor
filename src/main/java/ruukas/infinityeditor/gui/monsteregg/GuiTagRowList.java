@@ -16,7 +16,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class GuiTagRowList extends GuiListExtended
 {
     
-    private final List<GuiTagRowList.Row> rows = Lists.<GuiTagRowList.Row>newArrayList();
+    private final List<GuiTagRowList.Row> rows = Lists.newArrayList();
     public final ItemStack stack;
     public final GuiScreen parentScreen;
     

@@ -7,7 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.JsonToNBT;
 import net.minecraft.nbt.NBTException;
 import net.minecraft.nbt.NBTTagCompound;
-import ruukas.infinityeditor.Infinity;
+import ruukas.infinityeditor.InfinityEditor;
 
 public class GiveHelper
 {
@@ -39,7 +39,7 @@ public class GiveHelper
         }
         catch ( NumberInvalidException e )
         {
-            Infinity.logger.error( "Couldn't parse \"" + args[1] + "\" as number for stack count." );
+            InfinityEditor.logger.error( "Couldn't parse \"" + args[1] + "\" as number for stack count." );
         }
         
         int meta = 0;
@@ -50,24 +50,24 @@ public class GiveHelper
         }
         catch ( NumberInvalidException e )
         {
-            Infinity.logger.error( "Couldn't parse \"" + args[2] + "\" as number for meta data." );
+            InfinityEditor.logger.error( "Couldn't parse \"" + args[2] + "\" as number for meta data." );
         }
         
         NBTTagCompound tag = null;
-        String tagString = "";
+        StringBuilder tagString = new StringBuilder();
         if ( args.length >= 4 )
         {
             for ( int i = 3 ; i < args.length ; i++ )
             {
-                tagString += " " + args[i];
+                tagString.append(" ").append(args[i]);
             }
             try
             {
-                tag = JsonToNBT.getTagFromJson( tagString );
+                tag = JsonToNBT.getTagFromJson(tagString.toString());
             }
             catch ( NBTException e )
             {
-                Infinity.logger.error( "Couldn't parse \"" + tagString + "\" as NBT for item." );
+                InfinityEditor.logger.error( "Couldn't parse \"" + tagString + "\" as NBT for item." );
             }
         }
         

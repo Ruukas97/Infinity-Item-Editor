@@ -37,9 +37,9 @@ public class GuiActionTextField extends GuiTextField {
     }
     
     /**
-     * Filter a string, keeping only characters for which {@link #isAllowedCharacter(char)} returns true.
+     * Filter a string, keeping only characters for which {@link ChatAllowedCharacters#isAllowedCharacter(char)} returns true.
      *  
-     * Note that this method strips line breaks, as {@link #isAllowedCharacter(char)} returns false for those.
+     * Note that this method strips line breaks, as {@link ChatAllowedCharacters#isAllowedCharacter(char)} returns false for those.
      * @return A filtered version of the input string
      */
     public static String filterAllowedCharacters(String input)
@@ -69,8 +69,8 @@ public class GuiActionTextField extends GuiTextField {
         String t = getText();
         String s = "";
         String s1 = filterAllowedCharacters( textToWrite );
-        int i = c < e ? c : e;
-        int j = c < e ? e : c;
+        int i = Math.min(c, e);
+        int j = Math.max(c, e);
         int k = getMaxStringLength() - t.length() - (i - j);
 
         if (!t.isEmpty()) {

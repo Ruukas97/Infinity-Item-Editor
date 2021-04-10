@@ -5,7 +5,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
-import ruukas.infinityeditor.Infinity;
+import ruukas.infinityeditor.InfinityEditor;
 import ruukas.infinityeditor.data.InfinityConfig;
 import ruukas.infinityeditor.data.thevoid.VoidController;
 
@@ -44,11 +44,11 @@ public abstract class InfinityTab extends CreativeTabs
             }
         }
         
-        Infinity.REALM = new InfinityTabRealm( successRealm ? foundId : id++, "realm", successRealm );
+        InfinityEditor.REALM = new InfinityTabRealm( successRealm ? foundId : id++, "realm", successRealm );
         
         if ( InfinityConfig.getIsUnavailableTabEnabled() )
         {
-            Infinity.UNAVAILABLE = new InfinityTab( id >= foundId ? 1 + id++ : id++, "unavailable" ) {
+            InfinityEditor.UNAVAILABLE = new InfinityTab( id >= foundId ? 1 + id++ : id++, "unavailable" ) {
                 @Override
                 public ItemStack getTabIconItem()
                 {
@@ -72,27 +72,27 @@ public abstract class InfinityTab extends CreativeTabs
         
         if ( InfinityConfig.getIsBannerTabEnabled() )
         {
-            Infinity.BANNERS = new InfinityTabBanners( id >= foundId ? 1 + id++ : id++ );
+            InfinityEditor.BANNERS = new InfinityTabBanners( id >= foundId ? 1 + id++ : id++ );
         }
         
         if ( InfinityConfig.getIsHeadTabEnabled() )
         {
-            Infinity.SKULLS = new InfinityTabSkulls( id >= foundId ? 1 + id++ : id++ );
+            InfinityEditor.SKULLS = new InfinityTabSkulls( id >= foundId ? 1 + id++ : id++ );
         }
         
         if ( InfinityConfig.getIsThiefTabEnabled() )
         {
-            Infinity.THIEF = new InfinityTabThief( id >= foundId ? 1 + id++ : id++ );
+            InfinityEditor.THIEF = new InfinityTabThief( id >= foundId ? 1 + id++ : id++ );
         }
         
         if ( InfinityConfig.getIsFireworkTabEnabled() )
         {
-            Infinity.FIREWORKS = new InfinityTabFireworks( id >= foundId ? 1 + id++ : id++ );
+            InfinityEditor.FIREWORKS = new InfinityTabFireworks( id >= foundId ? 1 + id++ : id++ );
         }
         
         if ( InfinityConfig.getIsVoidEnabled() )
         {
-            Infinity.VOID = new InfinityTab( id >= foundId ? 1 + id++ : id++, "void" ) {
+            InfinityEditor.VOID = new InfinityTab( id >= foundId ? 1 + id++ : id++, "void" ) {
                 @Override
                 public ItemStack getTabIconItem()
                 {

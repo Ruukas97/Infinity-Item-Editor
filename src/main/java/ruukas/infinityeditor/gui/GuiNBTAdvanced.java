@@ -14,7 +14,7 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import ruukas.infinityeditor.Infinity;
+import ruukas.infinityeditor.InfinityEditor;
 import ruukas.infinityeditor.gui.action.GuiInfinityButton;
 import ruukas.infinityeditor.gui.nbt.NBTListElement;
 import ruukas.infinityeditor.gui.nbt.NBTListRoot;
@@ -23,7 +23,7 @@ import ruukas.infinityeditor.gui.nbt.NBTListRoot;
 public class GuiNBTAdvanced extends GuiScreen
 {
     
-    private ItemStack stack = ItemStack.EMPTY;
+    private final ItemStack stack;
     
     private final GuiScreen lastScreen;
     
@@ -76,11 +76,11 @@ public class GuiNBTAdvanced extends GuiScreen
         {
             this.actionPerformed( this.backButton );
         }
-        else if ( keyCode == 28 || keyCode == 156 )
+        /*else if ( keyCode == 28 || keyCode == 156 )
         {
             // On ENTER
             // this.actionPerformed(this.updateNbtButton);
-        }
+        }*/
     }
     
     /**
@@ -94,7 +94,7 @@ public class GuiNBTAdvanced extends GuiScreen
     }
     
     @Override
-    protected void actionPerformed( GuiButton button ) throws IOException
+    protected void actionPerformed( GuiButton button )
     {
         if ( button.id == backButton.id )
         {
@@ -161,7 +161,7 @@ public class GuiNBTAdvanced extends GuiScreen
             setInfo( "", 0 );
         }
         
-        drawString( fontRenderer, Infinity.NAME + " - " + title, 25, 26, HelperGui.getColorFromRGB( 255, 0, 255, 255 ) );
+        drawString( fontRenderer, InfinityEditor.NAME + " - " + title, 25, 26, HelperGui.getColorFromRGB( 255, 0, 255, 255 ) );
         
         String unf = "This is not finished and will include more features in the future!";
         drawString( fontRenderer, unf, width - fontRenderer.getStringWidth( unf ) - 25, height - 30, HelperGui.getColorFromRGB( 255, 255, 50, 50 ) );
@@ -187,10 +187,10 @@ public class GuiNBTAdvanced extends GuiScreen
         Tessellator tessellator = Tessellator.getInstance();
         BufferBuilder bufferbuilder = tessellator.getBuffer();
         bufferbuilder.begin( 7, DefaultVertexFormats.POSITION_COLOR );
-        bufferbuilder.pos( (double) right, (double) bottom, (double) this.zLevel ).color( f1, f2, f3, f ).endVertex();
-        bufferbuilder.pos( (double) right, (double) top, (double) this.zLevel ).color( f1, f2, f3, f ).endVertex();
-        bufferbuilder.pos( (double) left, (double) top, (double) this.zLevel ).color( f5, f6, f7, f4 ).endVertex();
-        bufferbuilder.pos( (double) left, (double) bottom, (double) this.zLevel ).color( f5, f6, f7, f4 ).endVertex();
+        bufferbuilder.pos(right, bottom, this.zLevel).color( f1, f2, f3, f ).endVertex();
+        bufferbuilder.pos(right, top, this.zLevel).color( f1, f2, f3, f ).endVertex();
+        bufferbuilder.pos(left, top, this.zLevel).color( f5, f6, f7, f4 ).endVertex();
+        bufferbuilder.pos(left, bottom, this.zLevel).color( f5, f6, f7, f4 ).endVertex();
         tessellator.draw();
         GlStateManager.shadeModel( 7424 );
         GlStateManager.disableBlend();

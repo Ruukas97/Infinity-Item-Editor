@@ -2,6 +2,7 @@ package ruukas.infinityeditor.gui;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.UUID;
 
 import org.lwjgl.opengl.GL11;
@@ -100,7 +101,7 @@ public class GuiMonsterEgg extends GuiScreen
     /**
      * Fired when a key is typed (except F11 which toggles full screen). This is the equivalent of KeyListener.keyTyped(KeyEvent e). Args : character (character on the key), keyCode (lwjgl Keyboard key code)
      */
-    protected void keyTyped( char typedChar, int keyCode ) throws IOException
+    protected void keyTyped( char typedChar, int keyCode )
     {
         if ( keyCode == 1 )
         {
@@ -114,7 +115,7 @@ public class GuiMonsterEgg extends GuiScreen
     }
     
     @Override
-    protected void actionPerformed( GuiButton button ) throws IOException
+    protected void actionPerformed( GuiButton button )
     {
         
         if ( button.id == 103 )
@@ -138,7 +139,6 @@ public class GuiMonsterEgg extends GuiScreen
             else
             {
                 mobSpecificButton.enabled = false;
-                return;
             }
         }
         
@@ -252,14 +252,14 @@ public class GuiMonsterEgg extends GuiScreen
         {
             ResourceLocation id = ItemMonsterPlacer.getNamedIdFrom( getStack() );
             Entity entity = EntityList.createEntityByIDFromName( id, mc.world );
-            if ( entity != null && entity instanceof EntityLiving )
+            if (entity instanceof EntityLiving)
             {
                 mob = (EntityLiving) entity;
                 applyItemDataToMob();
             }
         }
         
-        equipmentButton.visible = mob instanceof EntityLiving;
+        equipmentButton.visible = mob != null;
         tradeButton.visible = mob instanceof EntityVillager;
         
         /*
@@ -287,10 +287,7 @@ public class GuiMonsterEgg extends GuiScreen
         s = gson.toJson( je );
         
         prettyNBTList.clear();
-        for ( String str : s.split( "\\n" ) )
-        {
-            prettyNBTList.add( str );
-        }
+        Collections.addAll(prettyNBTList, s.split("\\n"));
     }
     
     public void applyItemDataToMob()

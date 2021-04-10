@@ -179,7 +179,7 @@ public class GuiVillagerTrades extends GuiInfinity
         
         if ( foundSel )
         {
-            drawHoveringText( new ArrayList<>( Arrays.asList( new String[] { I18n.format( "gui.villagertrades.leftclick" ), I18n.format( "gui.villagertrades.rightclick" ) } ) ), mouseX, mouseY );
+            drawHoveringText( new ArrayList<>( Arrays.asList(I18n.format( "gui.villagertrades.leftclick" ), I18n.format( "gui.villagertrades.rightclick" )) ), mouseX, mouseY );
         }
         else
         {

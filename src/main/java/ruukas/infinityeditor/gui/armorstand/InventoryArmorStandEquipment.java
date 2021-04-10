@@ -19,9 +19,9 @@ import ruukas.infinityeditor.nbt.NBTHelper;
 
 public class InventoryArmorStandEquipment implements IInventory
 {
-    public final NonNullList<ItemStack> armor = NonNullList.<ItemStack>withSize( 4, ItemStack.EMPTY );
-    public final NonNullList<ItemStack> hands = NonNullList.<ItemStack>withSize( 2, ItemStack.EMPTY );
-    private ItemStack armorStandStack;
+    public final NonNullList<ItemStack> armor = NonNullList.withSize( 4, ItemStack.EMPTY );
+    public final NonNullList<ItemStack> hands = NonNullList.withSize( 2, ItemStack.EMPTY );
+    private final ItemStack armorStandStack;
     public EntityArmorStand entityStand;
     
     public InventoryArmorStandEquipment(ItemStack armorstand) {

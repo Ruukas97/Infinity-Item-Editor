@@ -3,6 +3,7 @@ package ruukas.infinityeditor.gui;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
@@ -133,16 +134,16 @@ public class GuiBannerMaker extends InventoryEffectRenderer
                 new QualityBanner( new TileEntityTagBanner( dye ) ).addToList( stackList );
             }
         }
-        else if ( currentDyeStack == null || currentDyeStack == ItemStack.EMPTY )
+        /*else if ( currentDyeStack == null || currentDyeStack == ItemStack.EMPTY )
         {
-            /*
+
              * stackList.add(AlphabetSkulls.getAlphabetSkull('p')); stackList.add(AlphabetSkulls.getAlphabetSkull('i')); stackList.add(AlphabetSkulls.getAlphabetSkull('c')); stackList.add(AlphabetSkulls.getAlphabetSkull('k'));
              * 
              * stackList.add(ItemStack.EMPTY);
              * 
              * stackList.add(AlphabetSkulls.getAlphabetSkull('c')); stackList.add(AlphabetSkulls.getAlphabetSkull('o')); stackList.add(AlphabetSkulls.getAlphabetSkull('l')); stackList.add(AlphabetSkulls.getAlphabetSkull('o')); stackList.add(AlphabetSkulls.getAlphabetSkull('r'));
-             */
-        }
+
+        }*/
         else
         {
             EnumDyeColor currentDye = EnumDyeColor.byDyeDamage( currentDyeStack.getItemDamage() );
@@ -265,7 +266,7 @@ public class GuiBannerMaker extends InventoryEffectRenderer
     /**
      * Fired when a key is typed (except F11 which toggles full screen). This is the equivalent of KeyListener.keyTyped(KeyEvent e). Args : character (character on the key), keyCode (lwjgl Keyboard key code)
      */
-    protected void keyTyped( char typedChar, int keyCode ) throws IOException
+    protected void keyTyped( char typedChar, int keyCode )
     {
         // super.keyTyped(typedChar, keyCode);
         this.nbtTextField.textboxKeyTyped( typedChar, keyCode );
@@ -373,27 +374,25 @@ public class GuiBannerMaker extends InventoryEffectRenderer
             
             if ( slotIn.inventory == dyeInventory )
             {
-                if ( handStack != null && handStack != ItemStack.EMPTY )
+                if (handStack != ItemStack.EMPTY)
                 {
                     this.mc.player.inventory.setItemStack( ItemStack.EMPTY );
                 }
-                else if ( slotStack != null && slotStack != ItemStack.EMPTY )
+                else if (slotStack != ItemStack.EMPTY)
                 {
                     setCurrentyDye( slotStack );
                 }
-                return;
             }
             else if ( slotIn.inventory == bannerInventory )
             {
-                if ( handStack != null && handStack != ItemStack.EMPTY )
+                if (handStack != ItemStack.EMPTY)
                 {
                     this.mc.player.inventory.setItemStack( ItemStack.EMPTY );
                 }
-                else if ( slotStack != null && slotStack != ItemStack.EMPTY )
+                else if (slotStack != ItemStack.EMPTY)
                 {
                     setCurrentBanner( slotStack, true );
                 }
-                return;
             }
             else if ( slotIn.inventory == bannerResult )
             {
@@ -402,7 +401,7 @@ public class GuiBannerMaker extends InventoryEffectRenderer
                     // Pressing a number 1-9
                     if ( type == ClickType.SWAP )
                     {
-                        if ( slotStack != null && slotStack != ItemStack.EMPTY && mouseButton >= 0 && mouseButton < 9 )
+                        if (slotStack != ItemStack.EMPTY && mouseButton >= 0 && mouseButton < 9)
                         {
                             // itemstack7.stackSize =
                             // itemstack7.getMaxStackSize();
@@ -418,7 +417,7 @@ public class GuiBannerMaker extends InventoryEffectRenderer
                     // Mouse wheel
                     if ( type == ClickType.CLONE )
                     {
-                        if ( (inventoryplayer.getItemStack() == null || inventoryplayer.getItemStack() == ItemStack.EMPTY) && slotIn.getHasStack() )
+                        if ( inventoryplayer.getItemStack() == ItemStack.EMPTY && slotIn.getHasStack() )
                         {
                             ItemStack itemstack6 = slotIn.getStack().copy();
                             itemstack6.setCount( itemstack6.getMaxStackSize() );
@@ -431,7 +430,7 @@ public class GuiBannerMaker extends InventoryEffectRenderer
                     // Pressing Q - Mouse button is 1 if Ctrl is down
                     if ( type == ClickType.THROW )
                     {
-                        if ( slotStack != null && slotStack != ItemStack.EMPTY )
+                        if (slotStack != ItemStack.EMPTY)
                         {
                             this.mc.player.dropItem( slotStack, true );
                             this.mc.playerController.sendPacketDropItem( slotStack );
@@ -439,7 +438,7 @@ public class GuiBannerMaker extends InventoryEffectRenderer
                         return;
                     }
                     
-                    if ( slotStack != null && slotStack != ItemStack.EMPTY && (handStack == null || handStack == ItemStack.EMPTY) )
+                    if (slotStack != ItemStack.EMPTY && handStack == ItemStack.EMPTY)
                     {
                         inventoryplayer.setItemStack( slotStack );
                         handStack = inventoryplayer.getItemStack();
@@ -450,28 +449,25 @@ public class GuiBannerMaker extends InventoryEffectRenderer
                         }
                         
                         setCurrentBanner( ItemStack.EMPTY, true );
-                        return;
                     }
-                    else if ( (handStack != null && handStack != ItemStack.EMPTY) && (handStack.getItem() == Items.BANNER || handStack.getItem() == Items.SHIELD) )
+                    else if (handStack != ItemStack.EMPTY && (handStack.getItem() == Items.BANNER || handStack.getItem() == Items.SHIELD))
                     {
                         ItemStack old2 = (slotStack != null && slotStack != ItemStack.EMPTY) ? slotStack.copy() : ItemStack.EMPTY;
                         setCurrentBanner( handStack, true );
                         inventoryplayer.setItemStack( old2 );
-                        return;
                     }
                 }
-                return;
             }
         }
         else
         {
-            if ( type == ClickType.THROW && slotIn != null && slotIn.getHasStack() )
+            if (type == ClickType.THROW && slotIn.getHasStack())
             {
                 ItemStack itemstack = slotIn.decrStackSize( mouseButton == 0 ? 1 : slotIn.getStack().getMaxStackSize() );
                 this.mc.player.dropItem( itemstack, true );
                 this.mc.playerController.sendPacketDropItem( itemstack );
             }
-            else if ( type == ClickType.THROW && this.mc.player.inventory.getItemStack() != null && this.mc.player.inventory.getItemStack() != ItemStack.EMPTY )
+            else if ( type == ClickType.THROW && this.mc.player.inventory.getItemStack() != ItemStack.EMPTY )
             {
                 this.mc.player.dropItem( this.mc.player.inventory.getItemStack(), true );
                 this.mc.playerController.sendPacketDropItem( this.mc.player.inventory.getItemStack() );
@@ -483,7 +479,7 @@ public class GuiBannerMaker extends InventoryEffectRenderer
                 {
                     type = ClickType.PICKUP;
                 }
-                this.mc.player.inventoryContainer.slotClick( (slotIn == null ? slotId : slotIn.slotNumber) + 10, mouseButton, type, this.mc.player );
+                this.mc.player.inventoryContainer.slotClick(slotIn.slotNumber + 10, mouseButton, type, this.mc.player );
                 this.mc.player.inventoryContainer.detectAndSendChanges();
             }
         }
@@ -516,8 +512,8 @@ public class GuiBannerMaker extends InventoryEffectRenderer
             this.listener = new CreativeCrafting( this.mc );
             this.mc.player.inventoryContainer.addListener( this.listener );
             
-            NonNullList<ItemStack> dyes = NonNullList.<ItemStack>create();
-            Items.DYE.getSubItems( Items.DYE.getCreativeTab(), dyes );
+            NonNullList<ItemStack> dyes = NonNullList.create();
+            Items.DYE.getSubItems(Objects.requireNonNull(Items.DYE.getCreativeTab()), dyes );
             int i = 1;
             for ( ItemStack dye : dyes )
             {
@@ -552,7 +548,7 @@ public class GuiBannerMaker extends InventoryEffectRenderer
     protected void drawGuiContainerForegroundLayer( int mouseX, int mouseY )
     {
         GlStateManager.disableBlend();
-        this.fontRenderer.drawString( I18n.format( "gui.bannermaker", new Object[ 0 ] ), 8, 6, 4210752 );
+        this.fontRenderer.drawString( I18n.format( "gui.bannermaker"), 8, 6, 4210752 );
     }
     
     @Override
@@ -641,7 +637,7 @@ public class GuiBannerMaker extends InventoryEffectRenderer
     
     private void drawMouseOverButton( int mouseX, int mouseY, int buttonX, int buttonY, int buttonSizeX, int buttonSizeY, String tooltip )
     {
-        if ( isPointInRegion( buttonX, buttonY, buttonSizeX, buttonSizeY, mouseY, mouseY ) )
+        if ( isPointInRegion( buttonX, buttonY, buttonSizeX, buttonSizeY, mouseX, mouseY ) )
         {
             GlStateManager.disableLighting();
             GlStateManager.disableDepth();
@@ -652,7 +648,7 @@ public class GuiBannerMaker extends InventoryEffectRenderer
             GlStateManager.enableLighting();
             GlStateManager.enableDepth();
             
-            ArrayList<String> list = new ArrayList<String>();
+            ArrayList<String> list = new ArrayList<>();
             list.add( tooltip );
             drawHoveringText( list, mouseX, mouseY );
         }
@@ -696,7 +692,7 @@ public class GuiBannerMaker extends InventoryEffectRenderer
         
         if ( this.destroyItemSlot != null && this.isPointInRegion( this.destroyItemSlot.xPos, this.destroyItemSlot.yPos, 16, 16, mouseX, mouseY ) )
         {
-            this.drawHoveringText( I18n.format( "inventory.binSlot", new Object[ 0 ] ), mouseX, mouseY );
+            this.drawHoveringText( I18n.format( "inventory.binSlot"), mouseX, mouseY );
         }
         
         GlStateManager.color( 1.0F, 1.0F, 1.0F, 1.0F );
@@ -707,7 +703,7 @@ public class GuiBannerMaker extends InventoryEffectRenderer
     static class ContainerBanner extends Container
     {
         
-        public List<ItemStack> itemList = Lists.<ItemStack>newArrayList();
+        public List<ItemStack> itemList = Lists.newArrayList();
         
         public ContainerBanner(EntityPlayer player) {
             InventoryPlayer inventoryplayer = player.inventory;
@@ -761,7 +757,7 @@ public class GuiBannerMaker extends InventoryEffectRenderer
                 
                 if ( i1 >= 0 && i1 < this.itemList.size() )
                 {
-                    GuiBannerMaker.bannerInventory.setInventorySlotContents( l, (ItemStack) this.itemList.get( i1 ) );
+                    GuiBannerMaker.bannerInventory.setInventorySlotContents( l, this.itemList.get( i1 ));
                 }
                 else
                 {
@@ -770,22 +766,11 @@ public class GuiBannerMaker extends InventoryEffectRenderer
             }
         }
         
-        public boolean canScroll()
-        {
-            return this.itemList.size() > 8;
-        }
-        
         public boolean canInteractWith( EntityPlayer playerIn )
         {
             return true;
         }
-        
-        /**
-         * Retries slotClick() in case of failure
-         */
-        protected void retrySlotClick( int slotId, int clickedButton, boolean mode, EntityPlayer playerIn )
-        {
-        }
+
         
         /**
          * Take a stack from the specified inventory slot.
@@ -794,7 +779,7 @@ public class GuiBannerMaker extends InventoryEffectRenderer
         {
             if ( index >= this.inventorySlots.size() - 9 && index < this.inventorySlots.size() )
             {
-                Slot slot = (Slot) this.inventorySlots.get( index );
+                Slot slot = this.inventorySlots.get( index );
                 
                 if ( slot != null && slot.getHasStack() )
                 {

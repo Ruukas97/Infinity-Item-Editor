@@ -412,7 +412,6 @@ gui.item.lore=Описание
 gui.item.meta=Мета
 gui.item.name=Название предмета
 
-gui.lorepainter=Рисовать в описании
 gui.paint=Рисунок
 gui.pick=Подобрать
 gui.trade=Торговля

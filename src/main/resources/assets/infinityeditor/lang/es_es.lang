@@ -29,7 +29,6 @@ gui.save=Guardar
 gui.drop=Dropear
 gui.reset=Resetear
 gui.clear=Limpiar
-gui.paint=Editor de textura
 gui.trade=Intercambio Personalizado
 gui.villagertrades=Intercambio Personalizado
 gui.pick=Seleccionar item
@@ -37,7 +36,6 @@ gui.villagertrades.addtrade=Añadir Intercambio
 gui.villagertrades.leftclick=Click izquierdo para editar
 gui.villagertrades.rightclick=Click derecho para quitar
 gui.villagertrades.reset=Eliminar intercambios
-
 gui.item=Infinity Editor [Traducción Español por Nacho4785] [v1.2.2]
 gui.spawnegg=Editor de huevos de Spawn
 gui.head=Editor de cabezas

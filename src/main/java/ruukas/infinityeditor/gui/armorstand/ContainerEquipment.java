@@ -46,7 +46,7 @@ public class ContainerEquipment extends Container
                 public boolean canTakeStack( EntityPlayer playerIn )
                 {
                     ItemStack itemstack = this.getStack();
-                    return !itemstack.isEmpty() && !playerIn.isCreative() && EnchantmentHelper.hasBindingCurse( itemstack ) ? false : super.canTakeStack( playerIn );
+                    return (itemstack.isEmpty() || playerIn.isCreative() || !EnchantmentHelper.hasBindingCurse(itemstack)) && super.canTakeStack(playerIn);
                 }
                 
                 @Nullable
@@ -73,7 +73,7 @@ public class ContainerEquipment extends Container
                 public boolean canTakeStack( EntityPlayer playerIn )
                 {
                     ItemStack itemstack = this.getStack();
-                    return !itemstack.isEmpty() && !playerIn.isCreative() && EnchantmentHelper.hasBindingCurse( itemstack ) ? false : super.canTakeStack( playerIn );
+                    return (itemstack.isEmpty() || playerIn.isCreative() || !EnchantmentHelper.hasBindingCurse(itemstack)) && super.canTakeStack(playerIn);
                 }
                 
                 @Nullable
@@ -173,7 +173,7 @@ public class ContainerEquipment extends Container
                     return ItemStack.EMPTY;
                 }
             }
-            else if ( entityequipmentslot.getSlotType() == EntityEquipmentSlot.Type.ARMOR && !((Slot) this.inventorySlots.get( 8 - entityequipmentslot.getIndex() )).getHasStack() )
+            else if ( entityequipmentslot.getSlotType() == EntityEquipmentSlot.Type.ARMOR && !this.inventorySlots.get( 8 - entityequipmentslot.getIndex() ).getHasStack() )
             {
                 int i = 8 - entityequipmentslot.getIndex();
                 
@@ -182,7 +182,7 @@ public class ContainerEquipment extends Container
                     return ItemStack.EMPTY;
                 }
             }
-            else if ( entityequipmentslot == EntityEquipmentSlot.OFFHAND && !((Slot) this.inventorySlots.get( 45 )).getHasStack() )
+            else if ( entityequipmentslot == EntityEquipmentSlot.OFFHAND && !this.inventorySlots.get( 45 ).getHasStack() )
             {
                 if ( !this.mergeItemStack( itemstack1, 45, 46, false ) )
                 {

@@ -1,6 +1,7 @@
 package ruukas.infinityeditor.data.thevoid;
 
 import java.io.File;
+import java.util.Objects;
 
 import org.apache.logging.log4j.Logger;
 
@@ -17,7 +18,7 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import ruukas.infinityeditor.Infinity;
+import ruukas.infinityeditor.InfinityEditor;
 import ruukas.infinityeditor.data.InfinityConfig;
 import ruukas.infinityeditor.util.ItemStackUtil;
 
@@ -25,12 +26,12 @@ import ruukas.infinityeditor.util.ItemStackUtil;
 public class VoidController
 {
     public static final String VERSION = "0.2";
-    private static final Logger LOGGER = Infinity.logger;
+    private static final Logger LOGGER = InfinityEditor.logger;
     private final File dataFile;
     private final NonNullList<VoidElement> elementList = NonNullList.create();
     
     public VoidController(ItemStack stack) {
-        this.dataFile = new File( Infinity.dataDir.getAbsolutePath() + File.separatorChar + "void", stack.getItem().getRegistryName().toString().replace( ':', '.' ) + ".nbt" );
+        this.dataFile = new File( InfinityEditor.dataDir.getAbsolutePath() + File.separatorChar + "void", stack.getItem().getRegistryName().toString().replace( ':', '.' ) + ".nbt" );
         
         this.read();
     }
@@ -73,7 +74,7 @@ public class VoidController
         }
         catch ( Exception exception )
         {
-            LOGGER.error( "Failed to load void for: " + dataFile.getName(), (Throwable) exception );
+            LOGGER.error( "Failed to load void for: " + dataFile.getName(), exception);
         }
     }
     
@@ -84,17 +85,16 @@ public class VoidController
             NBTTagCompound root = new NBTTagCompound();
             root.setTag( "elements", new NBTTagList() );
             NBTTagList elements = root.getTagList( "elements", NBT.TAG_COMPOUND );
-            
-            for ( int i = 0 ; i < elementList.size() ; ++i )
-            {
-                elements.appendTag( elementList.get( i ).writeToNBT( new NBTTagCompound() ) );
+
+            for (VoidElement voidElement : elementList) {
+                elements.appendTag(voidElement.writeToNBT(new NBTTagCompound()));
             }
             
             CompressedStreamTools.write( root, this.dataFile );
         }
         catch ( Exception exception )
         {
-            LOGGER.error( "Failed to save void for: " + dataFile.getName(), (Throwable) exception );
+            LOGGER.error( "Failed to save void for: " + dataFile.getName(), exception);
         }
     }
     
@@ -118,7 +118,7 @@ public class VoidController
             {
                 if ( e.addUUID( from, true ) )
                 {
-                    synchronized ( Infinity.dataDir )
+                    synchronized ( InfinityEditor.dataDir )
                     {
                         write();
                     }
@@ -135,7 +135,7 @@ public class VoidController
         e.addUUID( from, false );
         elementList.add( e );
         
-        synchronized ( Infinity.dataDir )
+        synchronized ( InfinityEditor.dataDir )
         {
             write();
         }
@@ -148,29 +148,24 @@ public class VoidController
     
     public static synchronized void loadVoidToList( NonNullList<ItemStack> list )
     {
-        File dataFile = new File( Infinity.dataDir.getAbsolutePath() + File.separatorChar + "void" );
-        
-        fileFor: for ( File file : dataFile.listFiles() )
-        {
+        File dataFile = new File( InfinityEditor.dataDir.getAbsolutePath() + File.separatorChar + "void" );
+
+        for (File file : Objects.requireNonNull(dataFile.listFiles())) {
             VoidController control;
-            
-            synchronized ( Infinity.dataDir )
-            {
-                control = new VoidController( file );
+
+            synchronized (InfinityEditor.dataDir) {
+                control = new VoidController(file);
             }
-            
+
             NonNullList<VoidElement> eList = control.getElementList();
-            
-            if ( !eList.isEmpty() )
-            {
-                if ( InfinityConfig.voidTabHideHeads && eList.get( 0 ).getStack().getItem() instanceof ItemSkull )
-                {
-                    continue fileFor;
+
+            if (!eList.isEmpty()) {
+                if (InfinityConfig.voidTabHideHeads && eList.get(0).getStack().getItem() instanceof ItemSkull) {
+                    continue;
                 }
-                
-                for ( int i = 0 ; i < eList.size() ; i++ )
-                {
-                    list.add( eList.get( i ).getStack() );
+
+                for (VoidElement voidElement : eList) {
+                    list.add(voidElement.getStack());
                 }
             }
         }
