@@ -1,0 +1,434 @@
+key.infinity.category=Безмежний редактор предметів
+key.infinity.desc=Редагувати поточний предмет
+key.infinitycopy.desc=Скопіювати інвентар цільового гравця
+key.infinitysave.desc=Зберегти поточний предмет в локальне сховище
+
+warning.notcreative=Ви повинні бути в творчому режимі для збереження речей
+
+itemGroup.unavailable=Безмежність - Недоступні
+itemGroup.banners=Безмежність - Банери
+itemGroup.skulls=Безмежність - Голови
+itemGroup.fireworks=Безмежність - феєрверки
+itemGroup.thief=Безмежність - Вкраденне
+itemGroup.realm=Безмежність - Сховище
+itemGroup.void=Безмежність - Аннульованне
+
+gui.close=Закрити
+gui.save=Зберегти
+gui.drop=Кинути
+gui.reset=Відновити
+gui.clear=Очистити
+
+gui.item=Безмежний редактор
+gui.spawnegg=Редактор яйця призову
+gui.head=Редактор голов
+gui.armorstand=Редактор стійки для броні
+gui.color=Редатор кольору
+gui.nbt=Редактор ІДТ
+gui.nbtadv=Дивитись ІДТ
+gui.enchanting=Чари
+gui.potion=Приготування зілля
+gui.book=Редактор книг
+gui.attributes=Редактор атрибутів
+gui.chestinventory=Інвентар скрині
+gui.hideflags=Сховати флаги
+gui.bannermaker=Конструктор банерів
+gui.fireworks=Перегляд феєрверка
+gui.specialbutton=Особливе ІДТ
+gui.headcollection=Колекція голів
+gui.lore=Редактор описів
+gui.sign=Редатор таблиці
+gui.paint=Текстурне малювання
+gui.villagertrades=Редактор угод християнинів
+gui.trade=Редактор угоди християнина
+gui.pick=Складальник предметів
+gui.lorepainter=Розмальовування опису
+
+gui.armorstand.pose=Редактор поз стійки для броні
+gui.armorstand.pose.reset.1=Тільки скидає обертання!
+gui.armorstand.invisible.note=Примітка: Видалити стійку для броні може бути складно без команд.
+gui.armorstand.marker.note=Конструктор відключає взаємодію і робить маленький хітбокс.
+
+gui.attributes.infinity.0=Вхідне значення
+gui.attributes.infinity.1=Безмежність
+gui.attributes.operation.0=Додавання +
+gui.attributes.operation.1=Мультиплікативний *
+gui.attributes.operation.2=Експонентний **
+gui.attributes.slot.0=Любий слот
+gui.attributes.slot.1=Основна рука
+gui.attributes.slot.2=Запасна рука
+gui.attributes.slot.3=Голова
+gui.attributes.slot.4=Тіло
+gui.attributes.slot.5=Ноги
+gui.attributes.slot.6=Ступні
+attribute.name.generic.flyingSpeed=Швидкість польоту моба
+
+gui.book.title=Опис
+gui.book.author=Автор
+gui.book.generation=Генерація
+gui.book.resolved=Вирішено
+gui.book.resolved.tooltip.1=Було вирішено сервером
+gui.book.unresolved=Невирішено
+gui.book.unsign=Непідписанно
+gui.book.resign=Підписанно
+
+gui.enchanting.enchanttoggle.0=Показати застосовні
+gui.enchanting.enchanttoggle.1=Показати всі
+gui.enchanting.addall=Додати всі видимі
+
+gui.spawnegg.entity=Специфіка об'єкту
+gui.spawnegg.mob=Специфіка моба
+gui.spawnegg.mobspecific=%s специфіки
+gui.spawnegg.animalspecific=Специфіка тварини
+
+gui.head.save.tooltip.1=Можливі затримки при завантаженні інформації про гравця.
+gui.head.save.tooltip.2=Це ванільна проблема.
+gui.head.list.tooltip.1=Список поточних гравців на сервері.
+gui.head.list.tooltip.2=--Ще не реалізовано--
+
+gui.headcollection.category.alphabet=Алфавіт
+gui.headcollection.category.animals=Тварини
+gui.headcollection.category.blocks=Блоки
+gui.headcollection.category.decoration=Декорація
+gui.headcollection.category.food-drinks=Їжа/Напої
+gui.headcollection.category.humans=Люди
+gui.headcollection.category.humanoid=Людиноподібні
+gui.headcollection.category.miscellaneous=Різне
+gui.headcollection.category.monsters=Монстри
+gui.headcollection.category.plants=Рослини
+
+gui.headcollection.clickhead=Натисніть щоб вставити голову в порожній слот
+gui.headcollection.clickheadshift=Затисніть shift щоб кинути голову
+gui.headcollection.typesearch=Введіть для пошуку
+gui.headcollection.clicksearch=Натисніть для пошуку!
+gui.headcollection.currentpage=Сторінка %s/%s
+gui.headcollection.changecategory.1=Змінити категорію
+gui.headcollection.changecategory.2=Завантаження займає декілька секунд
+gui.headcollection.freeslots=Вільних слотів: %s
+gui.headcollection.ininventory=В інвентарі: %s
+gui.headcollection.notworking=Якщо голови не завантажуються, встановіть мод LetsEncryptCraft або встановіть в лаунчері більш нову версію Java!
+
+gui.item.toggleside=Змінити перегляд
+gui.item.discord=Зайти в Діскорд
+gui.item.share=Поділитися предметом
+gui.item.colorremove.tooltip.1=Видалити всі кольори
+gui.item.drop.tooltip.1=Утримуйте shift щоб скопіювати команду /give у ваш буфер обміну
+gui.item.drop.tooltip.2=Потім ви можете вставити його в інше місце
+gui.item.id=ІД предмета
+gui.item.count=Кількість
+gui.item.meta=Мета
+gui.item.name=Назва предмету
+gui.item.lore=Опис
+
+gui.nbt.update=Оновити ІДТ
+
+gui.nbt.comp.open=Натисніть щоб розгорнути складовий тег
+gui.nbt.comp.close=Натисніть щоб згорнути складовий тег
+
+tag.head.0=Череп скелета
+tag.head.1=Череп візера
+tag.head.2=Голова зомбі
+tag.head.3=Голова гравця
+tag.head.4=Голова кріпера
+tag.head.5=Голова дракона
+
+gui.potion.time=Час (Секунди)
+gui.potion.level=Рівень
+gui.potion.showparticles.0=Сховати частинки
+gui.potion.showparticles.1=Показати частинки
+
+gui.villagertrades.addtrade=Додати угоду
+gui.villagertrades.leftclick=Лівий клік редагувати
+gui.villagertrades.rightclick=Правий клік видалити
+gui.villagertrades.reset=Очистити угоди
+
+gui.equipment.inventoryclone=Це копія вашого інвентарю. Зміни не будуть збережені.
+
+gui.lore.addline=Додати рядок
+gui.lore.copylore=Скопіювати опис
+gui.lore.copyall=Скопіювати підказку
+gui.lore.paste=Вставити
+
+gui.lorepainter.insert=Вставити
+gui.lorepainter.preview=Перегляд
+gui.lorepainter.scale=Розмір
+gui.lorepainter.symbol.fullblock=Повний блок
+gui.lorepainter.symbol.mediumshade=Середня тінь
+gui.lorepainter.symbol.darkshade=Темна тінь
+gui.lorepainter.symbol.fullspace=Пусте місце
+
+flag.enchantment.0=Чари: показати
+flag.enchantment.1=Чари: сховати
+flag.attributemod.0=Атрибути: показати
+flag.attributemod.1=Атрибути: сховати
+flag.unbreakable.0=Невразливий: показати
+flag.unbreakable.1=Невразливий: сховати
+flag.candestroy.0=Можна зруйнувати: показати
+flag.candestroy.1=Можна зруйнувати: сховати
+flag.canplaceon.0=Можна розмістити: показати
+flag.canplaceon.1=Можна розмістити: сховати
+flag.iteminfo.0=Інформація предмета: показати
+flag.iteminfo.1=Інформація предмета: сховати
+
+gui.editstring=Редагувати нитку
+
+gui.entitytags=Теги об'єкта
+gui.mobspecific=Специфіка моба
+
+
+tag.skullowner=Власник голови
+
+tag.unbreakable.0=Руйнівний
+tag.unbreakable.1=Неруйнівний
+
+tag.fire.on=Горить %s тиків
+tag.fire.off=Не горить
+
+tag.customname=Змінити користувацьке ім'я
+tag.nogravity.on=Без гравітації
+tag.nogravity.off=З гравітацією
+tag.invulnerable.on=Невразливий
+tag.invulnerable.off=Вразливий
+tag.customnamevisible.on=Користувацьке ім'я видно
+tag.customnamevisible.off=Користувацьке ім'я приховано
+tag.silent.on=Галасливий
+tag.silent.off=Не галасливий
+tag.glowing.on=Світиться
+tag.glowing.off=Не світиться
+
+tag.health.on=%s здоров'я
+tag.health.off=Мертвий
+tag.absorption.on=%s поглинання
+tag.absorption.off=Без поглинання
+tag.fallflying.on=Парування як на елітрах
+tag.fallflying.off=Нормальне падіння
+tag.noai.on=ШІ вимкнений
+tag.noai.off=ШІ увімкнений
+tag.persistencerequired.on=Не деспавниться як зазвичай
+tag.persistencerequired.off=Деспавниться як зазвичай
+tag.canpickuploot.on=Підбирає лут
+tag.canpickuploot.off=Ігнорує лут
+
+tag.armorstand.arms.0=Без рук
+tag.armorstand.arms.1=Має руки
+tag.armorstand.small.0=Звичайний
+tag.armorstand.small.1=Маленький
+tag.armorstand.invisible.0=Видимий
+tag.armorstand.invisible.1=Невидимий
+tag.armorstand.nobase.0=Має опорну плиту
+tag.armorstand.nobase.1=Без опорной плити
+tag.armorstand.marker.0=Без мітки
+tag.armorstand.marker.1=З міткою
+tag.armorstand.inventory=Екіпірування
+tag.armorstand.pose=Позиція
+
+tag.chicken.egglaytime.on=%s тиків до яйця
+tag.chicken.egglaytime.off=Готова відкласти яйце
+
+tag.creeper.powered.on=Заряджений
+tag.creeper.powered.off=Незаряджений
+tag.creeper.explosionradius.on=Радіус вибуху: %s
+tag.creeper.explosionradius.off=Без радіуса вибуху
+tag.creeper.fuse.on=Час до вибуху: %s
+tag.creeper.fuse.off=Моментальний вибух
+tag.creeper.ignited.on=Запалюється
+tag.creeper.ignited.off=Не запалюється
+
+tag.endermite.lifetime.off=Невизначений час життя
+tag.endermite.lifetime.on=Час життя: %s
+tag.endermite.playerspawned.off=Гравець закликав 0
+tag.endermite.playerspawned.on=Гравець закликав: 1
+
+tag.parrot.variant.-1=Випадковий вид
+tag.parrot.variant.0=Червоний вид
+tag.parrot.variant.1=Синій вид
+tag.parrot.variant.2=Зелений вид
+tag.parrot.variant.3=Блакитний вид
+tag.parrot.variant.4=Срібний вид
+
+tag.pig.saddled.on=З сідлом
+tag.pig.saddled.off=Без сідла
+
+tag.sheep.color.0=Біла вовна
+tag.sheep.color.1=Помаранчева вовна
+tag.sheep.color.2=Пурпурна вовна
+tag.sheep.color.3=Світло-синя вовна
+tag.sheep.color.4=Жовта вовна
+tag.sheep.color.5=Лаймова вовна
+tag.sheep.color.6=Рожева вовна
+tag.sheep.color.7=Сіра вовна
+tag.sheep.color.8=Світло-сіра вовна
+tag.sheep.color.9=Блакитна вовна
+tag.sheep.color.10=Фіолетова вовна
+tag.sheep.color.11=Синя вовна
+tag.sheep.color.12=Коричнева вовна
+tag.sheep.color.13=Темно-зелена вовна
+tag.sheep.color.14=Червона вовна
+tag.sheep.color.15=Чорна вовна
+tag.sheep.sheared.on=Пострижена
+tag.sheep.sheared.off=Має вовну
+
+tag.shulker.color.0=Білий
+tag.shulker.color.1=Помаранчевий
+tag.shulker.color.2=Пурпурний
+tag.shulker.color.3=Світло-синій
+tag.shulker.color.4=Жовтий
+tag.shulker.color.5=Лаймовий
+tag.shulker.color.6=Рожевий
+tag.shulker.color.7=Сірий
+tag.shulker.color.8=Світло-сірий
+tag.shulker.color.9=Блакитний
+tag.shulker.color.10=Фіолетовий
+tag.shulker.color.11=Синій
+tag.shulker.color.12=Коричневий
+tag.shulker.color.13=Темно-зелений
+tag.shulker.color.14=Червоний
+tag.shulker.color.15=Чорний
+
+tag.slime.size.on=Розмір: %s
+tag.slime.size.off=Розмір: %s
+
+tag.villager.profession.-1=Випадковий скін
+tag.villager.profession.0=Скін фермера
+tag.villager.profession.1=Скін бібліотекаря
+tag.villager.profession.2=Скін священика
+tag.villager.profession.3=Скін коваля
+tag.villager.profession.4=Скін м'ясника
+tag.villager.profession.5=Скін безробітнього
+tag.villager.willing.on=Готовий
+tag.villager.willing.off=Не готовий
+
+tag.vindicator.johnny.on=Поведінка вбивці
+tag.vindicator.johnny.off=Звичайна поведінка
+
+tag.zombie.isbaby.on=Дитина
+tag.zombie.isbaby.off=Дорослий
+tag.zombie.canbreakdoors.on=Може руйнувати двері
+tag.zombie.canbreakdoors.off=Не може руйнувати двері
+
+potion.potency.3=3
+potion.potency.4=4
+potion.potency.5=5
+potion.potency.6=6
+potion.potency.7=7
+potion.potency.8=8
+potion.potency.9=9
+potion.potency.10=10
+potion.potency.11=11
+potion.potency.12=12
+potion.potency.13=13
+potion.potency.14=14
+potion.potency.15=15
+potion.potency.16=16
+potion.potency.17=17
+potion.potency.18=18
+potion.potency.19=19
+potion.potency.20=20
+potion.potency.21=21
+potion.potency.22=22
+potion.potency.23=23
+potion.potency.24=24
+potion.potency.25=25
+potion.potency.26=26
+potion.potency.27=27
+potion.potency.28=28
+potion.potency.29=29
+potion.potency.30=30
+potion.potency.31=31
+potion.potency.32=32
+potion.potency.33=33
+potion.potency.34=34
+potion.potency.35=35
+potion.potency.36=36
+potion.potency.37=37
+potion.potency.38=38
+potion.potency.39=39
+potion.potency.40=40
+potion.potency.41=41
+potion.potency.42=42
+potion.potency.43=43
+potion.potency.44=44
+potion.potency.45=45
+potion.potency.46=46
+potion.potency.47=47
+potion.potency.48=48
+potion.potency.49=49
+potion.potency.50=50
+potion.potency.51=51
+potion.potency.52=52
+potion.potency.53=53
+potion.potency.54=54
+potion.potency.55=55
+potion.potency.56=56
+potion.potency.57=57
+potion.potency.58=58
+potion.potency.59=59
+potion.potency.60=60
+potion.potency.61=61
+potion.potency.62=62
+potion.potency.63=63
+potion.potency.64=64
+potion.potency.65=65
+potion.potency.66=66
+potion.potency.67=67
+potion.potency.68=68
+potion.potency.69=69
+potion.potency.70=70
+potion.potency.71=71
+potion.potency.72=72
+potion.potency.73=73
+potion.potency.74=74
+potion.potency.75=75
+potion.potency.76=76
+potion.potency.77=77
+potion.potency.78=78
+potion.potency.79=79
+potion.potency.80=80
+potion.potency.81=81
+potion.potency.82=82
+potion.potency.83=83
+potion.potency.84=84
+potion.potency.85=85
+potion.potency.86=86
+potion.potency.87=87
+potion.potency.88=88
+potion.potency.89=89
+potion.potency.90=90
+potion.potency.91=91
+potion.potency.92=92
+potion.potency.93=93
+potion.potency.94=94
+potion.potency.95=95
+potion.potency.96=96
+potion.potency.97=97
+potion.potency.98=98
+potion.potency.99=99
+potion.potency.100=100
+potion.potency.101=101
+potion.potency.102=102
+potion.potency.103=103
+potion.potency.104=104
+potion.potency.105=105
+potion.potency.106=106
+potion.potency.107=107
+potion.potency.108=108
+potion.potency.109=109
+potion.potency.110=110
+potion.potency.111=111
+potion.potency.112=112
+potion.potency.113=113
+potion.potency.114=114
+potion.potency.115=115
+potion.potency.116=116
+potion.potency.117=117
+potion.potency.118=118
+potion.potency.119=119
+potion.potency.120=120
+potion.potency.121=121
+potion.potency.122=122
+potion.potency.123=123
+potion.potency.124=124
+potion.potency.125=125
+potion.potency.126=126
+potion.potency.127=127 (Максимум)
+
