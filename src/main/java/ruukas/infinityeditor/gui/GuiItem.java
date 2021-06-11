@@ -355,7 +355,9 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback {
             }
         }
 
-        for (GuiTextField f : textFields) {
+        //noinspection ForLoopReplaceableByForEach
+        for (int i=0; i<textFields.size(); i++) {
+            GuiTextField f = textFields.get(i);
             if (f != null) {
                 f.textboxKeyTyped(typedChar, keyCode);
             }
