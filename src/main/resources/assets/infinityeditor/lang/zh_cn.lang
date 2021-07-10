@@ -47,10 +47,10 @@ gui.trade=村民交易编辑
 gui.pick=物品选择器
 gui.lorepainter=纹理描述
 
-gui.armorstand.pose=盔甲架姿势编辑
+gui.armorstand.pose=盔甲架姿势编辑器
 gui.armorstand.pose.reset.1=仅重置姿势旋转!
 gui.armorstand.invisible.note=注意:在没有命令的情况下,可能会很难拆卸盔甲和武器.
-gui.armorstand.marker.note=标记会禁用互动并使碰撞箱变小.
+gui.armorstand.marker.note=标记禁用互动并使碰撞箱变小.
 
 gui.attributes.infinity.0=输入值
 gui.attributes.infinity.1=无限大
@@ -100,13 +100,16 @@ gui.headcollection.category.miscellaneous=杂项
 gui.headcollection.category.monsters=怪物
 gui.headcollection.category.plants=植物
 
-gui.headcollection.clickhead=单击以替换当前物品
-gui.headcollection.clickheadshift=按住shift以放下头
+gui.headcollection.clickhead=点击将头颅放入空的槽位
+gui.headcollection.clickheadshift=按住shift以放下头颅
 gui.headcollection.typesearch=需要搜索的类型
 gui.headcollection.clicksearch=单击进行搜索!
 gui.headcollection.currentpage=页面 %s/%s
 gui.headcollection.changecategory.1=更改类型
 gui.headcollection.changecategory.2=加载需要几秒钟
+ui.headcollection.freeslots=空闲插槽：%s
+gui.headcollection.ininventory=库存中：%s
+gui.headcollection.notworking=如果没有加载头颅，请安装 LetsEncryptCraft mod 或将您的启动器设置为更新的 Java 版本！
 
 gui.item.toggleside=切换视图
 gui.item.discord=加入Discord聊天群组
@@ -153,8 +156,8 @@ gui.lorepainter.insert=插入
 gui.lorepainter.preview=预览
 gui.lorepainter.scale=比例
 gui.lorepainter.symbol.fullblock=完全占据
-gui.lorepainter.symbol.mediumshade=半色调
-gui.lorepainter.symbol.darkshade=深色调
+gui.lorepainter.symbol.mediumshade=中等阴影
+gui.lorepainter.symbol.darkshade=深色阴影
 gui.lorepainter.symbol.fullspace=空白
 
 flag.enchantment.0=附魔:显示
@@ -234,8 +237,8 @@ tag.creeper.fuse.off=立刻爆炸
 tag.creeper.ignited.on=点燃
 tag.creeper.ignited.off=未点燃
 
-tag.endermite.lifetime.off=未定义生存时间
-tag.endermite.lifetime.on=生存时间: %s
+tag.endermite.lifetime.off=未定义生命周期
+tag.endermite.lifetime.on=生命周期: %s
 tag.endermite.playerspawned.off=玩家生成: 0
 tag.endermite.playerspawned.on=玩家生成: 1
 
