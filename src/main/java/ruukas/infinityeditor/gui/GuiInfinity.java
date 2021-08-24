@@ -240,7 +240,7 @@ public abstract class GuiInfinity extends GuiScreen
                 itemRender.zLevel = 100.0F;
                 itemRender.renderItemAndEffectIntoGUI( getItemStack(), stackX, stackY );
                 itemRender.renderItemOverlays( fontRenderer, getItemStack(), stackX, stackY );
-                
+
                 GlStateManager.enableLighting();
                 GlStateManager.popMatrix();
             }

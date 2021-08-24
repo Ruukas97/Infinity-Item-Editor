@@ -12,6 +12,7 @@ public class InfinityTabRealm extends InfinityTab
     public InfinityTabRealm(int index, String label, boolean allignedRight) {
         super( index, label );
         this.allignedRight = allignedRight;
+        setBackgroundImageName("item_search.png");
     }
     
     @Override
@@ -32,5 +33,11 @@ public class InfinityTabRealm extends InfinityTab
         super.displayAllRelevantItems( stackList );
         
         stackList.addAll( InfinityEditor.realmController.getStackList() );
+    }
+
+    @Override
+    public boolean hasSearchBar()
+    {
+        return true;
     }
 }
