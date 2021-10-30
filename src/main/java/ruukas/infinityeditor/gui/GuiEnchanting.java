@@ -191,6 +191,7 @@ public class GuiEnchanting extends GuiInfinity {
             showAll = !showAll;
             resetEnchantments();
             updateButtonText();
+            filterEnchantments();
         } else
             super.actionPerformed(button);
     }
