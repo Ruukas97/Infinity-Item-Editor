@@ -74,6 +74,7 @@ gui.book.resign=Resigné
 gui.enchanting.enchanttoggle.0=Montrer les enchantements applicables
 gui.enchanting.enchanttoggle.1=Tout montrer
 gui.enchanting.addall=Ajouter tous les enchantements visibles
+gui.enchanting.search=Chercher
 
 gui.spawnegg.entity=Entité Spécifique
 gui.spawnegg.mob=Monstre Spécifique

@@ -70,6 +70,7 @@ gui.book.resign=Zapisz książke
 gui.enchanting.enchanttoggle.0=Pokaż zaklęcia dla tego itemu
 gui.enchanting.enchanttoggle.1=Pokaż wszystkie zaklęcia
 gui.enchanting.addall=Dodaj wszystkie widoczne zaklęcia
+gui.enchanting.search=Szukaj
 
 gui.spawnegg.entity=Specialne dla tej jednostki 
 gui.spawnegg.mob=Specilane dla tego Moda

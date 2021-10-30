@@ -71,6 +71,7 @@ gui.book.resign=Gentjek
 gui.enchanting.enchanttoggle.0=Vis Gældende
 gui.enchanting.enchanttoggle.1=Vis Alle
 gui.enchanting.addall=Tilføj alle viste
+gui.enchanting.search=Søge
 
 gui.spawnegg.entity=Entity Specifik
 gui.spawnegg.mob=Mob Specifik

@@ -78,6 +78,7 @@ gui.book.resign=签署
 gui.enchanting.enchanttoggle.0=显示可用
 gui.enchanting.enchanttoggle.1=显示所有
 gui.enchanting.addall=添加所有可用项
+gui.enchanting.search=搜索
 
 gui.spawnegg.entity=自定义实体
 gui.spawnegg.mob=自定义生物

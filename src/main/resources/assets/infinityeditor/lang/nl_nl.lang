@@ -75,6 +75,7 @@ gui.book.resign=Opnieuw Signeren
 gui.enchanting.enchanttoggle.0=Laat Toepasbare Zien
 gui.enchanting.enchanttoggle.1=Laat Alles Zien
 gui.enchanting.addall=Voeg Alle Zichtbare Toe
+gui.enchanting.search=Zoek
 
 gui.spawnegg.entity=Wezen Specifiek
 gui.spawnegg.mob=Monster Specifiek

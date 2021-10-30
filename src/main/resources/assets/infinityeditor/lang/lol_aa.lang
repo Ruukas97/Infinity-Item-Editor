@@ -70,6 +70,7 @@ gui.book.resign=MEAW
 gui.enchanting.enchanttoggle.0=MEOW
 gui.enchanting.enchanttoggle.1=MEOW
 gui.enchanting.addall=MEOW
+gui.enchanting.search=MEOW
 
 gui.spawnegg.entity=MEOW
 gui.spawnegg.mob=MEOW

@@ -75,6 +75,7 @@ gui.book.resign=Подписанно
 gui.enchanting.enchanttoggle.0=Показать применимые
 gui.enchanting.enchanttoggle.1=Показать все
 gui.enchanting.addall=Добавить все видимые
+gui.enchanting.search=Поиск
 
 gui.spawnegg.entity=Специфика объекта
 gui.spawnegg.mob=Специфика моба

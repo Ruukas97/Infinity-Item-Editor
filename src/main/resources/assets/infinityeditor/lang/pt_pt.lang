@@ -76,6 +76,7 @@ gui.book.resign=Re-atribuir
 gui.enchanting.enchanttoggle.0=Mostrar aplicável
 gui.enchanting.enchanttoggle.1=Mostrar tudo
 gui.enchanting.addall=Adicione tudo
+gui.enchanting.search=Procurar
 
 gui.spawnegg.entity=Entidade específica
 gui.spawnegg.mob=Mob específico
