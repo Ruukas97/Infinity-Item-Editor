@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import net.minecraft.entity.player.EntityPlayerMP;
 import org.lwjgl.input.Keyboard;
 
 import net.minecraft.client.gui.GuiButton;
@@ -86,15 +87,22 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback {
         clearCustomName();
     }
 
+    protected void betterSave(ItemStack itemStackIn, int slotId) {
+        if (mc.isSingleplayer()) {
+            ((EntityPlayerMP) mc.getIntegratedServer().getEntityFromUuid(mc.player.getUniqueID())).inventoryContainer.putStackInSlot(slotId, itemStackIn);
+        } else {
+            mc.playerController.sendSlotPacket( itemStackIn,slotId );
+        }
+    }
 
     @Override
     protected void save() {
         if (slot < 0) {
-            mc.playerController.sendSlotPacket( getItemStack(), mc.player.inventory.currentItem + 36 ); // 36 is the index of the action (4 armor, 1 off hand, 5 crafting, and 27
-                                                                                                        // inventory, if I remember correctly).
+            this.betterSave( getItemStack(), mc.player.inventory.currentItem + 36 ); // 36 is the index of the action (4 armor, 1 off hand, 5 crafting, and 27
+            // inventory, if I remember correctly).
         }
         else {
-            mc.playerController.sendSlotPacket( getItemStack(), slot );
+            this.betterSave( getItemStack(), slot );
         }
     }
 
@@ -278,11 +286,11 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback {
             }
             else {
                 addLoreTextField( id, i, false ); // Adds one extra line before breaking so there's a field to potentially add an
-                                                    // extra line.
+                // extra line.
                 break;
             }
         }
-        
+
 
         loreButton = (GuiInfinityButton) addIfNotIn( new GuiInfinityButton( 260, width - 180, 0, 170, 20, I18n.format( "gui.lore" ) ), buttonList );
     }
@@ -507,7 +515,7 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback {
         loreButton.enabled = !getItemStack().isEmpty();
         loreButton.y = 100 + 30 * loreFields.size();
 
-        if (mc.playerController.isNotCreative()) {
+        if (mc.playerController.isNotCreative()&&!mc.isSingleplayer()) {
             drawCenteredString( fontRenderer, I18n.format( "warning.notcreative" ), width / 2, height - 60, InfinityConfig.CONTRAST_COLOR );
         }
 
