@@ -197,7 +197,7 @@ public abstract class GuiInfinity extends GuiScreen
     public void drawScreen( int mouseX, int mouseY, float partialTicks )
     {
         if ( hasSave && this.saveButton != null )
-            this.saveButton.enabled = this.dropButton.enabled = mc.playerController.isInCreativeMode();
+            this.saveButton.enabled = this.dropButton.enabled = mc.playerController.isInCreativeMode()||mc.isSingleplayer();
         
         drawDefaultBackground();
         
