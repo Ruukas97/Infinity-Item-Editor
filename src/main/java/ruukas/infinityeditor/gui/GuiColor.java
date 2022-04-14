@@ -1,17 +1,9 @@
 package ruukas.infinityeditor.gui;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Objects;
-
-import org.lwjgl.input.Keyboard;
-import org.lwjgl.opengl.GL11;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
-
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
@@ -22,14 +14,20 @@ import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.client.config.GuiSlider;
-import net.minecraftforge.fml.client.config.GuiSlider.ISlider;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.input.Keyboard;
+import org.lwjgl.opengl.GL11;
 import ruukas.infinityeditor.InfinityEditor;
 import ruukas.infinityeditor.data.InfinityConfig;
 import ruukas.infinityeditor.gui.action.GuiActionTextField;
 import ruukas.infinityeditor.gui.action.GuiInfinityButton;
 import ruukas.infinityeditor.nbt.NBTHelper.ColorNBTHelper;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Objects;
+import java.util.Random;
 
 @SideOnly( Side.CLIENT )
 public class GuiColor extends GuiScreen
@@ -44,6 +42,8 @@ public class GuiColor extends GuiScreen
     private GuiSlider redSlider, greenSlider, blueSlider;
     
     private GuiActionTextField hexText;
+
+    private GuiInfinityButton randomButton;
     
     protected String title = I18n.format( "gui.color" );
     
@@ -58,7 +58,8 @@ public class GuiColor extends GuiScreen
     public void initGui()
     {
         Keyboard.enableRepeatEvents( true );
-        
+        int buttonWidth = 60;
+        randomButton = addButton(new GuiInfinityButton(102, (this.width - buttonWidth) / 2, this.height / 2 + 65, buttonWidth, 20, "Random"));
         hexText = new GuiActionTextField( 100, this.fontRenderer, (this.width / 2) - 25, this.height / 2 - 85, 50, 20 );
         hexText.setMaxStringLength( 7 );
         String hexS = Integer.toHexString( ColorNBTHelper.getColorAsInt( stack ) );
@@ -82,15 +83,7 @@ public class GuiColor extends GuiScreen
                 }
                 else return;
 
-                try
-                {
-                    ColorNBTHelper.setColor( stack, (int) Long.parseLong( text, 16 ) );
-                    redSlider.sliderValue = ColorNBTHelper.getRed( stack );
-                }
-                catch ( NumberFormatException e )
-                {
-                    InfinityEditor.logger.error( "Could not parse " + text + " as a hex color." );
-                }
+                updateColor(text);
             }
         };
         
@@ -131,7 +124,18 @@ public class GuiColor extends GuiScreen
             hexText.setText( "#" + zeroes13 + hexS13);
         }) );
     }
-    
+
+    private void updateColor(String text) {
+        try
+        {
+            ColorNBTHelper.setColor( stack, (int) Long.parseLong(text, 16 ) );
+        }
+        catch ( NumberFormatException e )
+        {
+            InfinityEditor.logger.error( "Could not parse " + text + " as a hex color." );
+        }
+    }
+
     @Override
     public void onGuiClosed()
     {
@@ -206,6 +210,14 @@ public class GuiColor extends GuiScreen
         {
             HelperGui.dropStack( stack );
         }
+
+        else if ( button.id == randomButton.id )
+        {
+            Random random = new Random();
+            int nextInt = random.nextInt(0xffffff + 1);
+            String randomColor = String.format("%06x", nextInt);
+            updateColor(randomColor);
+        }
     }
     
     /**
@@ -278,7 +290,7 @@ public class GuiColor extends GuiScreen
                 i++;
             }
         }
-        
+        randomButton.drawButton(mc, mouseX, mouseY, partialTicks);
         hexText.drawTextBox();
         super.drawScreen( mouseX, mouseY, partialTicks );
     }
