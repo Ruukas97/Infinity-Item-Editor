@@ -1,6 +1,7 @@
 package ruukas.infinityeditor.gui;
 
 import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.LinkedList;
 import java.util.List;
@@ -280,7 +281,11 @@ public class GuiHeadCollection extends GuiScreen {
     public void loadSkulls() throws IOException {
         allSkulls.clear();
         URL url = new URL( API_URL + CATEGORIES[selCat] );
-        InputStreamReader reader = new InputStreamReader( url.openStream() );
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+        conn.setRequestProperty("Accept", "application/json");
+        conn.setRequestProperty("User-Agent", "Infinity Item Editor");
+        InputStreamReader reader = new InputStreamReader( conn.getInputStream() );
         Gson gson = new Gson();
         MinecraftHead[] headArray = gson.fromJson( reader, MinecraftHead[].class );
         reader.close();
