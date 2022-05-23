@@ -43,7 +43,7 @@ public abstract class InfinityTab extends CreativeTabs {
         InfinityEditor.REALM = new InfinityTabRealm(successRealm ? foundId : id++, "realm", successRealm);
 
         if (InfinityConfig.getIsUnavailableTabEnabled()) {
-            InfinityEditor.UNAVAILABLE = new InfinityTab(id >= foundId ? 1 + id++ : id++, "unavailable") {
+            InfinityEditor.UNAVAILABLE = new InfinityTab(successRealm && id >= foundId ? 1 + id++ : id++, "unavailable") {
                 @Override
                 public ItemStack getTabIconItem() {
                     return new ItemStack(Blocks.BARRIER);

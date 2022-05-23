@@ -351,7 +351,9 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback {
     protected void keyTyped(char typedChar, int keyCode) throws IOException {
         super.keyTyped(typedChar, keyCode);
 
-        for (GuiNumberField f : numberFields) {
+        //noinspection ForLoopReplaceableByForEach
+        for (int i = 0, numberFieldsSize = numberFields.size(); i < numberFieldsSize; i++) {
+            GuiNumberField f = numberFields.get(i);
             if (f != null) {
                 f.textboxKeyTyped(typedChar, keyCode);
             }
@@ -365,7 +367,9 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback {
             }
         }
 
-        for (GuiTextField f : loreFields) {
+        //noinspection ForLoopReplaceableByForEach
+        for (int i = 0; i < loreFields.size(); i++) {
+            GuiTextField f = loreFields.get(i);
             if (f != null) {
                 f.textboxKeyTyped(typedChar, keyCode);
             }
