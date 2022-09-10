@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import net.minecraft.entity.player.EntityPlayerMP;
 import org.lwjgl.input.Keyboard;
 
 import net.minecraft.client.gui.GuiButton;
@@ -86,14 +87,18 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback {
         clearCustomName();
     }
 
+    protected void betterSave(ItemStack itemStackIn, int slotId) {
+
+    }
 
     @Override
     protected void save() {
-        if (slot < 0) {
-            mc.playerController.sendSlotPacket(getItemStack(), mc.player.inventory.currentItem + 36); // 36 is the index of the action (4 armor, 1 off hand, 5 crafting, and 27
-            // inventory, if I remember correctly).
+        int saveSlot = slot < 0 ? mc.player.inventory.currentItem + 36 : slot;
+
+        if (mc.isSingleplayer()) {
+            ((EntityPlayerMP) mc.getIntegratedServer().getEntityFromUuid(mc.player.getUniqueID())).inventoryContainer.putStackInSlot(saveSlot, getItemStack());
         } else {
-            mc.playerController.sendSlotPacket(getItemStack(), slot);
+            mc.playerController.sendSlotPacket(getItemStack(), saveSlot);
         }
     }
 
@@ -477,7 +482,7 @@ public class GuiItem extends GuiInfinity implements GuiYesNoCallback {
         loreButton.enabled = !getItemStack().isEmpty();
         loreButton.y = 100 + 30 * loreFields.size();
 
-        if (mc.playerController.isNotCreative()) {
+        if (mc.playerController.isNotCreative() && !mc.isSingleplayer()) {
             drawCenteredString(fontRenderer, I18n.format("warning.notcreative"), width / 2, height - 60, InfinityConfig.CONTRAST_COLOR);
         }
 
