@@ -2,6 +2,7 @@ package ruukas.infinityeditor.event;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
+import com.google.common.eventbus.Subscribe;
 import io.netty.channel.ChannelDuplexHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
@@ -52,8 +53,11 @@ import ruukas.infinityeditor.util.InventoryUtils;
 import javax.annotation.Nullable;
 import java.util.List;
 
+import static ruukas.infinityeditor.InfinityEditor.voidBuffer;
+
 @Mod.EventBusSubscriber( modid = InfinityEditor.MODID )
 public class InfinityEventHandler {
+
     @SubscribeEvent
     public static void onKeyPress( KeyInputEvent event ) {
         Minecraft mc = Minecraft.getMinecraft();
@@ -224,7 +228,7 @@ public class InfinityEventHandler {
         }
     }
 
-
+    @SubscribeEvent
     public static void onChatReceived( ClientChatReceivedEvent e ) {
         if (!InfinityConfig.getIsVoidEnabled()) {
             return;
@@ -253,15 +257,8 @@ public class InfinityEventHandler {
         if (InfinityConfig.getIsVoidEnabled() && e.getManager().channel().pipeline().get( "void_handler" ) == null) {
             e.getManager().channel().pipeline().addBefore( "packet_handler", "void_handler", new ChannelDuplexHandler() {
                 public void channelRead( io.netty.channel.ChannelHandlerContext ctx, Object msg ) throws Exception {
-                    if (msg instanceof SPacketEntityEquipment && Minecraft.getMinecraft().world != null) {
-                        SPacketEntityEquipment packet = (SPacketEntityEquipment) msg;
-                        ItemStack stack = packet.getItemStack().copy();
-                        Entity ent = Minecraft.getMinecraft().world.getEntityByID( packet.getEntityID() );
-                        String uuid = null;
-                        if (ent instanceof EntityPlayer) {
-                            uuid = ent.getUniqueID().toString().replace( "-", "" );
-                        }
-                        new VoidController( stack ).addItemStack( Minecraft.getMinecraft().player, stack, uuid );
+                    if (msg instanceof SPacketEntityEquipment) {
+                        voidBuffer.put((SPacketEntityEquipment) msg);
                     }
                     super.channelRead( ctx, msg );
                 };

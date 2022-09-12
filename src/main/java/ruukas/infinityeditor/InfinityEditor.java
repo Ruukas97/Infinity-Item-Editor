@@ -18,6 +18,8 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import ruukas.infinityeditor.data.realm.RealmController;
+import ruukas.infinityeditor.event.VoidConsumer;
+import ruukas.infinityeditor.event.VoidBuffer;
 import ruukas.infinityeditor.tab.InfinityTab;
 
 @Mod( modid = InfinityEditor.MODID, name = InfinityEditor.NAME, version = InfinityEditor.VERSION, clientSideOnly = true )
@@ -38,6 +40,8 @@ public class InfinityEditor
     public static CreativeTabs UNAVAILABLE, REALM, BANNERS, SKULLS, FIREWORKS, THIEF, VOID;
     
     public static RealmController realmController;
+
+    public static VoidBuffer voidBuffer = new VoidBuffer();
     
     // TODO
     // ADD Config
@@ -158,6 +162,9 @@ public class InfinityEditor
     @Mod.EventHandler
     public void postInit( FMLPostInitializationEvent event )
     {
+        VoidConsumer consumer = new VoidConsumer(voidBuffer);
+        new Thread(consumer).start();
+
         /*
          * Goes through each registered item and block that has been registered and adds them to UNAVAILABLE, if they haven't been assigned a tab. This gives the player access to item that are not unavailable such as barriers and command blocks, and potentially items that are added by other mods too.
          * 
