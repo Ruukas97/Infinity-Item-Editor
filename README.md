@@ -12,7 +12,7 @@ https://www.curseforge.com/minecraft/mc-mods/infinity-item-editor/files/all?filt
 
 ## Compiling
 
-### From terminal (using maven)
+### From terminal (using gradle)
 
 
 `git clone https://github.com/Ruukas97/Infinity-Item-Editor`
