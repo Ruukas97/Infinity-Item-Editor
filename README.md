@@ -13,7 +13,6 @@ https://www.curseforge.com/minecraft/mc-mods/infinity-item-editor/files/all?filt
 ## Compiling
 
 ### From terminal (using maven)
-run 
 
 
 `git clone https://github.com/Ruukas97/Infinity-Item-Editor`
