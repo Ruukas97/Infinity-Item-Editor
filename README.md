@@ -14,6 +14,8 @@ https://www.curseforge.com/minecraft/mc-mods/infinity-item-editor/files/all?filt
 
 ### From terminal (using maven)
 run 
+
+
 `git clone https://github.com/Ruukas97/Infinity-Item-Editor`
 
 `cd Infinity-Item-Editor`
