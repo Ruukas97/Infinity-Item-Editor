@@ -19,4 +19,5 @@ run
 `cd Infinity-Item-Editor`
 
 `mvn clean package`
+
 Note: the version on github may contain bugs that are not fixed yet
