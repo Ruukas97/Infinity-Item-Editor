@@ -23,6 +23,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import ruukas.infinityeditor.data.InfinityConfig;
+import ruukas.infinityeditor.gui.action.GuiActionTextField;
 import ruukas.infinityeditor.gui.action.GuiInfinityButton;
 import ruukas.infinityeditor.nbt.NBTHelper;
 
@@ -36,7 +37,7 @@ public class GuiHead extends GuiScreen
     private GuiInfinityButton headButton, saveSkullButton, listButton;
     private GuiInfinityButton backButton, resetButton, dropButton;
     
-    private GuiTextField skullOwnerTextField;
+    private GuiActionTextField skullOwnerTextField;
     
     protected String title = I18n.format( "gui.head" );
     
@@ -58,7 +59,7 @@ public class GuiHead extends GuiScreen
         this.addButton( new GuiInfinityButton( 101, (this.width / 2) - 75, 50, 20, 20, "<" ) );
         this.addButton( new GuiInfinityButton( 102, (this.width / 2) + 55, 50, 20, 20, ">" ) );
         
-        skullOwnerTextField = new GuiTextField( 103, this.fontRenderer, (this.width / 2) - 54, 82, 88, 16 );
+        skullOwnerTextField = new GuiActionTextField( 103, this.fontRenderer, (this.width / 2) - 54, 82, 88, 16 );
         GameProfile profile = NBTHelper.SkullNBTHelper.getSkullOwner( stack );
         skullOwnerTextField.setText( profile != null && profile.getName() != null ? profile.getName() : I18n.format( "tag.skullowner" ) );
         listButton = this.addButton( new GuiInfinityButton( 104, (this.width / 2) - 75, 80, 20, 20, "[L]" ) );

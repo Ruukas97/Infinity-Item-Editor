@@ -27,6 +27,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import ruukas.infinityeditor.data.InfinityConfig;
+import ruukas.infinityeditor.gui.action.GuiActionTextField;
 import ruukas.infinityeditor.gui.action.GuiInfinityButton;
 
 @SideOnly( Side.CLIENT )
@@ -41,7 +42,7 @@ public class GuiNBT extends GuiScreen
     private GuiInfinityButton backButton, resetButton;
     private GuiInfinityButton[] colorButtons;
     
-    private GuiTextField nbtTextField;
+    private GuiActionTextField nbtTextField;
     
     protected String title = I18n.format( "gui.nbt" );
     
@@ -59,7 +60,7 @@ public class GuiNBT extends GuiScreen
     public void initGui()
     {
         Keyboard.enableRepeatEvents( true );
-        nbtTextField = new GuiTextField( 100, this.fontRenderer, this.width / 4, 80, this.width / 2, 16 );
+        nbtTextField = new GuiActionTextField( 100, this.fontRenderer, this.width / 4, 80, this.width / 2, 16 );
         nbtTextField.setMaxStringLength( 20000 );
         nbtTextField.setText( stack.hasTagCompound() ? Objects.requireNonNull(stack.getTagCompound()).toString() : "{}" );
         

@@ -12,12 +12,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import ruukas.infinityeditor.data.InfinityConfig;
+import ruukas.infinityeditor.gui.action.GuiActionTextField;
 
 @SideOnly( Side.CLIENT )
 public class GuiEditString extends GuiScreen
 {
     /** Text field containing the command block's command. */
-    private GuiTextField textField;
+    private GuiActionTextField textField;
     private GuiButton doneBtn;
     private GuiButton cancelBtn;
     
@@ -48,7 +49,7 @@ public class GuiEditString extends GuiScreen
         this.buttonList.clear();
         this.doneBtn = this.addButton( new GuiButton( 0, this.width / 2 - 4 - 150, this.height / 4 + 120 + 12, 150, 20, I18n.format( "gui.done" ) ) );
         this.cancelBtn = this.addButton( new GuiButton( 1, this.width / 2 + 4, this.height / 4 + 120 + 12, 150, 20, I18n.format( "gui.cancel" ) ) );
-        this.textField = new GuiTextField( 2, this.fontRenderer, this.width / 2 - 150, 50, 300, 20 );
+        this.textField = new GuiActionTextField( 2, this.fontRenderer, this.width / 2 - 150, 50, 300, 20 );
         this.textField.setMaxStringLength( 32500 );
         this.textField.setFocused( true );
         this.textField.setText( tag.getValue( stack ) );
