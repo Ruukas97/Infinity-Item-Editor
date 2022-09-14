@@ -41,6 +41,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import ruukas.infinityeditor.gui.action.GuiActionTextField;
 import ruukas.qualityorder.util.itemstack.QualityBanner;
 import ruukas.qualityorder.util.nbt.tileentity.TileEntityTagBanner;
 import ruukas.qualityorder.util.nbt.tileentity.TileEntityTagBanner.Pattern;
@@ -66,7 +67,7 @@ public class GuiBannerMaker extends InventoryEffectRenderer
     
     private CreativeCrafting listener;
     
-    private GuiTextField nbtTextField;
+    private GuiActionTextField nbtTextField;
     
     public GuiBannerMaker(GuiScreen lastScreen, EntityPlayer player) {
         super( new ContainerBanner( player ) );
@@ -495,7 +496,7 @@ public class GuiBannerMaker extends InventoryEffectRenderer
             super.initGui();
             this.buttonList.clear();
             
-            this.nbtTextField = new GuiTextField( 0, this.fontRenderer, this.guiLeft + 10, guiTop + 61, 136, 20 );
+            this.nbtTextField = new GuiActionTextField( 0, this.fontRenderer, this.guiLeft + 10, guiTop + 61, 136, 20 );
             this.nbtTextField.setMaxStringLength( 500 );
             this.nbtTextField.setFocused( false );
             this.nbtTextField.setTextColor( 16777215 );
