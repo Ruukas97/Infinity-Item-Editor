@@ -114,7 +114,7 @@ public class ContainerEquipment extends Container
             @SideOnly( Side.CLIENT )
             public String getSlotTexture()
             {
-                return "infinity:items/empty_armor_slot_sword";
+                return InfinityEditor.MODID + ":items/empty_armor_slot_sword";
             }
         } );
         
