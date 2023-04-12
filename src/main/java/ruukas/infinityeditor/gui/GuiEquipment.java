@@ -100,7 +100,9 @@ public class GuiEquipment extends GuiContainer
     @Override
     protected void handleMouseClick( Slot slotIn, int slotId, int mouseButton, ClickType type )
     {
-        slotId = slotIn.slotNumber;
+        try { slotId = slotIn.slotNumber; }
+        catch (NullPointerException e) { }
+        
         this.inventorySlots.slotClick( slotId, mouseButton, type, mc.player );
     }
     
