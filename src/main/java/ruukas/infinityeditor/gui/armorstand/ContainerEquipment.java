@@ -14,6 +14,7 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import ruukas.infinityeditor.InfinityEditor;
 import ruukas.infinityeditor.gui.HelperGui;
 
 public class ContainerEquipment extends Container
@@ -100,7 +101,6 @@ public class ContainerEquipment extends Container
         
         // Off-hand
         this.addSlotToContainer( new Slot( playerInventory, 40, 77, 62 ) {
-            @Nullable
             @SideOnly( Side.CLIENT )
             public String getSlotTexture()
             {
@@ -110,16 +110,14 @@ public class ContainerEquipment extends Container
         
         // Equipment hands
         this.addSlotToContainer( new Slot( equipmentInventory, 0, 83, 8 ) {
-            @Nullable
             @SideOnly( Side.CLIENT )
             public String getSlotTexture()
             {
-                return "infinity:items/empty_armor_slot_sword";
+                return InfinityEditor.MODID + ":items/empty_armor_slot_sword";
             }
         } );
         
         this.addSlotToContainer( new Slot( equipmentInventory, 1, 83, 26 ) {
-            @Nullable
             @SideOnly( Side.CLIENT )
             public String getSlotTexture()
             {
