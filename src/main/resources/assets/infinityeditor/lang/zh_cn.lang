@@ -1,7 +1,8 @@
-﻿#Translated by LegendGhost11
+﻿#Translated by LegendGhost11 & Canmi
 #汉化由LegendGhost11,MCBBS ID:疾风突击队 提供
+#汉化微调由Canmi
 
-key.infinity.category=无限物品编辑
+key.infinity.category=无限物品编辑器
 key.infinity.desc=编辑当前物品
 key.infinitycopy.desc=复制目标玩家装备
 key.infinitysave.desc=将当前物品保存到领域
@@ -18,7 +19,7 @@ itemGroup.void=无限-虚空
 
 gui.close=关闭
 gui.save=保存
-gui.drop=扔出
+gui.drop=丢弃
 gui.reset=重置
 gui.clear=清除
 
@@ -36,7 +37,7 @@ gui.attributes=自定义属性设定
 gui.chestinventory=箱子清单
 gui.hideflags=隐藏标签
 gui.bannermaker=旗帜制作器
-gui.fireworks=预览火箭
+gui.fireworks=预览烟火
 gui.specialbutton=特殊NBT
 gui.headcollection=头颅收藏
 gui.lore=描述编辑
@@ -64,7 +65,7 @@ gui.attributes.slot.3=头部
 gui.attributes.slot.4=身上
 gui.attributes.slot.5=腿部
 gui.attributes.slot.6=脚部
-attribute.name.generic.flyingSpeed=生物飞行速度
+attribute.name.generic.flyingSpeed=实体飞行速度
 
 gui.book.title=标题
 gui.book.author=作者
