@@ -14,6 +14,7 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.input.Keyboard;
 
 @SideOnly( Side.CLIENT )
 public class GuiChestItem extends GuiContainer
@@ -61,7 +62,7 @@ public class GuiChestItem extends GuiContainer
     {
         super.keyTyped( typedChar, keyCode );
         
-        if ( keyCode == 1 || this.mc.gameSettings.keyBindInventory.isActiveAndMatches( keyCode ) )
+        if ( keyCode == Keyboard.KEY_ESCAPE || this.mc.gameSettings.keyBindInventory.isActiveAndMatches( keyCode ) )
         {
             this.mc.displayGuiScreen( lastScreen );
         }
