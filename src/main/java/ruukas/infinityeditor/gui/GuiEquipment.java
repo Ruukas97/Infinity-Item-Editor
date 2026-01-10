@@ -21,6 +21,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.Rotations;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.input.Keyboard;
 import ruukas.infinityeditor.InfinityEditor;
 import ruukas.infinityeditor.gui.armorstand.ContainerEquipment;
 import ruukas.infinityeditor.gui.armorstand.InventoryArmorStandEquipment;
@@ -86,7 +87,7 @@ public class GuiEquipment extends GuiContainer {
     protected void keyTyped(char typedChar, int keyCode) throws IOException {
         super.keyTyped(typedChar, keyCode);
 
-        if (keyCode == 1 || this.mc.gameSettings.keyBindInventory.isActiveAndMatches(keyCode)) {
+        if (keyCode == Keyboard.KEY_ESCAPE || this.mc.gameSettings.keyBindInventory.isActiveAndMatches(keyCode)) {
             this.mc.displayGuiScreen(lastScreen);
         }
     }
