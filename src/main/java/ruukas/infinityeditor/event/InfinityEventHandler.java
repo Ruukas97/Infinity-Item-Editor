@@ -37,6 +37,8 @@ import net.minecraftforge.client.event.RenderTooltipEvent;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.InputEvent;
+import net.minecraftforge.fml.common.gameevent.InputEvent.MouseInputEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
 import net.minecraftforge.fml.common.network.FMLNetworkEvent.ClientConnectedToServerEvent;
 import org.lwjgl.input.Keyboard;
@@ -57,8 +59,7 @@ import static ruukas.infinityeditor.InfinityEditor.voidBuffer;
 @Mod.EventBusSubscriber(modid = InfinityEditor.MODID)
 public class InfinityEventHandler {
 
-    @SubscribeEvent
-    public static void onKeyPress(KeyInputEvent event) {
+    public static void handleGameInputEvent() {
         Minecraft mc = Minecraft.getMinecraft();
 
         if (InfinityEditor.keybind.isPressed() && mc.world != null) {
@@ -127,12 +128,21 @@ public class InfinityEventHandler {
         }
     }
 
+    @SubscribeEvent
+    public static void onMousePress(MouseInputEvent event) {
+        handleGameInputEvent();
+    }
+
 
     @SubscribeEvent
-    public static void onKeyboardInput(GuiScreenEvent.KeyboardInputEvent.Pre e) {
+    public static void onKeyPress(KeyInputEvent event) {
+        handleGameInputEvent();
+    }
+
+    public static void handleGuiInputEvent(GuiScreenEvent e) {
         Minecraft mc = Minecraft.getMinecraft();
         EntityPlayerSP player = mc.player;
-        if (InfinityEditor.keybind != null && Keyboard.isKeyDown(InfinityEditor.keybind.getKeyCode()) && mc.world != null && player != null && e.getGui() instanceof GuiContainer) {
+        if (InfinityEditor.keybind != null && GameSettings.isKeyDown(InfinityEditor.keybind) && mc.world != null && player != null && e.getGui() instanceof GuiContainer) {
             ItemStack cursorStack = player.inventory.getItemStack();
             if (cursorStack == ItemStack.EMPTY || cursorStack.getItem() == Items.AIR) {
                 GuiContainer gui = (GuiContainer) e.getGui();
@@ -158,7 +168,7 @@ public class InfinityEventHandler {
             }
         }
 
-        if (GameSettings.isKeyDown(InfinityEditor.keybindSave) && player != null) {
+        if (InfinityEditor.keybindSave != null && GameSettings.isKeyDown(InfinityEditor.keybindSave) && player != null) {
             if (e.getGui() != null && e.getGui() instanceof GuiContainer) {
                 GuiContainer gui = (GuiContainer) e.getGui();
                 Slot slot = gui.getSlotUnderMouse();
@@ -183,10 +193,10 @@ public class InfinityEventHandler {
             Slot slot = gui.getSlotUnderMouse();
 
             if (slot != null) {
-                if (GuiScreen.isKeyComboCtrlC(Keyboard.isKeyDown(46) ? 46 : 0) && slot.getHasStack()) {
+                if (GuiScreen.isKeyComboCtrlC(Keyboard.isKeyDown(Keyboard.KEY_C) ? Keyboard.KEY_C : 0) && slot.getHasStack()) {
                     String s = GiveHelper.getStringFromItemStack(slot.getStack());
                     GuiScreen.setClipboardString(s);
-                } else if (GuiScreen.isKeyComboCtrlV(Keyboard.isKeyDown(47) ? 47 : 0) && slot.inventory == player.inventory) {
+                } else if (GuiScreen.isKeyComboCtrlV(Keyboard.isKeyDown(Keyboard.KEY_V) ? Keyboard.KEY_V : 0) && slot.inventory == player.inventory) {
                     ItemStack stack = GiveHelper.getItemStackFromString(GuiScreen.getClipboardString());
                     int i = slot.getSlotIndex();
 
@@ -202,6 +212,16 @@ public class InfinityEventHandler {
                 }
             }
         }
+    }
+
+    @SubscribeEvent
+    public static void onMouseInput(GuiScreenEvent.MouseInputEvent.Pre e) {
+        handleGuiInputEvent(e);
+    }
+
+    @SubscribeEvent
+    public static void onKeyboardInput(GuiScreenEvent.KeyboardInputEvent.Pre e) {
+        handleGuiInputEvent(e);
     }
 
 
